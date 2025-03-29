@@ -8,18 +8,9 @@ function setLang(language) {
     console.log("Selected Language:", userLanguage); // Log after selection
 }
 
-// Show popup only if no language is set
-window.onload = function() {
-    if (!localStorage.getItem("userLanguage")) {
-        document.getElementById("langPopup").style.display = "flex";
-    } else {
-        console.log("Stored Language:", userLanguage); // Log stored value on page load
-        document.getElementById("langPopup").style.display = "none";
-    }
-};
-
 // Log userLanguage outside the function
 console.log("Global userLanguage:", userLanguage);
+
 function showQuizSelection() {
     const quizList = document.getElementById("quizList");
     quizList.innerHTML = "";
@@ -51,14 +42,19 @@ function populateSubjectFilter() {
 }
 
 // Call the function to show quiz selection and populate subject filter on page load
-window.onload = function() {
+window.addEventListener("load", function() {
     populateSubjectFilter();
     showQuizSelection();
-
-    // Add event listeners for filter changes
     document.getElementById("subjectFilter").onchange = showQuizSelection;
-    document.getElementById("languageFilter").onchange = showQuizSelection;
-};
+    document.getElementById("languageFilter") && (document.getElementById("languageFilter").onchange = showQuizSelection);
+    
+    // Existing langPopup logic if applicable
+    if (!localStorage.getItem("userLanguage")) {
+        document.getElementById("langPopup") && (document.getElementById("langPopup").style.display = "flex");
+    } else {
+        document.getElementById("langPopup") && (document.getElementById("langPopup").style.display = "none");
+    }
+});
 
 let currentQuestionIndex = 0;
 let userAnswers = [];
@@ -72,6 +68,8 @@ function loadQuiz(index) {
         document.getElementById("quizTitle").textContent = selectedQuiz.title;
         document.getElementById("quizSelection").style.display = "none";
         document.getElementById("test").style.display = "block";
+        // Ensure arrow button is shown when test is active
+        document.getElementById("arrowButton").style.display = "block";
         userAnswers = new Array(questions.length).fill(null);
         generateNavigation();
         loadQuestion(0);
@@ -264,8 +262,34 @@ function closePopup(popupId, reload = false) {
     }
 }
 
+function openSlider() {
+    const slider = document.getElementById("sliderWindow");
+    // Ensure any "close" class is removed
+    slider.classList.remove("close");
+    slider.style.display = "block";
+    // Trigger animation by adding "open" class after a short delay
+    setTimeout(() => {
+        slider.classList.add("open");
+    }, 10);
+    document.getElementById("arrowButton").style.display = "none";
+}
+
+function closeSlider() {
+    const slider = document.getElementById("sliderWindow");
+    // Remove the "open" class and add a "close" class for reverse animation
+    slider.classList.remove("open");
+    slider.classList.add("close");
+    // Wait for the animation duration before hiding the slider
+    setTimeout(() => {
+        slider.style.display = "none";
+        // Remove the "close" class so the slider resets for next open
+        slider.classList.remove("close");
+        document.getElementById("arrowButton").style.display = "block";
+    }, 300);
+}
+
 function generateNavigation() {
-    const navContainer = document.getElementById("navButtons");
+    const navContainer = document.getElementById("navButtonsSlider");
     navContainer.innerHTML = "";
     questions.forEach((_, i) => {
         const btn = document.createElement("button");
@@ -278,7 +302,7 @@ function generateNavigation() {
 }
 
 function highlightNavButton(index) {
-    document.querySelectorAll(".navigation button").forEach((btn, i) => {
+    document.querySelectorAll("#navButtonsSlider button").forEach((btn, i) => {
         btn.style.background = userAnswers[i] ? "lightgreen" : "";
     });
     document.getElementById("nav-" + index).style.background = "lightblue";
