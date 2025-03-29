@@ -9,10 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari&display=swap" rel="stylesheet"> <!-- Add Hindi font -->
 </head>
 <body>
-    <div id="langSelection"">
-            <h2>Choose Your Language</h2>
-            <button class="lang-btn" onclick="setLang('hindi')">हिन्दी</button>
-            <button class="lang-btn" onclick="setLang('english')">English</button>
+    <div id="langSelection">
+        <h2>Choose Your Language</h2>
+        <button class="lang-btn" onclick="setLang('hindi')">हिन्दी</button>
+        <button class="lang-btn" onclick="setLang('english')">English</button>
     </div> 
     <div id="quizSelection" style="display: none;">
         <h2>Select a Quiz</h2>
@@ -27,20 +27,25 @@
     </div>
 
     <div id="test" style="display: none;">
-        <div id="quiz-container">
-            <div class="navigation" id="navButtons"></div>
-            <h2 id="quizTitle"></h2>
-            <div id="question-container">
-            <h2 id="question-text"></h2>
-            <div id="options-container"></div>
-            <div id="prev-next">
-                <button onclick="prevQuestion()">Previous</button>
-                <button onclick="nextQuestion()">Next</button>
-            </div>
-            </div>
-            <div id="preview-submit">
+        <!-- Slider Window (full screen) -->
+        <div id="sliderWindow" style="display: none;">
+            <button id="sliderClose" onclick="closeSlider()">→</button>
+            <!-- Moved Controls -->
+            <div class="navigation" id="navButtonsSlider"></div>
+            <div id="sliderControls">
                 <button onclick="showPreview()">Preview</button>
                 <button onclick="submitQuiz()">Submit</button>
+            </div>
+        </div>
+        <div id="quiz-container">
+            <h2 id="quizTitle"></h2>
+            <div id="question-container">
+                <h2 id="question-text"></h2>
+                <div id="options-container"></div>
+                <div id="prev-next">
+                    <button onclick="prevQuestion()">Previous</button>
+                    <button onclick="nextQuestion()">Next</button>
+                </div>
             </div>
         </div>
         <!-- Preview Popup -->
@@ -59,6 +64,8 @@
         <div id="results-container"></div>
         <div id="summary"></div>
     </div>
+    <!-- Moved Arrow Button outside #test to be a direct child of body -->
+    <button id="arrowButton" onclick="openSlider()" style="display: none;">&larr;</button>
     <script src="change/quizzes.js"></script>
     <script src="aadhaar/test.js"></script>
 </body>
