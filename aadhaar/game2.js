@@ -171,19 +171,25 @@ function backToSetup() {
     document.getElementById("game-result").style.display = "none";
     document.getElementById("game-play").style.display = "none";
     document.getElementById("game-setup").style.display = "flex";
-    const selectedTimeMode = document.querySelector('.timeMode.selected-mode');
-    if (selectedTimeMode) {
-        selectedTimeMode.classList.remove('selected-mode');
-    }
-
-    const selectedQuestionMode = document.querySelector('.questionMode.selected-mode');
-    if (selectedQuestionMode) {
-        selectedQuestionMode.classList.remove('selected-mode');
-    }
-
-    const selectedQuestionType = document.querySelector('.typeOption.selected');
-    if (selectedQuestionType) {
-        selectedQuestionType.classList.remove('selected');
+    
+    // Reset selection for all mode buttons (timeMode & questionMode)
+    document.querySelectorAll('.mode1').forEach(btn => {
+        btn.classList.remove('selected-mode');
+        btn.style.background = "";
+        btn.style.color = "";
+    });
+    
+    // Reset selection for type option buttons
+    document.querySelectorAll('.typeOption').forEach(btn => {
+        btn.classList.remove('selected');
+        btn.style.background = "";
+        btn.style.color = "";
+    });
+    
+    // Optionally reset autoSubmit checkbox
+    const autoSubmitCheckbox = document.getElementById('autoSubmit');
+    if (autoSubmitCheckbox) {
+        autoSubmitCheckbox.checked = false;
     }
 }
 
