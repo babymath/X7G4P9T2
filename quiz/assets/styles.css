@@ -110,7 +110,7 @@ body {
 
 .navigation {
     display: grid; /* Use grid layout */
-    grid-template-columns: repeat(10, 1fr); /* 10 buttons per row */
+    grid-template-columns: repeat(8, 1fr); /* 10 buttons per row */
     gap: 5px; /* Add spacing between buttons */
     margin-bottom: 10px;
 }
