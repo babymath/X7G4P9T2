@@ -1,5 +1,11 @@
 [
     { 
+        "title": "Temp", 
+        "file": "Temp.json", 
+        "subject": "Temp",
+        "topic": "Temp"
+    },
+    { 
         "title": "Divisibility Rule Set 2", 
         "file": "divisibility_rule-2.json", 
         "subject": "Math",
@@ -10,24 +16,6 @@
         "file": "divisibility_rule-1.json", 
         "subject": "Math",
         "topic": "Divisibility"
-    },
-    { 
-        "title": "Bihar Historical Place Set 1", 
-        "file": "bihar_historical_place-1.json", 
-        "subject": "History",
-        "topic": "Bihar"
-    },
-    { 
-        "title": "Bihar Historical Place Set 2", 
-        "file": "bihar_historical_place-2.json", 
-        "subject": "History",
-        "topic": "Bihar"
-    },
-    { 
-        "title": "Bihar Historical Place Set 3", 
-        "file": "bihar_historical_place-3.json", 
-        "subject": "History",
-        "topic": "Bihar"
     },
     { 
         "title": "Time and Work Set 1", 
