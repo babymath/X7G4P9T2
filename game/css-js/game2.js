@@ -33,8 +33,8 @@ function startGame() {
     const selectedTimeMode = document.querySelector('.timeMode.selected-mode');
     const selectedQuestionMode = document.querySelector('.questionMode.selected-mode');
     const selectedGameType = document.querySelector('.typeOption.selected').dataset.value;
-    const gameName = document.getElementById('title').textContent.split(' ')[0].toLowerCase();
-    const highScoreKey = `${gameName}-${selectedGameType}`;
+    const gameKey = document.querySelector('.card.active').dataset.gamekey; // Use gamekey from the active card
+    const highScoreKey = `${gameKey}-${selectedGameType}`;
     const highScore = localStorage.getItem(highScoreKey) || 0;
 
     document.getElementById("highScore1").textContent = `High Score: ${highScore}`;
@@ -88,51 +88,45 @@ function initializeQuestionMode(selectedQuestionMode) {
 
 function checkAnswer() {
     console.log('checkAnswer function called');
-    const userAnswer = parseInt(document.getElementById('answer1').value);
-    const correctAnswer = parseInt(document.getElementById('questionText').dataset.answer);
     const answerInput = document.getElementById('answer1');
+    const userAnswer = parseInt(answerInput.value);
+    const correctAnswer = parseInt(document.getElementById('questionText').dataset.answer);
     const autoSubmit = document.getElementById('autoSubmit').checked;
 
+    if (isNaN(userAnswer)) {
+        console.log('Invalid input: Answer is not a number');
+        answerInput.classList.add('incorrect');
+        setTimeout(() => answerInput.classList.remove('incorrect'), 500);
+        return;
+    }
+
     if (userAnswer === correctAnswer) {
-        console.log('Correct');
+        console.log('Correct answer');
         if (document.querySelector('.timeMode.selected-mode')) {
             question++;
             questionElement.textContent = `Question No: ${question}`;
         } else if (document.querySelector('.questionMode.selected-mode')) {
             question--;
             questionElement.textContent = `Question Remaining: ${question}`;
-            if (question == 0) {
+            if (question === 0) {
                 clearInterval(timer);
                 clearInterval(checkQuestionCount);
                 endGame(time, parseInt(document.querySelector('.questionMode.selected-mode').getAttribute('data-value')));
                 return; // Exit if the game ends
             }
         }
-        if (autoSubmit) {
-            answerInput.value = ''; // Clear the input
-            generateQuestion(); // Automatically generate the next question
-            return; // Exit the function early
-        }
+        answerInput.value = ''; // Clear the input
+        answerInput.focus(); // Ensure the input box retains autofocus
+        generateQuestion(); // Always generate the next question
     } else {
-        console.log('Incorrect');
+        console.log('Incorrect answer');
         answerInput.classList.add('incorrect');
-        setTimeout(() => {
-            answerInput.classList.remove('incorrect');
-        }, 500);
+        setTimeout(() => answerInput.classList.remove('incorrect'), 500);
     }
-    answerInput.value = '';
+
+    answerInput.value = ''; // Clear the input
     answerInput.focus(); // Ensure the input box retains autofocus
 }
-
-document.getElementById('answer1').addEventListener('input', function () {
-    const autoSubmit = document.getElementById('autoSubmit').checked;
-    const userAnswer = parseInt(this.value);
-    const correctAnswer = parseInt(document.getElementById('questionText').dataset.answer);
-
-    if (autoSubmit && userAnswer === correctAnswer) {
-        checkAnswer(); // Automatically check the answer
-    }
-});
 
 function endGame(totalTime, totalQuestions) {
     console.log('endGame function called');
@@ -147,8 +141,8 @@ function endGame(totalTime, totalQuestions) {
     document.getElementById("score1").textContent = `Score: ${score}`;
 
     const gameType = document.querySelector('.typeOption.selected').dataset.value;
-    const gameName = document.getElementById('title').textContent.split(' ')[0].toLowerCase();
-    const highScoreKey = `${gameName}-${gameType}`;
+    const gameKey = document.querySelector('.card.active').dataset.gamekey; // Use gamekey from the active card
+    const highScoreKey = `${gameKey}-${gameType}`;
     const highScore = localStorage.getItem(highScoreKey) || 0;
 
     if (score > highScore) {

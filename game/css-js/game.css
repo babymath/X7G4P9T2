@@ -501,21 +501,18 @@ button:hover {
 }
 
 /* CSS code for result section */
-#gameover1 > div {
-    font: bold 24px Arial, sans-serif;
-    color: #333;
-    max-width: 100%;
-}
-
-#return1 {
+#game-result{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     gap: 10px;
     margin: 0 auto;
-    width: 300px;
-    padding: 10px 20px;
-    font-size: 10px;
-    color: #fff;
-    background: linear-gradient(45deg, #28a745, #218838); /* Gradient background */
+    width: 80vw;
+    padding: 20px;
+    font-size: 15px;
+    color: #bdbaba;
+    background: linear-gradient(45deg, #121312, #53242e,#740432); /* Gradient background */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -524,22 +521,31 @@ button:hover {
     max-width: 100%;
 }
 
-#return1 button {
-    background: transparent;
-    color: #e4a909; /* Cyan color */
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: bold;
-    border: 2px solid #00bcd4;
-    border-radius: 8px;
+#return1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    background: linear-gradient(45deg, #6e7470, #ad63eb,#00c6ff); /* Gradient background */
+    border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 0 10px #e4a909;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(182, 34, 34, 0.1);
     max-width: 100%;
 }
 
-#return1 button:hover {
-    background: #00bcd4;
-    color: #fff;
-    box-shadow: 0 0 20px #00bcd4;
+#return1 button {
+    background: transparent;
+    color: #dfdfdf;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #03424b;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 0 10px #10011d;
+    max-width: 100%;
 }
