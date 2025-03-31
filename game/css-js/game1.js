@@ -14,10 +14,39 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function askAutoSubmitPreference() {
-        const autoSubmitCheckbox = document.getElementById('autoSubmit');
-        const userPreference = confirm('Do you want to play with Auto Submit Answer or Manually?');
-        autoSubmitCheckbox.checked = userPreference;
-        console.log(`Auto Submit preference set to: ${userPreference}`);
+        const popup = document.createElement('div');
+        popup.id = 'autoSubmitPopup';
+        popup.style.position = 'fixed';
+        popup.style.top = '50%';
+        popup.style.left = '50%';
+        popup.style.transform = 'translate(-50%, -50%)';
+        popup.style.background = 'linear-gradient(135deg, #4e54c8, #8f94fb)';
+        popup.style.color = 'white';
+        popup.style.padding = '30px';
+        popup.style.borderRadius = '15px';
+        popup.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.3)';
+        popup.style.textAlign = 'center';
+        popup.style.zIndex = '1000';
+        popup.innerHTML = `
+            <h2 style="margin-bottom: 20px; font-family: Arial, sans-serif;">Choose Your Play Mode</h2>
+            <p style="margin-bottom: 30px; font-size: 16px; font-family: Arial, sans-serif;">Do you want to play with Auto Submit Answer or Manually?</p>
+            <button id="autoSubmitYes" style="margin-right: 10px; padding: 10px 20px; font-size: 16px; border: none; border-radius: 5px; background: #28a745; color: white; cursor: pointer; font-family: Arial, sans-serif;">Auto Submit</button>
+            <button id="autoSubmitNo" style="padding: 10px 20px; font-size: 16px; border: none; border-radius: 5px; background: #dc3545; color: white; cursor: pointer; font-family: Arial, sans-serif;">Manual Submit</button>
+        `;
+
+        document.body.appendChild(popup);
+
+        document.getElementById('autoSubmitYes').addEventListener('click', () => {
+            document.getElementById('autoSubmit').checked = true;
+            document.body.removeChild(popup);
+            startGame(); // Start the game after selection
+        });
+
+        document.getElementById('autoSubmitNo').addEventListener('click', () => {
+            document.getElementById('autoSubmit').checked = false;
+            document.body.removeChild(popup);
+            startGame(); // Start the game after selection
+        });
     }
 
     document.getElementById('modeCheckbox').addEventListener('change', function() {
@@ -73,20 +102,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('startGame').addEventListener('click', function() {
         console.log('Start Game button clicked');
-        askAutoSubmitPreference(); // Ask user for Auto Submit preference
-        startGame();
+        askAutoSubmitPreference(); // Show popup for Auto Submit preference
         document.getElementById('answer1').focus();
     });
 
+    // Event Listener for the answer  checking
+
     document.getElementById('submit1').addEventListener('click', function() {
         console.log('Submit button clicked');
-        checkAnswer();
+        checkAnswer(); // Ensure this function is called
     });
 
     document.getElementById('answer1').addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
             console.log('Enter key pressed');
-            checkAnswer();
+            event.preventDefault(); // Prevent default form submission behavior
+            checkAnswer(); // Ensure this function is called
+        }
+    });
+
+    document.getElementById('answer1').addEventListener('input', function () {
+        const autoSubmit = document.getElementById('autoSubmit').checked;
+        const userAnswer = parseInt(this.value);
+        const correctAnswer = parseInt(document.getElementById('questionText').dataset.answer);
+    
+        if (autoSubmit && userAnswer === correctAnswer) {
+            checkAnswer(); // Automatically check the answer
         }
     });
 
@@ -98,5 +139,11 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('backToSetup').addEventListener('click', function() {
         console.log('Back to Setup button clicked');
         backToSetup();
+    });
+
+    // Add event listener for "Back to Menu" button
+    document.getElementById('backToMenu').addEventListener('click', function() {
+        console.log('Back to Menu button clicked');
+        location.reload(); // Reload the index.html
     });
 });

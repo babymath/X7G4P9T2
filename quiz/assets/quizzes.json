@@ -1,0 +1,38 @@
+[
+    { 
+        "title": "Divisibility Rule Set 2", 
+        "file": "divisibility_rule-2.json", 
+        "subject": "Math",
+        "topic": "Divisibility"
+    },
+    { 
+        "title": "Divisibility Rule Set 1", 
+        "file": "divisibility_rule-1.json", 
+        "subject": "Math",
+        "topic": "Divisibility"
+    },
+    { 
+        "title": "Bihar Historical Place Set 1", 
+        "file": "bihar_historical_place-1.json", 
+        "subject": "History",
+        "topic": "Bihar"
+    },
+    { 
+        "title": "Bihar Historical Place Set 2", 
+        "file": "bihar_historical_place-2.json", 
+        "subject": "History",
+        "topic": "Bihar"
+    },
+    { 
+        "title": "Bihar Historical Place Set 3", 
+        "file": "bihar_historical_place-3.json", 
+        "subject": "History",
+        "topic": "Bihar"
+    },
+    { 
+        "title": "Time and Work Set 1", 
+        "file": "time_work-1.json", 
+        "subject": "Math",
+        "topic": "Time and Work"
+    }
+]
