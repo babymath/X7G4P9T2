@@ -3,22 +3,6 @@ const URLS_TO_CACHE = [
     './',
     './offline.html',
     './index.html',
-    './.js',
-    './game/gameJS/1-addition.js',
-    './game/gameJS/2-subtraction.js',
-    './game/gameJS/3-multiplication.js',
-    './game/gameJS/4-table-practice.js',
-    './game/gameJS/5-lightning-sum.js',
-    './game/gameJS/6-number←roman.js',
-    './game/gameJS/7-number←word.js',
-    './game/css-js/game.css',
-    './game/css-js/game0.js',
-    './game/css-js/game1.js',
-    './game/css-js/game2.js',
-    './game/index.html',
-    './profile/index.html',
-    './profile/profile.css',
-    './profile/profile.js'
 ];
 
 // Install event
@@ -34,9 +18,9 @@ self.addEventListener('install', event => {
 // Fetch event
 self.addEventListener('fetch', event => {
     event.respondWith(
-        caches.match(event.request).then(response => {
-            return response || fetch(event.request);
-        }).catch(() => caches.match('./offline.html'))
+        fetch(event.request)
+            .catch(() => caches.match(event.request))
+            .then(response => response || caches.match('./offline.html'))
     );
 });
 
