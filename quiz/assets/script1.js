@@ -1,6 +1,7 @@
 let userLanguage = null; let quizzes = []; let selectedQuizIndex = null; let currentQuestionIndex = 0; let userAnswers = []; let resultContent = "";
 
-// Load quizzes on page load window.onload = function () { fetch("assets/quizzes.json") .then(response => response.json()) .then(data => { quizzes = data; populateSubjectFilter(); populateTopicFilter(); showQuizSelection(); }) .catch(error => console.error("Error loading quizzes:", error));
+// Load quizzes on page load 
+window.onload = function () { fetch("assets/quizzes.json") .then(response => response.json()) .then(data => { quizzes = data; populateSubjectFilter(); populateTopicFilter(); showQuizSelection(); }) .catch(error => console.error("Error loading quizzes:", error));
 
 document.getElementById("subjectFilter").onchange = () => {
     populateTopicFilter();
