@@ -1,9 +1,8 @@
-const CACHE_NAME = 'offline-cache-v1';
+const CACHE_NAME = 'offline-cache-v2';
 const URLS_TO_CACHE = [
     '/',
     '/offline.html',
     '/index.html',
-    '/game', // Cache the /game route
 ];
 
 // Install event
