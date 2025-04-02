@@ -3,8 +3,6 @@ const URLS_TO_CACHE = [
     '/',
     '/offline.html',
     '/index.html',
-    '/styles.css', // Add other required assets here
-    '/script.js',
     '/game', // Cache the /game route
 ];
 
