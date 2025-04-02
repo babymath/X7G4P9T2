@@ -1,0 +1,182 @@
+[
+    {
+        "questionEnglish": "Find the LCM of the rational numbers 3/4 and 5/6.",
+        "questionHindi": "3/4 और 5/6 का LCM ज्ञात करें।",
+        "options": ["15/4", "15/6", "15/7", "15/8", "15/12"],
+        "correctAnswer": "15/8"
+    },
+    {
+        "questionEnglish": "Find the HCF of the rational numbers 7/8 and 14/9.",
+        "questionHindi": "7/8 और 14/9 का HCF ज्ञात करें।",
+        "options": ["7/72", "7/64", "7/63", "7/72", "7/56"],
+        "correctAnswer": "7/72"
+    },
+    {
+        "questionEnglish": "Find the LCM of the rational numbers 11/12 and 7/15.",
+        "questionHindi": "11/12 और 7/15 का LCM ज्ञात करें।",
+        "options": ["77/180", "77/150", "77/120", "77/200", "77/240"],
+        "correctAnswer": "77/180"
+    },
+    {
+        "questionEnglish": "Find the HCF of the rational numbers 10/11 and 6/13.",
+        "questionHindi": "10/11 और 6/13 का HCF ज्ञात करें।",
+        "options": ["2/143", "2/157", "3/143", "3/157", "4/187"],
+        "correctAnswer": "2/143"
+    },
+    {
+        "questionEnglish": "Find the LCM of the rational numbers 8/9 and 3/4.",
+        "questionHindi": "8/9 और 3/4 का LCM ज्ञात करें।",
+        "options": ["24/36", "24/32", "24/40", "32/36", "24/60"],
+        "correctAnswer": "24/36"
+    },
+    {
+        "questionEnglish": "Find the HCF of the rational numbers 15/22 and 9/14.",
+        "questionHindi": "15/22 और 9/14 का HCF ज्ञात करें।",
+        "options": ["3/154", "3/168", "5/168", "5/198", "5/154"],
+        "correctAnswer": "3/154"
+    },
+    {
+        "questionEnglish": "Find the LCM of the rational numbers 2/7 and 9/11.",
+        "questionHindi": "2/7 और 9/11 का LCM ज्ञात करें।",
+        "options": ["18/77", "18/66", "18/80", "18/85", "18/110"],
+        "correctAnswer": "18/77"
+    },
+    {
+        "questionEnglish": "Find the HCF of the rational numbers 5/8 and 10/16.",
+        "questionHindi": "5/8 और 10/16 का HCF ज्ञात करें।",
+        "options": ["5/16", "5/32", "5/64", "5/128", "5/72"],
+        "correctAnswer": "5/16"
+    },
+    {
+        "questionEnglish": "Find the LCM of the rational numbers 4/9 and 6/11.",
+        "questionHindi": "4/9 और 6/11 का LCM ज्ञात करें।",
+        "options": ["24/99", "24/100", "24/66", "24/132", "24/77"],
+        "correctAnswer": "24/99"
+    },
+    {
+        "questionEnglish": "Find the HCF of the rational numbers 3/5 and 8/25.",
+        "questionHindi": "3/5 और 8/25 का HCF ज्ञात करें।",
+        "options": ["1/25", "1/35", "3/25", "1/10", "3/25"],
+        "correctAnswer": "1/25"
+    },
+    {
+        "questionEnglish": "Find the LCM of the rational numbers 3/5 and 6/7.",
+        "questionHindi": "3/5 और 6/7 का LCM ज्ञात करें।",
+        "options": ["18/35", "18/45", "18/55", "18/60", "18/77"],
+        "correctAnswer": "18/35"
+    },
+    {
+        "questionEnglish": "Find the HCF of the rational numbers 12/25 and 18/50.",
+        "questionHindi": "12/25 और 18/50 का HCF ज्ञात करें।",
+        "options": ["3/50", "4/100", "6/100", "8/100", "12/200"],
+        "correctAnswer": "6/100"
+    },
+    {
+        "questionEnglish": "Find the LCM of the rational numbers 3/4, 5/6, and 7/8.",
+        "questionHindi": "3/4, 5/6 और 7/8 का LCM ज्ञात करें।",
+        "options": ["105/24", "105/32", "105/48", "105/64", "105/80"],
+        "correctAnswer": "105/48"
+    },
+    {
+        "questionEnglish": "Find the HCF of the rational numbers 7/10, 14/25, and 21/30.",
+        "questionHindi": "7/10, 14/25 और 21/30 का HCF ज्ञात करें।",
+        "options": ["7/150", "7/120", "7/135", "7/100", "7/175"],
+        "correctAnswer": "7/150"
+    },
+    {
+        "questionEnglish": "Find the LCM of the rational numbers 5/9, 8/15, and 11/20.",
+        "questionHindi": "5/9, 8/15 और 11/20 का LCM ज्ञात करें।",
+        "options": ["440/180", "440/225", "440/350", "440/400", "440/500"],
+        "correctAnswer": "440/225"
+    },
+    {
+        "questionEnglish": "Find the HCF of the rational numbers 9/14, 21/35, and 63/49.",
+        "questionHindi": "9/14, 21/35 और 63/49 का HCF ज्ञात करें।",
+        "options": ["3/49", "3/56", "3/63", "3/70", "3/72"],
+        "correctAnswer": "3/49"
+    },
+    {
+        "questionEnglish": "Find the LCM of the rational numbers 2/3, 4/5, and 6/7.",
+        "questionHindi": "2/3, 4/5 और 6/7 का LCM ज्ञात करें।",
+        "options": ["24/35", "24/45", "24/60", "24/70", "24/80"],
+        "correctAnswer": "24/35"
+    },
+    {
+        "questionEnglish": "Find the HCF of the rational numbers 6/8, 9/12, and 15/20.",
+        "questionHindi": "6/8, 9/12 और 15/20 का HCF ज्ञात करें।",
+        "options": ["3/20", "3/24", "3/30", "3/40", "3/50"],
+        "correctAnswer": "3/40"
+    },
+    {
+        "questionEnglish": "Find the LCM of the rational numbers 12/15, 18/25, and 24/35.",
+        "questionHindi": "12/15, 18/25 और 24/35 का LCM ज्ञात करें।",
+        "options": ["864/525", "864/600", "864/700", "864/750", "864/800"],
+        "correctAnswer": "864/525"
+    },
+    {
+        "questionEnglish": "Find the HCF of the rational numbers 8/10, 16/20, and 24/30.",
+        "questionHindi": "8/10, 16/20 और 24/30 का HCF ज्ञात करें।",
+        "options": ["4/10", "4/15", "4/20", "4/25", "4/30"],
+        "correctAnswer": "4/30"
+    },
+    {
+        "questionEnglish": "Find the LCM of the rational numbers 9/16, 25/36, and 49/64.",
+        "questionHindi": "9/16, 25/36 और 49/64 का LCM ज्ञात करें।",
+        "options": ["1225/2304", "1225/3600", "1225/4000", "1225/4600", "1225/4800"],
+        "correctAnswer": "1225/2304"
+    },
+    {
+        "questionEnglish": "Find the HCF of the rational numbers 10/14, 15/21, and 20/28.",
+        "questionHindi": "10/14, 15/21 और 20/28 का HCF ज्ञात करें।",
+        "options": ["5/42", "5/45", "5/48", "5/50", "5/52"],
+        "correctAnswer": "5/42"
+    },
+    {
+        "questionEnglish": "Find the LCM of the rational numbers 7/8, 15/18, and 28/32.",
+        "questionHindi": "7/8, 15/18 और 28/32 का LCM ज्ञात करें।",
+        "options": ["420/144", "420/160", "420/180", "420/200", "420/220"],
+        "correctAnswer": "420/160"
+    },
+    {
+        "questionEnglish": "Find the HCF of the rational numbers 5/7, 6/9, and 15/21.",
+        "questionHindi": "5/7, 6/9 और 15/21 का HCF ज्ञात करें।",
+        "options": ["5/63", "5/72", "5/84", "5/105", "5/126"],
+        "correctAnswer": "5/63"
+    },
+    {
+        "questionEnglish": "Find the LCM of the rational numbers 1/2, 3/4, 5/6, and 7/8.",
+        "questionHindi": "1/2, 3/4, 5/6 और 7/8 का LCM ज्ञात करें।",
+        "options": ["105/24", "105/32", "105/48", "105/64", "105/80"],
+        "correctAnswer": "105/48"
+    },
+    {
+        "questionEnglish": "Find the HCF of the rational numbers 2/3, 4/5, 6/7, and 8/9.",
+        "questionHindi": "2/3, 4/5, 6/7 और 8/9 का HCF ज्ञात करें।",
+        "options": ["2/315", "2/225", "2/245", "2/275", "2/300"],
+        "correctAnswer": "2/315"
+    },
+    {
+        "questionEnglish": "Find the LCM of the rational numbers 3/5, 7/10, 11/15, and 13/20.",
+        "questionHindi": "3/5, 7/10, 11/15 और 13/20 का LCM ज्ञात करें।",
+        "options": ["3003/600", "3003/700", "3003/800", "3003/900", "3003/1000"],
+        "correctAnswer": "3003/600"
+    },
+    {
+        "questionEnglish": "Find the HCF of the rational numbers 5/8, 10/12, 15/16, and 20/24.",
+        "questionHindi": "5/8, 10/12, 15/16 और 20/24 का HCF ज्ञात करें।",
+        "options": ["5/96", "5/120", "5/144", "5/160", "5/192"],
+        "correctAnswer": "5/192"
+    },
+    {
+        "questionEnglish": "Find the LCM of the rational numbers 9/11, 12/13, 15/17, and 18/19.",
+        "questionHindi": "9/11, 12/13, 15/17 और 18/19 का LCM ज्ञात करें।",
+        "options": ["306/2431", "306/3003", "306/3432", "306/4004", "306/4567"],
+        "correctAnswer": "306/2431"
+    },
+    {
+        "questionEnglish": "Find the HCF of the rational numbers 7/9, 14/18, 21/27, and 28/36.",
+        "questionHindi": "7/9, 14/18, 21/27 और 28/36 का HCF ज्ञात करें।",
+        "options": ["7/162", "7/243", "7/324", "7/405", "7/486"],
+        "correctAnswer": "7/324"
+    }
+]
