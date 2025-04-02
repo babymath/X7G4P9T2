@@ -1,4 +1,4 @@
-const CACHE_NAME = 'site-cache-v2';
+const CACHE_NAME = 'site-cache-v3';
 const OFFLINE_URL = '/offline.html';
 const CACHE_ASSETS = [
     '/',
@@ -9,14 +9,14 @@ const CACHE_ASSETS = [
     '/images/logo.png' // Add essential assets
 ];
 
-// Install Event - Cache static assets
+// Install Event - Cache static assets and offline page
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             return cache.addAll(CACHE_ASSETS);
         })
     );
-    self.skipWaiting();
+    self.skipWaiting(); // Force activation
 });
 
 // Activate Event - Cleanup old caches
@@ -35,18 +35,26 @@ self.addEventListener('activate', (event) => {
     self.clients.claim();
 });
 
-// Fetch Event - Serve from cache first, then network
+// Fetch Event - Serve from cache, then network, then offline fallback
 self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request).then((cachedResponse) => {
-            return cachedResponse || fetch(event.request)
+            if (cachedResponse) {
+                return cachedResponse; // Serve from cache
+            }
+            return fetch(event.request)
                 .then((response) => {
-                    return caches.open(CACHE_NAME).then((cache) => {
-                        cache.put(event.request, response.clone());
+                    if (!response || response.status !== 200 || response.type !== 'basic') {
                         return response;
+                    }
+                    // Cache the new response
+                    let responseClone = response.clone();
+                    caches.open(CACHE_NAME).then((cache) => {
+                        cache.put(event.request, responseClone);
                     });
+                    return response;
                 })
-                .catch(() => caches.match(OFFLINE_URL));
+                .catch(() => caches.match(OFFLINE_URL)); // Offline fallback
         })
     );
 });
