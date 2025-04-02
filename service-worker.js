@@ -5,6 +5,7 @@ const URLS_TO_CACHE = [
     './index.html',
     './styles.css', // Add other required assets here
     './script.js',
+    '/game', // Cache the /game route
 ];
 
 // Install event
@@ -21,7 +22,12 @@ self.addEventListener('install', event => {
 self.addEventListener('fetch', event => {
     event.respondWith(
         caches.match(event.request).then(cachedResponse => {
-            return cachedResponse || fetch(event.request).catch(() => caches.match('./offline.html'));
+            return cachedResponse || fetch(event.request).catch(() => {
+                if (event.request.url.endsWith('/game')) {
+                    return caches.match('./offline.html'); // Serve offline.html for /game
+                }
+                return caches.match('./offline.html');
+            });
         })
     );
 });
