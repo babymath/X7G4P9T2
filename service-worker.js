@@ -4,9 +4,6 @@ const CACHE_ASSETS = [
     '/',
     '/index.html',
     '/offline.html',
-    '/style.css',
-    '/script.js',
-    '/images/logo.png' // Add essential assets
 ];
 
 // Install Event - Cache static assets and offline page
