@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedic Math - Multiply by 11</title>
+    <style>
+        /* Premium styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #4b6cb7, #169e5f);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin: 15px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+        }
+        header {
+            padding: 10px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            color: #ffcc00;
+        }
+        .section {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+        #practice{
+            display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+        }
+        h2 {
+            color: #ff6600;
+        }
+        .example {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+        .highlight {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+        input {
+            padding: 10px;
+            width: 50%;
+            border: none;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        button {
+            background: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #cc5500;
+        }
+        #feedback {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Vedic Math: Quick Multiplication by 11</h1>
+        </header>
+
+        <section class="section">
+            <h2>Explanation:</h2>
+            <p>To multiply a two-digit number by 11, follow these steps:</p>
+            <ul>
+                <li>Write down the first and last digit.</li>
+                <li>Add the two digits together.</li>
+                <li>Place the sum in the middle.</li>
+                <li>If the sum is 10 or more, carry over the extra 1.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Examples with Explanation:</h2>
+
+            <div class="example">
+                <p><strong>Example 1:</strong> 47 × 11</p>
+                <p>Step 1: First digit = <span class="highlight">4</span>, Last digit = <span class="highlight">7</span></p>
+                <p>Step 2: Add 4 + 7 = <span class="highlight">11</span></p>
+                <p>Step 3: Place sum in the middle, but since it's 11, we carry over 1.</p>
+                <p>Final Answer: <span class="highlight">517</span></p>
+            </div>
+
+            <div class="example">
+                <p><strong>Example 2:</strong> 63 × 11</p>
+                <p>Step 1: First digit = <span class="highlight">6</span>, Last digit = <span class="highlight">3</span></p>
+                <p>Step 2: Add 6 + 3 = <span class="highlight">9</span></p>
+                <p>Step 3: Place 9 in the middle.</p>
+                <p>Final Answer: <span class="highlight">693</span></p>
+            </div>
+
+            <div class="example">
+                <p><strong>Example 3:</strong> 85 × 11</p>
+                <p>Step 1: First digit = <span class="highlight">8</span>, Last digit = <span class="highlight">5</span></p>
+                <p>Step 2: Add 8 + 5 = <span class="highlight">13</span></p>
+                <p>Step 3: Place 3 in the middle and carry over 1.</p>
+                <p>Final Answer: <span class="highlight">935</span></p>
+            </div>
+
+            <div class="example">
+                <p><strong>Example 4:</strong> 29 × 11</p>
+                <p>Step 1: First digit = <span class="highlight">2</span>, Last digit = <span class="highlight">9</span></p>
+                <p>Step 2: Add 2 + 9 = <span class="highlight">11</span></p>
+                <p>Step 3: Place 1 in the middle and carry over 1.</p>
+                <p>Final Answer: <span class="highlight">319</span></p>
+            </div>
+
+            <div class="example">
+                <p><strong>Example 5:</strong> 38 × 11</p>
+                <p>Step 1: First digit = <span class="highlight">3</span>, Last digit = <span class="highlight">8</span></p>
+                <p>Step 2: Add 3 + 8 = <span class="highlight">11</span></p>
+                <p>Step 3: Place 1 in the middle and carry over 1.</p>
+                <p>Final Answer: <span class="highlight">418</span></p>
+            </div>
+        </section>
+
+        <section class="section" id="practice">
+            <h2>Practice Question:</h2>
+            <p id="question"></p>
+            <input type="number" id="answer" placeholder="Enter your answer">
+            <button onclick="checkAnswer()">Submit</button>
+            <p id="feedback"></p>
+        </section>
+    </div>
+
+    <script>
+        const questions = [
+            { num: 47, ans: 517 },
+            { num: 63, ans: 693 },
+            { num: 85, ans: 935 },
+            { num: 29, ans: 319 },
+            { num: 38, ans: 418 }
+        ];
+
+        let currentQuestion = 0;
+
+        function loadQuestion() {
+            document.getElementById("question").innerText = 
+                `What is ${questions[currentQuestion].num} × 11?`;
+        }
+
+        function checkAnswer() {
+            let userAnswer = document.getElementById("answer").value;
+            let correctAnswer = questions[currentQuestion].ans;
+
+            if (parseInt(userAnswer) === correctAnswer) {
+                document.getElementById("feedback").innerText = "✅ Correct! Next question...";
+                document.getElementById("feedback").style.color = "lightgreen";
+
+                setTimeout(() => {
+                    currentQuestion++;
+                    if (currentQuestion < questions.length) {
+                        loadQuestion();
+                        document.getElementById("answer").value = "";
+                        document.getElementById("feedback").innerText = "";
+                    } else {
+                        document.getElementById("feedback").innerText = "🎉 Well done! You've completed all questions!";
+                    }
+                }, 1500);
+            } else {
+                document.getElementById("feedback").innerText = "❌ Incorrect! Try again.";
+                document.getElementById("feedback").style.color = "red";
+            }
+        }
+
+        window.onload = loadQuestion;
+    </script>
+</body>
+</html>

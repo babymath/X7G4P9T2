@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squaring Numbers Quiz</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin: 0; 
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        #question { font-size: 22px; margin-bottom: 15px; }
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover { background: #218838; }
+        #result { margin-top: 10px; font-size: 18px; color: red; }
+        #explanation {
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Square the Number Ending in 5</h1>
+        <div id="question"></div>
+        <input type="number" id="answer" placeholder="Enter your answer">
+        <button onclick="checkAnswer()">Submit</button>
+        <div id="result"></div>
+    </div><div class="container" id="explanation">
+    <h2>Trick to Square a Number Ending in 5</h2>
+    <p>If a number ends in 5, follow this simple trick:</p>
+    <ul>
+        <li>Let the number be <b>N = 10x + 5</b>, where <b>x</b> is the digit before 5.</li>
+        <li>Multiply <b>x</b> by <b>x + 1</b>.</li>
+        <li>Append <b>25</b> to the result.</li>
+    </ul>
+    <h3>Example:</h3>
+    <p><b>25²</b>: x = 2 → (2 × 3) = 6 → Answer: <b>625</b></p>
+    <p><b>35²</b>: x = 3 → (3 × 4) = 12 → Answer: <b>1225</b></p>
+</div>
+
+<script>
+    const questions = [45,65,85,95,55];
+    let index = 0;
+
+    function loadQuestion() {
+        if (index < questions.length) {
+            document.getElementById("question").innerHTML = `What is ${questions[index]}²?`;
+            document.getElementById("answer").value = "";
+            document.getElementById("result").innerHTML = "";
+        } else {
+            document.getElementById("question").innerHTML = "Quiz Completed!";
+            document.getElementById("answer").style.display = "none";
+            document.querySelector("button").style.display = "none";
+        }
+    }
+
+    function checkAnswer() {
+        const correctAnswer = questions[index] * questions[index];
+        const userAnswer = document.getElementById("answer").value;
+        if (parseInt(userAnswer) === correctAnswer) {
+            index++;
+            loadQuestion();
+        } else {
+            document.getElementById("result").innerHTML = "Incorrect! Try again.";
+        }
+    }
+
+    loadQuestion();
+</script>
+
+</body>
+</html>
