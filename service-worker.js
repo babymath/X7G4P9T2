@@ -21,9 +21,7 @@ self.addEventListener('fetch', event => {
     event.respondWith(
         caches.match(event.request).then(cachedResponse => {
             return cachedResponse || fetch(event.request).catch(() => {
-                if (event.request.url.includes('/game')) {
-                    return caches.match('/offline.html'); // Serve offline.html for /game
-                }
+                // Serve offline.html for all failed requests
                 return caches.match('/offline.html');
             });
         })
