@@ -3,6 +3,8 @@ const URLS_TO_CACHE = [
     './',
     './offline.html',
     './index.html',
+    './styles.css', // Add other required assets here
+    './script.js',
 ];
 
 // Install event
@@ -18,9 +20,9 @@ self.addEventListener('install', event => {
 // Fetch event
 self.addEventListener('fetch', event => {
     event.respondWith(
-        fetch(event.request)
-            .catch(() => caches.match(event.request))
-            .then(response => response || caches.match('./offline.html'))
+        caches.match(event.request).then(cachedResponse => {
+            return cachedResponse || fetch(event.request).catch(() => caches.match('./offline.html'));
+        })
     );
 });
 
