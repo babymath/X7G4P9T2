@@ -1,8 +1,8 @@
 const CACHE_NAME = 'offline-cache-v3'; const URLS_TO_CACHE = [ '/', '/offline.html', '/index.html', ];
 
-// Install event self.addEventListener('install', event => { self.skipWaiting(); // Activate immediately event.waitUntil( caches.open(CACHE_NAME).then(cache => { console.log('Opened cache'); return cache.addAll(URLS_TO_CACHE).catch(error => { console.error('Failed to cache resources:', error); }); }) ); });
+ self.addEventListener('install', event => { self.skipWaiting(); // Activate immediately event.waitUntil( caches.open(CACHE_NAME).then(cache => { console.log('Opened cache'); return cache.addAll(URLS_TO_CACHE).catch(error => { console.error('Failed to cache resources:', error); }); }) ); });
 
-// Fetch event self.addEventListener('fetch', event => { if (event.request.method !== 'GET') return;
+ self.addEventListener('fetch', event => { if (event.request.method !== 'GET') return;
 
 event.respondWith(
     caches.match(event.request).then(cachedResponse => {
