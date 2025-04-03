@@ -1,0 +1,182 @@
+[
+    {
+        "questionEnglish": "If A can complete a task in 10 days, how much work does A complete in 1 day?",
+        "questionHindi": "यदि A एक कार्य को 10 दिनों में पूरा कर सकता है, तो A एक दिन में कितना कार्य करता है?",
+        "options": ["1/10", "1/5", "1/2", "1"],
+        "correctAnswer": "1/10"
+    },
+    {
+        "questionEnglish": "If B can complete a task in 20 days, how much work does B complete in 1 day?",
+        "questionHindi": "यदि B एक कार्य को 20 दिनों में पूरा कर सकता है, तो B एक दिन में कितना कार्य करता है?",
+        "options": ["1/20", "1/10", "1/5", "1"],
+        "correctAnswer": "1/20"
+    },
+    {
+        "questionEnglish": "If A and B together can complete a task in 5 days, how much work do they complete in 1 day?",
+        "questionHindi": "यदि A और B मिलकर एक कार्य को 5 दिनों में पूरा कर सकते हैं, तो वे एक दिन में कितना कार्य करते हैं?",
+        "options": ["1/5", "1/10", "1/2", "1"],
+        "correctAnswer": "1/5"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 8 days and B can complete the same task in 12 days, how many days will they take together?",
+        "questionHindi": "यदि A एक कार्य को 8 दिनों में और B उसी कार्य को 12 दिनों में पूरा कर सकता है, तो वे मिलकर कितने दिनों में कार्य पूरा करेंगे?",
+        "options": ["4.8", "5", "4", "6"],
+        "correctAnswer": "4.8"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 6 days and B can complete the same task in 3 days, how much work do they complete together in 1 day?",
+        "questionHindi": "यदि A एक कार्य को 6 दिनों में और B उसी कार्य को 3 दिनों में पूरा कर सकता है, तो वे मिलकर एक दिन में कितना कार्य करते हैं?",
+        "options": ["1/2", "1/3", "2/3", "1"],
+        "correctAnswer": "2/3"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 15 days and B can complete the same task in 10 days, how many days will they take together?",
+        "questionHindi": "यदि A एक कार्य को 15 दिनों में और B उसी कार्य को 10 दिनों में पूरा कर सकता है, तो वे मिलकर कितने दिनों में कार्य पूरा करेंगे?",
+        "options": ["6", "5", "7.5", "10"],
+        "correctAnswer": "6"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 12 days and B can complete the same task in 6 days, how much work do they complete together in 1 day?",
+        "questionHindi": "यदि A एक कार्य को 12 दिनों में और B उसी कार्य को 6 दिनों में पूरा कर सकता है, तो वे मिलकर एक दिन में कितना कार्य करते हैं?",
+        "options": ["1/4", "1/3", "1/2", "2/3"],
+        "correctAnswer": "2/3"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 9 days and B can complete the same task in 18 days, how many days will they take together?",
+        "questionHindi": "यदि A एक कार्य को 9 दिनों में और B उसी कार्य को 18 दिनों में पूरा कर सकता है, तो वे मिलकर कितने दिनों में कार्य पूरा करेंगे?",
+        "options": ["6", "5", "4.5", "3"],
+        "correctAnswer": "6"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 4 days and B can complete the same task in 8 days, how much work do they complete together in 1 day?",
+        "questionHindi": "यदि A एक कार्य को 4 दिनों में और B उसी कार्य को 8 दिनों में पूरा कर सकता है, तो वे मिलकर एक दिन में कितना कार्य करते हैं?",
+        "options": ["1/4", "1/3", "3/8", "1/2"],
+        "correctAnswer": "3/8"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 5 days and B can complete the same task in 10 days, how many days will they take together?",
+        "questionHindi": "यदि A एक कार्य को 5 दिनों में और B उसी कार्य को 10 दिनों में पूरा कर सकता है, तो वे मिलकर कितने दिनों में कार्य पूरा करेंगे?",
+        "options": ["3.33", "3", "4", "2.5"],
+        "correctAnswer": "3.33"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 7 days and B can complete the same task in 14 days, how much work do they complete together in 1 day?",
+        "questionHindi": "यदि A एक कार्य को 7 दिनों में और B उसी कार्य को 14 दिनों में पूरा कर सकता है, तो वे मिलकर एक दिन में कितना कार्य करते हैं?",
+        "options": ["1/7", "1/5", "2/7", "3/14"],
+        "correctAnswer": "3/14"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 10 days and B can complete the same task in 15 days, how many days will they take together?",
+        "questionHindi": "यदि A एक कार्य को 10 दिनों में और B उसी कार्य को 15 दिनों में पूरा कर सकता है, तो वे मिलकर कितने दिनों में कार्य पूरा करेंगे?",
+        "options": ["6", "5", "7.5", "9"],
+        "correctAnswer": "6"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 3 days and B can complete the same task in 6 days, how much work do they complete together in 1 day?",
+        "questionHindi": "यदि A एक कार्य को 3 दिनों में और B उसी कार्य को 6 दिनों में पूरा कर सकता है, तो वे मिलकर एक दिन में कितना कार्य करते हैं?",
+        "options": ["1/2", "2/3", "1/3", "3/4"],
+        "correctAnswer": "2/3"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 18 days and B can complete the same task in 12 days, how many days will they take together?",
+        "questionHindi": "यदि A एक कार्य को 18 दिनों में और B उसी कार्य को 12 दिनों में पूरा कर सकता है, तो वे मिलकर कितने दिनों में कार्य पूरा करेंगे?",
+        "options": ["7.2", "6", "10", "8"],
+        "correctAnswer": "7.2"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 2 days and B can complete the same task in 4 days, how much work do they complete together in 1 day?",
+        "questionHindi": "यदि A एक कार्य को 2 दिनों में और B उसी कार्य को 4 दिनों में पूरा कर सकता है, तो वे मिलकर एक दिन में कितना कार्य करते हैं?",
+        "options": ["1/2", "2/3", "3/4", "1"],
+        "correctAnswer": "3/4"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 16 days and B can complete the same task in 8 days, how many days will they take together?",
+        "questionHindi": "यदि A एक कार्य को 16 दिनों में और B उसी कार्य को 8 दिनों में पूरा कर सकता है, तो वे मिलकर कितने दिनों में कार्य पूरा करेंगे?",
+        "options": ["5.33", "4", "6", "5"],
+        "correctAnswer": "5.33"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 11 days and B can complete the same task in 22 days, how much work do they complete together in 1 day?",
+        "questionHindi": "यदि A एक कार्य को 11 दिनों में और B उसी कार्य को 22 दिनों में पूरा कर सकता है, तो वे मिलकर एक दिन में कितना कार्य करते हैं?",
+        "options": ["1/11", "1/7.33", "3/22", "2/11"],
+        "correctAnswer": "2/11"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 14 days and B can complete the same task in 21 days, how many days will they take together?",
+        "questionHindi": "यदि A एक कार्य को 14 दिनों में और B उसी कार्य को 21 दिनों में पूरा कर सकता है, तो वे मिलकर कितने दिनों में कार्य पूरा करेंगे?",
+        "options": ["8.4", "9", "10", "7"],
+        "correctAnswer": "8.4"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 25 days and B can complete the same task in 50 days, how much work do they complete together in 1 day?",
+        "questionHindi": "यदि A एक कार्य को 25 दिनों में और B उसी कार्य को 50 दिनों में पूरा कर सकता है, तो वे मिलकर एक दिन में कितना कार्य करते हैं?",
+        "options": ["1/25", "1/20", "3/50", "2/50"],
+        "correctAnswer": "3/50"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 30 days and B can complete the same task in 15 days, how many days will they take together?",
+        "questionHindi": "यदि A एक कार्य को 30 दिनों में और B उसी कार्य को 15 दिनों में पूरा कर सकता है, तो वे मिलकर कितने दिनों में कार्य पूरा करेंगे?",
+        "options": ["10", "12", "15", "8"],
+        "correctAnswer": "10"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 40 days and B can complete the same task in 20 days, how much work do they complete together in 1 day?",
+        "questionHindi": "यदि A एक कार्य को 40 दिनों में और B उसी कार्य को 20 दिनों में पूरा कर सकता है, तो वे मिलकर एक दिन में कितना कार्य करते हैं?",
+        "options": ["1/20", "1/15", "3/40", "1/10"],
+        "correctAnswer": "1/10"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 24 days and B can complete the same task in 12 days, how many days will they take together?",
+        "questionHindi": "यदि A एक कार्य को 24 दिनों में और B उसी कार्य को 12 दिनों में पूरा कर सकता है, तो वे मिलकर कितने दिनों में कार्य पूरा करेंगे?",
+        "options": ["8", "10", "12", "6"],
+        "correctAnswer": "8"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 36 days and B can complete the same task in 18 days, how much work do they complete together in 1 day?",
+        "questionHindi": "यदि A एक कार्य को 36 दिनों में और B उसी कार्य को 18 दिनों में पूरा कर सकता है, तो वे मिलकर एक दिन में कितना कार्य करते हैं?",
+        "options": ["1/18", "1/12", "3/36", "2/18"],
+        "correctAnswer": "1/12"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 45 days and B can complete the same task in 15 days, how many days will they take together?",
+        "questionHindi": "यदि A एक कार्य को 45 दिनों में और B उसी कार्य को 15 दिनों में पूरा कर सकता है, तो वे मिलकर कितने दिनों में कार्य पूरा करेंगे?",
+        "options": ["11.25", "10", "12", "9"],
+        "correctAnswer": "11.25"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 50 days and B can complete the same task in 25 days, how much work do they complete together in 1 day?",
+        "questionHindi": "यदि A एक कार्य को 50 दिनों में और B उसी कार्य को 25 दिनों में पूरा कर सकता है, तो वे मिलकर एक दिन में कितना कार्य करते हैं?",
+        "options": ["1/25", "1/20", "3/50", "2/50"],
+        "correctAnswer": "3/50"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 60 days and B can complete the same task in 30 days, how many days will they take together?",
+        "questionHindi": "यदि A एक कार्य को 60 दिनों में और B उसी कार्य को 30 दिनों में पूरा कर सकता है, तो वे मिलकर कितने दिनों में कार्य पूरा करेंगे?",
+        "options": ["20", "15", "18", "12"],
+        "correctAnswer": "20"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 70 days and B can complete the same task in 35 days, how much work do they complete together in 1 day?",
+        "questionHindi": "यदि A एक कार्य को 70 दिनों में और B उसी कार्य को 35 दिनों में पूरा कर सकता है, तो वे मिलकर एक दिन में कितना कार्य करते हैं?",
+        "options": ["1/35", "1/30", "3/70", "2/70"],
+        "correctAnswer": "3/70"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 80 days and B can complete the same task in 40 days, how many days will they take together?",
+        "questionHindi": "यदि A एक कार्य को 80 दिनों में और B उसी कार्य को 40 दिनों में पूरा कर सकता है, तो वे मिलकर कितने दिनों में कार्य पूरा करेंगे?",
+        "options": ["26.67", "20", "30", "25"],
+        "correctAnswer": "26.67"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 90 days and B can complete the same task in 45 days, how much work do they complete together in 1 day?",
+        "questionHindi": "यदि A एक कार्य को 90 दिनों में और B उसी कार्य को 45 दिनों में पूरा कर सकता है, तो वे मिलकर एक दिन में कितना कार्य करते हैं?",
+        "options": ["1/45", "1/30", "3/90", "2/90"],
+        "correctAnswer": "3/90"
+    },
+    {
+        "questionEnglish": "If A can complete a task in 100 days and B can complete the same task in 50 days, how many days will they take together?",
+        "questionHindi": "यदि A एक कार्य को 100 दिनों में और B उसी कार्य को 50 दिनों में पूरा कर सकता है, तो वे मिलकर कितने दिनों में कार्य पूरा करेंगे?",
+        "options": ["33.33", "30", "40", "25"],
+        "correctAnswer": "33.33"
+    }
+]
