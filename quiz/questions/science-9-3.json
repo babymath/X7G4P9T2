@@ -1,0 +1,182 @@
+[
+  {
+    "questionEnglish": "The rate of change of displacement is called:",
+    "questionHindi": "विस्थापन के परिवर्तन की दर को क्या कहते हैं?",
+    "options": ["Speed / गति", "Acceleration / त्वरण", "Velocity / वेग", "Distance / दूरी"],
+    "correctAnswer": "Velocity / वेग"
+  },
+  {
+    "questionEnglish": "The gravitational constant (G) has the unit:",
+    "questionHindi": "गुरुत्वाकर्षण स्थिरांक (G) का मात्रक है:",
+    "options": ["N m²/kg² / न्यूटन मीटर²/किलोग्राम²", "N kg²/m² / न्यूटन किलोग्राम²/मीटर²", "m/s² / मीटर/सेकंड²", "kg/m³ / किलोग्राम/मीटर³"],
+    "correctAnswer": "N m²/kg² / न्यूटन मीटर²/किलोग्राम²"
+  },
+  {
+    "questionEnglish": "Potential energy of an object depends on its:",
+    "questionHindi": "किसी वस्तु की स्थितिज ऊर्जा किस पर निर्भर करती है?",
+    "options": ["Velocity / वेग", "Mass / द्रव्यमान", "Height / ऊंचाई", "Speed / गति"],
+    "correctAnswer": "Height / ऊंचाई"
+  },
+  {
+    "questionEnglish": "The pitch of sound depends on its:",
+    "questionHindi": "ध्वनि का तारत्व किस पर निर्भर करता है?",
+    "options": ["Amplitude / आयाम", "Frequency / आवृत्ति", "Wavelength / तरंग दैर्ध्य", "Speed / गति"],
+    "correctAnswer": "Frequency / आवृत्ति"
+  },
+  {
+    "questionEnglish": "The process of a gas changing directly to a solid is called:",
+    "questionHindi": "गैस के सीधे ठोस में बदलने की प्रक्रिया को क्या कहते हैं?",
+    "options": ["Condensation / संघनन", "Sublimation / उर्ध्वपातन", "Deposition / जमाव", "Evaporation / वाष्पीकरण"],
+    "correctAnswer": "Deposition / जमाव"
+  },
+  {
+    "questionEnglish": "A solution in which no more solute can be dissolved at a given temperature is called:",
+    "questionHindi": "एक विलयन जिसमें दिए गए तापमान पर और अधिक विलेय नहीं घोला जा सकता, कहलाता है:",
+    "options": ["Unsaturated / असंतृप्त", "Saturated / संतृप्त", "Supersaturated / अतिसंतृप्त", "Colloidal / कोलाइडी"],
+    "correctAnswer": "Saturated / संतृप्त"
+  },
+  {
+    "questionEnglish": "The isotopes of an element have the same:",
+    "questionHindi": "किसी तत्व के समस्थानिकों में समान होता है:",
+    "options": ["Mass number / द्रव्यमान संख्या", "Number of neutrons / न्यूट्रॉन की संख्या", "Atomic number / परमाणु संख्या", "Number of protons and neutrons / प्रोटॉन और न्यूट्रॉन की संख्या"],
+    "correctAnswer": "Atomic number / परमाणु संख्या"
+  },
+  {
+    "questionEnglish": "The positively charged particles in an atom are:",
+    "questionHindi": "एक परमाणु में धनात्मक रूप से आवेशित कण होते हैं:",
+    "options": ["Electrons / इलेक्ट्रॉन", "Neutrons / न्यूट्रॉन", "Protons / प्रोटॉन", "Ions / आयन"],
+    "correctAnswer": "Protons / प्रोटॉन"
+  },
+  {
+    "questionEnglish": "The chemical formula of carbon dioxide is:",
+    "questionHindi": "कार्बन डाइऑक्साइड का रासायनिक सूत्र है:",
+    "options": ["H2O / H2O", "CO2 / CO2", "NaCl / NaCl", "O2 / O2"],
+    "correctAnswer": "CO2 / CO2"
+  },
+  {
+    "questionEnglish": "The endoplasmic reticulum is involved in:",
+    "questionHindi": "एंडोप्लाज्मिक रेटिकुलम किसमें शामिल है?",
+    "options": ["Photosynthesis / प्रकाश संश्लेषण", "Protein synthesis / प्रोटीन संश्लेषण", "Respiration / श्वसन", "Digestion / पाचन"],
+    "correctAnswer": "Protein synthesis / प्रोटीन संश्लेषण"
+  },
+  {
+    "questionEnglish": "Which tissue helps in flexibility in plants?",
+    "questionHindi": "कौन सा ऊतक पौधों में लचीलेपन में मदद करता है?",
+    "options": ["Xylem / जाइलम", "Phloem / फ्लोएम", "Collenchyma / कोलेनकाइमा", "Sclerenchyma / स्क्लेरेन्काइमा"],
+    "correctAnswer": "Collenchyma / कोलेनकाइमा"
+  },
+  {
+    "questionEnglish": "Which group of animals have a three-chambered heart?",
+    "questionHindi": "किस पशु समूह में तीन कक्षीय हृदय होता है?",
+    "options": ["Reptiles / सरीसृप", "Amphibians / उभयचर", "Birds / पक्षी", "Mammals / स्तनधारी"],
+    "correctAnswer": "Amphibians / उभयचर"
+  },
+  {
+    "questionEnglish": "Which disease is caused by the deficiency of Vitamin D?",
+    "questionHindi": "विटामिन डी की कमी से कौन सा रोग होता है?",
+    "options": ["Rickets / रिकेट्स", "Scurvy / स्कर्वी", "Beri-beri / बेरी-बेरी", "Goitre / घेंघा"],
+    "correctAnswer": "Rickets / रिकेट्स"
+  },
+  {
+    "questionEnglish": "Which gas is released during photosynthesis?",
+    "questionHindi": "प्रकाश संश्लेषण के दौरान कौन सी गैस निकलती है?",
+    "options": ["Nitrogen / नाइट्रोजन", "Carbon dioxide / कार्बन डाइऑक्साइड", "Oxygen / ऑक्सीजन", "Hydrogen / हाइड्रोजन"],
+    "correctAnswer": "Oxygen / ऑक्सीजन"
+  },
+  {
+    "questionEnglish": "The movement of molecules from a region of higher concentration to a region of lower concentration is called:",
+    "questionHindi": "उच्च सांद्रता वाले क्षेत्र से निम्न सांद्रता वाले क्षेत्र में अणुओं की गति को क्या कहा जाता है?",
+    "options": ["Osmosis / परासरण", "Diffusion / विसरण", "Active transport / सक्रिय परिवहन", "Endocytosis / एंडोसाइटोसिस"],
+    "correctAnswer": "Diffusion / विसरण"
+  },
+  {
+    "questionEnglish": "The work done on an object is equal to:",
+    "questionHindi": "किसी वस्तु पर किया गया कार्य किसके बराबर होता है?",
+    "options": ["Force x distance / बल x दूरी", "Force / distance / बल / दूरी", "Distance / force / दूरी / बल", "Mass x velocity / द्रव्यमान x वेग"],
+    "correctAnswer": "Force x distance / बल x दूरी"
+  },
+  {
+    "questionEnglish": "The law of definite proportions is also known as:",
+    "questionHindi": "निश्चित अनुपात का नियम किस नाम से भी जाना जाता है?",
+    "options": ["Law of conservation of mass / द्रव्यमान के संरक्षण का नियम", "Law of multiple proportions / गुणित अनुपात का नियम", "Law of constant composition / स्थिर संरचना का नियम", "Law of combining volumes / संयुक्त आयतन का नियम"],
+    "correctAnswer": "Law of constant composition / स्थिर संरचना का नियम"
+  },
+  {
+    "questionEnglish": "The process of changing gas to liquid is called:",
+    "questionHindi": "गैस को तरल में बदलने की प्रक्रिया को कहा जाता है:",
+    "options": ["Melting / पिघलना", "Evaporation / वाष्पीकरण", "Condensation / संघनन", "Sublimation / उर्ध्वपातन"],
+    "correctAnswer": "Condensation / संघनन"
+  },
+  {
+    "questionEnglish": "Lysosomes are known as:",
+    "questionHindi": "लाइसोसोम को किस रूप में जाना जाता है:",
+    "options": ["Powerhouse of the cell / कोशिका का शक्तिगृह", "Suicidal bags of the cell / कोशिका की आत्मघाती थैली", "Protein factories / प्रोटीन कारखाने", "Storage centers / भंडारण केंद्र"],
+    "correctAnswer": "Suicidal bags of the cell / कोशिका की आत्मघाती थैली"
+  },
+  {
+    "questionEnglish": "Which of the following is a bryophyte?",
+    "questionHindi": "निम्नलिखित में से कौन एक ब्रायोफाइट है?",
+    "options": ["Fern / फर्न", "Moss / काई", "Pine / चीड़", "Rose / गुलाब"],
+    "correctAnswer": "Moss / काई"
+  },
+  {
+    "questionEnglish": "Which disease is caused by bacteria?",
+    "questionHindi": "जीवाणु से कौन सा रोग होता है?",
+    "options": ["Malaria / मलेरिया", "Common cold / सामान्य सर्दी", "Tuberculosis / तपेदिक", "AIDS / एड्स"],
+    "correctAnswer": "Tuberculosis / तपेदिक"
+  },
+  {
+    "questionEnglish": "Which gas is most abundant in the atmosphere?",
+    "questionHindi": "वायुमंडल में कौन सी गैस सबसे प्रचुर मात्रा में है?",
+    "options": ["Oxygen / ऑक्सीजन", "Carbon dioxide / कार्बन डाइऑक्साइड", "Nitrogen / नाइट्रोजन", "Argon / आर्गन"],
+    "correctAnswer": "Nitrogen / नाइट्रोजन"
+  },
+  {
+    "questionEnglish": "The genetic material of a cell is found in:",
+    "questionHindi": "एक कोशिका की आनुवंशिक सामग्री किसमें पाई जाती है?",
+    "options": ["Cytoplasm / कोशिका द्रव्य", "Mitochondria / माइटोकॉन्ड्रिया", "Nucleus / नाभिक", "Ribosomes / राइबोसोम"],
+    "correctAnswer": "Nucleus / नाभिक"
+  },
+  {
+    "questionEnglish": "The SI unit of acceleration is:",
+    "questionHindi": "त्वरण का SI मात्रक है:",
+    "options": ["m/s / मीटर/सेकंड", "m/s² / मीटर/सेकंड²", "N / न्यूटन", "J / जूल"],
+    "correctAnswer": "m/s² / मीटर/सेकंड²"
+  },
+  {
+    "questionEnglish": "The number of electrons in a neutral atom is equal to the number of:",
+    "questionHindi": "एक तटस्थ परमाणु में इलेक्ट्रॉनों की संख्या किसकी संख्या के बराबर होती है?",
+    "options": ["Neutrons / न्यूट्रॉन", "Protons / प्रोटॉन", "Protons and neutrons / प्रोटॉन और न्यूट्रॉन", "Mass number / द्रव्यमान संख्या"],
+    "correctAnswer": "Protons / प्रोटॉन"
+  },
+  {
+    "questionEnglish": "The change of state from liquid to solid is called:",
+    "questionHindi": "तरल से ठोस में अवस्था परिवर्तन को कहा जाता है:",
+    "options": ["Evaporation / वाष्पीकरण", "Condensation / संघनन", "Freezing / जमना", "Sublimation / उर्ध्वपातन"],
+    "correctAnswer": "Freezing / जमना"
+  },
+  {
+    "questionEnglish": "Vacuoles in plant cells are responsible for:",
+    "questionHindi": "पादप कोशिकाओं में रिक्तिकाएँ किसके लिए जिम्मेदार होती हैं?",
+    "options": ["Protein synthesis / प्रोटीन संश्लेषण", "Storage of cell sap / कोशिका रस का भंडारण", "Energy production / ऊर्जा उत्पादन", "Cell division / कोशिका विभाजन"],
+    "correctAnswer": "Storage of cell sap / कोशिका रस का भंडारण"
+  },
+  {
+    "questionEnglish": "Which of the following is an example of a gymnosperm?",
+    "questionHindi": "निम्नलिखित में से कौन एक जिम्नोस्पर्म का उदाहरण है?",
+    "options": ["Moss / काई", "Fern / फर्न", "Pine / चीड़", "Rose / गुलाब"],
+    "correctAnswer": "Pine / चीड़"
+  },
+  {
+    "questionEnglish": "Which disease is caused by a worm?",
+    "questionHindi": "कृमि से कौन सा रोग होता है?",
+    "options": ["Malaria / मलेरिया", "Ringworm / दाद", "Typhoid / टाइफाइड", "Tuberculosis / तपेदिक"],
+    "correctAnswer": "Ringworm / दाद"
+  },
+  {
+    "questionEnglish": "The process of converting a solid directly into a gas is called:",
+    "questionHindi": "एक ठोस को सीधे गैस में बदलने की प्रक्रिया को क्या कहते हैं?",
+    "options": ["Sublimation / उर्ध्वपातन", "Deposition / जमाव", "Condensation / संघनन", "Evaporation / वाष्पीकरण"],
+    "correctAnswer": "Sublimation / उर्ध्वपातन"
+  }
+]
