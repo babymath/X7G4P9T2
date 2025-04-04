@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Offline - BabyMath</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: white;
+      text-align: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #ffcc00;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    #offline-message {
+      color: #ff5555;
+      font-size: 18px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    #score {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    canvas {
+      background: black;
+      border-radius: 10px;
+    }
+    .restart-button {
+      margin-top: 20px;
+      background: #ffcc00;
+      color: black;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      display: none;
+      transition: background 0.3s;
+    }
+    .restart-button:hover {
+      background: #ffaa00;
+    }
+  </style>
+</head>
+<body>
+  <div id="offline-message">You are offline</div>
+  <h1>Tap to Jump!</h1>
+  <div id="score">Score: 0</div>
+  <canvas id="gameCanvas" width="300" height="400"></canvas>
+  <button class="restart-button" id="restartButton" onclick="restartGame()">Restart</button>
+
+  <script>
+    // Redirect if online already
+    if (navigator.onLine) {
+      window.location.href = './index.html';
+    }
+
+    // Redirect when connection is restored
+    window.addEventListener('online', () => {
+      window.location.href = './index.html';
+    });
+
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+    const restartButton = document.getElementById("restartButton");
+    const scoreDisplay = document.getElementById("score");
+
+    let player, gravity, isJumping, obstacles, speed, score, gameRunning;
+
+    function initGame() {
+      player = { x: 50, y: 350, width: 30, height: 30, dy: 0 };
+      gravity = 0.5;
+      isJumping = false;
+      obstacles = [];
+      speed = 3;
+      score = 0;
+      gameRunning = true;
+      restartButton.style.display = "none";
+      updateScore();
+      update();
+    }
+
+    function drawPlayer() {
+      ctx.fillStyle = "#ffcc00";
+      ctx.fillRect(player.x, player.y, player.width, player.height);
+    }
+
+    function drawObstacles() {
+      ctx.fillStyle = "#ff0044";
+      obstacles.forEach(obs => {
+        ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+      });
+    }
+
+    function update() {
+      if (!gameRunning) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      player.dy += gravity;
+      player.y += player.dy;
+
+      if (player.y + player.height > canvas.height) {
+        player.y = canvas.height - player.height;
+        isJumping = false;
+      }
+
+      obstacles.forEach((obs, index) => {
+        obs.x -= speed;
+        if (obs.x + obs.width < 0) {
+          obstacles.splice(index, 1);
+          score++;
+          updateScore();
+        }
+        if (
+          player.x < obs.x + obs.width &&
+          player.x + player.width > obs.x &&
+          player.y < obs.y + obs.height &&
+          player.y + player.height > obs.y
+        ) {
+          gameOver();
+        }
+      });
+
+      drawPlayer();
+      drawObstacles();
+      requestAnimationFrame(update);
+    }
+
+    function jump() {
+      if (!isJumping && gameRunning) {
+        player.dy = -10;
+        isJumping = true;
+      }
+    }
+
+    function spawnObstacle() {
+      if (gameRunning) {
+        const height = Math.random() * 50 + 20;
+        obstacles.push({ x: canvas.width, y: canvas.height - height, width: 20, height: height });
+      }
+    }
+
+    function updateScore() {
+      scoreDisplay.innerText = "Score: " + score;
+    }
+
+    function gameOver() {
+      gameRunning = false;
+      restartButton.style.display = "inline-block";
+    }
+
+    function restartGame() {
+      initGame();
+    }
+
+    window.addEventListener("click", jump);
+    setInterval(spawnObstacle, 2000);
+    initGame();
+  </script>
+</body>
+</html>
