@@ -17,7 +17,6 @@ function startGame() {
     const selectedTimeMode = document.querySelector('.timeMode.selected-mode');
     const selectedQuestionMode = document.querySelector('.questionMode.selected-mode');
     const selectedGameType = document.querySelector('.typeOption.selected').dataset.value;
-    const gameKey = document.querySelector('.card.active').dataset.gamekey; // Use gamekey from the active card
     const highScoreKey = `${gameID}-${selectedGameType}`;
     const highScore = localStorage.getItem(highScoreKey) || 0;
 
