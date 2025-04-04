@@ -29,10 +29,10 @@
         #quizList button {
             margin: 10px;
             padding: 10px 20px;
-            background: linear-gradient(135deg, rgb(39, 40, 41), rgb(105, 91, 91));
+            background: linear-gradient(135deg, rgb(39, 40, 41), rgb(207, 21, 21));
             color: #fff;
             border: none;
-            border-radius: 8px;
+            border-radius: 4px;
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
             font-size: 0.8rem;
@@ -92,7 +92,7 @@
         window.onload = function() {
             const quizList = document.getElementById("quizList");
 
-            fetch("quizzes.json")
+            fetch("../quizzes.json")
                 .then(response => response.json())
                 .then(data => {
                     quizzes = data;
