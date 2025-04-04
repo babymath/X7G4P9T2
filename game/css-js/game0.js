@@ -1,3 +1,4 @@
+let gameID = localStorage.getItem("gameKey");
 const cardContainer = document.querySelector(".card-container");
 const messageBox = document.getElementById("messageBox");
 const dotsContainer = document.getElementById("dotsContainer");
@@ -66,11 +67,11 @@ games.forEach((game, i) => {
     card.innerHTML = game.title.replace(/ /g, "<br>");
     card.addEventListener("click", () => {
         if (card.classList.contains("active")) {
-            document.getElementById("game-menu").style.display="none";  
-            document.getElementById("game").style.display="flex";  
-            document.getElementById("title").innerHTML=game.title;
-            document.getElementById("type11").innerHTML=game.type1;
-            document.getElementById("type12").innerHTML=game.type2;
+            document.getElementById("game-menu").style.display = "none";  
+            document.getElementById("game").style.display = "flex";  
+            document.getElementById("title").innerHTML = game.title;
+            document.getElementById("type11").innerHTML = game.type1;
+            document.getElementById("type12").innerHTML = game.type2;
             const script = document.createElement("script");
             script.src = `gameJS/${game.script}`;
             document.body.appendChild(script);
@@ -82,6 +83,18 @@ games.forEach((game, i) => {
     dot.classList.add("dot");
     if (i === 0) dot.classList.add("active");
     dotsContainer.appendChild(dot);
+
+    // Automatically load the game if gameID matches gamekey
+    if (gameID === game.gamekey) {
+        document.getElementById("game-menu").style.display = "none";  
+        document.getElementById("game").style.display = "flex";  
+        document.getElementById("title").innerHTML = game.title;
+        document.getElementById("type11").innerHTML = game.type1;
+        document.getElementById("type12").innerHTML = game.type2;
+        const script = document.createElement("script");
+        script.src = `gameJS/${game.script}`;
+        document.body.appendChild(script);
+    }
 });
 
 const cards = document.querySelectorAll(".card");

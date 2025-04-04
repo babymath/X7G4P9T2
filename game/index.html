@@ -3,111 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="aadhaar/img/favicon.ico">
-    <title>Game - BabyMath</title>
-    <link rel="stylesheet" href="css-js/game.css">
+    <title>Home Page with Div List</title>
     <style>
-        /* ...existing code... */
-        #line2 {
-            position: sticky;
-            top: 0;
-            background-color: white; /* Ensure visibility */
-            z-index: 10; /* Keep it above other elements */
-            padding: 10px; /* Optional: Adjust padding for better appearance */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            min-height: 100vh; /* Ensure full viewport height */
+            background-color: #f4f4f4;
         }
-        /* ...existing code... */
+
+        .container {
+            width: 80%; /* Adjust width as needed */
+            max-width: 800px; /* Optional: limit maximum width */
+        }
+
+        .list-item {
+            background-color: white;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer; /* Add pointer cursor for better UX */
+        }
+
+        .list-item h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .list-item p {
+            color: #666;
+        }
     </style>
 </head>
 <body>
-    <!-- Game Menu Section -->
-    <div id="game-menu">
-        <div class="message-box" id="messageBox">Swipe Left/Right</div>
-        <div class="dots-container" id="dotsContainer"></div>
-        <div class="container">
-            <div class="card-container"></div>
+    <div class="container">
+        <div class="list-item" data-type="111">
+            Addition Practics
+        </div>
+        <div class="list-item" data-type="222">
+            Substraction Practics
+        </div>
+        <div class="list-item" data-type="333">
+            Multiplication Practics
+        </div>
+        <div class="list-item" data-type="444">
+            Lightining Sum
+        </div>
+        <div class="list-item" data-type="555">
+            Table Practics
+        </div>
+        <div class="list-item" data-type="666">
+            Word to Number
+        </div>
+        <div class="list-item" data-type="777">
+            Roman to Number
         </div>
     </div>
 
-    <!-- Game Section -->
-    <div id="game" style="display: none;">
-        <!-- Header -->
-        <div id="header1">
-            <h1 id="title"></h1>
-        </div>
-
-        <!-- Main Content -->
-        <div id="main1">
-            <!-- Game Setup Section -->
-            <section id="game-setup">
-                <div id="changeMode">
-                    <span id="timeModeLabel">🕛</span>
-                    <label class="switch">
-                        <input type="checkbox" id="modeCheckbox">
-                        <span class="slider round"></span>
-                    </label>
-                    <span id="questionModeLabel">🔢</span>
-                </div>
-                <div id="choseMode">
-                    <button class="mode1 timeMode" data-value="60">🕒60 sec</button>
-                    <button class="mode1 timeMode" data-value="120">🕕120 sec</button>
-                    <button class="mode1 timeMode" data-value="180">🕘180 sec</button>
-                    <button class="mode1 timeMode" data-value="240">🕛240 sec</button>
-                    <button class="mode1 questionMode" data-value="15">🔢15 Question</button>
-                    <button class="mode1 questionMode" data-value="30">🔢30 Question</button>
-                    <button class="mode1 questionMode" data-value="45">🔢45 Question</button>
-                    <button class="mode1 questionMode" data-value="60">🔢60 Question</button>
-                </div>
-                <div id="type1">
-                    <button class="typeOption" data-value="100" id="type11">2 digit<br>+<br>2 digit</button>
-                    <button class="typeOption" data-value="200" id="type12">3 digit<br>+<br>3 digit</button>
-                </div>
-                <div id="start1">
-                    <button id="startGame" disabled>Start</button>
-                </div>
-            </section>
-
-            <!-- Game Play Section -->
-            <section id="game-play" style="display: none;">
-                <div id="line1">
-                    <span id="time1">0</span>
-                    <span id="question1">0</span>
-                </div>
-                <div id="line2">
-                    <p id="questionText">0 + 0 =</p>
-                </div>
-                <div id="line3">
-                    <input type="number" id="answer1" autocomplete="off" autofocus>
-                </div>
-                <label for="autoSubmit">
-                    <input type="checkbox" id="autoSubmit">Auto Submit
-                </label>
-                <div id="line4">
-                    <button id="submit1">Submit</button>
-                </div>
-            </section>
-
-            <!-- Game Result Section -->
-            <section id="game-result" style="display: none;">
-                <div id="endMessage">Game Over</div>
-                <div id="totalTime">0</div>
-                <div id="totalQuestion">0</div>
-                <div id="score1">0</div>
-                <div id="highScore1">0</div>
-                <div id="return1">
-                    <button id="playAgain">Play Again</button>
-                    <button id="backToSetup">Go To Setup</button>
-                    <button id="backToMenu">Choose Game Again </button>
-                </div>
-            </section>
-        </div>
-
-        <!-- Footer -->
-        <div id="footer1">BabyMath</div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="css-js/game0.js"></script>
-    <script src="css-js/game1.js"></script>
-    <script src="css-js/game2.js"></script>
+    <script>
+        // Select all list items
+        const listItems = document.querySelectorAll('.list-item');
+        listItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const gameKey = item.getAttribute('data-type'); // Get the data-type value
+                localStorage.setItem('gameKey', gameKey); // Set gameKey in local storage
+                console.log(`gameKey set to: ${gameKey}`); // Optional: Log for debugging
+    
+                // Redirect to index.html
+                window.location.href = 'game.html';
+            });
+        });
+    </script>
 </body>
 </html>
