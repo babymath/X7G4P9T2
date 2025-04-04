@@ -1,0 +1,182 @@
+[
+    {
+        "questionEnglish": "Is 45 divisible by 5?",
+        "questionHindi": "क्या 45, 5 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 123 divisible by 3?",
+        "questionHindi": "क्या 123, 3 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 64 divisible by 2?",
+        "questionHindi": "क्या 64, 2 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 81 divisible by 9?",
+        "questionHindi": "क्या 81, 9 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 100 divisible by 10?",
+        "questionHindi": "क्या 100, 10 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 77 divisible by 7?",
+        "questionHindi": "क्या 77, 7 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 56 divisible by 8?",
+        "questionHindi": "क्या 56, 8 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 121 divisible by 11?",
+        "questionHindi": "क्या 121, 11 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 49 divisible by 6?",
+        "questionHindi": "क्या 49, 6 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "No"
+    },
+    {
+        "questionEnglish": "Is 72 divisible by 4?",
+        "questionHindi": "क्या 72, 4 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 90 divisible by 5?",
+        "questionHindi": "क्या 90, 5 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 33 divisible by 3?",
+        "questionHindi": "क्या 33, 3 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 50 divisible by 2?",
+        "questionHindi": "क्या 50, 2 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 27 divisible by 9?",
+        "questionHindi": "क्या 27, 9 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 200 divisible by 10?",
+        "questionHindi": "क्या 200, 10 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 63 divisible by 7?",
+        "questionHindi": "क्या 63, 7 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 48 divisible by 8?",
+        "questionHindi": "क्या 48, 8 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 132 divisible by 11?",
+        "questionHindi": "क्या 132, 11 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 35 divisible by 6?",
+        "questionHindi": "क्या 35, 6 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "No"
+    },
+    {
+        "questionEnglish": "Is 88 divisible by 4?",
+        "questionHindi": "क्या 88, 4 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 25 divisible by 5?",
+        "questionHindi": "क्या 25, 5 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 18 divisible by 3?",
+        "questionHindi": "क्या 18, 3 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 22 divisible by 2?",
+        "questionHindi": "क्या 22, 2 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 36 divisible by 9?",
+        "questionHindi": "क्या 36, 9 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 150 divisible by 10?",
+        "questionHindi": "क्या 150, 10 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 42 divisible by 7?",
+        "questionHindi": "क्या 42, 7 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 16 divisible by 8?",
+        "questionHindi": "क्या 16, 8 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 99 divisible by 11?",
+        "questionHindi": "क्या 99, 11 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    },
+    {
+        "questionEnglish": "Is 55 divisible by 6?",
+        "questionHindi": "क्या 55, 6 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "No"
+    },
+    {
+        "questionEnglish": "Is 68 divisible by 4?",
+        "questionHindi": "क्या 68, 4 से विभाज्य है?",
+        "options": ["Yes", "No", "Maybe", "None of the above"],
+        "correctAnswer": "Yes"
+    }
+]
