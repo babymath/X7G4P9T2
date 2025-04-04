@@ -5,11 +5,6 @@ const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/offline.html',
-  '/style.css',
-  '/game',         // Assuming these are routes that work offline
-  '/profile',
-  '/quiz',
-  '/math-tricks',
 ];
 
 self.addEventListener('install', event => {
