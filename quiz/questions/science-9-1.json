@@ -1,0 +1,187 @@
+[
+    {
+      "questionEnglish": "What is the SI unit of speed?",
+      "questionHindi": "गति का SI मात्रक क्या है?",
+      "options": ["km/h / किमी/घंटा", "m/s / मीटर/सेकंड", "cm/s / सेमी/सेकंड", "km/s / किमी/सेकंड"],
+      "correctAnswer": "m/s / मीटर/सेकंड"
+    },
+    {
+      "questionEnglish": "Which of the following remains constant during uniform circular motion?",
+      "questionHindi": "एकसमान वृत्तीय गति के दौरान निम्नलिखित में से क्या स्थिर रहता है?",
+      "options": ["Velocity / वेग", "Acceleration / त्वरण", "Speed / गति", "Displacement / विस्थापन"],
+      "correctAnswer": "Speed / गति"
+    },
+    {
+      "questionEnglish": "Newton's first law of motion is also known as the law of:",
+      "questionHindi": "न्यूटन के गति के पहले नियम को किस नियम के रूप में भी जाना जाता है?",
+      "options": ["Acceleration / त्वरण", "Inertia / जड़त्व", "Gravity / गुरुत्वाकर्षण", "Momentum / संवेग"],
+      "correctAnswer": "Inertia / जड़त्व"
+    },
+    {
+      "questionEnglish": "The gravitational force between two objects is:",
+      "questionHindi": "दो वस्तुओं के बीच गुरुत्वाकर्षण बल है:",
+      "options": [
+        "Directly proportional to the distance between them. / उनके बीच की दूरी के सीधे आनुपातिक।",
+        "Inversely proportional to the square of the distance between them. / उनके बीच की दूरी के वर्ग के व्युत्क्रमानुपाती।",
+        "Directly proportional to the square of the distance between them. / उनके बीच की दूरी के वर्ग के सीधे आनुपातिक।",
+        "Independent of the distance between them. / उनके बीच की दूरी से स्वतंत्र।"
+      ],
+      "correctAnswer": "Inversely proportional to the square of the distance between them. / उनके बीच की दूरी के वर्ग के व्युत्क्रमानुपाती।"
+    },
+    {
+      "questionEnglish": "The ability to do work is called:",
+      "questionHindi": "कार्य करने की क्षमता को क्या कहते हैं?",
+      "options": ["Power / शक्ति", "Energy / ऊर्जा", "Momentum / संवेग", "Force / बल"],
+      "correctAnswer": "Energy / ऊर्जा"
+    },
+    {
+      "questionEnglish": "The SI unit of power is:",
+      "questionHindi": "शक्ति की SI इकाई क्या है?",
+      "options": ["Joule / जूल", "Newton / न्यूटन", "Watt / वाट", "Pascal / पास्कल"],
+      "correctAnswer": "Watt / वाट"
+    },
+    {
+      "questionEnglish": "Sound waves are:",
+      "questionHindi": "ध्वनि तरंगें हैं:",
+      "options": ["Transverse waves / अनुप्रस्थ तरंगें", "Longitudinal waves / अनुदैर्ध्य तरंगें", "Electromagnetic waves / विद्युत चुम्बकीय तरंगें", "Stationary waves / स्थिर तरंगें"],
+      "correctAnswer": "Longitudinal waves / अनुदैर्ध्य तरंगें"
+    },
+    {
+      "questionEnglish": "The frequency of a sound wave is measured in:",
+      "questionHindi": "ध्वनि तरंग की आवृत्ति किसमें मापी जाती है?",
+      "options": ["Meters / मीटर", "Seconds / सेकंड", "Hertz / हर्ट्ज", "Joules / जूल"],
+      "correctAnswer": "Hertz / हर्ट्ज"
+    },
+    {
+      "questionEnglish": "The phenomenon of change of a liquid into vapour at any temperature below its boiling point is called:",
+      "questionHindi": "क्वथनांक से नीचे किसी भी तापमान पर तरल के वाष्प में बदलने की घटना को क्या कहते हैं?",
+      "options": ["Boiling / क्वथन", "Condensation / संघनन", "Evaporation / वाष्पीकरण", "Sublimation / उर्ध्वपातन"],
+      "correctAnswer": "Evaporation / वाष्पीकरण"
+    },
+    {
+      "questionEnglish": "A pure substance made up of only one kind of atom is called:",
+      "questionHindi": "केवल एक प्रकार के परमाणु से बना शुद्ध पदार्थ कहलाता है:",
+      "options": ["Mixture / मिश्रण", "Compound / यौगिक", "Element / तत्व", "Solution / घोल"],
+      "correctAnswer": "Element / तत्व"
+    },
+    {
+      "questionEnglish": "The number of atoms present in one mole of a substance is:",
+      "questionHindi": "किसी पदार्थ के एक मोल में उपस्थित परमाणुओं की संख्या है:",
+      "options": ["6.022 x 10^23 / 6.022 x 10^23", "1.66 x 10^-24 / 1.66 x 10^-24", "9.1 x 10^-31 / 9.1 x 10^-31", "1.67 x 10^-27 / 1.67 x 10^-27"],
+      "correctAnswer": "6.022 x 10^23 / 6.022 x 10^23"
+    },
+    {
+      "questionEnglish": "The nucleus of an atom contains:",
+      "questionHindi": "एक परमाणु के नाभिक में होता है:",
+      "options": ["Electrons and protons / इलेक्ट्रॉन और प्रोटॉन", "Electrons and neutrons / इलेक्ट्रॉन और न्यूट्रॉन", "Protons and neutrons / प्रोटॉन और न्यूट्रॉन", "Electrons only / केवल इलेक्ट्रॉन"],
+      "correctAnswer": "Protons and neutrons / प्रोटॉन और न्यूट्रॉन"
+    },
+    {
+      "questionEnglish": "Rutherford's alpha-particle scattering experiment led to the discovery of:",
+      "questionHindi": "रदरफोर्ड के अल्फा-कण प्रकीर्णन प्रयोग से किसकी खोज हुई?",
+      "options": ["Electrons / इलेक्ट्रॉन", "Protons / प्रोटॉन", "Neutrons / न्यूट्रॉन", "Nucleus / नाभिक"],
+      "correctAnswer": "Nucleus / नाभिक"
+    },
+    {
+      "questionEnglish": "The formula of sodium chloride is:",
+      "questionHindi": "सोडियम क्लोराइड का सूत्र है:",
+      "options": ["NaCl / NaCl", "Na2Cl / Na2Cl", "NaCl2 / NaCl2", "Na3Cl / Na3Cl"],
+      "correctAnswer": "NaCl / NaCl"
+    },
+    {
+      "questionEnglish": "The 'powerhouse' of the cell is:",
+      "questionHindi": "कोशिका का 'शक्तिगृह' है:",
+      "options": ["Golgi apparatus / गॉल्जी उपकरण", "Mitochondria / माइटोकॉन्ड्रिया", "Endoplasmic reticulum / एंडोप्लाज्मिक रेटिकुलम", "Lysosomes / लाइसोसोम"],
+      "correctAnswer": "Mitochondria / माइटोकॉन्ड्रिया"
+    },
+    {
+      "questionEnglish": "Xylem tissue in plants is responsible for:",
+      "questionHindi": "पौधों में जाइलम ऊतक किसके लिए जिम्मेदार है?",
+      "options": ["Transport of food / भोजन का परिवहन", "Transport of water and minerals / पानी और खनिजों का परिवहन", "Photosynthesis / प्रकाश संश्लेषण", "Storage of food / भोजन का भंडारण"],
+      "correctAnswer": "Transport of water and minerals / पानी और खनिजों का परिवहन"
+    },
+    {
+      "questionEnglish": "Which of the following is a vertebrate?",
+      "questionHindi": "निम्नलिखित में से कौन एक कशेरुकी है?",
+      "options": ["Earthworm / केंचुआ", "Snail / घोंघा", "Fish / मछली", "Starfish / स्टारफिश"],
+      "correctAnswer": "Fish / मछली"
+    },
+    {
+      "questionEnglish": "The disease caused by the deficiency of iodine is:",
+      "questionHindi": "आयोडीन की कमी से होने वाला रोग है:",
+      "options": ["Goitre / घेंघा", "Scurvy / स्कर्वी", "Rickets / रिकेट्स", "Beri-beri / बेरी-बेरी"],
+      "correctAnswer": "Goitre / घेंघा"
+    },
+    {
+      "questionEnglish": "Which of the following is a viral disease?",
+      "questionHindi": "निम्नलिखित में से कौन सा एक वायरल रोग है?",
+      "options": ["Malaria / मलेरिया", "Tuberculosis / तपेदिक", "Common cold / सामान्य सर्दी", "Typhoid / टाइफाइड"],
+      "correctAnswer": "Common cold / सामान्य सर्दी"
+    },
+    {
+      "questionEnglish": "The ozone layer in the atmosphere protects us from:",
+      "questionHindi": "वायुमंडल में ओजोन परत हमें किससे बचाती है?",
+      "options": ["Infrared rays / अवरक्त किरणें", "Ultraviolet rays / पराबैंगनी किरणें", "Gamma rays / गामा किरणें", "X-rays / एक्स-रे"],
+      "correctAnswer": "Ultraviolet rays / पराबैंगनी किरणें"
+    },
+    {
+      "questionEnglish": "The cell theory was given by:",
+      "questionHindi": "कोशिका सिद्धांत किसके द्वारा दिया गया था?",
+      "options": ["Robert Hooke / रॉबर्ट हुक", "Schleiden and Schwann / श्लीडेन और श्वान", "Anton van Leeuwenhoek / एंटोन वैन लीउवेनहोएक", "Robert Brown / रॉबर्ट ब्राउन"],
+      "correctAnswer": "Schleiden and Schwann / श्लीडेन और श्वान"
+    },
+    {
+      "questionEnglish": "Meristematic tissues are found in:",
+      "questionHindi": "मेरिस्टेमेटिक ऊतक पाए जाते हैं:",
+      "options": ["Mature leaves / पकी पत्तियां", "Root tips and shoot tips / जड़ की नोक और तने की नोक", "Stem cortex / तना प्रांतस्था", "Flower petals / फूल की पंखुड़ियां"],
+      "correctAnswer": "Root tips and shoot tips / जड़ की नोक और तने की नोक"
+    },
+    {
+      "questionEnglish": "Which of the following is a monocot plant?",
+      "questionHindi": "निम्नलिखित में से कौन एक मोनोकोट पौधा है?",
+      "options": ["Pea / मटर", "Mango / आम", "Wheat / गेहूं", "Rose / गुलाब"],
+      "correctAnswer": "Wheat / गेहूं"
+    },
+    {
+      "questionEnglish": "Greenhouse effect is caused by:",
+      "questionHindi": "ग्रीनहाउस प्रभाव किसके कारण होता है?",
+      "options": ["Oxygen / ऑक्सीजन", "Nitrogen / नाइट्रोजन", "Carbon dioxide / कार्बन डाइऑक्साइड", "Hydrogen / हाइड्रोजन"],
+      "correctAnswer": "Carbon dioxide / कार्बन डाइऑक्साइड"
+    },
+    {
+      "questionEnglish": "The vector for malaria is:",
+      "questionHindi": "मलेरिया के लिए वेक्टर है:",
+      "options": ["Housefly / घरेलू मक्खी", "Mosquito / मच्छर", "Cockroach / तिलचट्टा", "Sandfly / रेत मक्खी"],
+      "correctAnswer": "Mosquito / मच्छर"
+    },
+    {
+      "questionEnglish": "The atomic number of an element is equal to the number of:",
+      "questionHindi": "किसी तत्व की परमाणु संख्या किसकी संख्या के बराबर होती है?",
+      "options": ["Neutrons / न्यूट्रॉन", "Protons / प्रोटॉन", "Electrons + neutrons / इलेक्ट्रॉन + न्यूट्रॉन", "Protons + neutrons / प्रोटॉन + न्यूट्रॉन"],
+      "correctAnswer": "Protons / प्रोटॉन"
+    },
+    {
+      "questionEnglish": "The rate of change of velocity is called:",
+      "questionHindi": "वेग के परिवर्तन की दर को क्या कहते हैं?",
+      "options": ["Speed / गति", "Displacement / विस्थापन", "Acceleration / त्वरण", "Distance / दूरी"],
+      "correctAnswer": "Acceleration / त्वरण"
+    },
+    {
+      "questionEnglish": "The Law of conservation of mass was given by:",
+      "questionHindi": "द्रव्यमान के संरक्षण का नियम किसके द्वारा दिया गया था?",
+      "options": ["Dalton / डाल्टन", "Lavoisier / लेवोइसियर", "Proust / प्राउस्ट", "Rutherford / रदरफोर्ड"],
+      "correctAnswer": "Lavoisier / लेवोइसियर"
+    },
+    {
+      "questionEnglish": "The process of conversion of solid directly into gases is called.",
+      "questionHindi": "ठोस के सीधे गैसों में रूपांतरण की प्रक्रिया को कहा जाता है।",
+      "options": ["Condensation. / संघनन।", "Sublimation. / उर्ध्वपातन।", "Evaporation. / वाष्पीकरण।", "Melting. / गलनांक।"],
+      "correctAnswer": "Sublimation. / उर्ध्वपातन।"
+    },
+    {
+      "questionEnglish": "The phloem tissues in plants are responsible for:",
+      "questionHindi": "पौधों में फ्लोएम ऊतक किसके लिए जिम्मेदार हैं:",
+      "options": ["transport of water. / पानी का परिवहन।", "Transport of food. / भोजन का परिवहन।", "Mechanical support. / यांत्रिक सहायता।", "Gaseous exchange. / गैसीय विनिमय।"],
+      "correctAnswer": "Transport of food. / भोजन का परिवहन।"
+    }
+  ]
