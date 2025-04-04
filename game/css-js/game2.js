@@ -124,8 +124,7 @@ function endGame(totalTime, totalQuestions) {
     document.getElementById("score1").textContent = `Score: ${score}`;
 
     const gameType = document.querySelector('.typeOption.selected').dataset.value;
-    const gameKey = document.querySelector('.card.active').dataset.gamekey; // Use gamekey from the active card
-    const highScoreKey = `${gameKey}-${gameType}`;
+    const highScoreKey = `${gameID}-${gameType}`;
     const highScore = localStorage.getItem(highScoreKey) || 0;
 
     if (score > highScore) {
