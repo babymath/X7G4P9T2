@@ -1,0 +1,182 @@
+[
+  {
+    "questionEnglish": "What is the point called where the three medians of a triangle intersect?",
+    "questionHindi": "वह बिंदु क्या कहलाता है जहाँ त्रिभुज की तीन माध्यिकाएँ मिलती हैं?",
+    "options": ["Orthocenter / लंबकेन्द्र", "Incenter / अंतःकेन्द्र", "Circumcenter / परिकेन्द्र", "Centroid / केन्द्रक", "Excenter / बाह्यकेन्द्र"],
+    "correctAnswer": "Centroid / केन्द्रक"
+  },
+  {
+    "questionEnglish": "What is the fixed point from which every point on a circle is equidistant?",
+    "questionHindi": "वह निश्चित बिंदु क्या है जिससे वृत्त पर प्रत्येक बिंदु समान दूरी पर होता है?",
+    "options": ["Diameter / व्यास", "Radius / त्रिज्या", "Center / केंद्र", "Circumference / परिधि", "Tangent / स्पर्शरेखा"],
+    "correctAnswer": "Center / केंद्र"
+  },
+  {
+    "questionEnglish": "What is a polygon with eight sides called?",
+    "questionHindi": "आठ भुजाओं वाले बहुभुज को क्या कहते हैं?",
+    "options": ["Pentagon / पंचभुज", "Hexagon / षट्भुज", "Heptagon / सप्तभुज", "Octagon / अष्टभुज", "Nonagon / नवभुज"],
+    "correctAnswer": "Octagon / अष्टभुज"
+  },
+  {
+    "questionEnglish": "What is the product of a number and a whole number greater than 1 called?",
+    "questionHindi": "एक संख्या और 1 से बड़ी पूर्ण संख्या के गुणनफल को क्या कहते हैं?",
+    "options": ["Factor / गुणनखंड", "Prime number / अभाज्य संख्या", "Composite number / भाज्य संख्या", "Multiple / गुणज", "Quotient / भागफल"],
+    "correctAnswer": "Multiple / गुणज"
+  },
+  {
+    "questionEnglish": "What is the number that occurs before subtraction in an equation?",
+    "questionHindi": "एक समीकरण में घटाव से पहले आने वाली संख्या क्या है?",
+    "options": ["Subtrahend / घटाने वाली संख्या", "Difference / अंतर", "Minuend / घटाई जाने वाली संख्या", "Sum / योग", "Product / गुणनफल"],
+    "correctAnswer": "Minuend / घटाई जाने वाली संख्या"
+  },
+  {
+    "questionEnglish": "What is the number being subtracted in a subtraction operation?",
+    "questionHindi": "घटाव संक्रिया में घटाई जा रही संख्या क्या है?",
+    "options": ["Minuend / घटाई जाने वाली संख्या", "Difference / अंतर", "Subtrahend / घटाने वाली संख्या", "Quotient / भागफल", "Remainder / शेषफल"],
+    "correctAnswer": "Subtrahend / घटाने वाली संख्या"
+  },
+  {
+    "questionEnglish": "What is the number that divides a dividend in division?",
+    "questionHindi": "वह संख्या क्या है जो भाग में भाज्य को विभाजित करती है?",
+    "options": ["Quotient / भागफल", "Remainder / शेषफल", "Dividend / भाज्य", "Divisor / भाजक", "Factor / गुणनखंड"],
+    "correctAnswer": "Divisor / भाजक"
+  },
+  {
+    "questionEnglish": "What is the point of intersection of the sides of an angle called?",
+    "questionHindi": "एक कोण की भुजाओं के प्रतिच्छेदन बिंदु को क्या कहते हैं?",
+    "options": ["Line / रेखा", "Ray / किरण", "Vertex / शीर्ष", "Endpoint / अंत्यबिंदु", "Origin / मूल"],
+    "correctAnswer": "Vertex / शीर्ष"
+  },
+  {
+    "questionEnglish": "What is a number raised to the power of 2 called?",
+    "questionHindi": "किसी संख्या की घात 2 को क्या कहते हैं?",
+    "options": ["Cube / घन", "Square root / वर्गमूल", "Square / वर्ग", "Exponent / घातांक", "Base / आधार"],
+    "correctAnswer": "Square / वर्ग"
+  },
+  {
+    "questionEnglish": "What is a cube of a number also known as?",
+    "questionHindi": "किसी संख्या का घन और किस नाम से जाना जाता है?",
+    "options": ["Second power / दूसरी घात", "Square / वर्ग", "Fourth power / चौथी घात", "Third power / तीसरी घात", "Root / मूल"],
+    "correctAnswer": "Third power / तीसरी घात"
+  },
+  {
+    "questionEnglish": "What is a value used to balance an equation?",
+    "questionHindi": "एक समीकरण को संतुलित करने के लिए उपयोग किए जाने वाले मान को क्या कहते हैं?",
+    "options": ["Coefficient / गुणांक", "Variable / चर", "Constant / स्थिरांक", "Operator / संकारक", "Solution / हल"],
+    "correctAnswer": "Solution / हल"
+  },
+  {
+    "questionEnglish": "What do we call a triangle with one right angle?",
+    "questionHindi": "हम एक ऐसे त्रिभुज को क्या कहते हैं जिसका एक कोण समकोण हो?",
+    "options": ["Acute triangle / न्यूनकोण त्रिभुज", "Obtuse triangle / अधिक कोण त्रिभुज", "Equilateral triangle / समबाहु त्रिभुज", "Isosceles triangle / समद्विबाहु त्रिभुज", "Right triangle / समकोण त्रिभुज"],
+    "correctAnswer": "Right triangle / समकोण त्रिभुज"
+  },
+  {
+    "questionEnglish": "What is a symbol that shows how many times to use a number in multiplication?",
+    "questionHindi": "वह प्रतीक क्या है जो दर्शाता है कि गुणा में किसी संख्या का कितनी बार उपयोग करना है?",
+    "options": ["Base / आधार", "Root / मूल", "Coefficient / गुणांक", "Exponent / घातांक", "Variable / चर"],
+    "correctAnswer": "Exponent / घातांक"
+  },
+  {
+    "questionEnglish": "What is the top number of a fraction called?",
+    "questionHindi": "भिन्न की ऊपरी संख्या को क्या कहते हैं?",
+    "options": ["Denominator / हर", "Whole number / पूर्ण संख्या", "Numerator / अंश", "Quotient / भागफल", "Product / गुणनफल"],
+    "correctAnswer": "Numerator / अंश"
+  },
+  {
+    "questionEnglish": "What is the bottom number of a fraction called?",
+    "questionHindi": "भिन्न की निचली संख्या को क्या कहते हैं?",
+    "options": ["Numerator / अंश", "Decimal / दशमलव", "Denominator / हर", "Remainder / शेषफल", "Integer / पूर्णांक"],
+    "correctAnswer": "Denominator / हर"
+  },
+  {
+    "questionEnglish": "What do we call a number that represents part of a whole?",
+    "questionHindi": "हम उस संख्या को क्या कहते हैं जो किसी पूर्ण के भाग का प्रतिनिधित्व करती है?",
+    "options": ["Integer / पूर्णांक", "Decimal / दशमलव", "Percentage / प्रतिशत", "Fraction / भिन्न", "Ratio / अनुपात"],
+    "correctAnswer": "Fraction / भिन्न"
+  },
+  {
+    "questionEnglish": "What is a number that is not divisible by 2 called?",
+    "questionHindi": "वह संख्या जो 2 से विभाज्य नहीं है, क्या कहलाती है?",
+    "options": ["Even / सम", "Prime / अभाज्य", "Composite / भाज्य", "Odd / विषम", "Rational / परिमेय"],
+    "correctAnswer": "Odd / विषम"
+  },
+  {
+    "questionEnglish": "What is a number that is divisible by 2 called?",
+    "questionHindi": "वह संख्या जो 2 से विभाज्य है, क्या कहलाती है?",
+    "options": ["Odd / विषम", "Integer / पूर्णांक", "Prime / अभाज्य", "Even / सम", "Natural / प्राकृतिक"],
+    "correctAnswer": "Even / सम"
+  },
+  {
+    "questionEnglish": "What is a figure with two identical halves called?",
+    "questionHindi": "दो समान हिस्सों वाली आकृति को क्या कहते हैं?",
+    "options": ["Asymmetrical / असममित", "Irregular / अनियमित", "Congruent / सर्वांगसम", "Symmetrical / सममित", "Similar / समरूप"],
+    "correctAnswer": "Symmetrical / सममित"
+  },
+  {
+    "questionEnglish": "What is the value of a digit based on its position in a number?",
+    "questionHindi": "किसी संख्या में किसी अंक का मान उसकी स्थिति के आधार पर क्या होता है?",
+    "options": ["Face value / अंकित मान", "Absolute value / निरपेक्ष मान", "Digit value / अंक मान", "Place value / स्थानीय मान", "Real value / वास्तविक मान"],
+    "correctAnswer": "Place value / स्थानीय मान"
+  },
+  {
+    "questionEnglish": "What is the number that indicates position or order in a list?",
+    "questionHindi": "वह संख्या क्या है जो किसी सूची में स्थिति या क्रम इंगित करती है?",
+    "options": ["Cardinal / गणनांक", "Nominal / नामिक", "Ordinal / क्रमवाचक", "Integer / पूर्णांक", "Rational / परिमेय"],
+    "correctAnswer": "Ordinal / क्रमवाचक"
+  },
+  {
+    "questionEnglish": "What is the smallest positive number that is exactly divisible by two or more numbers?",
+    "questionHindi": "वह सबसे छोटी धनात्मक संख्या क्या है जो दो या दो से अधिक संख्याओं से पूर्णतः विभाज्य हो?",
+    "options": ["HCF / महत्तम समापवर्तक", "Factor / गुणनखंड", "Multiple / गुणज", "LCM / लघुत्तम समापवर्त्य", "Prime / अभाज्य"],
+    "correctAnswer": "LCM / लघुत्तम समापवर्त्य"
+  },
+  {
+    "questionEnglish": "What is the largest number that divides two or more numbers exactly?",
+    "questionHindi": "वह सबसे बड़ी संख्या क्या है जो दो या दो से अधिक संख्याओं को पूर्णतः विभाजित करती है?",
+    "options": ["LCM / लघुत्तम समापवर्त्य", "Multiple / गुणज", "Divisor / भाजक", "Factor / गुणनखंड", "HCF / महत्तम समापवर्तक"],
+    "correctAnswer": "HCF / महत्तम समापवर्तक"
+  },
+  {
+    "questionEnglish": "What do we call a mathematical expression with only numbers and operations?",
+    "questionHindi": "हम केवल संख्याओं और संक्रियाओं वाले गणितीय व्यंजक को क्या कहते हैं?",
+    "options": ["Algebraic expression / बीजगणितीय व्यंजक", "Equation / समीकरण", "Formula / सूत्र", "Numerical expression / संख्यात्मक व्यंजक", "Inequality / असमानता"],
+    "correctAnswer": "Numerical expression / संख्यात्मक व्यंजक"
+  },
+  {
+    "questionEnglish": "What is a mathematical expression containing variables, numbers, and operations?",
+    "questionHindi": "चर, संख्याएँ और संक्रियाएँ युक्त गणितीय व्यंजक क्या है?",
+    "options": ["Numerical expression / संख्यात्मक व्यंजक", "Equation / समीकरण", "Identity / सर्वसमिका", "Algebraic expression / बीजगणितीय व्यंजक", "Term / पद"],
+    "correctAnswer": "Algebraic expression / बीजगणितीय व्यंजक"
+  },
+  {
+    "questionEnglish": "What do you call the solution that satisfies all conditions in an inequality?",
+    "questionHindi": "आप उस हल को क्या कहते हैं जो एक असमानता में सभी शर्तों को पूरा करता है?",
+    "options": ["Unique solution / अद्वितीय हल", "General solution / सामान्य हल", "Particular solution / विशेष हल", "Feasible solution / व्यवहार्य हल", "Trivial solution / तुच्छ हल"],
+    "correctAnswer": "Feasible solution / व्यवहार्य हल"
+  },
+  {
+    "questionEnglish": "What is a straight line that touches a circle at exactly one point?",
+    "questionHindi": "वह सीधी रेखा क्या है जो एक वृत्त को ठीक एक बिंदु पर स्पर्श करती है?",
+    "options": ["Secant / छेदक रेखा", "Diameter / व्यास", "Chord / जीवा", "Radius / त्रिज्या", "Tangent / स्पर्शरेखा"],
+    "correctAnswer": "Tangent / स्पर्शरेखा"
+  },
+  {
+    "questionEnglish": "What is a line segment joining two points on a circle called?",
+    "questionHindi": "एक वृत्त पर दो बिंदुओं को जोड़ने वाले रेखाखंड को क्या कहते हैं?",
+    "options": ["Diameter / व्यास", "Radius / त्रिज्या", "Tangent / स्पर्शरेखा", "Arc / चाप", "Chord / जीवा"],
+    "correctAnswer": "Chord / जीवा"
+  },
+  {
+    "questionEnglish": "What is half of the diameter of a circle called?",
+    "questionHindi": "एक वृत्त के व्यास के आधे भाग को क्या कहते हैं?",
+    "options": ["Circumference / परिधि", "Area / क्षेत्रफल", "Tangent / स्पर्शरेखा", "Radius / त्रिज्या", "Chord / जीवा"],
+    "correctAnswer": "Radius / त्रिज्या"
+  },
+  {
+    "questionEnglish": "What do we call a prism with a circular base?",
+    "questionHindi": "हम एक वृत्ताकार आधार वाले प्रिज्म को क्या कहते हैं?",
+    "options": ["Pyramid / पिरामिड", "Cone / शंकु", "Cube / घन", "Cuboid / घनाभ", "Cylinder / बेलन"],
+    "correctAnswer": "Cylinder / बेलन"
+  }
+]
