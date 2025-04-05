@@ -92,7 +92,7 @@
         window.onload = function() {
             const quizList = document.getElementById("quizList");
 
-            fetch('./quizzes.json')
+            fetch('../quizzes.json')
                 .then(response => response.json())
                 .then(data => {
                     quizzes = data;
