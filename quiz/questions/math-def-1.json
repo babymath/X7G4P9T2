@@ -1,0 +1,182 @@
+[
+  {
+    "questionEnglish": "What is the result of multiplying a number by itself?",
+    "questionHindi": "किसी संख्या को स्वयं से गुणा करने पर क्या परिणाम आता है?",
+    "options": ["Square / वर्ग", "Cube / घन", "Product / गुणनफल", "Exponent / घातांक", "Root / मूल"],
+    "correctAnswer": "Square / वर्ग"
+  },
+  {
+    "questionEnglish": "What is the distance around a circle called?",
+    "questionHindi": "एक वृत्त के चारों ओर की दूरी को क्या कहते हैं?",
+    "options": ["Diameter / व्यास", "Radius / त्रिज्या", "Circumference / परिधि", "Area / क्षेत्रफल", "Arc / चाप"],
+    "correctAnswer": "Circumference / परिधि"
+  },
+  {
+    "questionEnglish": "What is the number that divides another number exactly called?",
+    "questionHindi": "वह संख्या जो दूसरी संख्या को पूर्णतः विभाजित करती है, क्या कहलाती है?",
+    "options": ["Multiple / गुणज", "Factor / गुणनखंड", "Dividend / भाज्य", "Quotient / भागफल", "Remainder / शेषफल"],
+    "correctAnswer": "Divisor / भाजक"
+  },
+  {
+    "questionEnglish": "What do we call a number that cannot be expressed as a fraction?",
+    "questionHindi": "हम उस संख्या को क्या कहते हैं जिसे भिन्न के रूप में व्यक्त नहीं किया जा सकता है?",
+    "options": ["Integer / पूर्णांक", "Rational / परिमेय", "Irrational / अपरिमेय", "Real / वास्तविक", "Complex / सम्मिश्र"],
+    "correctAnswer": "Irrational / अपरिमेय"
+  },
+  {
+    "questionEnglish": "What is the result of adding a number to itself multiple times?",
+    "questionHindi": "किसी संख्या को स्वयं में बार-बार जोड़ने का परिणाम क्या होता है?",
+    "options": ["Addition / जोड़", "Subtraction / घटाव", "Multiplication / गुणा", "Division / भाग", "Exponentiation / घातीकरण"],
+    "correctAnswer": "Multiplication / गुणा"
+  },
+  {
+    "questionEnglish": "What is the difference between the highest and lowest values in a set of data?",
+    "questionHindi": "डेटा के एक सेट में सबसे अधिक और सबसे कम मूल्यों के बीच का अंतर क्या है?",
+    "options": ["Mean / माध्य", "Median / माध्यिका", "Mode / बहुलक", "Range / परास", "Variance / विचरण"],
+    "correctAnswer": "Range / परास"
+  },
+  {
+    "questionEnglish": "What is the result of dividing a number by another number?",
+    "questionHindi": "किसी संख्या को दूसरी संख्या से भाग देने पर क्या परिणाम आता है?",
+    "options": ["Product / गुणनफल", "Sum / योग", "Difference / अंतर", "Quotient / भागफल", "Remainder / शेषफल"],
+    "correctAnswer": "Quotient / भागफल"
+  },
+  {
+    "questionEnglish": "What do we call a triangle with all sides of equal length?",
+    "questionHindi": "हम उस त्रिभुज को क्या कहते हैं जिसकी सभी भुजाएँ समान लंबाई की हों?",
+    "options": ["Isosceles / समद्विबाहु", "Scalene / विषमबाहु", "Right / समकोण", "Equilateral / समबाहु", "Obtuse / अधिककोण"],
+    "correctAnswer": "Equilateral / समबाहु"
+  },
+  {
+    "questionEnglish": "What is a number that has only two factors: 1 and itself?",
+    "questionHindi": "वह संख्या क्या है जिसके केवल दो गुणनखंड होते हैं: 1 और वह स्वयं?",
+    "options": ["Composite / भाज्य", "Even / सम", "Odd / विषम", "Prime / अभाज्य", "Whole / पूर्ण"],
+    "correctAnswer": "Prime / अभाज्य"
+  },
+  {
+    "questionEnglish": "What is the result obtained when one number is subtracted from another?",
+    "questionHindi": "जब एक संख्या को दूसरी संख्या से घटाया जाता है तो क्या परिणाम प्राप्त होता है?",
+    "options": ["Sum / योग", "Product / गुणनफल", "Quotient / भागफल", "Difference / अंतर", "Ratio / अनुपात"],
+    "correctAnswer": "Difference / अंतर"
+  },
+  {
+    "questionEnglish": "What is a flat surface that extends without end in all directions?",
+    "questionHindi": "एक सपाट सतह जो सभी दिशाओं में अंतहीन रूप से फैली हुई है, क्या कहलाती है?",
+    "options": ["Line / रेखा", "Ray / किरण", "Plane / समतल", "Solid / ठोस", "Curve / वक्र"],
+    "correctAnswer": "Plane / समतल"
+  },
+  {
+    "questionEnglish": "What is the value that appears most often in a data set?",
+    "questionHindi": "डेटा सेट में सबसे अधिक बार आने वाला मान क्या है?",
+    "options": ["Mean / माध्य", "Median / माध्यिका", "Mode / बहुलक", "Range / परास", "Average / औसत"],
+    "correctAnswer": "Mode / बहुलक"
+  },
+  {
+    "questionEnglish": "What is the point called where two lines meet?",
+    "questionHindi": "वह बिंदु क्या कहलाता है जहाँ दो रेखाएँ मिलती हैं?",
+    "options": ["Origin / मूलबिंदु", "Vertex / शीर्ष", "Intersection / प्रतिच्छेदन", "Endpoint / अंतबिंदु", "Midpoint / मध्यबिंदु"],
+    "correctAnswer": "Intersection / प्रतिच्छेदन"
+  },
+  {
+    "questionEnglish": "What is a part of a line that has two endpoints?",
+    "questionHindi": "एक रेखा का वह भाग जिसके दो अंत बिंदु होते हैं, क्या कहलाता है?",
+    "options": ["Ray / किरण", "Line / रेखा", "Plane / समतल", "Line segment / रेखाखंड", "Curve / वक्र"],
+    "correctAnswer": "Line segment / रेखाखंड"
+  },
+  {
+    "questionEnglish": "What do you call a number that can be written as a fraction?",
+    "questionHindi": "आप उस संख्या को क्या कहते हैं जिसे भिन्न के रूप में लिखा जा सकता है?",
+    "options": ["Integer / पूर्णांक", "Irrational / अपरिमेय", "Prime / अभाज्य", "Rational / परिमेय", "Whole / पूर्ण"],
+    "correctAnswer": "Rational / परिमेय"
+  },
+  {
+    "questionEnglish": "What is the operation of finding the total when two or more numbers are put together?",
+    "questionHindi": "दो या दो से अधिक संख्याओं को एक साथ रखने पर कुल योग ज्ञात करने की संक्रिया क्या है?",
+    "options": ["Subtraction / घटाव", "Multiplication / गुणा", "Division / भाग", "Addition / जोड़", "Exponentiation / घातीकरण"],
+    "correctAnswer": "Addition / जोड़"
+  },
+  {
+    "questionEnglish": "What is the result of raising a number to the power of 3?",
+    "questionHindi": "किसी संख्या को 3 की घात तक बढ़ाने का परिणाम क्या होता है?",
+    "options": ["Square / वर्ग", "Root / मूल", "Cube / घन", "Exponent / घातांक", "Power / घात"],
+    "correctAnswer": "Cube / घन"
+  },
+  {
+    "questionEnglish": "What is a polygon with four sides called?",
+    "questionHindi": "चार भुजाओं वाले बहुभुज को क्या कहते हैं?",
+    "options": ["Triangle / त्रिभुज", "Pentagon / पंचभुज", "Hexagon / षट्भुज", "Quadrilateral / चतुर्भुज", "Octagon / अष्टभुज"],
+    "correctAnswer": "Quadrilateral / चतुर्भुज"
+  },
+  {
+    "questionEnglish": "What is a number that is not a variable?",
+    "questionHindi": "वह संख्या क्या है जो चर नहीं है?",
+    "options": ["Coefficient / गुणांक", "Equation / समीकरण", "Constant / स्थिरांक", "Function / फलन", "Operator / संकारक"],
+    "correctAnswer": "Constant / स्थिरांक"
+  },
+  {
+    "questionEnglish": "What is a triangle with one angle equal to 90 degrees?",
+    "questionHindi": "वह त्रिभुज क्या है जिसका एक कोण 90 डिग्री के बराबर होता है?",
+    "options": ["Acute triangle / न्यूनकोण त्रिभुज", "Obtuse triangle / अधिककोण त्रिभुज", "Equilateral triangle / समबाहु त्रिभुज", "Isosceles triangle / समद्विबाहु त्रिभुज", "Right triangle / समकोण त्रिभुज"],
+    "correctAnswer": "Right triangle / समकोण त्रिभुज"
+  },
+  {
+    "questionEnglish": "What do you call the longest side of a right-angled triangle?",
+    "questionHindi": "आप समकोण त्रिभुज की सबसे लंबी भुजा को क्या कहते हैं?",
+    "options": ["Opposite / सम्मुख", "Adjacent / आसन्न", "Hypotenuse / कर्ण", "Base / आधार", "Perpendicular / लंब"],
+    "correctAnswer": "Hypotenuse / कर्ण"
+  },
+  {
+    "questionEnglish": "What is the total amount inside a 3D object called?",
+    "questionHindi": "एक 3डी वस्तु के अंदर की कुल मात्रा को क्या कहते हैं?",
+    "options": ["Area / क्षेत्रफल", "Perimeter / परिमाप", "Surface Area / पृष्ठीय क्षेत्रफल", "Volume / आयतन", "Capacity / क्षमता"],
+    "correctAnswer": "Volume / आयतन"
+  },
+  {
+    "questionEnglish": "What is a mathematical sentence that uses an equals sign called?",
+    "questionHindi": "एक गणितीय वाक्य जिसमें बराबर चिह्न (=) का उपयोग होता है, क्या कहलाता है?",
+    "options": ["Expression / व्यंजक", "Inequality / असमानता", "Formula / सूत्र", "Equation / समीकरण", "Statement / कथन"],
+    "correctAnswer": "Equation / समीकरण"
+  },
+  {
+    "questionEnglish": "What is the middle value of a data set when arranged in order?",
+    "questionHindi": "क्रम में व्यवस्थित किए गए डेटा सेट का मध्य मान क्या होता है?",
+    "options": ["Mean / माध्य", "Mode / बहुलक", "Average / औसत", "Median / माध्यिका", "Range / परास"],
+    "correctAnswer": "Median / माध्यिका"
+  },
+  {
+    "questionEnglish": "What is a number placed in front of a variable in an algebraic expression?",
+    "questionHindi": "बीजगणितीय व्यंजक में चर के सामने रखी गई संख्या क्या होती है?",
+    "options": ["Exponent / घातांक", "Constant / स्थिरांक", "Variable / चर", "Coefficient / गुणांक", "Operator / संकारक"],
+    "correctAnswer": "Coefficient / गुणांक"
+  },
+  {
+    "questionEnglish": "What is a part of a circle bounded by two radii and the arc between them?",
+    "questionHindi": "एक वृत्त का वह भाग जो दो त्रिज्याओं और उनके बीच के चाप से घिरा होता है, क्या कहलाता है?",
+    "options": ["Diameter / व्यास", "Chord / जीवा", "Tangent / स्पर्शरेखा", "Sector / त्रिज्यखंड", "Segment / वृत्तखंड"],
+    "correctAnswer": "Sector / त्रिज्यखंड"
+  },
+  {
+    "questionEnglish": "What is a closed plane figure with all points equidistant from the center?",
+    "questionHindi": "एक बंद समतल आकृति जिसके सभी बिंदु केंद्र से समान दूरी पर हों, क्या कहलाती है?",
+    "options": ["Ellipse / दीर्घवृत्त", "Square / वर्ग", "Rectangle / आयत", "Circle / वृत्त", "Sphere / गोला"],
+    "correctAnswer": "Circle / वृत्त"
+  },
+  {
+    "questionEnglish": "What is a three-sided polygon called?",
+    "questionHindi": "तीन भुजाओं वाले बहुभुज को क्या कहते हैं?",
+    "options": ["Quadrilateral / चतुर्भुज", "Pentagon / पंचभुज", "Hexagon / षट्भुज", "Triangle / त्रिभुज", "Octagon / अष्टभुज"],
+    "correctAnswer": "Triangle / त्रिभुज"
+  },
+  {
+    "questionEnglish": "What do we call a number that has more than two factors?",
+    "questionHindi": "हम उस संख्या को क्या कहते हैं जिसके दो से अधिक गुणनखंड होते हैं?",
+    "options": ["Prime / अभाज्य", "Even / सम", "Odd / विषम", "Composite / भाज्य", "Integer / पूर्णांक"],
+    "correctAnswer": "Composite / भाज्य"
+  },
+  {
+    "questionEnglish": "What is the number that represents the likelihood of an event occurring?",
+    "questionHindi": "वह संख्या क्या है जो किसी घटना के घटित होने की संभावना का प्रतिनिधित्व करती है?",
+    "options": ["Statistics / सांख्यिकी", "Ratio / अनुपात", "Percentage / प्रतिशत", "Probability / प्रायिकता", "Fraction / भिन्न"],
+    "correctAnswer": "Probability / प्रायिकता"
+  }
+]

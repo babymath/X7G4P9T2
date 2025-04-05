@@ -1,0 +1,182 @@
+[
+	{
+		"questionEnglish": "What is the number that remains after division when one number does not divide the other exactly?",
+		"questionHindi": "भाग देने पर वह संख्या क्या बचती है जब एक संख्या दूसरी को पूर्णतः विभाजित नहीं करती है?",
+		"options": ["Quotient / भागफल", "Divisor / भाजक", "Dividend / भाज्य", "Remainder / शेषफल", "Factor / गुणनखंड"],
+		"correctAnswer": "Remainder / शेषफल"
+	  },
+	  {
+		"questionEnglish": "What is a polygon with five sides called?",
+		"questionHindi": "पाँच भुजाओं वाले बहुभुज को क्या कहते हैं?",
+		"options": ["Triangle / त्रिभुज", "Quadrilateral / चतुर्भुज", "Hexagon / षट्भुज", "Pentagon / पंचभुज", "Octagon / अष्टभुज"],
+		"correctAnswer": "Pentagon / पंचभुज"
+	  },
+	  {
+		"questionEnglish": "What is the sum of the values in a data set divided by the number of values?",
+		"questionHindi": "डेटा सेट में मूल्यों के योग को मूल्यों की संख्या से विभाजित करने पर क्या प्राप्त होता है?",
+		"options": ["Median / माध्यिका", "Mode / बहुलक", "Range / परास", "Mean / माध्य", "Variance / विचरण"],
+		"correctAnswer": "Mean / माध्य"
+	  },
+	  {
+		"questionEnglish": "What is the side of a right-angled triangle that is not the hypotenuse?",
+		"questionHindi": "समकोण त्रिभुज की वह भुजा जो कर्ण नहीं है, क्या कहलाती है?",
+		"options": ["Hypotenuse / कर्ण", "Opposite / सम्मुख", "Adjacent / आसन्न", "Leg / पाद", "Base / आधार"],
+		"correctAnswer": "Leg / पाद"
+	  },
+	  {
+		"questionEnglish": "What is an angle that is greater than 90 degrees but less than 180 degrees?",
+		"questionHindi": "वह कोण क्या है जो 90 डिग्री से बड़ा लेकिन 180 डिग्री से छोटा होता है?",
+		"options": ["Acute / न्यूनकोण", "Right / समकोण", "Reflex / प्रतिवर्ती कोण", "Straight / ऋजु कोण", "Obtuse / अधिककोण"],
+		"correctAnswer": "Obtuse / अधिककोण"
+	  },
+	  {
+		"questionEnglish": "What is a flat figure with opposite sides parallel and equal in length called?",
+		"questionHindi": "एक सपाट आकृति जिसकी विपरीत भुजाएँ समानांतर और लंबाई में समान हों, क्या कहलाती है?",
+		"options": ["Trapezoid / समलंब चतुर्भुज", "Rectangle / आयत", "Rhombus / समचतुर्भुज", "Parallelogram / समांतर चतुर्भुज", "Kite / पतंग"],
+		"correctAnswer": "Parallelogram / समांतर चतुर्भुज"
+	  },
+	  {
+		"questionEnglish": "What is a figure with no thickness that extends forever in both directions?",
+		"questionHindi": "बिना मोटाई वाली वह आकृति जो दोनों दिशाओं में हमेशा के लिए फैली रहती है, क्या कहलाती है?",
+		"options": ["Ray / किरण", "Plane / समतल", "Line segment / रेखाखंड", "Line / रेखा", "Curve / वक्र"],
+		"correctAnswer": "Line / रेखा"
+	  },
+	  {
+		"questionEnglish": "What is a triangle with two equal sides called?",
+		"questionHindi": "वह त्रिभुज क्या कहलाता है जिसकी दो भुजाएँ बराबर हों?",
+		"options": ["Scalene / विषमबाहु", "Right / समकोण", "Equilateral / समबाहु", "Isosceles / समद्विबाहु", "Obtuse / अधिककोण"],
+		"correctAnswer": "Isosceles / समद्विबाहु"
+	  },
+	  {
+		"questionEnglish": "What is a polygon with six sides called?",
+		"questionHindi": "छह भुजाओं वाले बहुभुज को क्या कहते हैं?",
+		"options": ["Triangle / त्रिभुज", "Quadrilateral / चतुर्भुज", "Pentagon / पंचभुज", "Hexagon / षट्भुज", "Heptagon / सप्तभुज"],
+		"correctAnswer": "Hexagon / षट्भुज"
+	  },
+	  {
+		"questionEnglish": "What do we call two angles whose sum is 90 degrees?",
+		"questionHindi": "हम उन दो कोणों को क्या कहते हैं जिनका योग 90 डिग्री होता है?",
+		"options": ["Supplementary / संपूरक", "Vertical / शीर्षाभिमुख", "Adjacent / आसन्न", "Complementary / पूरक", "Reflex / प्रतिवर्ती"],
+		"correctAnswer": "Complementary / पूरक"
+	  },
+  {
+    "questionEnglish": "What do we call two angles whose sum is 180 degrees?",
+    "questionHindi": "हम दो कोणों को क्या कहते हैं जिनका योग 180 डिग्री होता है?",
+    "options": ["Complementary / पूरक", "Supplementary / संपूरक", "Right / समकोण", "Acute / न्यूनकोण", "Reflex / प्रतिवर्ती"],
+    "correctAnswer": "Supplementary / संपूरक"
+  },
+  {
+    "questionEnglish": "What is a straight angle equal to in degrees?",
+    "questionHindi": "एक सीधी कोण डिग्री में किसके बराबर होता है?",
+    "options": ["90", "180", "270", "360", "45"],
+    "correctAnswer": "180"
+  },
+  {
+    "questionEnglish": "What is an angle less than 90 degrees called?",
+    "questionHindi": "90 डिग्री से कम कोण को क्या कहते हैं?",
+    "options": ["Obtuse / अधिक कोण", "Right / समकोण", "Acute / न्यूनकोण", "Reflex / प्रतिवर्ती", "Straight / सरल कोण"],
+    "correctAnswer": "Acute / न्यूनकोण"
+  },
+  {
+    "questionEnglish": "What is a triangle with all angles less than 90 degrees called?",
+    "questionHindi": "एक त्रिभुज जिसके सभी कोण 90 डिग्री से कम हों, क्या कहलाता है?",
+    "options": ["Right triangle / समकोण त्रिभुज", "Obtuse triangle / अधिक कोण त्रिभुज", "Acute triangle / न्यूनकोण त्रिभुज", "Isosceles triangle / समद्विबाहु त्रिभुज", "Equilateral triangle / समबाहु त्रिभुज"],
+    "correctAnswer": "Acute triangle / न्यूनकोण त्रिभुज"
+  },
+  {
+    "questionEnglish": "What is a quadrilateral with one pair of parallel sides called?",
+    "questionHindi": "एक चतुर्भुज जिसकी भुजाओं का एक युग्म समानांतर हो, क्या कहलाता है?",
+    "options": ["Parallelogram / समानांतर चतुर्भुज", "Rectangle / आयत", "Square / वर्ग", "Trapezium / समलंब चतुर्भुज", "Rhombus / समचतुर्भुज"],
+    "correctAnswer": "Trapezium / समलंब चतुर्भुज"
+  },
+  {
+    "questionEnglish": "What is a triangle with one angle greater than 90 degrees called?",
+    "questionHindi": "एक त्रिभुज जिसका एक कोण 90 डिग्री से अधिक हो, क्या कहलाता है?",
+    "options": ["Acute triangle / न्यूनकोण त्रिभुज", "Right triangle / समकोण त्रिभुज", "Obtuse triangle / अधिक कोण त्रिभुज", "Equilateral triangle / समबाहु त्रिभुज", "Scalene triangle / विषमबाहु त्रिभुज"],
+    "correctAnswer": "Obtuse triangle / अधिक कोण त्रिभुज"
+  },
+  {
+    "questionEnglish": "What do we call two lines that never intersect and are always the same distance apart?",
+    "questionHindi": "हम दो रेखाओं को क्या कहते हैं जो कभी नहीं मिलती हैं और हमेशा समान दूरी पर होती हैं?",
+    "options": ["Intersecting / प्रतिच्छेदी", "Perpendicular / लंबवत", "Parallel / समानांतर", "Skew / तिरछी", "Concurrent / संगामी"],
+    "correctAnswer": "Parallel / समानांतर"
+  },
+  {
+    "questionEnglish": "What do you call a solid figure with a circular base and one vertex?",
+    "questionHindi": "आप एक ठोस आकृति को क्या कहते हैं जिसका आधार वृत्ताकार होता है और एक शीर्ष होता है?",
+    "options": ["Cylinder / बेलन", "Sphere / गोला", "Cube / घन", "Cone / शंकु", "Pyramid / पिरामिड"],
+    "correctAnswer": "Cone / शंकु"
+  },
+  {
+    "questionEnglish": "What is the total length of the boundary of a figure called?",
+    "questionHindi": "किसी आकृति की सीमा की कुल लंबाई को क्या कहते हैं?",
+    "options": ["Area / क्षेत्रफल", "Volume / आयतन", "Perimeter / परिमाप", "Diameter / व्यास", "Radius / त्रिज्या"],
+    "correctAnswer": "Perimeter / परिमाप"
+  },
+  {
+    "questionEnglish": "What is the space inside a 2D shape called?",
+    "questionHindi": "एक 2डी आकार के अंदर की जगह को क्या कहते हैं?",
+    "options": ["Perimeter / परिमाप", "Volume / आयतन", "Area / क्षेत्रफल", "Circumference / परिधि", "Length / लंबाई"],
+    "correctAnswer": "Area / क्षेत्रफल"
+  },
+  {
+    "questionEnglish": "What is the opposite of multiplication in arithmetic operations?",
+    "questionHindi": "अंकगणितीय संक्रियाओं में गुणा का विपरीत क्या है?",
+    "options": ["Addition / जोड़", "Subtraction / घटाव", "Division / भाग", "Exponentiation / घातांक", "Root / मूल"],
+    "correctAnswer": "Division / भाग"
+  },
+  {
+    "questionEnglish": "What do we call a figure with no line of symmetry?",
+    "questionHindi": "हम एक ऐसी आकृति को क्या कहते हैं जिसमें समरूपता की कोई रेखा नहीं होती है?",
+    "options": ["Symmetrical / सममित", "Regular / नियमित", "Irregular / अनियमित", "Asymmetric / असममित", "Congruent / सर्वांगसम"],
+    "correctAnswer": "Asymmetric / असममित"
+  },
+  {
+    "questionEnglish": "What is a triangle with all unequal sides called?",
+    "questionHindi": "एक त्रिभुज जिसकी सभी भुजाएँ असमान हों, क्या कहलाता है?",
+    "options": ["Equilateral / समबाहु", "Isosceles / समद्विबाहु", "Right / समकोण", "Acute / न्यूनकोण", "Scalene / विषमबाहु"],
+    "correctAnswer": "Scalene / विषमबाहु"
+  },
+  {
+    "questionEnglish": "What do we call a number that is multiplied by itself a certain number of times?",
+    "questionHindi": "हम उस संख्या को क्या कहते हैं जिसे स्वयं से एक निश्चित संख्या में गुणा किया जाता है?",
+    "options": ["Exponent / घातांक", "Power / घात", "Base / आधार", "Root / मूल", "Factor / गुणनखंड"],
+    "correctAnswer": "Base / आधार"
+  },
+  {
+    "questionEnglish": "What do we call two numbers whose product is 1?",
+    "questionHindi": "हम दो संख्याओं को क्या कहते हैं जिनका गुणनफल 1 होता है?",
+    "options": ["Integers / पूर्णांक", "Prime numbers / अभाज्य संख्याएँ", "Composite numbers / भाज्य संख्याएँ", "Reciprocals / व्युत्क्रम", "Rational numbers / परिमेय संख्याएँ"],
+    "correctAnswer": "Reciprocals / व्युत्क्रम"
+  },
+  {
+    "questionEnglish": "What is the term for a repeating decimal pattern in a number?",
+    "questionHindi": "किसी संख्या में दोहराए जाने वाले दशमलव पैटर्न के लिए क्या शब्द है?",
+    "options": ["Terminating / सांत", "Finite / परिमित", "Recurring / आवर्ती", "Irrational / अपरिमेय", "Rational / परिमेय"],
+    "correctAnswer": "Recurring / आवर्ती"
+  },
+  {
+    "questionEnglish": "What do we call a value that doesn’t change in an equation?",
+    "questionHindi": "हम समीकरण में न बदलने वाले मान को क्या कहते हैं?",
+    "options": ["Variable / चर", "Coefficient / गुणांक", "Constant / स्थिरांक", "Operator / संकारक", "Solution / हल"],
+    "correctAnswer": "Constant / स्थिरांक"
+  },
+  {
+    "questionEnglish": "What is a symbol used to represent an unknown value in algebra?",
+    "questionHindi": "बीजगणित में एक अज्ञात मान का प्रतिनिधित्व करने के लिए किस प्रतीक का उपयोग किया जाता है?",
+    "options": ["Constant / स्थिरांक", "Operator / संकारक", "Equation / समीकरण", "Variable / चर", "Coefficient / गुणांक"],
+    "correctAnswer": "Variable / चर"
+  },
+  {
+    "questionEnglish": "What is the study of shapes, sizes, and properties of figures called?",
+    "questionHindi": "आकृतियों, आकारों और आकृतियों के गुणों के अध्ययन को क्या कहते हैं?",
+    "options": ["Algebra / बीजगणित", "Calculus / कलन", "Trigonometry / त्रिकोणमिति", "Geometry / ज्यामिति", "Statistics / सांख्यिकी"],
+    "correctAnswer": "Geometry / ज्यामिति"
+  },
+  {
+    "questionEnglish": "What do we call a closed plane figure with straight sides?",
+    "questionHindi": "हम सीधी भुजाओं वाली एक बंद समतल आकृति को क्या कहते हैं?",
+    "options": ["Circle / वृत्त", "Ellipse / दीर्घवृत्त", "Polygon / बहुभुज", "Curve / वक्र", "Arc / चाप"],
+    "correctAnswer": "Polygon / बहुभुज"
+  }
+]

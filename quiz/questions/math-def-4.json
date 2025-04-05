@@ -1,0 +1,182 @@
+[
+  {
+    "questionEnglish": "What do we call a solid shape with six rectangular faces?",
+    "questionHindi": "हम छह आयताकार फलकों वाली ठोस आकृति को क्या कहते हैं?",
+    "options": ["Cube / घन", "Sphere / गोला", "Cone / शंकु", "Cylinder / बेलन", "Cuboid / घनाभ"],
+    "correctAnswer": "Cuboid / घनाभ"
+  },
+  {
+    "questionEnglish": "What is the measure of the surface covering a 3D object called?",
+    "questionHindi": "किसी 3डी वस्तु को ढकने वाली सतह के माप को क्या कहते हैं?",
+    "options": ["Volume / आयतन", "Perimeter / परिमाप", "Area / क्षेत्रफल", "Surface area / पृष्ठीय क्षेत्रफल", "Lateral surface area / पार्श्व पृष्ठीय क्षेत्रफल"],
+    "correctAnswer": "Surface area / पृष्ठीय क्षेत्रफल"
+  },
+  {
+    "questionEnglish": "What is a location in space that has no size or shape?",
+    "questionHindi": "अंतरिक्ष में वह स्थान क्या है जिसका कोई आकार या आकृति नहीं होती है?",
+    "options": ["Line / रेखा", "Plane / समतल", "Solid / ठोस", "Point / बिंदु", "Angle / कोण"],
+    "correctAnswer": "Point / बिंदु"
+  },
+  {
+    "questionEnglish": "What do we call an equation that contains an exponent as a variable?",
+    "questionHindi": "हम उस समीकरण को क्या कहते हैं जिसमें एक चर घातांक के रूप में होता है?",
+    "options": ["Linear equation / रैखिक समीकरण", "Quadratic equation / द्विघात समीकरण", "Logarithmic equation / लघुगणकीय समीकरण", "Exponential equation / घातांकीय समीकरण", "Polynomial equation / बहुपद समीकरण"],
+    "correctAnswer": "Exponential equation / घातांकीय समीकरण"
+  },
+  {
+    "questionEnglish": "What is a number expressed as a product of its prime factors called?",
+    "questionHindi": "किसी संख्या को उसके अभाज्य गुणनखंडों के गुणनफल के रूप में व्यक्त करना क्या कहलाता है?",
+    "options": ["Common factor / उभयनिष्ठ गुणनखंड", "Greatest common divisor / महत्तम समापवर्तक", "Least common multiple / लघुत्तम समापवर्त्य", "Prime factorization / अभाज्य गुणनखंडन", "Composite number / भाज्य संख्या"],
+    "correctAnswer": "Prime factorization / अभाज्य गुणनखंडन"
+  },
+  {
+    "questionEnglish": "What do we call an event that is certain to happen in probability?",
+    "questionHindi": "प्रायिकता में निश्चित रूप से घटित होने वाली घटना को हम क्या कहते हैं?",
+    "options": ["Impossible event / असंभव घटना", "Likely event / संभावित घटना", "Unlikely event / असंभावित घटना", "Sure event / निश्चित घटना", "Random event / यादृच्छिक घटना"],
+    "correctAnswer": "Sure event / निश्चित घटना"
+  },
+  {
+    "questionEnglish": "What is a triangle whose sides are all different lengths called?",
+    "questionHindi": "एक त्रिभुज जिसकी सभी भुजाएँ अलग-अलग लंबाई की हों, क्या कहलाता है?",
+    "options": ["Equilateral / समबाहु", "Isosceles / समद्विबाहु", "Right / समकोण", "Acute / न्यूनकोण", "Scalene / विषमबाहु"],
+    "correctAnswer": "Scalene / विषमबाहु"
+  },
+  {
+    "questionEnglish": "What is a graph that shows data using bars of different heights?",
+    "questionHindi": "वह ग्राफ क्या है जो विभिन्न ऊंचाइयों की बार का उपयोग करके डेटा दिखाता है?",
+    "options": ["Pie chart / पाई चार्ट", "Line graph / रेखा ग्राफ", "Scatter plot / प्रकीर्ण आरेख", "Histogram / हिस्टोग्राम", "Bar graph / बार ग्राफ"],
+    "correctAnswer": "Bar graph / बार ग्राफ"
+  },
+  {
+    "questionEnglish": "What do we call data that is collected first-hand for analysis?",
+    "questionHindi": "हम उस डेटा को क्या कहते हैं जिसे विश्लेषण के लिए पहली बार एकत्र किया जाता है?",
+    "options": ["Secondary data / द्वितीयक डेटा", "Qualitative data / गुणात्मक डेटा", "Quantitative data / मात्रात्मक डेटा", "Sample data / नमूना डेटा", "Primary data / प्राथमिक डेटा"],
+    "correctAnswer": "Primary data / प्राथमिक डेटा"
+  },
+  {
+    "questionEnglish": "What do we call data that is collected by someone else and reused?",
+    "questionHindi": "हम उस डेटा को क्या कहते हैं जिसे किसी और द्वारा एकत्र किया गया है और पुन: उपयोग किया गया है?",
+    "options": ["Primary data / प्राथमिक डेटा", "Raw data / कच्चा डेटा", "Processed data / संसाधित डेटा", "Sample data / नमूना डेटा", "Secondary data / द्वितीयक डेटा"],
+    "correctAnswer": "Secondary data / द्वितीयक डेटा"
+  },
+  {
+    "questionEnglish": "What is a branch of mathematics dealing with data collection and analysis?",
+    "questionHindi": "गणित की वह शाखा क्या है जो डेटा संग्रह और विश्लेषण से संबंधित है?",
+    "options": ["Algebra / बीजगणित", "Calculus / कलन", "Geometry / ज्यामिति", "Statistics / सांख्यिकी", "Trigonometry / त्रिकोणमिति"],
+    "correctAnswer": "Statistics / सांख्यिकी"
+  },
+  {
+    "questionEnglish": "What do you call the difference between the actual value and the estimated value?",
+    "questionHindi": "आप वास्तविक मान और अनुमानित मान के बीच के अंतर को क्या कहते हैं?",
+    "options": ["Accuracy / सटीकता", "Precision / परिशुद्धता", "Deviation / विचलन", "Error / त्रुटि", "Variance / विचरण"],
+    "correctAnswer": "Error / त्रुटि"
+  },
+  {
+    "questionEnglish": "What is a comparison of two quantities by division called?",
+    "questionHindi": "भाग द्वारा दो मात्राओं की तुलना को क्या कहते हैं?",
+    "options": ["Proportion / समानुपात", "Percentage / प्रतिशत", "Fraction / भिन्न", "Ratio / अनुपात", "Rate / दर"],
+    "correctAnswer": "Ratio / अनुपात"
+  },
+  {
+    "questionEnglish": "What is a ratio that compares two quantities with different units?",
+    "questionHindi": "विभिन्न इकाइयों वाली दो मात्राओं की तुलना करने वाले अनुपात को क्या कहते हैं?",
+    "options": ["Proportion / समानुपात", "Percentage / प्रतिशत", "Scale factor / स्केल कारक", "Ratio / अनुपात", "Rate / दर"],
+    "correctAnswer": "Rate / दर"
+  },
+  {
+    "questionEnglish": "What is the increase or decrease expressed as a percentage?",
+    "questionHindi": "प्रतिशत के रूप में व्यक्त की गई वृद्धि या कमी क्या है?",
+    "options": ["Absolute change / निरपेक्ष परिवर्तन", "Relative change / सापेक्ष परिवर्तन", "Percentage point change / प्रतिशत बिंदु परिवर्तन", "Percent change / प्रतिशत परिवर्तन", "Rate of change / परिवर्तन की दर"],
+    "correctAnswer": "Percent change / प्रतिशत परिवर्तन"
+  },
+  {
+    "questionEnglish": "What is a number representing part of a hundred?",
+    "questionHindi": "सौ के भाग का प्रतिनिधित्व करने वाली संख्या क्या है?",
+    "options": ["Fraction / भिन्न", "Decimal / दशमलव", "Ratio / अनुपात", "Percentage / प्रतिशत", "Proportion / समानुपात"],
+    "correctAnswer": "Percentage / प्रतिशत"
+  },
+  {
+    "questionEnglish": "What is the interest calculated on the principal only?",
+    "questionHindi": "केवल मूलधन पर गणना किया गया ब्याज क्या है?",
+    "options": ["Compound interest / चक्रवृद्धि ब्याज", "Nominal interest rate / नाममात्र ब्याज दर", "Effective interest rate / प्रभावी ब्याज दर", "Simple interest / साधारण ब्याज", "Discount / छूट"],
+    "correctAnswer": "Simple interest / साधारण ब्याज"
+  },
+  {
+    "questionEnglish": "What is the interest calculated on the principal and accumulated interest?",
+    "questionHindi": "मूलधन और संचित ब्याज पर गणना किया गया ब्याज क्या है?",
+    "options": ["Simple interest / साधारण ब्याज", "Annual percentage rate / वार्षिक प्रतिशत दर", "Prime rate / प्रमुख दर", "Compound interest / चक्रवृद्धि ब्याज", "Flat rate interest / फ्लैट दर ब्याज"],
+    "correctAnswer": "Compound interest / चक्रवृद्धि ब्याज"
+  },
+  {
+    "questionEnglish": "What is the initial amount of money before interest called?",
+    "questionHindi": "ब्याज से पहले की प्रारंभिक धनराशि क्या कहलाती है?",
+    "options": ["Amount / राशि", "Interest / ब्याज", "Profit / लाभ", "Principal / मूलधन", "Capital / पूंजी"],
+    "correctAnswer": "Principal / मूलधन"
+  },
+  {
+    "questionEnglish": "What is a polynomial with two terms called?",
+    "questionHindi": "दो पदों वाले बहुपद को क्या कहते हैं?",
+    "options": ["Monomial / एकपदी", "Trinomial / त्रिपदी", "Quadrinomial / चतुष्पदी", "Binomial / द्विपदी", "Polynomial / बहुपद"],
+    "correctAnswer": "Binomial / द्विपदी"
+  },
+  {
+    "questionEnglish": "What is a polynomial with three terms called?",
+    "questionHindi": "तीन पदों वाले बहुपद को क्या कहते हैं?",
+    "options": ["Monomial / एकपदी", "Binomial / द्विपदी", "Quadrinomial / चतुष्पदी", "Trinomial / त्रिपदी", "Polynomial / बहुपद"],
+    "correctAnswer": "Trinomial / त्रिपदी"
+  },
+  {
+    "questionEnglish": "What is a polynomial of degree two called?",
+    "questionHindi": "घात दो के बहुपद को क्या कहते हैं?",
+    "options": ["Linear / रैखिक", "Cubic / त्रिघात", "Quartic / चतुर्थघात", "Quadratic / द्विघात", "Constant / अचर"],
+    "correctAnswer": "Quadratic / द्विघात"
+  },
+  {
+    "questionEnglish": "What do we call an equation that has two equal expressions?",
+    "questionHindi": "हम उस समीकरण को क्या कहते हैं जिसमें दो समान व्यंजक होते हैं?",
+    "options": ["Formula / सूत्र", "Inequality / असमानता", "Identity / सर्वसमिका", "Conditional equation / सशर्त समीकरण", "Expression / व्यंजक"],
+    "correctAnswer": "Identity / सर्वसमिका"
+  },
+  {
+    "questionEnglish": "What is a number’s distance from zero on the number line called?",
+    "questionHindi": "संख्या रेखा पर किसी संख्या की शून्य से दूरी क्या कहलाती है?",
+    "options": ["Integer / पूर्णांक", "Magnitude / परिमाण", "Opposite / विपरीत", "Absolute value / निरपेक्ष मान", "Relative value / सापेक्ष मान"],
+    "correctAnswer": "Absolute value / निरपेक्ष मान"
+  },
+  {
+    "questionEnglish": "What is the point where a graph crosses the x-axis called?",
+    "questionHindi": "वह बिंदु क्या कहलाता है जहाँ एक ग्राफ x-अक्ष को पार करता है?",
+    "options": ["Origin / मूल बिंदु", "Y-intercept / y-अन्तःखंड", "Vertex / शीर्ष", "Root / मूल", "X-intercept / x-अन्तःखंड"],
+    "correctAnswer": "X-intercept / x-अन्तःखंड"
+  },
+  {
+    "questionEnglish": "What is the point where a graph crosses the y-axis called?",
+    "questionHindi": "वह बिंदु क्या कहलाता है जहाँ एक ग्राफ y-अक्ष को पार करता है?",
+    "options": ["Origin / मूल बिंदु", "X-intercept / x-अन्तःखंड", "Slope / ढलान", "Vertex / शीर्ष", "Y-intercept / y-अन्तःखंड"],
+    "correctAnswer": "Y-intercept / y-अन्तःखंड"
+  },
+  {
+    "questionEnglish": "What is the steepness of a line on a graph called?",
+    "questionHindi": "एक ग्राफ पर एक रेखा की ढलान क्या कहलाती है?",
+    "options": ["Intercept / अन्तःखंड", "Coordinate / निर्देशांक", "Gradient / प्रवणता", "Equation / समीकरण", "Slope / ढलान"],
+    "correctAnswer": "Slope / ढलान"
+  },
+  {
+    "questionEnglish": "What is a transformation that flips a figure over a line?",
+    "questionHindi": "वह परिवर्तन क्या है जो एक आकृति को एक रेखा पर पलट देता है?",
+    "options": ["Translation / स्थानांतरण", "Rotation / घूर्णन", "Dilation / विस्फारण", "Reflection / परावर्तन", "Glide reflection / सर्पण परावर्तन"],
+    "correctAnswer": "Reflection / परावर्तन"
+  },
+  {
+    "questionEnglish": "What is a transformation that slides a figure in any direction?",
+    "questionHindi": "वह परिवर्तन क्या है जो एक आकृति को किसी भी दिशा में खिसकाता है?",
+    "options": ["Reflection / परावर्तन", "Rotation / घूर्णन", "Dilation / विस्फारण", "Translation / स्थानांतरण", "Inversion / प्रतिलोमन"],
+    "correctAnswer": "Translation / स्थानांतरण"
+  },
+  {
+    "questionEnglish": "What is a transformation that turns a figure around a point?",
+    "questionHindi": "वह परिवर्तन क्या है जो एक आकृति को एक बिंदु के चारों ओर घुमाता है?",
+    "options": ["Reflection / परावर्तन", "Translation / स्थानांतरण", "Dilation / विस्फारण", "Rotation / घूर्णन", "Shear / अपरूपण"],
+    "correctAnswer": "Rotation / घूर्णन"
+  }
+]
