@@ -6,42 +6,38 @@
     <title>Select Quiz</title>
     <style>
         #quizSelection {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            padding: 10px;
             font-family: sans-serif;
         }
 
         #filterSection {
             position: sticky;
-            top: 20px;
-            background-color: white;
-            padding-bottom: 10px;
+            top: 0;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
             z-index: 100;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
 
         #quizListContainer {
             margin-top: 20px;
         }
+        #quizList {
+            display: grid;
+            grid-template-columns: auto auto;
+            margin-top: 20px;
+        }
 
         #quizList button {
             margin: 10px;
-            padding: 10px 20px;
             background: linear-gradient(135deg, rgb(39, 40, 41), rgb(207, 21, 21));
             color: #fff;
             border: none;
             border-radius: 4px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
             font-size: 0.8rem;
-            padding: 6px 12px;
-        }
-
-        #quizList button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            padding: 6px;
         }
 
         label {
@@ -175,7 +171,7 @@
             const selectedQuiz = quizzes[index];
             localStorage.setItem("quizTitle", selectedQuiz.title);
             localStorage.setItem("quizFile", selectedQuiz.file);
-            window.location.href = "quiz-min.html";
+            window.location.href = "quiz.html";
         }
     </script>
 </body>
