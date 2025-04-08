@@ -5,9 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Quiz</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
         #quizSelection {
-            padding: 10px;
+            padding:0 10px;
             font-family: sans-serif;
+            
         }
 
         #filterSection {
@@ -32,13 +39,14 @@
 
         #quizList button {
             margin: 5px;
-            background: linear-gradient(135deg, rgb(39, 40, 41), rgb(207, 21, 21));
+            background: linear-gradient(135deg, rgb(39, 40, 41), rgb(216, 195, 195));
             color: #fff;
             border: none;
             border-radius: 4px;
             font-size: 0.8rem;
             padding: 3px;
-box-sizing: border-box;
+            box-sizing: border-box;
+            cursor: pointer;
         }
 
         label {
@@ -63,11 +71,17 @@ box-sizing: border-box;
 <body>
     <div id="quizSelection">
         <div id="filterSection">
-            <h2>Select a Quiz</h2>
+            <h2 style="text-align: center;margin: 0;">Select a Quiz</h2>
 
             <label for="subjectFilter">Filter by Subject:</label>
             <select id="subjectFilter" aria-label="Filter by Subject">
-                <option value="All">All</option>
+                <option value="">Select Subject</option>
+                <option value="math">Math</option>
+                <option value="english">English</option>
+                <option value="hindi">Hindi</option>
+                <option value="science">Science</option>
+                <option value="reasoning">Reasoning</option>
+                <option value="history">History</option>
             </select>
 
             <label for="topicFilter">Filter by Topic:</label>
@@ -78,100 +92,98 @@ box-sizing: border-box;
 
         <div id="quizListContainer">
             <div id="quizList">
-                <p>Loading quizzes...</p>
+                <p>Please select a subject.</p>
             </div>
         </div>
     </div>
 
     <script>
-        let quizzes = [];
-
-        window.onload = function() {
-            const quizList = document.getElementById("quizList");
-
-            fetch("./quizzes.json")
-                .then(response => response.json())
-                .then(data => {
-                    quizzes = data;
-                    populateSubjectFilter();
-                    populateTopicFilter(); // Initial population based on "All" subjects
-                    showQuizSelection();
-                })
-                .catch(error => {
-                    console.error("Error loading quizzes:", error);
-                    quizList.innerHTML = "<p style='color: red;'>⚠️ Unable to load quizzes. Please check your internet or try again later.</p>";
-                });
-
-            document.getElementById("subjectFilter").onchange = () => {
-                populateTopicFilter(); // Repopulate topics based on the selected subject
-                showQuizSelection();
-            };
-
-            document.getElementById("topicFilter").onchange = showQuizSelection;
+        const subjectFolder = "subject/"; // Define the folder where subject JSONs are stored
+        const subjectQuizMap = {
+            "math": "math.json",
+            "english": "english.json",
+            "hindi": "hindi.json",
+            "science": "science.json",
+            "reasoning": "reasoning.json",
+            "history": "history.json",
+            "science": "science.json"
         };
 
-        function populateSubjectFilter() {
-            const subjectFilter = document.getElementById("subjectFilter");
-            const subjects = [...new Set(quizzes.map(quiz => quiz.subject))];
-            subjects.forEach(subject => {
-                const option = document.createElement("option");
-                option.value = subject;
-                option.textContent = subject;
-                subjectFilter.appendChild(option);
-            });
-        }
+        let currentQuizzes = [];
+        let selectedSubjectGlobal = ""; // To store the currently selected subject
 
-        function populateTopicFilter() {
+        document.getElementById("subjectFilter").onchange = function() {
+            const selectedSubject = this.value;
+            selectedSubjectGlobal = selectedSubject; // Update the global variable
             const topicFilter = document.getElementById("topicFilter");
-            const subjectFilterValue = document.getElementById("subjectFilter").value;
+            topicFilter.innerHTML = '<option value="All">All</option>'; // Removed "Show All" here
+            document.getElementById("quizList").innerHTML = "<p>Loading quizzes...</p>";
+            currentQuizzes = []; // Reset current quizzes
 
-            topicFilter.innerHTML = '<option value="All">All</option>';
+            if (selectedSubject) {
+                const jsonFilePath = subjectFolder + subjectQuizMap[selectedSubject]; // Construct the correct path
+                fetch(jsonFilePath)
+                    .then(response => response.json())
+                    .then(data => {
+                        currentQuizzes = data;
+                        populateTopicFilter(data);
+                        showQuizSelection(); // Call showQuizSelection after loading (initially shows all)
+                    })
+                    .catch(error => {
+                        console.error(`Error loading ${selectedSubject} quizzes:`, error);
+                        document.getElementById("quizList").innerHTML = `<p style='color: red;'>⚠️ Unable to load ${selectedSubject} quizzes from ${jsonFilePath}.</p>`;
+                    });
+            } else {
+                document.getElementById("quizList").innerHTML = "<p>Please select a subject.</p>";
+            }
+        };
 
-            const filteredTopics = quizzes
-                .filter(quiz => subjectFilterValue === "All" || quiz.subject === subjectFilterValue)
-                .map(quiz => quiz.topic);
-
-            const uniqueTopics = [...new Set(filteredTopics)];
-
-            uniqueTopics.forEach(topic => {
+        function populateTopicFilter(quizzes) {
+            const topicFilter = document.getElementById("topicFilter");
+            topicFilter.innerHTML = '<option value="All">All</option>'; // Reset and keep "All"
+            const topics = [...new Set(quizzes.map(quiz => quiz.topic))];
+            topics.forEach(topic => {
                 const option = document.createElement("option");
                 option.value = topic;
                 option.textContent = topic;
                 topicFilter.appendChild(option);
             });
         }
+
+        document.getElementById("topicFilter").onchange = showQuizSelection; // Re-enable the onchange listener
+
         function showQuizSelection() {
-    const quizList = document.getElementById("quizList");
-    quizList.innerHTML = "";
+            const quizList = document.getElementById("quizList");
+            quizList.innerHTML = "";
 
-    const subjectFilterValue = document.getElementById("subjectFilter").value;
-    const topicFilterValue = document.getElementById("topicFilter").value;
+            const topicFilterValue = document.getElementById("topicFilter").value;
 
-    const filteredQuizzes = quizzes.filter((quiz) => {
-        const subjectMatch = subjectFilterValue === "All" || quiz.subject === subjectFilterValue;
-        const topicMatch = topicFilterValue === "All" || quiz.topic === topicFilterValue;
-        return subjectMatch && topicMatch;
-    });
+            let filteredQuizzes = [];
+            if (topicFilterValue === "All") {
+                filteredQuizzes = currentQuizzes; // Show all if "All" is selected
+            } else {
+                filteredQuizzes = currentQuizzes.filter((quiz) => {
+                    return quiz.topic === topicFilterValue;
+                });
+            }
 
-    if (filteredQuizzes.length === 0) {
-        quizList.innerHTML = "<p>No quizzes found for the selected filters.</p>";
-    } else {
-        filteredQuizzes.forEach((quiz) => { // Removed the 'index' here
-            const btn = document.createElement("button");
-            btn.textContent = quiz.title;
-            // Find the original index of the current filtered quiz
-            const originalIndex = quizzes.findIndex(q => q.title === quiz.title && q.subject === quiz.subject && q.topic === quiz.topic && q.file === quiz.file);
-            btn.onclick = () => loadQuiz(originalIndex); // Use the original index
-            btn.setAttribute("aria-label", `Select ${quiz.title}`);
-            quizList.appendChild(btn);
-        });
-    }
-}
-    
-        function loadQuiz(index) {
-            const selectedQuiz = quizzes[index];
-            localStorage.setItem("quizTitle", selectedQuiz.title);
-            localStorage.setItem("quizFile", selectedQuiz.file);
+            if (filteredQuizzes.length === 0) {
+                quizList.innerHTML = "<p>No quizzes found for the selected topic.</p>";
+            } else {
+                filteredQuizzes.forEach((quiz, index) => {
+                    const btn = document.createElement("button");
+                    btn.textContent = quiz.title;
+                    btn.onclick = () => loadQuiz(quiz.file, quiz.title, selectedSubjectGlobal); // Pass the subject
+                    btn.setAttribute("aria-label", `Select ${quiz.title}`);
+                    quizList.appendChild(btn);
+                });
+            }
+        }
+
+        function loadQuiz(fileName, quizTitle, subject) {
+            localStorage.setItem("quizTitle", quizTitle);
+            localStorage.setItem("quizFile", fileName);
+            localStorage.setItem("quizSubject", subject);
             window.location.href = "quiz.html";
         }
     </script>

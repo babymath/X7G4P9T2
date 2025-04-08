@@ -1,0 +1,182 @@
+[
+    {
+      "questionEnglish": "The angle at the center of a circle is twice the angle subtended by the same arc at the remaining part of the circle. What is the name of this theorem?",
+      "questionHindi": "एक वृत्त के केंद्र पर बना कोण उसी चाप द्वारा वृत्त के शेष भाग पर अंतरित कोण का दोगुना होता है। इस प्रमेय का नाम क्या है?",
+      "options": ["Angle at Center Theorem / केंद्र पर कोण प्रमेय", "Circle Arc Angle Theorem / वृत्त चाप कोण प्रमेय", "Central Angle Theorem / केंद्रीय कोण प्रमेय", "Sector Angle Theorem / त्रिज्यखंड कोण प्रमेय"],
+      "correctAnswer": "Central Angle Theorem / केंद्रीय कोण प्रमेय"
+    },
+    {
+      "questionEnglish": "In a cyclic quadrilateral, the exterior angle is equal to the interior opposite angle. What is the name of this theorem?",
+      "questionHindi": "एक चक्रीय चतुर्भुज में, बाह्य कोण आंतरिक विपरीत कोण के बराबर होता है। इस प्रमेय का नाम क्या है?",
+      "options": ["Exterior Angle Property of Cyclic Quadrilateral / चक्रीय चतुर्भुज का बाह्य कोण गुण", "Opposite Angle Theorem / विपरीत कोण प्रमेय", "Cyclic Quadrilateral Exterior Angle Theorem / चक्रीय चतुर्भुज बाह्य कोण प्रमेय", "Tangent Quadrilateral Theorem / स्पर्शरेखा चतुर्भुज प्रमेय"],
+      "correctAnswer": "Exterior Angle Property of Cyclic Quadrilateral / चक्रीय चतुर्भुज का बाह्य कोण गुण"
+    },
+    {
+      "questionEnglish": "If two chords of a circle are equal, then their corresponding arcs are also equal. What is the name of this theorem?",
+      "questionHindi": "यदि एक वृत्त की दो जीवाएँ बराबर हों, तो उनके संगत चाप भी बराबर होते हैं। इस प्रमेय का नाम क्या है?",
+      "options": ["Equal Arcs Theorem / बराबर चाप प्रमेय", "Arc-Chord Theorem / चाप-जीवा प्रमेय", "Equal Chord-Arc Theorem / बराबर जीवा-चाप प्रमेय", "Circle Arc Length Theorem / वृत्त चाप लंबाई प्रमेय"],
+      "correctAnswer": "Equal Chord-Arc Theorem / बराबर जीवा-चाप प्रमेय"
+    },
+    {
+      "questionEnglish": "The opposite sides of a rectangle are equal and all angles are right angles. What is the name of this theorem?",
+      "questionHindi": "एक आयत की विपरीत भुजाएँ बराबर होती हैं और सभी कोण समकोण होते हैं। इस प्रमेय का नाम क्या है?",
+      "options": ["Rectangle Properties Theorem / आयत गुण प्रमेय", "Right Angle Shape Theorem / समकोण आकार प्रमेय", "Equal Side-Angle Theorem / बराबर भुजा-कोण प्रमेय", "Properties of Rectangle Theorem / आयत के गुण प्रमेय"],
+      "correctAnswer": "Properties of Rectangle Theorem / आयत के गुण प्रमेय"
+    },
+    {
+      "questionEnglish": "The diagonals of a rectangle are equal and bisect each other. What is the name of this theorem?",
+      "questionHindi": "एक आयत के विकर्ण बराबर होते हैं और एक दूसरे को समद्विभाजित करते हैं। इस प्रमेय का नाम क्या है?",
+      "options": ["Diagonal of Rectangle Theorem / आयत का विकर्ण प्रमेय", "Diagonals in Parallelogram Theorem / समानांतर चतुर्भुज में विकर्ण प्रमेय", "Rectangle Diagonal Property / आयत विकर्ण गुण", "Equal Diagonals Theorem / बराबर विकर्ण प्रमेय"],
+      "correctAnswer": "Rectangle Diagonal Property / आयत विकर्ण गुण"
+    },
+    {
+      "questionEnglish": "In a parallelogram, the sum of any two adjacent angles is 180°. What is the name of this theorem?",
+      "questionHindi": "एक समानांतर चतुर्भुज में, किन्हीं दो आसन्न कोणों का योग 180° होता है। इस प्रमेय का नाम क्या है?",
+      "options": ["Adjacent Angles Theorem / आसन्न कोण प्रमेय", "Parallelogram Angle Property / समानांतर चतुर्भुज कोण गुण", "Supplementary Angle Theorem / संपूरक कोण प्रमेय", "Co-Interior Angle Theorem / सह-आंतरिक कोण प्रमेय"],
+      "correctAnswer": "Parallelogram Angle Property / समानांतर चतुर्भुज कोण गुण"
+    },
+    {
+      "questionEnglish": "In an isosceles triangle, the angles opposite the equal sides are equal. What is the name of this theorem?",
+      "questionHindi": "एक समद्विबाहु त्रिभुज में, बराबर भुजाओं के विपरीत कोण बराबर होते हैं। इस प्रमेय का नाम क्या है?",
+      "options": ["Base Angle Theorem / आधार कोण प्रमेय", "Isosceles Triangle Angle Theorem / समद्विबाहु त्रिभुज कोण प्रमेय", "Triangle Angle-Side Theorem / त्रिभुज कोण-भुजा प्रमेय", "Isosceles Property Theorem / समद्विबाहु गुण प्रमेय"],
+      "correctAnswer": "Isosceles Triangle Angle Theorem / समद्विबाहु त्रिभुज कोण प्रमेय"
+    },
+    {
+      "questionEnglish": "In a triangle, the longest side lies opposite the largest angle. What is the name of this theorem?",
+      "questionHindi": "एक त्रिभुज में, सबसे लंबी भुजा सबसे बड़े कोण के विपरीत होती है। इस प्रमेय का नाम क्या है?",
+      "options": [ "Longest Side Theorem / सबसे लंबी भुजा प्रमेय", "Angle-Side Relationship Theorem / कोण-भुजा संबंध प्रमेय", "Side-Angle Comparison Theorem / भुजा-कोण तुलना प्रमेय", "Inequality in Triangle Theorem / त्रिभुज में असमिका प्रमेय" ],
+      "correctAnswer": "Inequality in Triangle Theorem / त्रिभुज में असमिका प्रमेय"
+    },
+    {
+      "questionEnglish": "If one side of a triangle is extended, the exterior angle formed is equal to the sum of the two interior opposite angles. What is the name of this theorem?",
+      "questionHindi": "यदि एक त्रिभुज की एक भुजा बढ़ाई जाती है, तो बनने वाला बाह्य कोण दो विपरीत अंतः कोणों के योग के बराबर होता है। इस प्रमेय का नाम क्या है?",
+      "options": ["Exterior Angle Property / बाह्य कोण गुण", "Triangle Extension Theorem / त्रिभुज विस्तार प्रमेय", "Exterior Angle Sum Theorem / बाह्य कोण योग प्रमेय", "Angle-Side Extension Theorem / कोण-भुजा विस्तार प्रमेय"],
+      "correctAnswer": "Exterior Angle Property / बाह्य कोण गुण"
+    },
+    {
+      "questionEnglish": "The diagonals of a square are equal and bisect each other at right angles. What is the name of this theorem?",
+      "questionHindi": "एक वर्ग के विकर्ण बराबर होते हैं और एक दूसरे को समकोण पर समद्विभाजित करते हैं। इस प्रमेय का नाम क्या है?",
+      "options": ["Diagonal Property of Square / वर्ग का विकर्ण गुण","Square Diagonal Theorem / वर्ग विकर्ण प्रमेय","Right Angle Diagonal Property / समकोण विकर्ण गुण","Properties of Square Theorem / वर्ग के गुण प्रमेय"],
+      "correctAnswer": "Diagonal Property of Square / वर्ग का विकर्ण गुण"
+    },
+    {
+      "questionEnglish": "If two chords intersect inside a circle, the product of the lengths of the segments of one chord equals the product of the lengths of the segments of the other chord. What is the name of this theorem?",
+      "questionHindi": "यदि दो जीवाएँ एक वृत्त के अंदर प्रतिच्छेद करती हैं, तो एक जीवा के खंडों की लंबाई का गुणनफल दूसरी जीवा के खंडों की लंबाई के गुणनफल के बराबर होता है। इस प्रमेय का नाम क्या है?",
+      "options": ["Intersecting Chords Theorem / प्रतिच्छेदी जीवा प्रमेय", "Circle Segment Product Theorem / वृत्त खंड गुणनफल प्रमेय", "Chord Division Theorem / जीवा विभाजन प्रमेय", "Internal Segment Theorem / आंतरिक खंड प्रमेय"],
+      "correctAnswer": "Intersecting Chords Theorem / प्रतिच्छेदी जीवा प्रमेय"
+    },
+    {
+      "questionEnglish": "In a triangle, if a perpendicular is drawn from the vertex to the base, then the area of the triangle is ½ × base × height. What is the name of this theorem?",
+      "questionHindi": "एक त्रिभुज में, यदि शीर्ष से आधार पर एक लंब खींचा जाता है, तो त्रिभुज का क्षेत्रफल ½ × आधार × ऊँचाई होता है। इस प्रमेय का नाम क्या है?",
+      "options": ["Triangle Area Theorem / त्रिभुज क्षेत्रफल प्रमेय","Base Height Theorem / आधार ऊँचाई प्रमेय","Perpendicular Height Theorem / लंबवत ऊँचाई प्रमेय","Triangle Formula Theorem / त्रिभुज सूत्र प्रमेय"],
+      "correctAnswer": "Triangle Area Theorem / त्रिभुज क्षेत्रफल प्रमेय"
+    },
+    {
+      "questionEnglish": "The angle in a semicircle is always a right angle. What is the name of this theorem?",
+      "questionHindi": "अर्धवृत्त में कोण हमेशा एक समकोण होता है। इस प्रमेय का नाम क्या है?",
+      "options":["Right Angle Semicircle Theorem / समकोण अर्धवृत्त प्रमेय","Angle in Semicircle Theorem / अर्धवृत्त में कोण प्रमेय","Circle Diameter Angle Theorem / वृत्त व्यास कोण प्रमेय","Semicircle Angle Property / अर्धवृत्त कोण गुण"],
+      "correctAnswer": "Angle in Semicircle Theorem / अर्धवृत्त में कोण प्रमेय"
+    },
+    {
+      "questionEnglish": "If a triangle is drawn on the diameter of a circle, then it is a right-angled triangle. What is the name of this theorem?",
+      "questionHindi": "यदि एक वृत्त के व्यास पर एक त्रिभुज खींचा जाता है, तो वह एक समकोण त्रिभुज होता है। इस प्रमेय का नाम क्या है?",
+      "options": ["Diameter Triangle Theorem / व्यास त्रिभुज प्रमेय","Right Triangle in Circle Theorem / वृत्त में समकोण त्रिभुज प्रमेय", "Thales’ Theorem / थेल्स प्रमेय","Semi-Triangle Theorem / अर्ध-त्रिभुज प्रमेय"],
+      "correctAnswer": "Thales’ Theorem / थेल्स प्रमेय"
+    },
+    {
+      "questionEnglish": "In an equilateral triangle, all three altitudes are equal and meet at a single point. What is the name of this theorem?",
+      "questionHindi": "एक समबाहु त्रिभुज में, सभी तीन शीर्षलंब बराबर होते हैं और एक ही बिंदु पर मिलते हैं। इस प्रमेय का नाम क्या है?",
+      "options": ["Equilateral Altitude Theorem / समबाहु शीर्षलंब प्रमेय","Altitude-Center Theorem / शीर्षलंब-केंद्र प्रमेय","Concurrent Altitude Theorem / संगामी शीर्षलंब प्रमेय","Orthocenter Property of Equilateral Triangle / समबाहु त्रिभुज का लंबकेंद्र गुण"],
+      "correctAnswer": "Orthocenter Property of Equilateral Triangle / समबाहु त्रिभुज का लंबकेंद्र गुण"
+    },
+    {
+      "questionEnglish": "In any triangle, the perpendicular bisectors of the sides intersect at a point which is equidistant from all the vertices. What is the name of this theorem?",
+      "questionHindi": "किसी भी त्रिभुज में, भुजाओं के लंबवत समद्विभाजक एक बिंदु पर प्रतिच्छेद करते हैं जो सभी शीर्षों से समान दूरी पर होता है। इस प्रमेय का नाम क्या है?",
+      "options": [ "Circumcenter Theorem / परिकेंद्र प्रमेय","Bisector Intersection Theorem / समद्विभाजक प्रतिच्छेदन प्रमेय","Triangle Circle Center Theorem / त्रिभुज वृत्त केंद्र प्रमेय","Radius-Vertex Theorem / त्रिज्या-शीर्ष प्रमेय"],
+      "correctAnswer": "Circumcenter Theorem / परिकेंद्र प्रमेय"
+    },
+      {
+        "questionEnglish": "The sum of the interior angles of an n-sided polygon is (n − 2) × 180°. What is the name of this theorem?",
+        "questionHindi": "एक n-भुजा वाले बहुभुज के आंतरिक कोणों का योग (n − 2) × 180° होता है। इस प्रमेय का नाम क्या है?",
+        "options": ["Polygon Angle Sum Theorem / बहुभुज कोण योग प्रमेय", "Interior Angle Formula Theorem / आंतरिक कोण सूत्र प्रमेय", "n-gon Angle Theorem / n-भुज कोण प्रमेय", "Sum of Angles in Polygon Theorem / बहुभुज में कोणों का योग प्रमेय"],
+        "correctAnswer": "Polygon Angle Sum Theorem / बहुभुज कोण योग प्रमेय"
+      },
+      {
+        "questionEnglish": "In a circle, if a diameter is perpendicular to a chord, it bisects the chord and its arc. What is the name of this theorem?",
+        "questionHindi": "एक वृत्त में, यदि एक व्यास एक जीवा पर लंबवत है, तो वह जीवा और उसके चाप को समद्विभाजित करता है। इस प्रमेय का नाम क्या है?",
+        "options": ["Diameter Bisects Chord Theorem / व्यास जीवा समद्विभाजन प्रमेय", "Perpendicular Diameter Theorem / लंबवत व्यास प्रमेय", "Circle Division Theorem / वृत्त विभाजन प्रमेय", "Chord Perpendicular Theorem / जीवा लंबवत प्रमेय"],
+        "correctAnswer": "Diameter Bisects Chord Theorem / व्यास जीवा समद्विभाजन प्रमेय"
+      },
+      {
+        "questionEnglish": "Two triangles are congruent if all three sides of one triangle are equal to the corresponding three sides of another triangle. What is the name of this theorem?",
+        "questionHindi": "दो त्रिभुज सर्वांगसम होते हैं यदि एक त्रिभुज की सभी तीन भुजाएँ दूसरे त्रिभुज की संगत तीन भुजाओं के बराबर हों। इस प्रमेय का नाम क्या है?",
+        "options": ["SSS Congruence Theorem / SSS सर्वांगसमता प्रमेय", "AAA Triangle Rule / AAA त्रिभुज नियम", "Side-Side-Side Similarity / भुजा-भुजा-भुजा समरूपता", "Triangle Side Theorem / त्रिभुज भुजा प्रमेय"],
+        "correctAnswer": "SSS Congruence Theorem / SSS सर्वांगसमता प्रमेय"
+      },
+      {
+        "questionEnglish": "If the lengths of two sides of a triangle and the measure of the included angle are known, then the triangle is uniquely determined. What is the name of this theorem?",
+        "questionHindi": "यदि एक त्रिभुज की दो भुजाओं की लंबाई और उनके अंतर्गत कोण का माप ज्ञात हो, तो त्रिभुज विशिष्ट रूप से निर्धारित होता है। इस प्रमेय का नाम क्या है?",
+        "options": ["SAS Congruence Theorem / SAS सर्वांगसमता प्रमेय", "Side-Angle-Angle Rule / भुजा-कोण-कोण नियम", "Included Angle Triangle Theorem / अंतर्गत कोण त्रिभुज प्रमेय", "Side-Angle Congruence Theorem / भुजा-कोण सर्वांगसमता प्रमेय"],
+        "correctAnswer": "SAS Congruence Theorem / SAS सर्वांगसमता प्रमेय"
+      },
+      {
+        "questionEnglish": "The perpendicular bisectors of the sides of a triangle meet at a point called the circumcenter, which is the center of the circle passing through all three vertices. What is the name of this theorem?",
+        "questionHindi": "एक त्रिभुज की भुजाओं के लंबवत समद्विभाजक एक बिंदु पर मिलते हैं जिसे परिकेंद्र कहा जाता है, जो सभी तीन शीर्षों से गुजरने वाले वृत्त का केंद्र होता है। इस प्रमेय का नाम क्या है?",
+        "options": ["Circumcenter of Triangle Theorem / त्रिभुज का परिकेंद्र प्रमेय", "Triangle Circle Theorem / त्रिभुज वृत्त प्रमेय", "Perpendicular Bisector Theorem / लंबवत समद्विभाजक प्रमेय", "Circle Vertex Theorem / वृत्त शीर्ष प्रमेय"],
+        "correctAnswer": "Circumcenter of Triangle Theorem / त्रिभुज का परिकेंद्र प्रमेय"
+      },
+      {
+        "questionEnglish": "If a transversal intersects two parallel lines, then each pair of alternate interior angles is equal. What is the name of this theorem?",
+        "questionHindi": "यदि एक तिर्यक रेखा दो समानांतर रेखाओं को प्रतिच्छेद करती है, तो एकांतर अंतः कोणों का प्रत्येक युग्म बराबर होता है। इस प्रमेय का नाम क्या है?",
+        "options": ["Alternate Interior Angle Theorem / एकांतर अंतः कोण प्रमेय", "Parallel Line Angle Theorem / समानांतर रेखा कोण प्रमेय", "Transversal Theorem / तिर्यक रेखा प्रमेय", "Interior Equality Theorem / आंतरिक समानता प्रमेय"],
+        "correctAnswer": "Alternate Interior Angle Theorem / एकांतर अंतः कोण प्रमेय"
+      },
+      {
+        "questionEnglish": "In a triangle, the sum of the lengths of any two sides is greater than the length of the third side. What is the name of this theorem?",
+        "questionHindi": "एक त्रिभुज में, किन्हीं दो भुजाओं की लंबाई का योग तीसरी भुजा की लंबाई से अधिक होता है। इस प्रमेय का नाम क्या है?",
+        "options": ["Triangle Inequality Theorem / त्रिभुज असमिका प्रमेय", "Side Sum Theorem / भुजा योग प्रमेय", "Triangle Rule Theorem / त्रिभुज नियम प्रमेय", "Greater Side Theorem / बड़ी भुजा प्रमेय"],
+        "correctAnswer": "Triangle Inequality Theorem / त्रिभुज असमिका प्रमेय"
+      },
+      {
+        "questionEnglish": "The diagonals of a rhombus bisect each other at right angles. What is the name of this theorem?",
+        "questionHindi": "एक समचतुर्भुज के विकर्ण एक दूसरे को समकोण पर समद्विभाजित करते हैं। इस प्रमेय का नाम क्या है?",
+        "options": ["Diagonals of Rhombus Theorem / समचतुर्भुज के विकर्ण प्रमेय", "Right Angle Bisection Theorem / समकोण समद्विभाजन प्रमेय", "Rhombus Property Theorem / समचतुर्भुज गुण प्रमेय", "Rhombus Diagonal Theorem / समचतुर्भुज विकर्ण प्रमेय"],
+        "correctAnswer": "Rhombus Diagonal Theorem / समचतुर्भुज विकर्ण प्रमेय"
+      },
+      {
+        "questionEnglish": "In a parallelogram, opposite sides are equal in length and opposite angles are equal in measure. What is the name of this theorem?",
+        "questionHindi": "एक समानांतर चतुर्भुज में, विपरीत भुजाएँ लंबाई में बराबर होती हैं और विपरीत कोण माप में बराबर होते हैं। इस प्रमेय का नाम क्या है?",
+        "options": ["Opposite Sides and Angles Theorem / विपरीत भुजाएँ और कोण प्रमेय", "Parallelogram Property Theorem / समानांतर चतुर्भुज गुण प्रमेय", "Side-Angle Equality Theorem / भुजा-कोण समानता प्रमेय", "Equal Opposites Theorem / बराबर विपरीत प्रमेय"],
+        "correctAnswer": "Parallelogram Property Theorem / समानांतर चतुर्भुज गुण प्रमेय"
+      },
+      {
+        "questionEnglish": "The diagonals of a kite are perpendicular to each other. What is the name of this theorem?",
+        "questionHindi": "एक पतंग के विकर्ण एक दूसरे के लंबवत होते हैं। इस प्रमेय का नाम क्या है?",
+        "options": ["Kite Diagonal Theorem / पतंग विकर्ण प्रमेय", "Perpendicular Diagonal Theorem / लंबवत विकर्ण प्रमेय", "Diagonal Property of Kite / पतंग का विकर्ण गुण", "Right Diagonals in Kite Theorem / पतंग में समकोण विकर्ण प्रमेय"],
+        "correctAnswer": "Diagonal Property of Kite / पतंग का विकर्ण गुण"
+      },
+      {
+        "questionEnglish": "In an isosceles triangle, the altitude from the vertex to the base also bisects the base and the vertex angle. What is the name of this theorem?",
+        "questionHindi": "एक समद्विबाहु त्रिभुज में, शीर्ष से आधार पर खींचा गया शीर्षलंब आधार और शीर्ष कोण को भी समद्विभाजित करता है। इस प्रमेय का नाम क्या है?",
+        "options": ["Isosceles Altitude Bisector Theorem / समद्विबाहु शीर्षलंब समद्विभाजक प्रमेय", "Triangle Symmetry Theorem / त्रिभुज समरूपता प्रमेय", "Isosceles Median Property / समद्विबाहु माध्यिका गुण", "Vertex Bisector Theorem / शीर्ष समद्विभाजक प्रमेय"],
+        "correctAnswer": "Isosceles Altitude Bisector Theorem / समद्विबाहु शीर्षलंब समद्विभाजक प्रमेय"
+      },
+      {
+        "questionEnglish": "The sum of all exterior angles of a polygon, taken one at each vertex, is 360°. What is the name of this theorem?",
+        "questionHindi": "एक बहुभुज के सभी बाह्य कोणों का योग, प्रत्येक शीर्ष पर एक लिया गया, 360° होता है। इस प्रमेय का नाम क्या है?",
+        "options": ["Polygon Exterior Angle Sum Theorem / बहुभुज बाह्य कोण योग प्रमेय", "Exterior Angle Property / बाह्य कोण गुण", "Total Exterior Theorem / कुल बाह्य प्रमेय", "Vertex Angle Theorem / शीर्ष कोण प्रमेय"],
+        "correctAnswer": "Polygon Exterior Angle Sum Theorem / बहुभुज बाह्य कोण योग प्रमेय"
+      },
+      {
+        "questionEnglish": "If three or more parallel lines are cut by two transversals, the corresponding segments are in the same ratio. What is the name of this theorem?",
+        "questionHindi": "यदि तीन या अधिक समानांतर रेखाओं को दो तिर्यक रेखाएँ काटती हैं, तो संगत खंड समान अनुपात में होते हैं। इस प्रमेय का नाम क्या है?",
+        "options": ["Intercept Theorem / अंतःखंड प्रमेय", "Parallel Line Segment Ratio Theorem / समानांतर रेखा खंड अनुपात प्रमेय", "Corresponding Segment Theorem / संगत खंड प्रमेय", "Equal Division Theorem / समान विभाजन प्रमेय"],
+        "correctAnswer": "Intercept Theorem / अंतःखंड प्रमेय"
+      },
+      {
+        "questionEnglish": "A line joining the midpoints of two sides of a triangle is parallel to the third side and half its length. What is the name of this theorem?",
+        "questionHindi": "एक त्रिभुज की दो भुजाओं के मध्य बिंदुओं को मिलाने वाली रेखा तीसरी भुजा के समानांतर होती है और उसकी लंबाई की आधी होती है। इस प्रमेय का नाम क्या है?",
+        "options": ["Midpoint Theorem / मध्यबिंदु प्रमेय", "Parallel Segment Theorem / समानांतर खंड प्रमेय", "Half Line Theorem / आधी रेखा प्रमेय", "Triangle Segment Rule / त्रिभुज खंड नियम"],
+        "correctAnswer": "Midpoint Theorem / मध्यबिंदु प्रमेय"
+      }
+    ]

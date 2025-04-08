@@ -1,0 +1,182 @@
+[
+    {
+      "questionEnglish": "Pointing to a photograph, A said, 'He is the son of the only son of my father.' How is A related to the person in the photograph?",
+      "questionHindi": "एक तस्वीर की ओर इशारा करते हुए A ने कहा, 'वह मेरे पिता के इकलौते बेटे का बेटा है।' A उस व्यक्ति से कैसे संबंधित है?",
+      "options": ["Father / पिता", "Uncle / चाचा", "Brother / भाई", "Grandfather / दादा"],
+      "correctAnswer": "Father / पिता"
+    },
+    {
+      "questionEnglish": "If A is the son of B, B is the daughter of C, and C is the wife of D, how is D related to A?",
+      "questionHindi": "यदि A, B का बेटा है, B, C की बेटी है, और C, D की पत्नी है, तो D, A से कैसे संबंधित है?",
+      "options": ["Grandfather / दादा", "Father / पिता", "Uncle / चाचा", "Brother / भाई"],
+      "correctAnswer": "Grandfather / दादा"
+    },
+    {
+      "questionEnglish": "If P says, 'Q is the only child of my father's only child,' how is Q related to P?",
+      "questionHindi": "यदि P कहता है, 'Q, मेरे पिता के इकलौते बच्चे का इकलौता बच्चा है,' तो Q, P से कैसे संबंधित है?",
+      "options": ["Self / स्वयं", "Brother / भाई", "Uncle / चाचा", "Father / पिता"],
+      "correctAnswer": "Self / स्वयं"
+    },
+    {
+      "questionEnglish": "If A is the niece of B, and B is the brother of C, who is the mother of D, how is A related to D?",
+      "questionHindi": "यदि A, B की भतीजी है और B, C का भाई है, जो D की माँ है, तो A, D से कैसे संबंधित है?",
+      "options": ["Cousin / चचेरी बहन", "Sister / बहन", "Aunt / बुआ", "Niece / भतीजी"],
+      "correctAnswer": "Cousin / चचेरी बहन"
+    },
+    {
+      "questionEnglish": "B is the father of A but A is not his son. C is the daughter of A. D is the spouse of B. E is the brother of A. F is the son of E. Who is the grandmother of F?",
+      "questionHindi": "B, A का पिता है लेकिन A उसका बेटा नहीं है। C, A की बेटी है। D, B की पत्नी है। E, A का भाई है। F, E का बेटा है। F की दादी कौन है?",
+      "options": ["A / ए", "C / सी", "D / डी", "B / बी"],
+      "correctAnswer": "D / डी"
+    },
+    {
+      "questionEnglish": "X introduces Y as the daughter of the only son of his father. How is Y related to X?",
+      "questionHindi": "X, Y को अपने पिता के इकलौते बेटे की बेटी के रूप में परिचित कराता है। Y, X से कैसे संबंधित है?",
+      "options": ["Daughter / बेटी", "Sister / बहन", "Cousin / चचेरी बहन", "Niece / भतीजी"],
+      "correctAnswer": "Daughter / बेटी"
+    },
+    {
+      "questionEnglish": "A said to B, 'I am the only son of the father of your sister.' How is B related to A?",
+      "questionHindi": "A ने B से कहा, 'मैं तुम्हारी बहन के पिता का इकलौता बेटा हूँ।' B, A से कैसे संबंधित है?",
+      "options": ["Sister / बहन", "Cousin / चचेरी बहन", "Wife / पत्नी", "Mother / माँ"],
+      "correctAnswer": "Sister / बहन"
+    },
+    {
+      "questionEnglish": "Pointing to a man, Sita says, 'He is the only son of my father's only son.' How is that man related to Sita?",
+      "questionHindi": "एक आदमी की ओर इशारा करते हुए, सीता कहती है, 'वह मेरे पिता के इकलौते बेटे का इकलौता बेटा है।' वह आदमी सीता से कैसे संबंधित है?",
+      "options": ["Brother / भाई", "Cousin / चचेरा भाई", "Nephew / भतीजा", "Self / स्वयं"],
+      "correctAnswer": "Self / स्वयं"
+    },
+    {
+      "questionEnglish": "If A's son is B, and B's sister is C, and C's husband is D, how is D related to A?",
+      "questionHindi": "यदि A का बेटा B है, B की बहन C है, और C का पति D है, तो D, A से कैसे संबंधित है?",
+      "options": ["Son-in-law / दामाद", "Son / बेटा", "Cousin / चचेरा भाई", "Uncle / चाचा"],
+      "correctAnswer": "Son-in-law / दामाद"
+    },
+    {
+      "questionEnglish": "If P is the maternal uncle of Q, and Q is the father of R, how is P related to R?",
+      "questionHindi": "यदि P, Q का मामा है और Q, R का पिता है, तो P, R से कैसे संबंधित है?",
+      "options": ["Great Uncle / परदादा", "Grandfather / दादा", "Maternal Great Uncle / परनाना", "Uncle / मामा"],
+      "correctAnswer": "Maternal Great Uncle / परनाना"
+    },
+    {
+      "questionEnglish": "If A is the brother of B, B is the mother of C, and C is the father of D, how is A related to D?",
+      "questionHindi": "यदि A, B का भाई है, B, C की माँ है और C, D का पिता है, तो A, D से कैसे संबंधित है?",
+      "options": ["Granduncle / परदादा", "Uncle / मामा", "Great Uncle / बड़े मामा", "Brother / भाई"],
+      "correctAnswer": "Great Uncle / बड़े मामा"
+    },
+    {
+      "questionEnglish": "Pointing to a girl, Rahul said, 'She is the daughter of the woman who is the mother of the husband of my mother.' How is the girl related to Rahul?",
+      "questionHindi": "एक लड़की की ओर इशारा करते हुए राहुल ने कहा, 'वह उस महिला की बेटी है जो मेरी माँ के पति की माँ है।' वह लड़की राहुल से कैसे संबंधित है?",
+      "options": ["Aunt / बुआ", "Sister / बहन", "Cousin / चचेरी बहन", "Mother / माँ"],
+      "correctAnswer": "Aunt / बुआ"
+    },
+    {
+      "questionEnglish": "A is the son of B. B is the daughter of C. C is the wife of D. E is the father of D. How is E related to A?",
+      "questionHindi": "A, B का बेटा है। B, C की बेटी है। C, D की पत्नी है। E, D का पिता है। E, A से कैसे संबंधित है?",
+      "options": ["Great Grandfather / परदादा", "Grandfather / दादा", "Father / पिता", "Uncle / चाचा"],
+      "correctAnswer": "Grandfather / दादा"
+    },
+    {
+      "questionEnglish": "If R is the mother of K, T is the brother of K, M is the father of R, then how is M related to T?",
+      "questionHindi": "यदि R, K की माँ है, T, K का भाई है, M, R का पिता है, तो M, T से कैसे संबंधित है?",
+      "options": ["Grandfather / दादा", "Uncle / चाचा", "Father / पिता", "Brother / भाई"],
+      "correctAnswer": "Grandfather / दादा"
+    },
+    {
+      "questionEnglish": "A is the mother of B and C. D is the husband of A. E is the father of D. How is E related to C?",
+      "questionHindi": "A, B और C की माँ है। D, A का पति है। E, D का पिता है। E, C से कैसे संबंधित है?",
+      "options": ["Grandfather / दादा", "Uncle / चाचा", "Father / पिता", "Brother / भाई"],
+      "correctAnswer": "Grandfather / दादा"
+    },
+    {
+      "questionEnglish": "If X is the father of Y and Y is the father of Z, and A is the sister of Z, how is X related to A?",
+      "questionHindi": "यदि X, Y का पिता है और Y, Z का पिता है, और A, Z की बहन है, तो X, A से कैसे संबंधित है?",
+      "options": ["Grandfather / दादा", "Father / पिता", "Uncle / चाचा", "Brother / भाई"],
+      "correctAnswer": "Grandfather / दादा"
+    },
+    {
+      "questionEnglish": "If D is the daughter of C, C is the wife of B, and B is the son of A, how is A related to D?",
+      "questionHindi": "यदि D, C की बेटी है, C, B की पत्नी है और B, A का बेटा है, तो A, D से कैसे संबंधित है?",
+      "options": ["Grandfather / दादा", "Grandmother / दादी", "Uncle / चाचा", "Father / पिता"],
+      "correctAnswer": "Grandfather / दादा"
+    },
+    {
+      "questionEnglish": "A is the sister of B, B is married to C, C is the son of D. How is A related to D?",
+      "questionHindi": "A, B की बहन है, B, C से शादीशुदा है, और C, D का बेटा है। A, D से कैसे संबंधित है?",
+      "options": ["Daughter-in-law / बहू", "Sister-in-law / साली", "Daughter / बेटी", "Niece / भतीजी"],
+      "correctAnswer": "Sister-in-law / साली"
+    },
+    {
+      "questionEnglish": "If R is the son of M, M is the sister of T, and T is the father of J, then how is J related to R?",
+      "questionHindi": "यदि R, M का बेटा है, M, T की बहन है और T, J का पिता है, तो J, R से कैसे संबंधित है?",
+      "options": ["Cousin / चचेरा भाई", "Uncle / चाचा", "Brother / भाई", "Nephew / भतीजा"],
+      "correctAnswer": "Cousin / चचेरा भाई"
+    },
+    {
+      "questionEnglish": "B is the daughter of A. C is the son of A. D is the wife of C. What is D to B?",
+      "questionHindi": "B, A की बेटी है। C, A का बेटा है। D, C की पत्नी है। D, B से कैसे संबंधित है?",
+      "options": ["Sister / बहन", "Mother / माँ", "Sister-in-law / भाभी", "Cousin / चचेरी बहन"],
+      "correctAnswer": "Sister-in-law / भाभी"
+    },
+    {
+      "questionEnglish": "P is the son of Q. Q is the daughter of R. S is the father of T and T is the brother of P. How is S related to R?",
+      "questionHindi": "P, Q का बेटा है। Q, R की बेटी है। S, T का पिता है और T, P का भाई है। S, R से कैसे संबंधित है?",
+      "options": ["Son-in-law / दामाद", "Son / बेटा", "Grandson / पोता", "Brother-in-law / बहनोई"],
+      "correctAnswer": "Son-in-law / दामाद"
+    },
+    {
+      "questionEnglish": "X is the brother of Y. Y is the mother of Z. W is the father of X. How is W related to Z?",
+      "questionHindi": "X, Y का भाई है। Y, Z की माँ है। W, X का पिता है। W, Z से कैसे संबंधित है?",
+      "options": ["Father / पिता", "Grandfather / दादा", "Uncle / चाचा", "Great Grandfather / परदादा"],
+      "correctAnswer": "Grandfather / दादा"
+    },
+    {
+      "questionEnglish": "M is the sister of N. N is the father of O. O is the brother of P. How is M related to P?",
+      "questionHindi": "M, N की बहन है। N, O का पिता है। O, P का भाई है। M, P से कैसे संबंधित है?",
+      "options": ["Aunt / बुआ", "Grandmother / दादी", "Sister / बहन", "Mother / माँ"],
+      "correctAnswer": "Aunt / बुआ"
+    },
+    {
+      "questionEnglish": "F is the daughter of E. E is the sister of D. D is the son of C. C is the husband of B. How is F related to B?",
+      "questionHindi": "F, E की बेटी है। E, D की बहन है। D, C का बेटा है। C, B का पति है। F, B से कैसे संबंधित है?",
+      "options": ["Granddaughter / पोती", "Daughter / बेटी", "Niece / भतीजी", "Sister / बहन"],
+      "correctAnswer": "Granddaughter / पोती"
+    },
+    {
+      "questionEnglish": "A is the son of B. B is the brother of C. C is the father of D. How is A related to D?",
+      "questionHindi": "A, B का बेटा है। B, C का भाई है। C, D का पिता है। A, D से कैसे संबंधित है?",
+      "options": ["Cousin / चचेरा भाई", "Brother / भाई", "Nephew / भतीजा", "Uncle / चाचा"],
+      "correctAnswer": "Cousin / चचेरा भाई"
+    },
+    {
+      "questionEnglish": "K is the father of L. M is the mother of K. N is the son of M. How is L related to N?",
+      "questionHindi": "K, L का पिता है। M, K की माँ है। N, M का बेटा है। L, N से कैसे संबंधित है?",
+      "options": ["Nephew / भतीजा", "Cousin / चचेरा भाई", "Grandson / पोता", "Uncle / चाचा"],
+      "correctAnswer": "Nephew / भतीजा"
+    },
+    {
+      "questionEnglish": "A is the wife of B. B is the brother of C. D is the father of A. How is C related to D?",
+      "questionHindi": "A, B की पत्नी है। B, C का भाई है। D, A का पिता है। C, D से कैसे संबंधित है?",
+      "options": ["Son-in-law / दामाद", "Cousin / चचेरा भाई", "Brother-in-law / बहनोई", "Uncle / चाचा"],
+      "correctAnswer": "Son-in-law / दामाद"
+    },
+    {
+      "questionEnglish": "R is the father of M. M is the mother of T. T is the daughter of S. How is S related to R?",
+      "questionHindi": "R, M का पिता है। M, T की माँ है। T, S की बेटी है। S, R से कैसे संबंधित है?",
+      "options": ["Son-in-law / दामाद", "Father-in-law / ससुर", "Grandson / पोता", "Daughter-in-law / बहू"],
+      "correctAnswer": "Son-in-law / दामाद"
+    },
+    {
+      "questionEnglish": "If P is the wife of Q, Q is the son of R, and R is the father of S, how is P related to S?",
+      "questionHindi": "यदि P, Q की पत्नी है, Q, R का बेटा है, और R, S का पिता है, तो P, S से कैसे संबंधित है?",
+      "options": ["Daughter-in-law / बहू", "Sister-in-law / भाभी", "Mother / माँ", "Aunt / बुआ"],
+      "correctAnswer": "Sister-in-law / भाभी"
+    },
+    {
+      "questionEnglish": "A is the son of B. B is the mother of C. D is the father of A. How is D related to C?",
+      "questionHindi": "A, B का बेटा है। B, C की माँ है। D, A का पिता है। D, C से कैसे संबंधित है?",
+      "options": ["Father / पिता", "Uncle / चाचा", "Grandfather / दादा", "Brother / भाई"],
+      "correctAnswer": "Father / पिता"
+    }
+] 
