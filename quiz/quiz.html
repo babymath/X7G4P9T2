@@ -335,7 +335,7 @@ document.getElementById('submit-quiz').addEventListener('click', () => {
         if (isCorrect) correct++;
         return `<p>
                     <strong>${i + 1}. ${userLanguage === 'english' ? q.questionEnglish : q.questionHindi}</strong>
-                    <br>Your Answer: ${userAnswers[i] || 'Not Answered'} , Correct Answer: ${q.correctAnswer}
+                    <br>Attempted: ${userAnswers[i] || 'Not Answered'} , Answer: ${q.correctAnswer}
                     ${isCorrect ? '<br><span class="checkmark">✔️</span> Correct!' : ''}
                     ${!isCorrect && userAnswers[i] ? '<br><span class="cross">❌</span> Incorrect.' : ''}
                     <br><button onclick="window.open('https://www.google.com/search?q=${encodeURIComponent((userLanguage === 'english' ? q.questionEnglish : q.questionHindi) + ' ' + q.correctAnswer)}', '_blank')">Search</button>
