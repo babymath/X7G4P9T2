@@ -1,383 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sync High Scores (with Login - Global SDK)</title>
-    <style>
-        /* Basic Styling (same as before) */
-        body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; padding: 20px; line-height: 1.6; background-color: #f4f7f6; color: #333; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-        .container { background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); width: 100%; max-width: 450px; margin-bottom: 20px; box-sizing: border-box; }
-        h1 { color: #2c3e50; text-align: center; margin-top: 0; margin-bottom: 10px; }
-        p { text-align: center; margin-bottom: 25px; color: #555; }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; color: #34495e; }
-        .form-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        .button-container { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 20px; }
-        .auth-buttons { display: flex; gap: 10px; justify-content: center; margin-top: 15px; }
-        button { padding: 10px 20px; cursor: pointer; border: none; border-radius: 5px; font-size: 0.95em; font-weight: bold; transition: background-color 0.3s ease, transform 0.1s ease; min-width: 100px; box-sizing: border-box; }
-        button:disabled { cursor: not-allowed; opacity: 0.6; background-color: #bdc3c7 !important; color: #7f8c8d !important; }
-        button:active:not(:disabled) { transform: scale(0.98); }
-        #signUpButton, #logInButton { background-color: #3498db; color: white; }
-        #signUpButton:hover:not(:disabled), #logInButton:hover:not(:disabled) { background-color: #2980b9; }
-        #logOutButton { background-color: #e74c3c; color: white; }
-        #logOutButton:hover:not(:disabled) { background-color: #c0392b; }
-        #syncHighScoresButton { background-color: #1abc9c; color: white; min-width: 220px; }
-        #syncHighScoresButton:hover:not(:disabled) { background-color: #16a085; }
-        #fetchHighScoresButton { background-color: #9b59b6; color: white; min-width: 220px; }
-        #fetchHighScoresButton:hover:not(:disabled) { background-color: #8e44ad; }
-        .status-message { margin-top: 5px; font-weight: bold; min-height: 1.2em; font-size: 0.9em; text-align: center; width: 100%; }
-        .auth-status { text-align: center; margin-bottom: 15px; font-style: italic; color: #7f8c8d; font-weight: bold; }
-        .user-info { text-align: center; margin-bottom: 20px; font-weight: bold; color: #2c3e50; }
-        .status-success { color: #27ae60; }
-        .status-error { color: #e74c3c; }
-        .status-info { color: #555; }
-        .hidden { display: none !important; }
-    </style>
-
-    <!-- Load Firebase SDKs -->
-    <!-- Use the latest compatible versions -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-    <!-- Uncomment if you need Analytics -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics-compat.js"></script> -->
-
+  <meta charset="UTF-8">
+  <title>BabyMath Login</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    input, button { margin: 5px; padding: 10px; width: 250px; }
+  </style>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
-    <!-- Login/Sign Up Section -->
-    <div id="authSection" class="container">
-        <h1>Welcome</h1>
-        <p>Please sign up or log in to manage your scores.</p>
-        <div id="authForm">
-            <div class="form-group">
-                <label for="emailInput">Email:</label>
-                <input type="email" id="emailInput" placeholder="Enter your email" required autocomplete="email">
-            </div>
-            <div class="form-group">
-                <label for="passwordInput">Password:</label>
-                <input type="password" id="passwordInput" placeholder="Enter your password" required autocomplete="current-password">
-            </div>
-            <div id="authError" class="status-message status-error"></div>
-            <div class="auth-buttons">
-                <button id="signUpButton">Sign Up</button>
-                <button id="logInButton">Log In</button>
-            </div>
-        </div>
-    </div>
+  <h2>Login</h2>
+  <input type="email" id="email" placeholder="Email"><br>
+  <input type="password" id="password" placeholder="Password"><br>
+  <button onclick="login()">Login</button>
 
-    <!-- Score Management Section (Initially Hidden) -->
-    <div id="scoreSection" class="container hidden">
-        <h1>High Score Management</h1>
-        <div id="userInfo" class="user-info"></div>
-        <div id="authStatus" class="auth-status"></div>
+  <h3>Sync Options</h3>
+  <button onclick="localToDatabase()">Local to Database</button>
+  <button onclick="databaseToLocal()">Database to Local</button>
 
-        <div class="button-container">
-            <button id="syncHighScoresButton" disabled>Sync Local Scores to Cloud</button>
-            <div id="syncStatus" class="status-message"></div>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBFABtE8u3Bcnza2Aono9yFl6aN2f6F2zQ",
+      authDomain: "babymath-data.firebaseapp.com",
+      projectId: "babymath-data",
+      storageBucket: "babymath-data.firebasestorage.app",
+      messagingSenderId: "535678073642",
+      appId: "1:535678073642:web:964cda18a45c7b04a97c53",
+      measurementId: "G-7CN48FECP3"
+    };
 
-            <button id="fetchHighScoresButton" disabled>Fetch Cloud Scores to Local</button>
-            <div id="fetchStatus" class="status-message"></div>
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
 
-            <button id="logOutButton">Log Out</button>
-        </div>
-    </div>
+    let currentUserEmail = "";
 
+    const field = {
+      password: "",
+      games: {
+        "111-100": 0, "111-200": 0,
+        "222-100": 0, "222-200": 0,
+        "333-100": 0, "333-200": 0,
+        "444-100": 0, "444-200": 0,
+        "555-100": 0, "555-200": 0,
+        "666-100": 0, "666-200": 0,
+        "777-100": 0, "777-200": 0
+      }
+    };
 
-    <!-- Main Application Logic -->
-    <script>
-        // NOTE: No 'import' statements needed here.
-        // Functions are accessed via the global 'firebase' object.
+    function login() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      auth.signInWithEmailAndPassword(email, password)
+        .then(userCredential => {
+          currentUserEmail = email;
+          alert("Login successful");
+        })
+        .catch(error => {
+          alert("Login failed: " + error.message);
+        });
+    }
 
-        // ==================================================================
-        // 1. FIREBASE INITIALIZATION
-        // ==================================================================
-        const firebaseConfig = {
-          apiKey: "AIzaSyBFABtE8u3Bcnza2Aono9yFl6aN2f6F2zQ", // Replace if necessary
-          authDomain: "babymath-data.firebaseapp.com",
-          projectId: "babymath-data",
-          storageBucket: "babymath-data.firebasestorage.app",
-          messagingSenderId: "535678073642",
-          appId: "1:535678073642:web:964cda18a45c7b04a97c53",
-          measurementId: "G-7CN48FECP3"
-        };
+    function localToDatabase() {
+      if (!currentUserEmail) return alert("Please log in first.");
+      db.collection("users").doc(currentUserEmail).set(field, { merge: true })
+        .then(() => alert("Data synced to database."))
+        .catch(error => alert("Error: " + error.message));
+    }
 
-        let app;
-        let db;
-        // let analytics; // Uncomment if using Analytics SDK
-        let auth;
-        let firebaseInitialized = false;
-        let currentUserId = null;
-
-        // Get references to UI elements (same as before)
-        const authSection = document.getElementById('authSection');
-        const scoreSection = document.getElementById('scoreSection');
-        const emailInput = document.getElementById('emailInput');
-        const passwordInput = document.getElementById('passwordInput');
-        const signUpButton = document.getElementById('signUpButton');
-        const logInButton = document.getElementById('logInButton');
-        const logOutButton = document.getElementById('logOutButton');
-        const authErrorDiv = document.getElementById('authError');
-        const userInfoDiv = document.getElementById('userInfo');
-        const syncStatusDiv = document.getElementById('syncStatus');
-        const fetchStatusDiv = document.getElementById('fetchStatus');
-        const syncButton = document.getElementById('syncHighScoresButton');
-        const fetchButton = document.getElementById('fetchHighScoresButton');
-        const authStatusDiv = document.getElementById('authStatus');
-
-        // --- Initialize Firebase ---
-        try {
-            // Use firebase.initializeApp (global)
-            app = firebase.initializeApp(firebaseConfig);
-            // Use firebase.firestore() and firebase.auth()
-            db = firebase.firestore();
-            auth = firebase.auth();
-            // analytics = firebase.analytics(); // Uncomment if using Analytics
-            firebaseInitialized = true;
-            console.log("Firebase Initialized Successfully (Compat)");
-            setupAuthListener(); // Start listening for auth changes AFTER initialization
-        } catch (error) {
-            console.error("Firebase Initialization Error:", error);
-            updateStatus('authError', "Error connecting to Firebase.", 'error', true);
-        }
-
-        // ==================================================================
-        // 2. AUTHENTICATION HANDLING
-        // ==================================================================
-        function setupAuthListener() {
-            if (!auth) return;
-
-            // Use auth.onAuthStateChanged (global)
-            auth.onAuthStateChanged((user) => {
-                clearStatusMessages();
-                if (user) {
-                    currentUserId = user.uid;
-                    console.log("User signed in:", currentUserId, user.email);
-                    if (userInfoDiv) userInfoDiv.textContent = `Logged in as: ${user.email}`;
-                    if (authStatusDiv) authStatusDiv.textContent = `User ID: ...${currentUserId.slice(-6)}`;
-                    authSection.classList.add('hidden');
-                    scoreSection.classList.remove('hidden');
-                    if (syncButton) syncButton.disabled = false;
-                    if (fetchButton) fetchButton.disabled = false;
-                } else {
-                    currentUserId = null;
-                    console.log("User is signed out.");
-                    if (userInfoDiv) userInfoDiv.textContent = '';
-                    if (authStatusDiv) authStatusDiv.textContent = '';
-                    authSection.classList.remove('hidden');
-                    scoreSection.classList.add('hidden');
-                    if (syncButton) syncButton.disabled = true;
-                    if (fetchButton) fetchButton.disabled = true;
-                }
-            });
-        }
-
-        // --- Sign Up Handler ---
-        async function handleSignUp() {
-            if (!auth || !db || !emailInput || !passwordInput) return;
-            const email = emailInput.value.trim();
-            const password = passwordInput.value;
-            updateStatus('authError', '', 'info');
-
-            if (!validateEmailPassword(email, password)) return;
-
-            console.log("Attempting sign up...");
-            setAuthButtonsState(true);
-
-            try {
-                // Use auth.createUserWithEmailAndPassword (global)
-                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-                const user = userCredential.user;
-                console.log("Auth Sign up successful:", user.uid);
-
-                console.log(`Creating Firestore document for user: ${user.uid}`);
-                // Use db.collection().doc() (global/compat)
-                const userDocRef = db.collection("users").doc(user.uid);
-
-                // Use firebase.firestore.FieldValue.serverTimestamp() (global/compat)
-                await userDocRef.set({
-                    email: user.email,
-                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                    highScores: {}
-                }); // Note: set() overwrites, merge:true is not default here like modular setDoc
-
-                console.log("Firestore document created successfully.");
-
-            } catch (error) {
-                console.error("Sign Up Process Error:", error);
-                if (error.code && error.code.startsWith('auth/')) {
-                    updateStatus('authError', `Sign Up Failed: ${getFriendlyAuthError(error)}`, 'error', true);
-                } else {
-                    updateStatus('authError', `Sign Up succeeded, but failed to create profile data: ${error.message}`, 'error', true);
-                }
-            } finally {
-                 setAuthButtonsState(false);
-            }
-        }
-
-        // --- Log In Handler ---
-        async function handleLogIn() {
-            if (!auth || !emailInput || !passwordInput) return;
-            const email = emailInput.value.trim();
-            const password = passwordInput.value;
-            updateStatus('authError', '', 'info');
-            if (!validateEmailPassword(email, password)) return;
-            console.log("Attempting log in...");
-            setAuthButtonsState(true);
-            try {
-                // Use auth.signInWithEmailAndPassword (global)
-                const userCredential = await auth.signInWithEmailAndPassword(email, password);
-                console.log("Log in successful:", userCredential.user);
-            } catch (error) {
-                console.error("Log In Error:", error);
-                 updateStatus('authError', `Log In Failed: ${getFriendlyAuthError(error)}`, 'error', true);
-            } finally {
-                 setAuthButtonsState(false);
-            }
-        }
-
-        // --- Log Out Handler ---
-        async function handleLogOut() {
-            if (!auth) return;
-            console.log("Attempting log out...");
-            if (logOutButton) logOutButton.disabled = true;
-            try {
-                // Use auth.signOut (global)
-                await auth.signOut();
-                console.log("Log out successful.");
-            } catch (error) {
-                console.error("Log Out Error:", error);
-                updateStatus('authStatus', `Logout Failed: ${error.message}`, 'error');
-            } finally {
-                 if (logOutButton) logOutButton.disabled = false;
-            }
-        }
-
-        // --- Helper to disable/enable auth buttons --- (Remains the same)
-        function setAuthButtonsState(disabled) {
-             if (signUpButton) signUpButton.disabled = disabled;
-             if (logInButton) logInButton.disabled = disabled;
-        }
-
-        // --- Helper for basic email/password validation --- (Remains the same)
-        function validateEmailPassword(email, password) {
-             if (!email || !password) { updateStatus('authError', 'Please enter both email and password.', 'error', true); return false; }
-             if (!/\S+@\S+\.\S+/.test(email)) { updateStatus('authError', 'Please enter a valid email address.', 'error', true); return false; }
-             if (password.length < 6) { updateStatus('authError', 'Password should be at least 6 characters.', 'error', true); return false; }
-             return true;
-        }
-
-        // --- Helper for more user-friendly auth errors --- (Remains the same)
-        function getFriendlyAuthError(error) {
-            // (Same as before)
-            switch (error.code) { /* ... cases ... */ default: return error.message; }
-        }
-
-
-        // ==================================================================
-        // 3. HELPER FUNCTIONS & DATA DEFINITIONS (Score Sync Related)
-        // ==================================================================
-        // (getHighScoresFromLocalStorage, updateStatus, clearStatusMessages remain the same)
-        const gameKeys = ["111", "222", "333", "444", "555", "666", "777"];
-        const scoreSuffixes = ['100', '200'];
-
-        function getHighScoresFromLocalStorage() { /* ... same logic ... */ }
-        function updateStatus(elementId, message, type = 'info', persistent = false) { /* ... same logic ... */ }
-        function clearStatusMessages() { /* ... same logic ... */ }
-
-
-        // ==================================================================
-        // 4. FIREBASE SYNC FUNCTIONS (Uses global/compat syntax)
-        // ==================================================================
-
-        async function syncScoresToFirebase() {
-            if (!firebaseInitialized || !db || !currentUserId) { /* ... guard clause ... */ return; }
-
-            console.log("Sync Local Scores button clicked.");
-            if (syncButton) { syncButton.disabled = true; syncButton.textContent = "Syncing..."; }
-            updateStatus('syncStatus', "Starting sync...", 'info');
-            const userId = currentUserId;
-            const localHighScores = getHighScoresFromLocalStorage();
-            if (Object.keys(localHighScores).length === 0) { /* ... handle no local scores ... */ return; }
-            console.log(`Syncing scores TO Firebase for user: ${userId.slice(-6)}`);
-            updateStatus('syncStatus', `Syncing for ...${userId.slice(-6)}...`, 'info');
-            try {
-                // Use db.collection().doc().set() with merge option (global/compat)
-                const userDocRef = db.collection("users").doc(userId);
-                await userDocRef.set({ highScores: localHighScores }, { merge: true }); // Use merge option
-
-                console.log("Firestore sync TO successful:", userId);
-                alert("Scores synced to cloud!");
-                updateStatus('syncStatus', "Sync successful!", 'success');
-            } catch (error) {
-                console.error("Sync TO Error:", error);
-                if (error.code === 'permission-denied' || error.code === 'PERMISSION_DENIED') { // Check both possible codes
-                     alert(`Permission Error.`);
-                     updateStatus('syncStatus', `Permission Error.`, 'error');
-                } else {
-                    alert(`Sync Error: ${error.message}.`);
-                    updateStatus('syncStatus', `Sync Error: ${error.message}`, 'error');
-                }
-            } finally {
-                if (syncButton) { syncButton.disabled = false; syncButton.textContent = "Sync Local Scores"; }
-            }
-        }
-
-        async function fetchScoresFromFirebase() {
-             if (!firebaseInitialized || !db || !currentUserId) { /* ... guard clause ... */ return; }
-
-             console.log("Fetch Cloud Scores button clicked.");
-             if (fetchButton) { fetchButton.disabled = true; fetchButton.textContent = "Fetching..."; }
-             updateStatus('fetchStatus', "Starting fetch...", 'info');
-             const userId = currentUserId;
-             console.log(`Fetching scores FROM Firebase for user: ${userId.slice(-6)}`);
-             updateStatus('fetchStatus', `Fetching for ...${userId.slice(-6)}...`, 'info');
-             try {
-                // Use db.collection().doc().get() (global/compat)
-                const userDocRef = db.collection("users").doc(userId);
-                const docSnap = await userDocRef.get();
-
-                if (docSnap.exists) { // Note: .exists is a property here
-                    const cloudHighScores = docSnap.data().highScores;
-                    if (cloudHighScores && typeof cloudHighScores === 'object' && Object.keys(cloudHighScores).length > 0) {
-                        let updatedCount = 0;
-                        for (const key in cloudHighScores) { if (Object.prototype.hasOwnProperty.call(cloudHighScores, key)) { localStorage.setItem(key, cloudHighScores[key].toString()); updatedCount++; } }
-                        alert(`Fetched ${updatedCount} score(s).`);
-                        updateStatus('fetchStatus', `Fetch successful (${updatedCount} scores)!`, 'success');
-                    } else { alert("No scores found in cloud profile."); updateStatus('fetchStatus', "No scores found.", 'info'); }
-                } else { alert("Cloud profile not found."); updateStatus('fetchStatus', "Profile not found.", 'info'); }
-             } catch (error) {
-                console.error("Fetch FROM Error:", error);
-                if (error.code === 'permission-denied' || error.code === 'PERMISSION_DENIED') {
-                     alert(`Permission Error.`);
-                     updateStatus('fetchStatus', `Permission Error.`, 'error');
-                } else {
-                    alert(`Fetch Error: ${error.message}.`);
-                    updateStatus('fetchStatus', `Fetch Error: ${error.message}`, 'error');
-                }
-             } finally {
-                if (fetchButton) { fetchButton.disabled = false; fetchButton.textContent = "Fetch Cloud Scores"; }
-             }
-        }
-
-
-        // ==================================================================
-        // 5. EVENT LISTENERS
-        // ==================================================================
-        // Add listeners only if Firebase initialized successfully
-        // No need for DOMContentLoaded as script is at the end
-        if (firebaseInitialized) {
-            if (signUpButton) signUpButton.addEventListener('click', handleSignUp); else console.error("Sign Up Button not found");
-            if (logInButton) logInButton.addEventListener('click', handleLogIn); else console.error("Log In Button not found");
-            if (logOutButton) logOutButton.addEventListener('click', handleLogOut); else console.error("Log Out Button not found");
-            if (syncButton) syncButton.addEventListener('click', syncScoresToFirebase); else console.error("Sync Button not found");
-            if (fetchButton) fetchButton.addEventListener('click', fetchScoresFromFirebase); else console.error("Fetch Button not found");
-        } else {
-             console.warn("Button listeners not added: Firebase failed to initialize.");
-        }
-
-    </script>
+    function databaseToLocal() {
+      if (!currentUserEmail) return alert("Please log in first.");
+      db.collection("users").doc(currentUserEmail).get()
+        .then(doc => {
+          if (doc.exists) {
+            const data = doc.data();
+            field.password = data.password || field.password;
+            field.games = { ...field.games, ...data.games };
+            alert("Data synced to local.");
+          } else {
+            alert("No data found in database.");
+          }
+        })
+        .catch(error => alert("Error: " + error.message));
+    }
+  </script>
 
 </body>
 </html>
