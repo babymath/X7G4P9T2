@@ -1,21 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BabyMath Login</title>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f8ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px 20px;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #357bd8;
+    }
+    #buttons {
+      display: none;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    #logoutBtn {
+      background-color: #e94e4e;
+    }
+  </style>
 </head>
 <body>
-  <h2>Login</h2>
-  <input type="email" id="email" placeholder="Email"><br><br>
-  <input type="password" id="password" placeholder="Password"><br><br>
-  <button onclick="login()">Login</button>
 
-  <div id="buttons" style="display: none; margin-top: 20px;">
-    <button onclick="uploadToDatabase()">Local to Database</button>
-    <button onclick="downloadFromDatabase()">Database to Local</button>
+  <div class="card" id="loginSection">
+    <h2>Login to BabyMath</h2>
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <p id="loginError" style="color: red; margin-top: 10px;"></p>
   </div>
+
+  <div class="btn-group" id="buttons">
+    <button onclick="uploadToDatabase()">Upload to Database</button>
+    <button onclick="downloadToLocal()">Download to Local</button>
+    <button id="logoutBtn" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- Firebase scripts -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 
   <script>
     const firebaseConfig = {
@@ -27,79 +91,92 @@
       appId: "1:535678073642:web:964cda18a45c7b04a97c53",
       measurementId: "G-7CN48FECP3"
     };
-
     firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
     const db = firebase.firestore();
-
-    const gameKeys = [
-      "111-100", "111-200", "222-100", "222-200",
-      "333-100", "333-200", "444-100", "444-200",
-      "555-100", "555-200", "666-100", "666-200",
-      "777-100", "777-200"
-    ];
+    const collection = "babymath";
 
     let currentEmail = "";
 
+    const field = {
+      password: "",
+      games: {
+        "111-100": 0,
+        "111-200": 0,
+        "222-100": 0,
+        "222-200": 0,
+        "333-100": 0,
+        "333-200": 0,
+        "444-100": 0,
+        "444-200": 0,
+        "555-100": 0,
+        "555-200": 0,
+        "666-100": 0,
+        "666-200": 0,
+        "777-100": 0,
+        "777-200": 0,
+      }
+    };
+
+    // Check for existing session
+    window.onload = () => {
+      const saved = localStorage.getItem("loggedInUser");
+      if (saved) {
+        currentEmail = saved;
+        document.getElementById("loginSection").style.display = "none";
+        document.getElementById("buttons").style.display = "flex";
+      }
+    };
+
     function login() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const errorEl = document.getElementById("loginError");
 
-      db.collection("babymath").doc(email).get().then(doc => {
-        if (!doc.exists) {
-          alert("User not found");
-          return;
+      if (!email || !password) {
+        errorEl.textContent = "Please fill in both fields.";
+        return;
+      }
+
+      db.collection(collection).doc(email).get().then(doc => {
+        if (doc.exists && doc.data().password === password) {
+          currentEmail = email;
+          localStorage.setItem("loggedInUser", email);
+          errorEl.textContent = "";
+          document.getElementById("loginSection").style.display = "none";
+          document.getElementById("buttons").style.display = "flex";
+        } else {
+          errorEl.textContent = "Invalid credentials.";
         }
-
-        const data = doc.data();
-        if (data.password !== password) {
-          alert("Wrong password");
-          return;
-        }
-
-        currentEmail = email;
-        document.getElementById("buttons").style.display = "block";
-        alert("Login successful");
-      }).catch(error => {
-        console.error("Login error:", error);
-        alert("Login failed");
+      }).catch(err => {
+        errorEl.textContent = "Error: " + err.message;
       });
     }
 
-    function downloadFromDatabase() {
-      if (!currentEmail) return;
-
-      db.collection("babymath").doc(currentEmail).get().then(doc => {
-        if (doc.exists) {
-          const games = doc.data().games || {};
-          for (let key in games) {
-            localStorage.setItem(key, games[key]);
-            console.log(`Set ${key}: ${games[key]}`);
-          }
-          alert("Downloaded to localStorage");
-        }
-      }).catch(err => {
-        console.error("Download error:", err);
-        alert("Failed to fetch games");
-      });
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      location.reload();
     }
 
     function uploadToDatabase() {
-      if (!currentEmail) return;
-
-      const games = {};
-      gameKeys.forEach(key => {
-        const value = localStorage.getItem(key);
-        if (value !== null) {
-          games[key] = parseInt(value);
-        }
-      });
-
-      db.collection("babymath").doc(currentEmail).update({ games }).then(() => {
-        alert("Uploaded to database");
+      const savedGames = JSON.parse(localStorage.getItem("games")) || field.games;
+      db.collection(collection).doc(currentEmail).update({
+        games: savedGames
+      }).then(() => {
+        alert("Uploaded to database!");
       }).catch(err => {
-        console.error("Upload error:", err);
-        alert("Failed to upload");
+        alert("Upload failed: " + err.message);
+      });
+    }
+
+    function downloadToLocal() {
+      db.collection(collection).doc(currentEmail).get().then(doc => {
+        if (doc.exists) {
+          const dbGames = doc.data().games || {};
+          localStorage.setItem("games", JSON.stringify(dbGames));
+          alert("Downloaded to localStorage!");
+        }
+      }).catch(err => {
+        alert("Download failed: " + err.message);
       });
     }
   </script>
