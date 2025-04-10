@@ -3,21 +3,18 @@
 <head>
   <title>BabyMath Login</title>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
-  <style>
-    #buttons { display: none; margin-top: 20px; }
-    button { margin: 5px; padding: 10px 20px; }
-  </style>
 </head>
 <body>
-  <h2>Login to BabyMath</h2>
-  <input type="text" id="email" placeholder="Email"><br><br>
+  <h2>Login</h2>
+  <input type="email" id="email" placeholder="Email"><br><br>
   <input type="password" id="password" placeholder="Password"><br><br>
   <button onclick="login()">Login</button>
 
-  <div id="buttons">
-    <button onclick="localToDB()">Local to Database</button>
-    <button onclick="dbToLocal()">Database to Local</button>
+  <div id="buttons" style="display: none; margin-top: 20px;">
+    <button onclick="uploadToDatabase()">Local to Database</button>
+    <button onclick="downloadFromDatabase()">Database to Local</button>
   </div>
 
   <script>
@@ -32,70 +29,78 @@
     };
 
     firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
     const db = firebase.firestore();
 
-    let userDocId = "";
-    let userGames = {};
+    const gameKeys = [
+      "111-100", "111-200", "222-100", "222-200",
+      "333-100", "333-200", "444-100", "444-200",
+      "555-100", "555-200", "666-100", "666-200",
+      "777-100", "777-200"
+    ];
 
-    async function login() {
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
+    let currentEmail = "";
 
-      if (!email || !password) return alert("Enter email and password");
+    function login() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
 
-      try {
-        const docRef = db.collection("babymath").doc(email);
-        const doc = await docRef.get();
-
+      db.collection("babymath").doc(email).get().then(doc => {
         if (!doc.exists) {
-          alert("Login failed: User not found");
+          alert("User not found");
           return;
         }
 
         const data = doc.data();
         if (data.password !== password) {
-          alert("Login failed: Incorrect password");
+          alert("Wrong password");
           return;
         }
 
-        userDocId = email;
-        userGames = data.games || {};
-        document.querySelector("button").style.display = "none";
+        currentEmail = email;
         document.getElementById("buttons").style.display = "block";
         alert("Login successful");
-      } catch (err) {
-        console.error(err);
-        alert("Error logging in");
-      }
+      }).catch(error => {
+        console.error("Login error:", error);
+        alert("Login failed");
+      });
     }
 
-    async function localToDB() {
-      const localGames = JSON.parse(localStorage.getItem("games") || "{}");
+    function downloadFromDatabase() {
+      if (!currentEmail) return;
 
-      try {
-        await db.collection("babymath").doc(userDocId).update({
-          games: { ...userGames, ...localGames } // merge without overwriting
-        });
-        alert("Local data synced to database");
-      } catch (err) {
-        console.error(err);
-        alert("Error uploading to DB");
-      }
-    }
-
-    async function dbToLocal() {
-      try {
-        const doc = await db.collection("babymath").doc(userDocId).get();
+      db.collection("babymath").doc(currentEmail).get().then(doc => {
         if (doc.exists) {
-          localStorage.setItem("games", JSON.stringify(doc.data().games));
-          alert("Database data saved locally");
-        } else {
-          alert("Document not found");
+          const games = doc.data().games || {};
+          for (let key in games) {
+            localStorage.setItem(key, games[key]);
+            console.log(`Set ${key}: ${games[key]}`);
+          }
+          alert("Downloaded to localStorage");
         }
-      } catch (err) {
-        console.error(err);
-        alert("Error fetching from DB");
-      }
+      }).catch(err => {
+        console.error("Download error:", err);
+        alert("Failed to fetch games");
+      });
+    }
+
+    function uploadToDatabase() {
+      if (!currentEmail) return;
+
+      const games = {};
+      gameKeys.forEach(key => {
+        const value = localStorage.getItem(key);
+        if (value !== null) {
+          games[key] = parseInt(value);
+        }
+      });
+
+      db.collection("babymath").doc(currentEmail).update({ games }).then(() => {
+        alert("Uploaded to database");
+      }).catch(err => {
+        console.error("Upload error:", err);
+        alert("Failed to upload");
+      });
     }
   </script>
 </body>
