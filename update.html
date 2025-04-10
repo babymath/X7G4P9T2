@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sync High Scores</title>
+    <title>Sync High Scores (with Auth)</title>
     <style>
-        /* Optional: Add some basic styling */
+        /* Basic Styling */
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             padding: 20px;
@@ -27,7 +27,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px; /* Spacing between buttons and status divs */
+            gap: 15px;
         }
         button {
             padding: 12px 25px;
@@ -37,54 +37,53 @@
             font-size: 1em;
             font-weight: bold;
             transition: background-color 0.3s ease, transform 0.1s ease;
-            min-width: 250px; /* Ensure buttons have a consistent width */
+            min-width: 250px;
         }
         button:disabled {
             cursor: not-allowed;
             opacity: 0.6;
+            background-color: #bdc3c7; /* Grey out disabled buttons */
+            color: #7f8c8d;
         }
         button:active:not(:disabled) {
              transform: scale(0.98);
         }
-        #syncHighScoresButton {
-            background-color: #3498db; /* Blue */
-            color: white;
-        }
-        #syncHighScoresButton:hover:not(:disabled) {
-            background-color: #2980b9;
-        }
-        #fetchHighScoresButton {
-            background-color: #2ecc71; /* Green */
-            color: white;
-        }
-         #fetchHighScoresButton:hover:not(:disabled) {
-            background-color: #27ae60;
-        }
+        #syncHighScoresButton { background-color: #3498db; color: white; }
+        #syncHighScoresButton:hover:not(:disabled) { background-color: #2980b9; }
+        #fetchHighScoresButton { background-color: #2ecc71; color: white; }
+        #fetchHighScoresButton:hover:not(:disabled) { background-color: #27ae60; }
         .status-message {
-            margin-top: 5px; /* Reduced margin as it's tied to the button */
+            margin-top: 5px;
             font-weight: bold;
             min-height: 1.2em;
             font-size: 0.9em;
             text-align: center;
             width: 100%;
-            max-width: 300px; /* Limit width of status message */
+            max-width: 300px;
         }
         .status-success { color: #27ae60; } /* Green */
         .status-error { color: #e74c3c; } /* Red */
         .status-info { color: #555; } /* Default info color */
+        .auth-status {
+            text-align: center;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #7f8c8d;
+        }
     </style>
 </head>
 <body>
     <h1>High Score Management</h1>
     <p>Manage your high scores between this browser and your online profile.</p>
+    <div id="authStatus" class="auth-status">Connecting...</div>
 
     <div class="button-container">
         <!-- Button to push local scores TO Firebase -->
-        <button id="syncHighScoresButton">Sync Local Scores to Cloud</button>
+        <button id="syncHighScoresButton" disabled>Sync Local Scores to Cloud</button>
         <div id="syncStatus" class="status-message"></div>
 
         <!-- Button to pull scores FROM Firebase -->
-        <button id="fetchHighScoresButton">Fetch Cloud Scores to Local</button>
+        <button id="fetchHighScoresButton" disabled>Fetch Cloud Scores to Local</button>
         <div id="fetchStatus" class="status-message"></div>
     </div>
 
@@ -94,13 +93,14 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
         import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
+        // Import Authentication functions
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
         // ==================================================================
         // 1. FIREBASE INITIALIZATION
         // ==================================================================
-        // Updated Firebase configuration as requested
         const firebaseConfig = {
-          apiKey: "AIzaSyBFABtE8u3Bcnza2Aono9yFl6aN2f6F2zQ", // IMPORTANT: Consider securing this key
+          apiKey: "AIzaSyBFABtE8u3Bcnza2Aono9yFl6aN2f6F2zQ", // Replace if necessary, but consider security
           authDomain: "babymath-data.firebaseapp.com",
           projectId: "babymath-data",
           storageBucket: "babymath-data.firebasestorage.app",
@@ -112,49 +112,83 @@
         let app;
         let db;
         let analytics;
+        let auth; // Firebase Auth instance
         let firebaseInitialized = false;
+        let currentUserId = null; // Store the authenticated user ID
 
-        // Get references to UI elements used for initialization feedback
-        const syncStatusDivInit = document.getElementById('syncStatus');
-        const fetchStatusDivInit = document.getElementById('fetchStatus');
-        const syncButtonInit = document.getElementById('syncHighScoresButton');
-        const fetchButtonInit = document.getElementById('fetchHighScoresButton');
+        // Get references to UI elements
+        const syncStatusDiv = document.getElementById('syncStatus');
+        const fetchStatusDiv = document.getElementById('fetchStatus');
+        const syncButton = document.getElementById('syncHighScoresButton');
+        const fetchButton = document.getElementById('fetchHighScoresButton');
+        const authStatusDiv = document.getElementById('authStatus');
 
         try {
             app = initializeApp(firebaseConfig);
             db = getFirestore(app);
-            analytics = getAnalytics(app); // Initialize Analytics
+            analytics = getAnalytics(app); // Optional
+            auth = getAuth(app); // Initialize Auth
             firebaseInitialized = true;
             console.log("Firebase Initialized Successfully (v11.6.0)");
+            setupAuthListener(); // Start listening for auth changes
         } catch (error) {
             console.error("Firebase Initialization Error:", error);
-            const initErrorMessage = "Error: Could not connect to Firebase. Score sync unavailable.";
-            // Update UI to indicate Firebase connection failure
-            [syncStatusDivInit, fetchStatusDivInit].forEach(div => {
-                if (div) {
-                    div.textContent = initErrorMessage;
-                    div.className = 'status-message status-error'; // Apply error class
+            const initErrorMessage = "Error: Could not connect to Firebase.";
+            updateStatus('syncStatus', initErrorMessage, 'error', true); // Make init errors persistent
+            updateStatus('fetchStatus', initErrorMessage, 'error', true);
+            if (authStatusDiv) authStatusDiv.textContent = "Connection Failed";
+            // Buttons remain disabled by default
+        }
+
+        // ==================================================================
+        // 2. AUTHENTICATION HANDLING
+        // ==================================================================
+        function setupAuthListener() {
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    // User is signed in (anonymously in this case)
+                    currentUserId = user.uid;
+                    console.log("User signed in anonymously with UID:", currentUserId);
+                    if (authStatusDiv) authStatusDiv.textContent = `Connected (User ID: ...${currentUserId.slice(-6)})`; // Show partial ID
+                    // Enable buttons now that we have a user ID
+                    if (syncButton) syncButton.disabled = false;
+                    if (fetchButton) fetchButton.disabled = false;
+                } else {
+                    // User is signed out
+                    currentUserId = null;
+                    console.log("User is signed out.");
+                    if (authStatusDiv) authStatusDiv.textContent = "Disconnected. Attempting to sign in...";
+                    // Disable buttons
+                    if (syncButton) syncButton.disabled = true;
+                    if (fetchButton) fetchButton.disabled = true;
+                    // Attempt to sign in anonymously again if disconnected
+                    signInUserAnonymously();
                 }
             });
-            [syncButtonInit, fetchButtonInit].forEach(button => {
-                 if (button) {
-                    button.disabled = true;
-                 }
-            });
+        }
+
+        async function signInUserAnonymously() {
+             if (!auth) return; // Don't try if auth failed to initialize
+             try {
+                 if (authStatusDiv) authStatusDiv.textContent = "Signing in...";
+                 await signInAnonymously(auth);
+                 // onAuthStateChanged will handle the rest
+             } catch (error) {
+                 console.error("Anonymous Sign-In Error:", error);
+                 if (authStatusDiv) authStatusDiv.textContent = "Sign-In Failed. Refresh may be needed.";
+                 updateStatus('syncStatus', "Authentication Failed.", 'error', true);
+                 updateStatus('fetchStatus', "Authentication Failed.", 'error', true);
+             }
+        }
+
+        // Attempt initial anonymous sign-in if Firebase initialized
+        if (firebaseInitialized) {
+            signInUserAnonymously();
         }
 
         // ==================================================================
-        // 2. HELPER FUNCTIONS & DATA DEFINITIONS
+        // 3. HELPER FUNCTIONS & DATA DEFINITIONS
         // ==================================================================
-
-        // --- Helper Function to Get Cookie ---
-        function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(';').shift();
-            console.warn(`Cookie "${name}" not found.`);
-            return null;
-        }
 
         // --- Define the structure of expected high score keys ---
         const gameKeys = ["111", "222", "333", "444", "555", "666", "777"];
@@ -162,6 +196,7 @@
 
         // --- Function to gather relevant high scores FROM local storage ---
         function getHighScoresFromLocalStorage() {
+            // (This function remains the same as before)
             const highScores = {};
             console.log("Reading high scores from local storage...");
             gameKeys.forEach(gameKey => {
@@ -178,6 +213,7 @@
                     }
                 });
             });
+            // ... (rest of the function is the same)
             if (Object.keys(highScores).length === 0) {
                 console.log("No relevant high scores found in local storage.");
             } else {
@@ -187,47 +223,41 @@
         }
 
         // --- Helper to update status messages ---
-        function updateStatus(elementId, message, type = 'info') {
+        // Added 'persistent' flag for init/auth errors
+        function updateStatus(elementId, message, type = 'info', persistent = false) {
             const element = document.getElementById(elementId);
             if (!element) return;
 
             element.textContent = message;
-            // Reset classes first
-            element.className = 'status-message';
-            // Add specific type class
-            if (type === 'success') {
-                element.classList.add('status-success');
-            } else if (type === 'error') {
-                element.classList.add('status-error');
-            } else {
-                 element.classList.add('status-info');
-            }
+            element.className = 'status-message'; // Reset classes
+            if (type === 'success') element.classList.add('status-success');
+            else if (type === 'error') element.classList.add('status-error');
+            else element.classList.add('status-info');
 
-            // Clear message after a delay, unless it's a persistent init error
-            if (type !== 'init-error') {
+            // Clear message after a delay, unless persistent
+            if (!persistent) {
                  setTimeout(() => {
-                    if (element.textContent === message) { // Only clear if message hasn't changed
+                    if (element.textContent === message) {
                         element.textContent = "";
-                        element.className = 'status-message'; // Reset class
+                        element.className = 'status-message';
                     }
-                 }, 5000); // Clear after 5 seconds
+                 }, 5000);
             }
         }
 
 
         // ==================================================================
-        // 3. FIREBASE SYNC FUNCTIONS
+        // 4. FIREBASE SYNC FUNCTIONS (Modified to use currentUserId)
         // ==================================================================
 
         // --- Function to Sync Local Scores TO Firebase ---
         async function syncScoresToFirebase() {
-            if (!firebaseInitialized || !db) {
-                console.error("Firebase Firestore is not available. Cannot sync scores.");
-                alert("Error: Cannot connect to the score server. Please try again later.");
+            // Check for initialization and authenticated user ID
+            if (!firebaseInitialized || !db || !currentUserId) {
+                alert("Cannot sync scores. Not connected or not signed in.");
+                console.error("Sync aborted: Firebase not ready or user not authenticated.", { firebaseInitialized, db: !!db, currentUserId });
                 return;
             }
-
-            const syncButton = document.getElementById('syncHighScoresButton');
 
             console.log("Sync Local Scores to Cloud button clicked.");
             if (syncButton) {
@@ -236,17 +266,8 @@
             }
             updateStatus('syncStatus', "Starting sync to cloud...", 'info');
 
-            const userId = getCookie("userid");
-            if (!userId) {
-                console.error("Error: 'userid' cookie not found. Cannot sync scores.");
-                alert("Login required: Your user ID was not found.");
-                updateStatus('syncStatus', "Error: User ID not found.", 'error');
-                if (syncButton) {
-                    syncButton.disabled = false;
-                    syncButton.textContent = "Sync Local Scores to Cloud";
-                }
-                return;
-            }
+            // Use currentUserId obtained from Auth
+            const userId = currentUserId;
 
             const localHighScores = getHighScoresFromLocalStorage();
             if (Object.keys(localHighScores).length === 0) {
@@ -260,22 +281,21 @@
             }
 
             console.log(`Attempting to sync scores TO Firebase for user: ${userId}`);
-            updateStatus('syncStatus', `Syncing scores for ${userId} to cloud...`, 'info');
+            updateStatus('syncStatus', `Syncing scores for ${userId.slice(-6)} to cloud...`, 'info');
 
             try {
-                const userDocRef = doc(db, "users", userId); // Assumes collection 'users'
+                const userDocRef = doc(db, "users", userId); // Use authenticated userId
                 await setDoc(userDocRef, { highScores: localHighScores }, { merge: true });
                 console.log("Firestore successfully synced TO for user:", userId);
                 alert("Local high scores synced to cloud successfully!");
                 updateStatus('syncStatus', "Sync to cloud successful!", 'success');
             } catch (error) {
                 console.error("Error syncing high scores TO Firestore:", error);
-                // Check for permission errors specifically
                 if (error.code === 'permission-denied') {
-                     alert(`Permission Error: Could not save scores to the cloud. Please check login status or app permissions.`);
-                     updateStatus('syncStatus', `Permission Error: Check rules/login.`, 'error');
+                     alert(`Permission Error: Could not save scores. Ensure Firestore rules allow writes for authenticated users.`);
+                     updateStatus('syncStatus', `Permission Error: Check rules.`, 'error');
                 } else {
-                    alert(`An error occurred while syncing scores to the cloud: ${error.message}. Please try again.`);
+                    alert(`An error occurred while syncing scores: ${error.message}.`);
                     updateStatus('syncStatus', `Sync Error: ${error.message}`, 'error');
                 }
             } finally {
@@ -289,13 +309,12 @@
 
         // --- Function to Fetch Cloud Scores FROM Firebase TO Local Storage ---
         async function fetchScoresFromFirebase() {
-            if (!firebaseInitialized || !db) {
-                console.error("Firebase Firestore is not available. Cannot fetch scores.");
-                alert("Error: Cannot connect to the score server. Please try again later.");
+             // Check for initialization and authenticated user ID
+            if (!firebaseInitialized || !db || !currentUserId) {
+                alert("Cannot fetch scores. Not connected or not signed in.");
+                 console.error("Fetch aborted: Firebase not ready or user not authenticated.", { firebaseInitialized, db: !!db, currentUserId });
                 return;
             }
-
-            const fetchButton = document.getElementById('fetchHighScoresButton');
 
             console.log("Fetch Cloud Scores button clicked.");
             if (fetchButton) {
@@ -304,23 +323,14 @@
             }
             updateStatus('fetchStatus', "Starting fetch from cloud...", 'info');
 
-            const userId = getCookie("userid");
-            if (!userId) {
-                console.error("Error: 'userid' cookie not found. Cannot fetch scores.");
-                alert("Login required: Your user ID was not found.");
-                updateStatus('fetchStatus', "Error: User ID not found.", 'error');
-                if (fetchButton) {
-                    fetchButton.disabled = false;
-                    fetchButton.textContent = "Fetch Cloud Scores to Local";
-                }
-                return;
-            }
+            // Use currentUserId obtained from Auth
+            const userId = currentUserId;
 
             console.log(`Attempting to fetch scores FROM Firebase for user: ${userId}`);
-            updateStatus('fetchStatus', `Fetching scores for ${userId} from cloud...`, 'info');
+            updateStatus('fetchStatus', `Fetching scores for ${userId.slice(-6)} from cloud...`, 'info');
 
             try {
-                const userDocRef = doc(db, "users", userId); // Assumes collection 'users'
+                const userDocRef = doc(db, "users", userId); // Use authenticated userId
                 const docSnap = await getDoc(userDocRef);
 
                 if (docSnap.exists()) {
@@ -337,27 +347,26 @@
                                 updatedCount++;
                             }
                         }
-                        alert(`Successfully fetched and updated ${updatedCount} high score(s) from the cloud.`);
-                        updateStatus('fetchStatus', `Fetch successful (${updatedCount} scores updated)!`, 'success');
+                        alert(`Successfully fetched and updated ${updatedCount} high score(s).`);
+                        updateStatus('fetchStatus', `Fetch successful (${updatedCount} scores)!`, 'success');
                     } else {
                         console.log("No 'highScores' data found in the user's document or it's empty.");
-                        alert("No high scores found in your cloud profile to fetch.");
+                        alert("No high scores found in your cloud profile.");
                         updateStatus('fetchStatus', "No scores found in cloud.", 'info');
                     }
                 } else {
                     console.log("No such user document found in Firebase for ID:", userId);
-                    alert("Could not find your profile in the cloud. Have you synced scores before?");
+                    alert("Could not find your profile in the cloud. Sync scores first?");
                     updateStatus('fetchStatus', "Cloud profile not found.", 'info');
                 }
 
             } catch (error) {
                 console.error("Error fetching high scores from Firestore:", error);
-                 // Check for permission errors specifically
                 if (error.code === 'permission-denied') {
-                     alert(`Permission Error: Could not read scores from the cloud. Please check login status or app permissions.`);
-                     updateStatus('fetchStatus', `Permission Error: Check rules/login.`, 'error');
+                     alert(`Permission Error: Could not read scores. Ensure Firestore rules allow reads for authenticated users.`);
+                     updateStatus('fetchStatus', `Permission Error: Check rules.`, 'error');
                 } else {
-                    alert(`An error occurred while fetching high scores: ${error.message}. Please try again.`);
+                    alert(`An error occurred while fetching scores: ${error.message}.`);
                     updateStatus('fetchStatus', `Fetch Error: ${error.message}`, 'error');
                 }
             } finally {
@@ -370,25 +379,22 @@
 
 
         // ==================================================================
-        // 4. EVENT LISTENERS FOR THE BUTTONS
+        // 5. EVENT LISTENERS FOR THE BUTTONS (Added after Auth check)
         // ==================================================================
-        if (firebaseInitialized) {
-            const syncButton = document.getElementById('syncHighScoresButton');
-            const fetchButton = document.getElementById('fetchHighScoresButton');
+        // Listeners are added dynamically by the onAuthStateChanged handler
+        // when the user is authenticated. We just need to ensure the functions
+        // are called correctly when the buttons (now enabled) are clicked.
 
-            if (syncButton) {
-                syncButton.addEventListener('click', syncScoresToFirebase);
-            } else {
-                console.error("Button with ID 'syncHighScoresButton' not found in the HTML.");
-            }
-
-            if (fetchButton) {
-                fetchButton.addEventListener('click', fetchScoresFromFirebase);
-            } else {
-                console.error("Button with ID 'fetchHighScoresButton' not found in the HTML.");
-            }
+        if (syncButton) {
+            syncButton.addEventListener('click', syncScoresToFirebase);
         } else {
-             console.warn("Button listeners not added because Firebase failed to initialize.");
+            console.error("Button with ID 'syncHighScoresButton' not found.");
+        }
+
+        if (fetchButton) {
+            fetchButton.addEventListener('click', fetchScoresFromFirebase);
+        } else {
+            console.error("Button with ID 'fetchHighScoresButton' not found.");
         }
 
     </script>
