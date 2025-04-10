@@ -1,120 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BabyMath Login</title>
-  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
-  <style>
-    body { font-family: sans-serif; text-align: center; margin-top: 50px; }
-    #buttons, #message { display: none; margin-top: 20px; }
-    input { margin: 5px; padding: 8px; width: 200px; }
-    button { padding: 10px 20px; margin: 10px; }
-  </style>
+  <title>Firebase Auth Login</title>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
 </head>
 <body>
-
-  <h2>Login to BabyMath</h2>
-  <div id="login">
-    <input type="email" id="email" placeholder="Email"><br>
-    <input type="password" id="password" placeholder="Password"><br>
+  <h2>Login</h2>
+  <div id="login-box">
+    <input type="email" id="email" placeholder="Email"><br><br>
+    <input type="password" id="password" placeholder="Password"><br><br>
     <button onclick="login()">Login</button>
-    <div id="message" style="color: red;"></div>
+    <p id="error" style="color:red;"></p>
   </div>
 
-  <div id="buttons">
-    <h3>Welcome!</h3>
-    <button onclick="localToDB()">Local to Database</button>
-    <button onclick="dbToLocal()">Database to Local</button>
-    <div id="result"></div>
+  <div id="actions" style="display:none;">
+    <button onclick="downloadData()">Database → Local</button>
+    <button onclick="uploadData()">Local → Database</button>
   </div>
 
   <script>
-    // Firebase config
+    // Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyBFABtE8u3Bcnza2Aono9yFl6aN2f6F2zQ",
       authDomain: "babymath-data.firebaseapp.com",
       projectId: "babymath-data",
-      storageBucket: "babymath-data.appspot.com",
-      messagingSenderId: "535678073642",
-      appId: "1:535678073642:web:964cda18a45c7b04a97c53",
-      measurementId: "G-7CN48FECP3"
     };
-
-    // Initialize
+    
+    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
     const db = firebase.firestore();
 
-    let currentEmail = "";
+    let userEmail = "";
+    let field = {}; // This will store Firestore data (password, games)
 
     async function login() {
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
-      const message = document.getElementById("message");
-
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
       try {
-        const docRef = db.collection("babymath").doc(email);
-        const doc = await docRef.get();
+        const userCredential = await auth.signInWithEmailAndPassword(email, password);
+        userEmail = email;
 
-        if (!doc.exists) {
-          message.textContent = "No such user.";
-          return;
-        }
-
-        const data = doc.data();
-        if (data.password !== password) {
-          message.textContent = "Incorrect password.";
-          return;
-        }
-
-        // Success
-        message.textContent = "";
-        document.getElementById("login").style.display = "none";
-        document.getElementById("buttons").style.display = "block";
-        currentEmail = email;
-
-      } catch (error) {
-        message.textContent = "Error logging in.";
-        console.error(error);
-      }
-    }
-
-    async function localToDB() {
-      try {
-        const games = JSON.parse(localStorage.getItem("games") || "{}");
-        if (!Object.keys(games).length) {
-          alert("No local games data found.");
-          return;
-        }
-
-        const docRef = db.collection("babymath").doc(currentEmail);
-        await docRef.set({ games }, { merge: true });
-        document.getElementById("result").textContent = "Local data saved to database.";
-      } catch (error) {
-        console.error(error);
-        alert("Error saving to database.");
-      }
-    }
-
-    async function dbToLocal() {
-      try {
-        const docRef = db.collection("babymath").doc(currentEmail);
-        const doc = await docRef.get();
-        const data = doc.data();
-
-        if (data && data.games) {
-          localStorage.setItem("games", JSON.stringify(data.games));
-          document.getElementById("result").textContent = "Database games loaded to local storage.";
+        // Fetch Firestore document
+        const doc = await db.collection("babymath").doc(email).get();
+        if (doc.exists) {
+          field = doc.data();
+          document.getElementById("login-box").style.display = "none";
+          document.getElementById("actions").style.display = "block";
         } else {
-          alert("No games data in database.");
+          document.getElementById("error").innerText = "Document not found in Firestore.";
         }
-
       } catch (error) {
-        console.error(error);
-        alert("Error loading from database.");
+        document.getElementById("error").innerText = "Login failed: " + error.message;
+      }
+    }
+
+    async function downloadData() {
+      if (field && field.games) {
+        localStorage.setItem("games", JSON.stringify(field.games));
+        alert("Games data saved to local storage.");
+      } else {
+        alert("No games data found.");
+      }
+    }
+
+    async function uploadData() {
+      const localGames = JSON.parse(localStorage.getItem("games"));
+      if (localGames && userEmail) {
+        await db.collection("babymath").doc(userEmail).update({
+          games: localGames
+        });
+        alert("Games data uploaded to Firestore.");
+      } else {
+        alert("No local games data found.");
       }
     }
   </script>
-
 </body>
 </html>
