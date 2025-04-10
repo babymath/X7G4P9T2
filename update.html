@@ -98,6 +98,7 @@
         // ==================================================================
         // 1. FIREBASE INITIALIZATION
         // ==================================================================
+        // Updated Firebase configuration as requested
         const firebaseConfig = {
           apiKey: "AIzaSyBFABtE8u3Bcnza2Aono9yFl6aN2f6F2zQ", // IMPORTANT: Consider securing this key
           authDomain: "babymath-data.firebaseapp.com",
@@ -122,7 +123,7 @@
         try {
             app = initializeApp(firebaseConfig);
             db = getFirestore(app);
-            analytics = getAnalytics(app);
+            analytics = getAnalytics(app); // Initialize Analytics
             firebaseInitialized = true;
             console.log("Firebase Initialized Successfully (v11.6.0)");
         } catch (error) {
@@ -138,8 +139,6 @@
             [syncButtonInit, fetchButtonInit].forEach(button => {
                  if (button) {
                     button.disabled = true;
-                    // Optionally update text, but disabling is key
-                    // button.textContent = "Sync Unavailable";
                  }
             });
         }
@@ -271,8 +270,14 @@
                 updateStatus('syncStatus', "Sync to cloud successful!", 'success');
             } catch (error) {
                 console.error("Error syncing high scores TO Firestore:", error);
-                alert(`An error occurred while syncing scores to the cloud: ${error.message}. Please try again.`);
-                updateStatus('syncStatus', `Sync Error: ${error.message}`, 'error');
+                // Check for permission errors specifically
+                if (error.code === 'permission-denied') {
+                     alert(`Permission Error: Could not save scores to the cloud. Please check login status or app permissions.`);
+                     updateStatus('syncStatus', `Permission Error: Check rules/login.`, 'error');
+                } else {
+                    alert(`An error occurred while syncing scores to the cloud: ${error.message}. Please try again.`);
+                    updateStatus('syncStatus', `Sync Error: ${error.message}`, 'error');
+                }
             } finally {
                 if (syncButton) {
                     syncButton.disabled = false;
@@ -347,8 +352,14 @@
 
             } catch (error) {
                 console.error("Error fetching high scores from Firestore:", error);
-                alert(`An error occurred while fetching high scores: ${error.message}. Please try again.`);
-                updateStatus('fetchStatus', `Fetch Error: ${error.message}`, 'error');
+                 // Check for permission errors specifically
+                if (error.code === 'permission-denied') {
+                     alert(`Permission Error: Could not read scores from the cloud. Please check login status or app permissions.`);
+                     updateStatus('fetchStatus', `Permission Error: Check rules/login.`, 'error');
+                } else {
+                    alert(`An error occurred while fetching high scores: ${error.message}. Please try again.`);
+                    updateStatus('fetchStatus', `Fetch Error: ${error.message}`, 'error');
+                }
             } finally {
                 if (fetchButton) {
                     fetchButton.disabled = false;
@@ -361,9 +372,6 @@
         // ==================================================================
         // 4. EVENT LISTENERS FOR THE BUTTONS
         // ==================================================================
-        // No need for DOMContentLoaded listener here, as the script is at the end of the body
-        // But we still need to check if Firebase initialized before adding listeners
-
         if (firebaseInitialized) {
             const syncButton = document.getElementById('syncHighScoresButton');
             const fetchButton = document.getElementById('fetchHighScoresButton');
@@ -381,7 +389,6 @@
             }
         } else {
              console.warn("Button listeners not added because Firebase failed to initialize.");
-             // Buttons should already be disabled by the init error handling
         }
 
     </script>
