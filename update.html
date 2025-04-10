@@ -9,38 +9,44 @@
     body {
       font-family: Arial, sans-serif;
       background: #f2f2f2;
+      padding: 0;
+      margin: 0;
+    }
+  #loginSection, #buttons{
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 50px;
-    }
-  #loginSection{
-    display:"flex";
-    flex-direction:"column";
-  }
-    
-    #buttons {
-      background: white;
+      justify-content: center;
+      background: rgb(113, 57, 165);
       padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(221, 43, 43, 0.1);
+      margin: 20px;
     }
 
-    input, button {
+    h2 {
+      color: #333;
+    }
+
+    input {
+      width: 250px;
       padding: 10px;
       margin: 10px 0;
-      width: 250px;
       border-radius: 8px;
       border: 1px solid #ccc;
+    }
+  
+
+    #buttons button {
+      width: 90%;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     #logout {
       background-color: #f44336;
-    }
-
-    #logout:hover {
-      background-color: #d32f2f;
     }
 
     /* Popup styles */
