@@ -1,300 +1,390 @@
-// Import the functions you need from the SDKs
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-// Import Firestore functions
-import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
-// Optional: Import Analytics if you plan to use it elsewhere, otherwise it can be removed if only used for initialization here.
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
-
-// ==================================================================
-// 1. FIREBASE INITIALIZATION (Using your provided config)
-// ==================================================================
-const firebaseConfig = {
-  apiKey: "AIzaSyBFABtE8u3Bcnza2Aono9yFl6aN2f6F2zQ", // IMPORTANT: Consider securing this key
-  authDomain: "babymath-data.firebaseapp.com",
-  projectId: "babymath-data",
-  storageBucket: "babymath-data.firebasestorage.app",
-  messagingSenderId: "535678073642",
-  appId: "1:535678073642:web:964cda18a45c7b04a97c53",
-  measurementId: "G-7CN48FECP3" // Optional for SDK v7.20.0+ but good practice to include if using Analytics
-};
-
-// Initialize Firebase
-let app;
-let db; // Firestore database instance
-let analytics; // Analytics instance (optional for score sync logic)
-let firebaseInitialized = false;
-
-try {
-    app = initializeApp(firebaseConfig);
-    db = getFirestore(app); // Get the Firestore instance
-    analytics = getAnalytics(app); // Initialize Analytics
-    firebaseInitialized = true;
-    console.log("Firebase Initialized Successfully (v11.6.0)");
-} catch (error) {
-    console.error("Firebase Initialization Error:", error);
-    // Update UI to indicate Firebase connection failure
-    const statusDivs = [document.getElementById('syncStatus'), document.getElementById('fetchStatus')];
-    statusDivs.forEach(div => {
-        if (div) {
-            div.textContent = "Error: Could not connect to Firebase. Score sync unavailable.";
-            div.style.color = 'red';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sync High Scores</title>
+    <style>
+        /* Optional: Add some basic styling */
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f4f7f6;
+            color: #333;
         }
-    });
-    const syncButton = document.getElementById('syncHighScoresButton');
-    const fetchButton = document.getElementById('fetchHighScoresButton');
-    if (syncButton) {
-        syncButton.disabled = true;
-        syncButton.textContent = "Sync Unavailable";
-    }
-     if (fetchButton) {
-        fetchButton.disabled = true;
-        fetchButton.textContent = "Fetch Unavailable";
-    }
-}
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px; /* Spacing between buttons and status divs */
+        }
+        button {
+            padding: 12px 25px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            min-width: 250px; /* Ensure buttons have a consistent width */
+        }
+        button:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        button:active:not(:disabled) {
+             transform: scale(0.98);
+        }
+        #syncHighScoresButton {
+            background-color: #3498db; /* Blue */
+            color: white;
+        }
+        #syncHighScoresButton:hover:not(:disabled) {
+            background-color: #2980b9;
+        }
+        #fetchHighScoresButton {
+            background-color: #2ecc71; /* Green */
+            color: white;
+        }
+         #fetchHighScoresButton:hover:not(:disabled) {
+            background-color: #27ae60;
+        }
+        .status-message {
+            margin-top: 5px; /* Reduced margin as it's tied to the button */
+            font-weight: bold;
+            min-height: 1.2em;
+            font-size: 0.9em;
+            text-align: center;
+            width: 100%;
+            max-width: 300px; /* Limit width of status message */
+        }
+        .status-success { color: #27ae60; } /* Green */
+        .status-error { color: #e74c3c; } /* Red */
+        .status-info { color: #555; } /* Default info color */
+    </style>
+</head>
+<body>
+    <h1>High Score Management</h1>
+    <p>Manage your high scores between this browser and your online profile.</p>
 
-// ==================================================================
-// 2. HELPER FUNCTIONS & DATA DEFINITIONS
-// ==================================================================
+    <div class="button-container">
+        <!-- Button to push local scores TO Firebase -->
+        <button id="syncHighScoresButton">Sync Local Scores to Cloud</button>
+        <div id="syncStatus" class="status-message"></div>
 
-// --- Helper Function to Get Cookie ---
-// SECURITY WARNING: Using cookies for user ID without proper auth is insecure.
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-    console.warn(`Cookie "${name}" not found.`);
-    return null;
-}
+        <!-- Button to pull scores FROM Firebase -->
+        <button id="fetchHighScoresButton">Fetch Cloud Scores to Local</button>
+        <div id="fetchStatus" class="status-message"></div>
+    </div>
 
-// --- Define the structure of expected high score keys ---
-const gameKeys = ["111", "222", "333", "444", "555", "666", "777"];
-const scoreSuffixes = ['100', '200'];
+    <!-- All JavaScript logic embedded here -->
+    <script type="module">
+        // Import the functions you need from the SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
 
-// --- Function to gather relevant high scores FROM local storage ---
-function getHighScoresFromLocalStorage() {
-    const highScores = {};
-    console.log("Reading high scores from local storage...");
-    gameKeys.forEach(gameKey => {
-        scoreSuffixes.forEach(suffix => {
-            const key = `${gameKey}-${suffix}`;
-            const score = localStorage.getItem(key);
-            if (score !== null) {
-                const numericScore = parseInt(score, 10);
-                if (!isNaN(numericScore)) {
-                    highScores[key] = numericScore;
-                    // console.log(`Found local score for ${key}: ${numericScore}`); // Less verbose logging
-                } else {
-                     console.warn(`Invalid score found in local storage for ${key}: ${score}. Skipping.`);
+        // ==================================================================
+        // 1. FIREBASE INITIALIZATION
+        // ==================================================================
+        const firebaseConfig = {
+          apiKey: "AIzaSyBFABtE8u3Bcnza2Aono9yFl6aN2f6F2zQ", // IMPORTANT: Consider securing this key
+          authDomain: "babymath-data.firebaseapp.com",
+          projectId: "babymath-data",
+          storageBucket: "babymath-data.firebasestorage.app",
+          messagingSenderId: "535678073642",
+          appId: "1:535678073642:web:964cda18a45c7b04a97c53",
+          measurementId: "G-7CN48FECP3"
+        };
+
+        let app;
+        let db;
+        let analytics;
+        let firebaseInitialized = false;
+
+        // Get references to UI elements used for initialization feedback
+        const syncStatusDivInit = document.getElementById('syncStatus');
+        const fetchStatusDivInit = document.getElementById('fetchStatus');
+        const syncButtonInit = document.getElementById('syncHighScoresButton');
+        const fetchButtonInit = document.getElementById('fetchHighScoresButton');
+
+        try {
+            app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            analytics = getAnalytics(app);
+            firebaseInitialized = true;
+            console.log("Firebase Initialized Successfully (v11.6.0)");
+        } catch (error) {
+            console.error("Firebase Initialization Error:", error);
+            const initErrorMessage = "Error: Could not connect to Firebase. Score sync unavailable.";
+            // Update UI to indicate Firebase connection failure
+            [syncStatusDivInit, fetchStatusDivInit].forEach(div => {
+                if (div) {
+                    div.textContent = initErrorMessage;
+                    div.className = 'status-message status-error'; // Apply error class
                 }
-            }
-        });
-    });
-    if (Object.keys(highScores).length === 0) {
-        console.log("No relevant high scores found in local storage.");
-    } else {
-        console.log(`Found ${Object.keys(highScores).length} relevant scores locally.`);
-    }
-    return highScores;
-}
-
-// ==================================================================
-// 3. FIREBASE SYNC FUNCTIONS (Sync TO and Fetch FROM Firebase)
-// ==================================================================
-
-// --- Function to Sync Local Scores TO Firebase ---
-async function syncScoresToFirebase() {
-    if (!firebaseInitialized || !db) {
-        console.error("Firebase Firestore is not available. Cannot sync scores.");
-        alert("Error: Cannot connect to the score server. Please try again later.");
-        return;
-    }
-
-    const syncButton = document.getElementById('syncHighScoresButton');
-    const statusDiv = document.getElementById('syncStatus');
-
-    console.log("Sync Local Scores to Cloud button clicked.");
-    if (syncButton) {
-        syncButton.disabled = true;
-        syncButton.textContent = "Syncing...";
-    }
-    if (statusDiv) {
-        statusDiv.textContent = "Starting sync to cloud...";
-        statusDiv.style.color = 'inherit'; // Reset color
-    }
-
-    const userId = getCookie("userid");
-    if (!userId) {
-        console.error("Error: 'userid' cookie not found. Cannot sync scores.");
-        alert("Login required: Your user ID was not found.");
-        if (statusDiv) {
-            statusDiv.textContent = "Error: User ID not found.";
-            statusDiv.style.color = 'red';
+            });
+            [syncButtonInit, fetchButtonInit].forEach(button => {
+                 if (button) {
+                    button.disabled = true;
+                    // Optionally update text, but disabling is key
+                    // button.textContent = "Sync Unavailable";
+                 }
+            });
         }
-        if (syncButton) {
-            syncButton.disabled = false;
-            syncButton.textContent = "Sync Local Scores to Cloud";
+
+        // ==================================================================
+        // 2. HELPER FUNCTIONS & DATA DEFINITIONS
+        // ==================================================================
+
+        // --- Helper Function to Get Cookie ---
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            console.warn(`Cookie "${name}" not found.`);
+            return null;
         }
-        return;
-    }
 
-    const localHighScores = getHighScoresFromLocalStorage();
-    if (Object.keys(localHighScores).length === 0) {
-        alert("No high scores found locally to sync.");
-         if (statusDiv) statusDiv.textContent = "No local scores found.";
-        if (syncButton) {
-            syncButton.disabled = false;
-            syncButton.textContent = "Sync Local Scores to Cloud";
-        }
-        return;
-    }
+        // --- Define the structure of expected high score keys ---
+        const gameKeys = ["111", "222", "333", "444", "555", "666", "777"];
+        const scoreSuffixes = ['100', '200'];
 
-    console.log(`Attempting to sync scores TO Firebase for user: ${userId}`);
-    if (statusDiv) statusDiv.textContent = `Syncing scores for ${userId} to cloud...`;
-
-    try {
-        const userDocRef = doc(db, "users", userId); // Assumes collection 'users'
-        await setDoc(userDocRef, { highScores: localHighScores }, { merge: true });
-        console.log("Firestore successfully synced TO for user:", userId);
-        alert("Local high scores synced to cloud successfully!");
-        if (statusDiv) {
-            statusDiv.textContent = "Sync to cloud successful!";
-            statusDiv.style.color = 'green';
-        }
-    } catch (error) {
-        console.error("Error syncing high scores TO Firestore:", error);
-        alert(`An error occurred while syncing scores to the cloud: ${error.message}. Please try again.`);
-        if (statusDiv) {
-            statusDiv.textContent = `Sync Error: ${error.message}`;
-            statusDiv.style.color = 'red';
-        }
-    } finally {
-        if (syncButton) {
-            syncButton.disabled = false;
-            syncButton.textContent = "Sync Local Scores to Cloud";
-        }
-        // Clear status message after delay
-        setTimeout(() => { if (statusDiv && (statusDiv.textContent.includes("successful") || statusDiv.textContent.startsWith("Error:") || statusDiv.textContent.includes("found"))) { statusDiv.textContent = ""; statusDiv.style.color = 'inherit'; } }, 5000);
-    }
-}
-
-
-// --- Function to Fetch Cloud Scores FROM Firebase TO Local Storage ---
-async function fetchScoresFromFirebase() {
-    if (!firebaseInitialized || !db) {
-        console.error("Firebase Firestore is not available. Cannot fetch scores.");
-        alert("Error: Cannot connect to the score server. Please try again later.");
-        return;
-    }
-
-    const fetchButton = document.getElementById('fetchHighScoresButton');
-    const statusDiv = document.getElementById('fetchStatus');
-
-    console.log("Fetch Cloud Scores button clicked.");
-    if (fetchButton) {
-        fetchButton.disabled = true;
-        fetchButton.textContent = "Fetching...";
-    }
-    if (statusDiv) {
-        statusDiv.textContent = "Starting fetch from cloud...";
-        statusDiv.style.color = 'inherit'; // Reset color
-    }
-
-    const userId = getCookie("userid");
-    if (!userId) {
-        console.error("Error: 'userid' cookie not found. Cannot fetch scores.");
-        alert("Login required: Your user ID was not found.");
-        if (statusDiv) {
-            statusDiv.textContent = "Error: User ID not found.";
-            statusDiv.style.color = 'red';
-        }
-        if (fetchButton) {
-            fetchButton.disabled = false;
-            fetchButton.textContent = "Fetch Cloud Scores to Local";
-        }
-        return;
-    }
-
-    console.log(`Attempting to fetch scores FROM Firebase for user: ${userId}`);
-    if (statusDiv) statusDiv.textContent = `Fetching scores for ${userId} from cloud...`;
-
-    try {
-        const userDocRef = doc(db, "users", userId); // Assumes collection 'users'
-        const docSnap = await getDoc(userDocRef);
-
-        if (docSnap.exists()) {
-            const userData = docSnap.data();
-            const cloudHighScores = userData.highScores;
-
-            if (cloudHighScores && typeof cloudHighScores === 'object' && Object.keys(cloudHighScores).length > 0) {
-                console.log("Found high scores in Firebase:", cloudHighScores);
-                let updatedCount = 0;
-                for (const key in cloudHighScores) {
-                    if (Object.prototype.hasOwnProperty.call(cloudHighScores, key)) {
-                        const value = cloudHighScores[key];
-                        // Optional: Add validation if needed (e.g., ensure key format matches expected)
-                        localStorage.setItem(key, value.toString());
-                        // console.log(`Updated local storage: ${key} = ${value}`); // Less verbose
-                        updatedCount++;
+        // --- Function to gather relevant high scores FROM local storage ---
+        function getHighScoresFromLocalStorage() {
+            const highScores = {};
+            console.log("Reading high scores from local storage...");
+            gameKeys.forEach(gameKey => {
+                scoreSuffixes.forEach(suffix => {
+                    const key = `${gameKey}-${suffix}`;
+                    const score = localStorage.getItem(key);
+                    if (score !== null) {
+                        const numericScore = parseInt(score, 10);
+                        if (!isNaN(numericScore)) {
+                            highScores[key] = numericScore;
+                        } else {
+                             console.warn(`Invalid score found in local storage for ${key}: ${score}. Skipping.`);
+                        }
                     }
-                }
-                alert(`Successfully fetched and updated ${updatedCount} high score(s) from the cloud.`);
-                if (statusDiv) {
-                    statusDiv.textContent = `Fetch successful (${updatedCount} scores updated)!`;
-                    statusDiv.style.color = 'green';
-                }
+                });
+            });
+            if (Object.keys(highScores).length === 0) {
+                console.log("No relevant high scores found in local storage.");
             } else {
-                console.log("No 'highScores' data found in the user's document or it's empty.");
-                alert("No high scores found in your cloud profile to fetch.");
-                if (statusDiv) statusDiv.textContent = "No scores found in cloud.";
+                console.log(`Found ${Object.keys(highScores).length} relevant scores locally.`);
+            }
+            return highScores;
+        }
+
+        // --- Helper to update status messages ---
+        function updateStatus(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+
+            element.textContent = message;
+            // Reset classes first
+            element.className = 'status-message';
+            // Add specific type class
+            if (type === 'success') {
+                element.classList.add('status-success');
+            } else if (type === 'error') {
+                element.classList.add('status-error');
+            } else {
+                 element.classList.add('status-info');
+            }
+
+            // Clear message after a delay, unless it's a persistent init error
+            if (type !== 'init-error') {
+                 setTimeout(() => {
+                    if (element.textContent === message) { // Only clear if message hasn't changed
+                        element.textContent = "";
+                        element.className = 'status-message'; // Reset class
+                    }
+                 }, 5000); // Clear after 5 seconds
+            }
+        }
+
+
+        // ==================================================================
+        // 3. FIREBASE SYNC FUNCTIONS
+        // ==================================================================
+
+        // --- Function to Sync Local Scores TO Firebase ---
+        async function syncScoresToFirebase() {
+            if (!firebaseInitialized || !db) {
+                console.error("Firebase Firestore is not available. Cannot sync scores.");
+                alert("Error: Cannot connect to the score server. Please try again later.");
+                return;
+            }
+
+            const syncButton = document.getElementById('syncHighScoresButton');
+
+            console.log("Sync Local Scores to Cloud button clicked.");
+            if (syncButton) {
+                syncButton.disabled = true;
+                syncButton.textContent = "Syncing...";
+            }
+            updateStatus('syncStatus', "Starting sync to cloud...", 'info');
+
+            const userId = getCookie("userid");
+            if (!userId) {
+                console.error("Error: 'userid' cookie not found. Cannot sync scores.");
+                alert("Login required: Your user ID was not found.");
+                updateStatus('syncStatus', "Error: User ID not found.", 'error');
+                if (syncButton) {
+                    syncButton.disabled = false;
+                    syncButton.textContent = "Sync Local Scores to Cloud";
+                }
+                return;
+            }
+
+            const localHighScores = getHighScoresFromLocalStorage();
+            if (Object.keys(localHighScores).length === 0) {
+                alert("No high scores found locally to sync.");
+                updateStatus('syncStatus', "No local scores found.", 'info');
+                if (syncButton) {
+                    syncButton.disabled = false;
+                    syncButton.textContent = "Sync Local Scores to Cloud";
+                }
+                return;
+            }
+
+            console.log(`Attempting to sync scores TO Firebase for user: ${userId}`);
+            updateStatus('syncStatus', `Syncing scores for ${userId} to cloud...`, 'info');
+
+            try {
+                const userDocRef = doc(db, "users", userId); // Assumes collection 'users'
+                await setDoc(userDocRef, { highScores: localHighScores }, { merge: true });
+                console.log("Firestore successfully synced TO for user:", userId);
+                alert("Local high scores synced to cloud successfully!");
+                updateStatus('syncStatus', "Sync to cloud successful!", 'success');
+            } catch (error) {
+                console.error("Error syncing high scores TO Firestore:", error);
+                alert(`An error occurred while syncing scores to the cloud: ${error.message}. Please try again.`);
+                updateStatus('syncStatus', `Sync Error: ${error.message}`, 'error');
+            } finally {
+                if (syncButton) {
+                    syncButton.disabled = false;
+                    syncButton.textContent = "Sync Local Scores to Cloud";
+                }
+            }
+        }
+
+
+        // --- Function to Fetch Cloud Scores FROM Firebase TO Local Storage ---
+        async function fetchScoresFromFirebase() {
+            if (!firebaseInitialized || !db) {
+                console.error("Firebase Firestore is not available. Cannot fetch scores.");
+                alert("Error: Cannot connect to the score server. Please try again later.");
+                return;
+            }
+
+            const fetchButton = document.getElementById('fetchHighScoresButton');
+
+            console.log("Fetch Cloud Scores button clicked.");
+            if (fetchButton) {
+                fetchButton.disabled = true;
+                fetchButton.textContent = "Fetching...";
+            }
+            updateStatus('fetchStatus', "Starting fetch from cloud...", 'info');
+
+            const userId = getCookie("userid");
+            if (!userId) {
+                console.error("Error: 'userid' cookie not found. Cannot fetch scores.");
+                alert("Login required: Your user ID was not found.");
+                updateStatus('fetchStatus', "Error: User ID not found.", 'error');
+                if (fetchButton) {
+                    fetchButton.disabled = false;
+                    fetchButton.textContent = "Fetch Cloud Scores to Local";
+                }
+                return;
+            }
+
+            console.log(`Attempting to fetch scores FROM Firebase for user: ${userId}`);
+            updateStatus('fetchStatus', `Fetching scores for ${userId} from cloud...`, 'info');
+
+            try {
+                const userDocRef = doc(db, "users", userId); // Assumes collection 'users'
+                const docSnap = await getDoc(userDocRef);
+
+                if (docSnap.exists()) {
+                    const userData = docSnap.data();
+                    const cloudHighScores = userData.highScores;
+
+                    if (cloudHighScores && typeof cloudHighScores === 'object' && Object.keys(cloudHighScores).length > 0) {
+                        console.log("Found high scores in Firebase:", cloudHighScores);
+                        let updatedCount = 0;
+                        for (const key in cloudHighScores) {
+                            if (Object.prototype.hasOwnProperty.call(cloudHighScores, key)) {
+                                const value = cloudHighScores[key];
+                                localStorage.setItem(key, value.toString());
+                                updatedCount++;
+                            }
+                        }
+                        alert(`Successfully fetched and updated ${updatedCount} high score(s) from the cloud.`);
+                        updateStatus('fetchStatus', `Fetch successful (${updatedCount} scores updated)!`, 'success');
+                    } else {
+                        console.log("No 'highScores' data found in the user's document or it's empty.");
+                        alert("No high scores found in your cloud profile to fetch.");
+                        updateStatus('fetchStatus', "No scores found in cloud.", 'info');
+                    }
+                } else {
+                    console.log("No such user document found in Firebase for ID:", userId);
+                    alert("Could not find your profile in the cloud. Have you synced scores before?");
+                    updateStatus('fetchStatus', "Cloud profile not found.", 'info');
+                }
+
+            } catch (error) {
+                console.error("Error fetching high scores from Firestore:", error);
+                alert(`An error occurred while fetching high scores: ${error.message}. Please try again.`);
+                updateStatus('fetchStatus', `Fetch Error: ${error.message}`, 'error');
+            } finally {
+                if (fetchButton) {
+                    fetchButton.disabled = false;
+                    fetchButton.textContent = "Fetch Cloud Scores to Local";
+                }
+            }
+        }
+
+
+        // ==================================================================
+        // 4. EVENT LISTENERS FOR THE BUTTONS
+        // ==================================================================
+        // No need for DOMContentLoaded listener here, as the script is at the end of the body
+        // But we still need to check if Firebase initialized before adding listeners
+
+        if (firebaseInitialized) {
+            const syncButton = document.getElementById('syncHighScoresButton');
+            const fetchButton = document.getElementById('fetchHighScoresButton');
+
+            if (syncButton) {
+                syncButton.addEventListener('click', syncScoresToFirebase);
+            } else {
+                console.error("Button with ID 'syncHighScoresButton' not found in the HTML.");
+            }
+
+            if (fetchButton) {
+                fetchButton.addEventListener('click', fetchScoresFromFirebase);
+            } else {
+                console.error("Button with ID 'fetchHighScoresButton' not found in the HTML.");
             }
         } else {
-            console.log("No such user document found in Firebase for ID:", userId);
-            alert("Could not find your profile in the cloud. Have you synced scores before?");
-            if (statusDiv) statusDiv.textContent = "Cloud profile not found.";
+             console.warn("Button listeners not added because Firebase failed to initialize.");
+             // Buttons should already be disabled by the init error handling
         }
 
-    } catch (error) {
-        console.error("Error fetching high scores from Firestore:", error);
-        alert(`An error occurred while fetching high scores: ${error.message}. Please try again.`);
-        if (statusDiv) {
-            statusDiv.textContent = `Fetch Error: ${error.message}`;
-            statusDiv.style.color = 'red';
-        }
-    } finally {
-        if (fetchButton) {
-            fetchButton.disabled = false;
-            fetchButton.textContent = "Fetch Cloud Scores to Local";
-        }
-         // Clear status message after delay
-        setTimeout(() => { if (statusDiv && (statusDiv.textContent.includes("successful") || statusDiv.textContent.startsWith("Error:") || statusDiv.textContent.includes("found"))) { statusDiv.textContent = ""; statusDiv.style.color = 'inherit'; } }, 5000);
-    }
-}
+    </script>
 
-
-// ==================================================================
-// 4. EVENT LISTENERS FOR THE BUTTONS
-// ==================================================================
-document.addEventListener('DOMContentLoaded', () => {
-    const syncButton = document.getElementById('syncHighScoresButton');
-    const fetchButton = document.getElementById('fetchHighScoresButton');
-
-    if (syncButton) {
-        if (firebaseInitialized) {
-            syncButton.addEventListener('click', syncScoresToFirebase);
-        } else {
-            console.warn("Sync button listener not added because Firebase failed to initialize.");
-        }
-    } else {
-        console.error("Button with ID 'syncHighScoresButton' not found in the HTML.");
-    }
-
-    if (fetchButton) {
-         if (firebaseInitialized) {
-            fetchButton.addEventListener('click', fetchScoresFromFirebase);
-        } else {
-            console.warn("Fetch button listener not added because Firebase failed to initialize.");
-        }
-    } else {
-        console.error("Button with ID 'fetchHighScoresButton' not found in the HTML.");
-    }
-});
+</body>
+</html>
