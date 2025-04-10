@@ -2,26 +2,33 @@
 <html>
 <head>
   <title>BabyMath Login</title>
-  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
+    body { font-family: sans-serif; text-align: center; padding: 50px; }
     #buttons { display: none; margin-top: 20px; }
   </style>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 </head>
 <body>
-  <h2>Login</h2>
-  <input type="email" id="email" placeholder="Email"><br><br>
-  <input type="password" id="password" placeholder="Password"><br><br>
-  <button onclick="login()">Login</button>
-  <p id="result"></p>
+
+  <h1>BabyMath Login</h1>
+
+  <div id="loginDiv">
+    <input type="email" id="email" placeholder="Email"><br><br>
+    <input type="password" id="password" placeholder="Password"><br><br>
+    <button onclick="login()">Login</button>
+    <p id="error" style="color:red;"></p>
+  </div>
 
   <div id="buttons">
-    <button onclick="localToDb()">Local to Database</button>
-    <button onclick="dbToLocal()">Database to Local</button>
+    <button onclick="localToDatabase()">Local to Database</button>
+    <button onclick="databaseToLocal()">Database to Local</button>
   </div>
 
   <script>
+    // Firebase Config
     const firebaseConfig = {
       apiKey: "AIzaSyBFABtE8u3Bcnza2Aono9yFl6aN2f6F2zQ",
       authDomain: "babymath-data.firebaseapp.com",
@@ -32,69 +39,64 @@
       measurementId: "G-7CN48FECP3"
     };
 
+    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
     const db = firebase.firestore();
 
-    let currentUserEmail = "";
+    // Sample local data
     let games = {
-      "111-100": false, "111-200": false,
-      "222-100": false, "222-200": false,
-      "333-100": false, "333-200": false,
-      "444-100": false, "444-200": false,
-      "555-100": false, "555-200": false,
-      "666-100": false, "666-200": false,
-      "777-100": false, "777-200": false
+      "111-100": 0, "111-200": 0, "222-100": 0, "222-200": 0,
+      "333-100": 0, "333-200": 0, "444-100": 0, "444-200": 0,
+      "555-100": 0, "555-200": 0, "666-100": 0, "666-200": 0,
+      "777-100": 0, "777-200": 0
     };
 
-    const field = { password: "", games };
+    function login() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
 
-    async function login() {
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
-      document.getElementById("result").textContent = "Checking...";
-
-      try {
-        const docRef = db.collection("babymath").doc(email);
-        const doc = await docRef.get();
-
-        if (doc.exists && doc.data().password === password) {
-          field.password = password;
-          Object.assign(games, doc.data().games || {});
-          currentUserEmail = email;
-          document.getElementById("result").textContent = "Login successful!";
+      auth.signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          document.getElementById("loginDiv").style.display = "none";
           document.getElementById("buttons").style.display = "block";
-        } else {
-          document.getElementById("result").textContent = "Login failed!";
-        }
-      } catch (error) {
-        document.getElementById("result").textContent = "Error logging in.";
-        console.error(error);
-      }
+        })
+        .catch((error) => {
+          document.getElementById("error").innerText = "Login failed.";
+          console.error(error);
+        });
     }
 
-    async function localToDb() {
-      if (!currentUserEmail) return;
-      try {
-        await db.collection("babymath").doc(currentUserEmail).update({ games });
-        alert("Local data synced to database.");
-      } catch (error) {
-        alert("Error syncing to database.");
-        console.error(error);
-      }
+    function localToDatabase() {
+      const user = auth.currentUser;
+      if (!user) return;
+
+      db.collection("babymath").doc(user.uid).set({
+        password: document.getElementById("password").value,
+        games: games
+      }, { merge: true }).then(() => {
+        alert("Data synced to database.");
+      }).catch(err => {
+        console.error("Upload failed", err);
+      });
     }
 
-    async function dbToLocal() {
-      if (!currentUserEmail) return;
-      try {
-        const doc = await db.collection("babymath").doc(currentUserEmail).get();
-        if (doc.exists) {
-          Object.assign(games, doc.data().games || {});
-          alert("Database data loaded to local.");
-        }
-      } catch (error) {
-        alert("Error loading from database.");
-        console.error(error);
-      }
+    function databaseToLocal() {
+      const user = auth.currentUser;
+      if (!user) return;
+
+      db.collection("babymath").doc(user.uid).get()
+        .then(doc => {
+          if (doc.exists) {
+            games = doc.data().games || games;
+            alert("Data loaded from database.");
+          } else {
+            alert("No data found.");
+          }
+        })
+        .catch(err => {
+          console.error("Fetch failed", err);
+        });
     }
   </script>
 </body>
