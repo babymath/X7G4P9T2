@@ -8,7 +8,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: "green";
+      background: #f2f2f2;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -49,9 +49,36 @@
     #logout:hover {
       background-color: #d32f2f;
     }
+
+    /* Popup styles */
+    #popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    #popupContent {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 10px;
+      font-size: 16px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
   </style>
 </head>
 <body>
+
+  <div id="popup" onclick="hidePopup(event)">
+    <div id="popupContent"></div>
+  </div>
 
   <div id="loginSection">
     <h2>Login to BabyMath</h2>
@@ -106,13 +133,13 @@
 
       db.collection("babymath").doc(email).get().then(doc => {
         if (!doc.exists) {
-          alert("User not found");
+          showPopup("User not found");
           return;
         }
 
         const data = doc.data();
         if (data.password !== password) {
-          alert("Wrong password");
+          showPopup("Wrong password");
           return;
         }
 
@@ -120,10 +147,10 @@
         localStorage.setItem("loggedInUser", email);
         document.getElementById("loginSection").style.display = "none";
         document.getElementById("buttons").style.display = "block";
-        alert("Login successful");
+        showPopup("Login successful");
       }).catch(error => {
         console.error("Login error:", error);
-        alert("Login failed");
+        showPopup("Login failed");
       });
     }
 
@@ -142,11 +169,11 @@
             localStorage.setItem(key, games[key]);
             console.log(`Set ${key}: ${games[key]}`);
           }
-          alert("Downloaded to localStorage");
+          showPopup("Downloaded to localStorage");
         }
       }).catch(err => {
         console.error("Download error:", err);
-        alert("Failed to fetch games");
+        showPopup("Failed to fetch games");
       });
     }
 
@@ -162,11 +189,22 @@
       });
 
       db.collection("babymath").doc(currentEmail).update({ games }).then(() => {
-        alert("Uploaded to database");
+        showPopup("Uploaded to database");
       }).catch(err => {
         console.error("Upload error:", err);
-        alert("Failed to upload");
+        showPopup("Failed to upload");
       });
+    }
+
+    function showPopup(message) {
+      document.getElementById("popupContent").textContent = message;
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    function hidePopup(event) {
+      if (event.target.id === "popup") {
+        document.getElementById("popup").style.display = "none";
+      }
     }
   </script>
 
