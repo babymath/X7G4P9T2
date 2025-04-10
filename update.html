@@ -67,7 +67,7 @@ yes<!DOCTYPE html>
 
     function localToDatabase() {
       if (!currentUserEmail) return alert("Please log in first.");
-      db.collection("users").doc(currentUserEmail).set(field, { merge: true })
+      db.collection("babymath").doc(currentUserEmail).set(field, { merge: true })
         .then(() => alert("Data synced to database."))
         .catch(error => alert("Error: " + error.message));
     }
