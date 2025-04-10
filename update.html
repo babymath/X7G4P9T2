@@ -1,102 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BabyMath Login</title>
-  <style>
-    body { font-family: sans-serif; text-align: center; padding: 50px; }
-    #buttons { display: none; margin-top: 20px; }
-  </style>
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <title>Firebase Auth Login</title>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
 </head>
 <body>
-
-  <h1>BabyMath Login</h1>
-
-  <div id="loginDiv">
+  <h2>Login</h2>
+  <div id="login-box">
     <input type="email" id="email" placeholder="Email"><br><br>
     <input type="password" id="password" placeholder="Password"><br><br>
     <button onclick="login()">Login</button>
     <p id="error" style="color:red;"></p>
   </div>
 
-  <div id="buttons">
-    <button onclick="localToDatabase()">Local to Database</button>
-    <button onclick="databaseToLocal()">Database to Local</button>
+  <div id="actions" style="display:none;">
+    <button onclick="downloadData()">Database → Local</button>
+    <button onclick="uploadData()">Local → Database</button>
   </div>
 
   <script>
-    // Firebase Config
+    // Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyBFABtE8u3Bcnza2Aono9yFl6aN2f6F2zQ",
       authDomain: "babymath-data.firebaseapp.com",
       projectId: "babymath-data",
-      storageBucket: "babymath-data.appspot.com",
-      messagingSenderId: "535678073642",
-      appId: "1:535678073642:web:964cda18a45c7b04a97c53",
-      measurementId: "G-7CN48FECP3"
     };
-
+    
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.firestore();
 
-    // Sample local data
-    let games = {
-      "111-100": 0, "111-200": 0, "222-100": 0, "222-200": 0,
-      "333-100": 0, "333-200": 0, "444-100": 0, "444-200": 0,
-      "555-100": 0, "555-200": 0, "666-100": 0, "666-200": 0,
-      "777-100": 0, "777-200": 0
-    };
+    let userEmail = "";
+    let field = {}; // This will store Firestore data (password, games)
 
-    function login() {
+    async function login() {
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
+      try {
+        const userCredential = await auth.signInWithEmailAndPassword(email, password);
+        userEmail = email;
 
-      auth.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          document.getElementById("loginDiv").style.display = "none";
-          document.getElementById("buttons").style.display = "block";
-        })
-        .catch((error) => {
-          document.getElementById("error").innerText = "Login failed.";
-          console.error(error);
-        });
+        // Fetch Firestore document
+        const doc = await db.collection("babymath").doc(email).get();
+        if (doc.exists) {
+          field = doc.data();
+          document.getElementById("login-box").style.display = "none";
+          document.getElementById("actions").style.display = "block";
+        } else {
+          document.getElementById("error").innerText = "Document not found in Firestore.";
+        }
+      } catch (error) {
+        document.getElementById("error").innerText = "Login failed: " + error.message;
+      }
     }
 
-    function localToDatabase() {
-      const user = auth.currentUser;
-      if (!user) return;
-
-      db.collection("babymath").doc(user.uid).set({
-        password: document.getElementById("password").value,
-        games: games
-      }, { merge: true }).then(() => {
-        alert("Data synced to database.");
-      }).catch(err => {
-        console.error("Upload failed", err);
-      });
+    async function downloadData() {
+      if (field && field.games) {
+        localStorage.setItem("games", JSON.stringify(field.games));
+        alert("Games data saved to local storage.");
+      } else {
+        alert("No games data found.");
+      }
     }
 
-    function databaseToLocal() {
-      const user = auth.currentUser;
-      if (!user) return;
-
-      db.collection("babymath").doc(user.uid).get()
-        .then(doc => {
-          if (doc.exists) {
-            games = doc.data().games || games;
-            alert("Data loaded from database.");
-          } else {
-            alert("No data found.");
-          }
-        })
-        .catch(err => {
-          console.error("Fetch failed", err);
+    async function uploadData() {
+      const localGames = JSON.parse(localStorage.getItem("games"));
+      if (localGames && userEmail) {
+        await db.collection("babymath").doc(userEmail).update({
+          games: localGames
         });
+        alert("Games data uploaded to Firestore.");
+      } else {
+        alert("No local games data found.");
+      }
     }
   </script>
 </body>
