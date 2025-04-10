@@ -1,152 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BabyMath</title>
-     <style>
-        /* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
-
-/* Body Styling */
-body {
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width:100vw;
-}
-
-/* Main Container */
-.container {
-    width: 90%;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    backdrop-filter: blur(15px);
-}
-
-/* Title */
-h1 {
-    font-size: 26px;
-    font-weight: 700;
-    color: #ffffff;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-}
-
-/* App Buttons */
-.apps {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-}
-
-.app {
-    width: 120px;
-    height: 120px;
-    background: rgba(255, 255, 255, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
-    text-decoration: none;
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 14px;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    cursor: pointer; /* Change mouse pointer to pointer */
-}
-
-.app-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.app-content span:first-child {
-    font-size: 36px; /* Increase the size of the symbol */
-}
-
-/* Hover Effect */
-.app:hover {
-    transform: scale(1.1);
-    background: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    border-radius: 10px;
-    transition: all 0.3s ease-in-out;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-}
-    </style>
+  <title>BabyMath Login</title>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>BabyMath</h1>
-    <div class="apps">
-      <a href="game" class="app">
-        <div class="app-content">
-          <span>&#x1F3AE;</span>
-          <span>Game</span>
-        </div>
-      </a>
-      <a href="profile" class="app">
-        <div class="app-content">
-          <span>&#x1F464;</span>
-          <span>Profile</span>
-        </div>
-      </a>
-      <a href="quiz" class="app">
-        <div class="app-content">
-          <span>&#x1F4DA;</span>
-          <span>Test & Quiz</span>
-        </div>
-      </a>
-      <a href="math-tricks" class="app">
-        <div class="app-content">
-          <span>&#x1F4DC;</span>
-          <span>Math Tricks</span>
-        </div>
-      </a>
+  <h2>Login to BabyMath</h2>
 
-           <a href="update.html" class="app">
-        <div class="app-content">
-          <span>&#x1F4DC;</span>
-          <span>Update</span>
-        </div>
-      </a>
-    </div>
+  <div id="loginDiv">
+    <input type="email" id="email" placeholder="Email"><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    <button onclick="login()">Login</button>
+    <p id="errorMsg" style="color:red;"></p>
   </div>
 
+  <div id="buttonsDiv" style="display:none;">
+    <h3>Welcome!</h3>
+    <button onclick="uploadToDB()">Local to Database</button>
+    <button onclick="downloadFromDB()">Database to Local</button>
+  </div>
 
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBFABtE8u3Bcnza2Aono9yFl6aN2f6F2zQ",
+      authDomain: "babymath-data.firebaseapp.com",
+      projectId: "babymath-data",
+      storageBucket: "babymath-data.appspot.com",
+      messagingSenderId: "535678073642",
+      appId: "1:535678073642:web:964cda18a45c7b04a97c53",
+      measurementId: "G-7CN48FECP3"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    let currentUser = null;
+    let localGames = {
+      "111-100": 0, "111-200": 0,
+      "222-100": 0, "222-200": 0,
+      "333-100": 0, "333-200": 0,
+      "444-100": 0, "444-200": 0,
+      "555-100": 0, "555-200": 0,
+      "666-100": 0, "666-200": 0,
+      "777-100": 0, "777-200": 0
+    };
+
+    function login() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          currentUser = userCredential.user;
+          document.getElementById("loginDiv").style.display = "none";
+          document.getElementById("buttonsDiv").style.display = "block";
+        })
+        .catch((error) => {
+          console.error(error);
+          document.getElementById("errorMsg").innerText = "Login failed!";
+        });
+    }
+
+    function uploadToDB() {
+      if (!currentUser) return;
+      const userEmail = currentUser.email;
+      db.collection("babymath").doc(userEmail).set({
+        games: localGames
+      }, { merge: true }).then(() => {
+        alert("Data uploaded to Firestore!");
+      }).catch((err) => {
+        alert("Upload error: " + err.message);
+      });
+    }
+
+    function downloadFromDB() {
+      if (!currentUser) return;
+      const userEmail = currentUser.email;
+      db.collection("babymath").doc(userEmail).get().then((doc) => {
+        if (doc.exists && doc.data().games) {
+          localGames = doc.data().games;
+          alert("Data downloaded from Firestore!");
+          console.log(localGames);
+        } else {
+          alert("No game data found.");
+        }
+      }).catch((err) => {
+        alert("Download error: " + err.message);
+      });
+    }
+  </script>
 </body>
 </html>
