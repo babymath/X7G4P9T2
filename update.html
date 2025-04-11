@@ -2,96 +2,135 @@
 <html>
 <head>
   <title>BabyMath Login</title>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
+    body { 
+      font-family: Arial, sans-serif; 
       padding: 0;
       margin: 0;
+      background: #ac4343;
     }
-  #loginSection, #buttons{
+    #login-section {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: rgb(113, 57, 165);
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(221, 43, 43, 0.1);
+    }
+    #login-section h2 {
+      color: white;
+    }
+    #login-section input {
+      width: 300px;
+      padding: 10px;
+      margin: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    #login-section button {
+      width: 300px;
+      padding: 10px;
+      background: #007BFF; 
+      color: white; 
+      border: none; 
+      border-radius: 5px; 
+      box-shadow: #007BFF 0px 0px 5px;
+      cursor: pointer; 
+    }
+    #buttons{
+      flex-direction: column;
+      align-items: center;
+      border: #888 1px solid;
+      padding: 10px;
       margin: 20px;
     }
 
-    h2 {
-      color: #333;
-    }
-
-    input {
-      width: 250px;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-  
-
     #buttons button {
       width: 90%;
-      padding: 10px;
-      margin: 10px;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin: 5px;
+      padding: 10px 20px;
+      background: #007BFF; 
+      color: white; 
+      border: none; 
+      border-radius: 5px; 
+      box-shadow: #007BFF 0px 0px 5px;
+      cursor: pointer; 
+    }
+    #logout{
+      background-color: red !important;
     }
 
-    #logout {
-      background-color: #f44336;
+    #leaderboard-section {
+      margin: 20px;
     }
 
-    /* Popup styles */
-    #popup {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.4);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
+    .popup { 
+      position: fixed; 
+      top: 50%; 
+      left: 50%; 
+      transform: translate(-50%, -50%); 
+      background: #fefefe; 
+      padding: 20px; 
+      border: 1px solid #888; 
+      z-index: 1000; 
+      display: none; 
     }
 
-    #popupContent {
-      background: white;
-      padding: 20px 30px;
-      border-radius: 10px;
-      font-size: 16px;
-      text-align: center;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    .overlay { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: rgba(0,0,0,0.4); 
+      z-index: 999; 
+      display: none; 
+    }
+    table {
+       border-collapse: collapse; 
+       width: 100%; 
+       margin-top: 20px; 
+    }
+    th, td { 
+      border: 1px solid #ccc; 
+      padding: 8px; 
+      text-align: center; 
+    }
+    th { 
+      background: #eee; 
     }
   </style>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 </head>
 <body>
-
-  <div id="popup" onclick="hidePopup(event)">
-    <div id="popupContent"></div>
-  </div>
-
-  <div id="loginSection">
-    <h2>Login to BabyMath</h2>
-    <input type="email" id="email" placeholder="Email" required><br>
-    <input type="password" id="password" placeholder="Password" required><br>
-    <button onclick="login()">Login</button>
+<div id="login-section">
+  <h2>Login</h2>
+  <input type="email" id="email" placeholder="Email"><br><br>
+  <input type="password" id="password" placeholder="Password"><br><br>
+  <button id="loginBtn" onclick="login()">Login</button>
   </div>
 
   <div id="buttons" style="display: none;">
-    <h2>Welcome!</h2>
     <button onclick="uploadToDatabase()">Local to Database</button>
-    <button onclick="downloadFromDatabase()">Database to Local</button><br><br>
+    <button onclick="downloadFromDatabase()">Database to Local</button>
     <button id="logout" onclick="logout()">Logout</button>
   </div>
+<div id="leaderboard-section">
+  <h3>Leaderboard</h3>
+  <table id="leaderboard">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>G-Point</th>
+        <th>Last Date</th>
+        <th>Last Time</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+  <div class="overlay" onclick="closePopup()"></div>
+  <div class="popup" id="popup"></div>
 
   <script>
     const firebaseConfig = {
@@ -116,37 +155,32 @@
 
     let currentEmail = "";
 
-    // Check if user is already logged in
-    window.onload = function () {
-      const savedEmail = localStorage.getItem("loggedInUser");
-      if (savedEmail) {
-        currentEmail = savedEmail;
-        document.getElementById("loginSection").style.display = "none";
-        document.getElementById("buttons").style.display = "block";
-      }
-    };
+    function showPopup(msg) {
+      document.getElementById("popup").innerText = msg;
+      document.querySelector(".overlay").style.display = "block";
+      document.getElementById("popup").style.display = "block";
+    }
+
+    function closePopup() {
+      document.querySelector(".overlay").style.display = "none";
+      document.getElementById("popup").style.display = "none";
+    }
 
     function login() {
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
 
       db.collection("babymath").doc(email).get().then(doc => {
-        if (!doc.exists) {
-          showPopup("User not found");
-          return;
-        }
-
+        if (!doc.exists) return showPopup("User not found");
         const data = doc.data();
-        if (data.password !== password) {
-          showPopup("Wrong password");
-          return;
-        }
+        if (data.password !== password) return showPopup("Wrong password");
 
         currentEmail = email;
-        localStorage.setItem("loggedInUser", email);
-        document.getElementById("loginSection").style.display = "none";
-        document.getElementById("buttons").style.display = "block";
+        localStorage.setItem("babymathUser", email); // Save for future auto login
+        document.getElementById("buttons").style.display = "flex";
+        document.getElementById("login-section").style.display = "none";
         showPopup("Login successful");
+        loadLeaderboard();
       }).catch(error => {
         console.error("Login error:", error);
         showPopup("Login failed");
@@ -154,8 +188,53 @@
     }
 
     function logout() {
-      localStorage.removeItem("loggedInUser");
-      location.reload();
+      currentEmail = "";
+      localStorage.removeItem("babymathUser");
+      document.getElementById("buttons").style.display = "none";
+      document.getElementById("login-section").style.display = "flex";
+      showPopup("Logged out successfully");
+    }
+
+    function calculateGPoint(games) {
+      return (
+        (parseInt(games["777-100"] || 0)) +
+        2 * ((parseInt(games["777-200"] || 0)) + (parseInt(games["555-100"] || 0))) +
+        3 * ((parseInt(games["555-200"] || 0)) + (parseInt(games["666-100"] || 0))) +
+        4 * ((parseInt(games["666-200"] || 0)) + (parseInt(games["444-100"] || 0)) + (parseInt(games["111-100"] || 0))) +
+        5 * ((parseInt(games["111-200"] || 0)) + (parseInt(games["222-100"] || 0))) +
+        6 * ((parseInt(games["222-200"] || 0)) + (parseInt(games["333-100"] || 0))) +
+        7 * (parseInt(games["333-200"] || 0)) +
+        8 * (parseInt(games["444-200"] || 0))
+      );
+    }
+
+    function uploadToDatabase() {
+      if (!currentEmail) return;
+
+      const games = {};
+      gameKeys.forEach(key => {
+        const value = localStorage.getItem(key);
+        if (value !== null) {
+          games[key] = parseInt(value);
+        }
+      });
+
+      const gPoint = calculateGPoint(games);
+      localStorage.setItem("g-point", gPoint);
+
+      const timestamp = firebase.firestore.Timestamp.now();
+
+      db.collection("babymath").doc(currentEmail).update({
+        games,
+        "g-point": gPoint,
+        "last-updated": timestamp
+      }).then(() => {
+        showPopup("Uploaded to database");
+        loadLeaderboard();
+      }).catch(err => {
+        console.error("Upload error:", err);
+        showPopup("Failed to upload");
+      });
     }
 
     function downloadFromDatabase() {
@@ -176,36 +255,48 @@
       });
     }
 
-    function uploadToDatabase() {
-      if (!currentEmail) return;
+    function loadLeaderboard() {
+      db.collection("babymath").get().then(snapshot => {
+        const rows = [];
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          const time = data["last-updated"]?.toDate().toLocaleTimeString() || "-";
+          const date = data["last-updated"]?.toDate().toLocaleDateString() || "-";
+          rows.push({ email: doc.id, gPoint: data["g-point"] || 0, date, time });
+        });
 
-      const games = {};
-      gameKeys.forEach(key => {
-        const value = localStorage.getItem(key);
-        if (value !== null) {
-          games[key] = parseInt(value);
-        }
-      });
+        rows.sort((a, b) => b.gPoint - a.gPoint);
 
-      db.collection("babymath").doc(currentEmail).update({ games }).then(() => {
-        showPopup("Uploaded to database");
-      }).catch(err => {
-        console.error("Upload error:", err);
-        showPopup("Failed to upload");
+        const tbody = document.querySelector("#leaderboard tbody");
+        tbody.innerHTML = "";
+        rows.forEach(row => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `<td>${row.email}</td><td>${row.gPoint}</td><td>${row.date}</td><td>${row.time}</td>`;
+          tbody.appendChild(tr);
+        });
       });
     }
 
-    function showPopup(message) {
-      document.getElementById("popupContent").textContent = message;
-      document.getElementById("popup").style.display = "flex";
-    }
-
-    function hidePopup(event) {
-      if (event.target.id === "popup") {
-        document.getElementById("popup").style.display = "none";
+    // Auto-login if saved
+    window.onload = () => {
+      const savedEmail = localStorage.getItem("babymathUser");
+      if (savedEmail) {
+        db.collection("babymath").doc(savedEmail).get().then(doc => {
+          if (doc.exists) {
+            currentEmail = savedEmail;
+            document.getElementById("buttons").style.display = "flex";
+            document.getElementById("login-section").style.display = "none";
+            showPopup("Welcome back!");
+            loadLeaderboard();
+          } else {
+            localStorage.removeItem("babymathUser");
+            loadLeaderboard();
+          }
+        });
+      } else {
+        loadLeaderboard();
       }
-    }
+    };
   </script>
-
 </body>
 </html>
