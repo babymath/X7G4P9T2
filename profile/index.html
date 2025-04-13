@@ -3,10 +3,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>profile</title>
-    <link rel="stylesheet" href="profile-min.css">
+    <link rel="stylesheet" href="profile.css">
+
 </head>
 <body>
-    <div class="container">
+
+    <div id="login-section">
+        <h2>Login</h2>
+        <input type="email" id="email" placeholder="Email"><br><br>
+        <input type="password" id="password" placeholder="Password"><br><br>
+        <button id="loginBtn" onclick="login()">🔑 Login</button>
+      </div>
+      
+      <div id="user-section" style="display: none;">
+        <p>👋 Welcome, <span id="userEmail"></span></p>
+        <p>🎯 Your G-Point: <span id="userGPoint"></span></p>
+        <button id="logout" onclick="logout()">🚪 Logout</button>
+      </div>
+<div id="toggle-switch">
+  <span id="score-label">Score</span>
+  <input type="checkbox" id="toggle" onclick="toggleFunction()"> <!-- Added onclick -->
+  <label for="toggle" id="switch"></label>
+  <span id="leaderboard-label">Leaderboard</span>
+</div>
+
+    <div id="score-section">
         <h1>High Scores</h1>
         <ul>
             <h2>Addition</h2>
@@ -32,6 +53,28 @@
             <li><span class="title">More than 99:</span> <span id="777-200">0</span></li>
         </ul>
     </div>
-    <script src="profile-min.js"></script>
+
+
+    <div id="leaderboard-section">
+        <h3>Leaderboard <button onclick="loadLeaderboard()">🔄 Refresh</button></h3>
+        <table id="leaderboard">
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>G-Point</th>
+              <th>Last Date</th>
+              <th>Last Time</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+        <div class="overlay" onclick="closePopup()"></div>
+        <div class="popup" id="popup"></div>
+      
+        <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>  
+    <script src="profile.js"></script>
 </body>
 </html>

@@ -135,15 +135,4 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Play Again button clicked');
         playAgain();
     });
-
-    document.getElementById('backToSetup').addEventListener('click', function() {
-        console.log('Back to Setup button clicked');
-        backToSetup();
-    });
-
-    // Add event listener for "Back to Menu" button
-    document.getElementById('backToMenu').addEventListener('click', function() {
-        console.log('Back to Menu button clicked');
-        location.reload(); // Reload the index.html
-    });
 });

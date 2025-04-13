@@ -133,38 +133,21 @@ function endGame(totalTime, totalQuestions) {
     } else {
         document.getElementById("highScore1").textContent = `High Score: ${highScore}`;
     }
+        // --- Added call to uploadToDatabase ---
+    // Check if the function exists before calling (good practice)
+    if (typeof uploadToDatabase === 'function') {
+        console.log('Calling uploadToDatabase...');
+        uploadToDatabase();
+    } else {
+        console.error('uploadToDatabase function is not defined. Make sure profile.js is loaded before game2.js.');
+    }
+    // --- End of added call ---
 }
 
 function playAgain() {
     window.location.href = 'index.html';
 }
 
-function backToSetup() {
-    console.log('backToSetup function called');
-    document.getElementById("game-result").style.display = "none";
-    document.getElementById("game-play").style.display = "none";
-    document.getElementById("game-setup").style.display = "flex";
-    
-    // Reset selection for all mode buttons (timeMode & questionMode)
-    document.querySelectorAll('.mode1').forEach(btn => {
-        btn.classList.remove('selected-mode');
-        btn.style.background = "";
-        btn.style.color = "";
-    });
-    
-    // Reset selection for type option buttons
-    document.querySelectorAll('.typeOption').forEach(btn => {
-        btn.classList.remove('selected');
-        btn.style.background = "";
-        btn.style.color = "";
-    });
-    
-    // Optionally reset autoSubmit checkbox
-    const autoSubmitCheckbox = document.getElementById('autoSubmit');
-    if (autoSubmitCheckbox) {
-        autoSubmitCheckbox.checked = false;
-    }
-}
 
 function calculateScore(correctAnswers, totalTime) { // Remove incorrectAnswers parameter
     console.log('calculateScore function called');
