@@ -328,3 +328,9 @@ body {
     z-index: 100;
     display: none;
   }
+
+.refresh-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Optional: Adjust spacing as needed */
+}
