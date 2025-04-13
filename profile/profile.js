@@ -52,7 +52,13 @@ function login() {
     currentEmail = email;
     localStorage.setItem("babymathUser", email); // Save for future auto login
 
-    // Update user email and G-Point in the DOM
+    const games = data.games || {};
+    for (const key in games) {
+      if (games.hasOwnProperty(key)) {
+        localStorage.setItem(key, games[key]);
+      }
+    }
+
     const userEmailElement = document.getElementById("userEmail");
     const userGPointElement = document.getElementById("userGPoint");
 
@@ -61,16 +67,15 @@ function login() {
       userGPointElement.innerText = data["g-point"] || 0;
     }
 
-    // Show the user section and hide the login section
     document.getElementById("user-section").style.display = "flex";
     document.getElementById("login-section").style.display = "none";
 
     showPopup("Login successful");
+    setTimeout(() => location.reload(), 1000); // Refresh the page after 1 second
   }).catch(error => {
     console.error("Login error:", error);
     showPopup("Login failed");
   });
-  downloadFromDatabase();
 }
 
 function logout() {
@@ -85,7 +90,9 @@ function logout() {
 
   document.getElementById("user-section").style.display = "none"; 
   document.getElementById("login-section").style.display = "flex";
+
   showPopup("Logged out successfully");
+  setTimeout(() => location.reload(), 1000); // Refresh the page after 1 second
 }
 
 function calculateGPoint(games) {
