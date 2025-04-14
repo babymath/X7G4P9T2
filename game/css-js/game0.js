@@ -32,7 +32,7 @@ const games = [
     {
         gamekey: "555",
         title: "Table Practice",
-        script: 5-table-practice.js",
+        script: "5-table-practice.js",
         type1: "1 digit",
         type2: "2 digit"
     },
