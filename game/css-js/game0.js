@@ -25,14 +25,14 @@ const games = [
     {
         gamekey: "444",
         title: "Lightning Sum",
-        script: "5-lightning-sum.js",
+        script: "4-lightning-sum.js",
         type1: "1 to 9",
         type2: "10 to 20"
     },
     {
         gamekey: "555",
         title: "Table Practice",
-        script: "4-table-practice.js",
+        script: 5-table-practice.js",
         type1: "1 digit",
         type2: "2 digit"
     },
