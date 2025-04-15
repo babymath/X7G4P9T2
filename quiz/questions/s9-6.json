@@ -2,181 +2,241 @@
   {
     "questionEnglish": "The rate of change of momentum is equal to:",
     "questionHindi": "संवेग के परिवर्तन की दर किसके बराबर होती है?",
-    "options": ["Velocity / वेग", "Acceleration / त्वरण", "Force / बल", "Energy / ऊर्जा"],
-    "correctAnswer": "Force / बल"
+    "optionsEnglish": "Velocity, Acceleration, Force, Energy",
+    "optionsHindi": "वेग, त्वरण, बल, ऊर्जा",
+    "answerEnglish": "Force",
+    "answerHindi": "बल"
   },
   {
     "questionEnglish": "The force that opposes the motion of an object through a fluid is called:",
     "questionHindi": "वह बल जो किसी तरल पदार्थ के माध्यम से किसी वस्तु की गति का विरोध करता है, कहलाता है:",
-    "options": ["Gravitational force / गुरुत्वाकर्षण बल", "Magnetic force / चुंबकीय बल", "Viscous force / श्यान बल", "Electrostatic force / स्थिरवैद्युत बल"],
-    "correctAnswer": "Viscous force / श्यान बल"
+    "optionsEnglish": "Gravitational force, Magnetic force, Viscous force, Electrostatic force",
+    "optionsHindi": "गुरुत्वाकर्षण बल, चुंबकीय बल, श्यान बल, स्थिरवैद्युत बल",
+    "answerEnglish": "Viscous force",
+    "answerHindi": "श्यान बल"
   },
   {
     "questionEnglish": "The energy stored in an object due to its stretched or compressed state is called:",
     "questionHindi": "किसी वस्तु की खिंची हुई या संकुचित अवस्था के कारण उसमें संग्रहित ऊर्जा को क्या कहते हैं?",
-    "options": ["Chemical energy / रासायनिक ऊर्जा", "Thermal energy / तापीय ऊर्जा", "Elastic potential energy / प्रत्यास्थ स्थितिज ऊर्जा", "Electrical energy / विद्युत ऊर्जा"],
-    "correctAnswer": "Elastic potential energy / प्रत्यास्थ स्थितिज ऊर्जा"
+    "optionsEnglish": "Chemical energy, Thermal energy, Elastic potential energy, Electrical energy",
+    "optionsHindi": "रासायनिक ऊर्जा, तापीय ऊर्जा, प्रत्यास्थ स्थितिज ऊर्जा, विद्युत ऊर्जा",
+    "answerEnglish": "Elastic potential energy",
+    "answerHindi": "प्रत्यास्थ स्थितिज ऊर्जा"
   },
   {
     "questionEnglish": "The bending of sound waves around obstacles is called:",
     "questionHindi": "बाधाओं के चारों ओर ध्वनि तरंगों का मुड़ना कहलाता है:",
-    "options": ["Refraction / अपवर्तन", "Interference / व्यतिकरण", "Reflection / परावर्तन", "Diffraction / विवर्तन"],
-    "correctAnswer": "Diffraction / विवर्तन"
+    "optionsEnglish": "Refraction, Interference, Reflection, Diffraction",
+    "optionsHindi": "अपवर्तन, व्यतिकरण, परावर्तन, विवर्तन",
+    "answerEnglish": "Diffraction",
+    "answerHindi": "विवर्तन"
   },
   {
     "questionEnglish": "The temperature at which a solid melts and becomes a liquid is called its:",
     "questionHindi": "वह तापमान जिस पर कोई ठोस पिघलकर तरल बन जाता है, कहलाता है:",
-    "options": ["Boiling point / क्वथनांक", "Freezing point / हिमांक", "Melting point / गलनांक", "Sublimation point / उर्ध्वपातन बिंदु"],
-    "correctAnswer": "Melting point / गलनांक"
+    "optionsEnglish": "Boiling point, Freezing point, Melting point, Sublimation point",
+    "optionsHindi": "क्वथनांक, हिमांक, गलनांक, उर्ध्वपातन बिंदु",
+    "answerEnglish": "Melting point",
+    "answerHindi": "गलनांक"
   },
   {
     "questionEnglish": "A colloidal solution in which a liquid is dispersed in a solid is called:",
     "questionHindi": "एक कोलाइडल विलयन जिसमें एक तरल ठोस में फैला होता है, कहलाता है:",
-    "options": ["Emulsion / इमल्शन", "Gel / जेल", "Aerosol / एयरोसोल", "Foam / झाग"],
-    "correctAnswer": "Gel / जेल"
+    "optionsEnglish": "Emulsion, Gel, Aerosol, Foam",
+    "optionsHindi": "इमल्शन, जेल, एयरोसोल, झाग",
+    "answerEnglish": "Gel",
+    "answerHindi": "जेल"
   },
   {
     "questionEnglish": "The energy required to remove an electron from an isolated gaseous atom is called:",
     "questionHindi": "एक पृथक गैसीय परमाणु से एक इलेक्ट्रॉन को हटाने के लिए आवश्यक ऊर्जा कहलाती है:",
-    "options": ["Electron affinity / इलेक्ट्रॉन बंधुता", "Electronegativity / विद्युतऋणात्मकता", "Ionization energy / आयनन ऊर्जा", "Atomic radius / परमाणु त्रिज्या"],
-    "correctAnswer": "Ionization energy / आयनन ऊर्जा"
+    "optionsEnglish": "Electron affinity, Electronegativity, Ionization energy, Atomic radius",
+    "optionsHindi": "इलेक्ट्रॉन बंधुता, विद्युतऋणात्मकता, आयनन ऊर्जा, परमाणु त्रिज्या",
+    "answerEnglish": "Ionization energy",
+    "answerHindi": "आयनन ऊर्जा"
   },
   {
     "questionEnglish": "The force exerted by a liquid per unit area is called:",
     "questionHindi": "प्रति इकाई क्षेत्रफल पर तरल द्वारा लगाया गया बल कहलाता है:",
-    "options": ["Buoyant force / उत्प्लावन बल", "Surface tension / पृष्ठ तनाव", "Pressure / दबाव", "Viscosity / श्यानता"],
-    "correctAnswer": "Pressure / दबाव"
+    "optionsEnglish": "Buoyant force, Surface tension, Pressure, Viscosity",
+    "optionsHindi": "उत्प्लावन बल, पृष्ठ तनाव, दबाव, श्यानता",
+    "answerEnglish": "Pressure",
+    "answerHindi": "दबाव"
   },
   {
     "questionEnglish": "The chemical formula of ethanoic acid is:",
     "questionHindi": "एथेनोइक अम्ल का रासायनिक सूत्र है:",
-    "options": ["H2O / H2O", "CO2 / CO2", "CH3COOH / CH3COOH", "O2 / O2"],
-    "correctAnswer": "CH3COOH / CH3COOH"
+    "optionsEnglish": "H2O, CO2, CH3COOH, O2",
+    "optionsHindi": "H2O, CO2, CH3COOH, O2",
+    "answerEnglish": "CH3COOH",
+    "answerHindi": "CH3COOH"
   },
   {
     "questionEnglish": "The cell organelle involved in photosynthesis is:",
     "questionHindi": "प्रकाश संश्लेषण में शामिल कोशिका अंगक है:",
-    "options": ["Golgi apparatus / गॉल्जी उपकरण", "Lysosomes / लाइसोसोम", "Mitochondria / माइटोकॉन्ड्रिया", "Chloroplasts / क्लोरोप्लास्ट"],
-    "correctAnswer": "Chloroplasts / क्लोरोप्लास्ट"
+    "optionsEnglish": "Golgi apparatus, Lysosomes, Mitochondria, Chloroplasts",
+    "optionsHindi": "गॉल्जी उपकरण, लाइसोसोम, माइटोकॉन्ड्रिया, क्लोरोप्लास्ट",
+    "answerEnglish": "Chloroplasts",
+    "answerHindi": "क्लोरोप्लास्ट"
   },
   {
     "questionEnglish": "Which tissue helps in storing food in plants?",
     "questionHindi": "पौधों में भोजन के भंडारण में कौन सा ऊतक मदद करता है?",
-    "options": ["Xylem / जाइलम", "Phloem / फ्लोएम", "Parenchyma / पैरेन्काइमा", "Sclerenchyma / स्क्लेरेन्काइमा"],
-    "correctAnswer": "Parenchyma / पैरेन्काइमा"
+    "optionsEnglish": "Xylem, Phloem, Parenchyma, Sclerenchyma",
+    "optionsHindi": "जाइलम, फ्लोएम, पैरेन्काइमा, स्क्लेरेन्काइमा",
+    "answerEnglish": "Parenchyma",
+    "answerHindi": "पैरेन्काइमा"
   },
   {
     "questionEnglish": "Which of the following is an example of an echinoderm?",
     "questionHindi": "निम्नलिखित में से कौन एक इचिनोडर्म का उदाहरण है?",
-    "options": ["Earthworm / केंचुआ", "Snail / घोंघा", "Starfish / स्टारफिश", "Jellyfish / जेलीफ़िश"],
-    "correctAnswer": "Starfish / स्टारफिश"
+    "optionsEnglish": "Earthworm, Snail, Starfish, Jellyfish",
+    "optionsHindi": "केंचुआ, घोंघा, स्टारफिश, जेलीफ़िश",
+    "answerEnglish": "Starfish",
+    "answerHindi": "स्टारफिश"
   },
   {
     "questionEnglish": "Which disease is caused by the deficiency of Vitamin K?",
     "questionHindi": "विटामिन K की कमी से कौन सा रोग होता है?",
-    "options": ["Rickets / रिकेट्स", "Scurvy / स्कर्वी", "Excessive bleeding / अत्यधिक रक्तस्राव", "Night blindness / रतौंधी"],
-    "correctAnswer": "Excessive bleeding / अत्यधिक रक्तस्राव"
+    "optionsEnglish": "Rickets, Scurvy, Excessive bleeding, Night blindness",
+    "optionsHindi": "रिकेट्स, स्कर्वी, अत्यधिक रक्तस्राव, रतौंधी",
+    "answerEnglish": "Excessive bleeding",
+    "answerHindi": "अत्यधिक रक्तस्राव"
   },
   {
     "questionEnglish": "Which gas is used in welding?",
     "questionHindi": "वेल्डिंग में किस गैस का उपयोग किया जाता है?",
-    "options": ["Nitrogen / नाइट्रोजन", "Carbon dioxide / कार्बन डाइऑक्साइड", "Acetylene / एसिटिलीन", "Oxygen / ऑक्सीजन"],
-    "correctAnswer": "Acetylene / एसिटिलीन"
+    "optionsEnglish": "Nitrogen, Carbon dioxide, Acetylene, Oxygen",
+    "optionsHindi": "नाइट्रोजन, कार्बन डाइऑक्साइड, एसिटिलीन, ऑक्सीजन",
+    "answerEnglish": "Acetylene",
+    "answerHindi": "एसिटिलीन"
   },
   {
     "questionEnglish": "The movement of water molecules through a selectively permeable membrane from a region of higher water potential to a region of lower water potential is called:",
     "questionHindi": "उच्च जल क्षमता वाले क्षेत्र से निम्न जल क्षमता वाले क्षेत्र में चयनात्मक पारगम्य झिल्ली के माध्यम से जल अणुओं की गति को क्या कहते हैं?",
-    "options": ["Diffusion / विसरण", "Osmosis / परासरण", "Active transport / सक्रिय परिवहन", "Imbibition / अंतःशोषण"],
-    "correctAnswer": "Osmosis / परासरण"
+    "optionsEnglish": "Diffusion, Osmosis, Active transport, Imbibition",
+    "optionsHindi": "विसरण, परासरण, सक्रिय परिवहन, अंतःशोषण",
+    "answerEnglish": "Osmosis",
+    "answerHindi": "परासरण"
   },
   {
     "questionEnglish": "The product of force and time is called:",
     "questionHindi": "बल और समय के गुणनफल को क्या कहते हैं?",
-    "options": ["Energy / ऊर्जा", "Momentum / संवेग", "Work / कार्य", "Impulse / आवेग"],
-    "correctAnswer": "Impulse / आवेग"
+    "optionsEnglish": "Energy, Momentum, Work, Impulse",
+    "optionsHindi": "ऊर्जा, संवेग, कार्य, आवेग",
+    "answerEnglish": "Impulse",
+    "answerHindi": "आवेग"
   },
   {
     "questionEnglish": "The law which states that at constant pressure, the volume of a given mass of gas is directly proportional to its absolute temperature is:",
     "questionHindi": "वह नियम जो बताता है कि स्थिर दबाव पर, गैस के दिए गए द्रव्यमान का आयतन उसके निरपेक्ष तापमान के सीधे आनुपातिक होता है, वह है:",
-    "options": ["Boyle's law / बॉयल का नियम", "Charles's law / चार्ल्स का नियम", "Avogadro's law / अवोगाद्रो का नियम", "Gay-Lussac's law / गे-लुसाक का नियम"],
-    "correctAnswer": "Charles's law / चार्ल्स का नियम"
+    "optionsEnglish": "Boyle's law, Charles's law, Avogadro's law, Gay-Lussac's law",
+    "optionsHindi": "बॉयल का नियम, चार्ल्स का नियम, अवोगाद्रो का नियम, गे-लुसाक का नियम",
+    "answerEnglish": "Charles's law",
+    "answerHindi": "चार्ल्स का नियम"
   },
   {
     "questionEnglish": "The process of changing solid to liquid is called:",
     "questionHindi": "ठोस को तरल में बदलने की प्रक्रिया को कहा जाता है:",
-    "options": ["Condensation / संघनन", "Freezing / जमना", "Melting / पिघलना", "Deposition / जमाव"],
-    "correctAnswer": "Melting / पिघलना"
+    "optionsEnglish": "Condensation, Freezing, Melting, Deposition",
+    "optionsHindi": "संघनन, जमना, पिघलना, जमाव",
+    "answerEnglish": "Melting",
+    "answerHindi": "पिघलना"
   },
   {
     "questionEnglish": "The cell organelle that contains digestive enzymes is:",
     "questionHindi": "वह कोशिका अंगक जिसमें पाचक एंजाइम होते हैं, है:",
-    "options": ["Golgi apparatus / गॉल्जी उपकरण", "Lysosomes / लाइसोसोम", "Smooth endoplasmic reticulum / चिकना एंडोप्लाज्मिक रेटिकुलम", "Ribosomes / राइबोसोम"],
-    "correctAnswer": "Lysosomes / लाइसोसोम"
+    "optionsEnglish": "Golgi apparatus, Lysosomes, Smooth endoplasmic reticulum, Ribosomes",
+    "optionsHindi": "गॉल्जी उपकरण, लाइसोसोम, चिकना एंडोप्लाज्मिक रेटिकुलम, राइबोसोम",
+    "answerEnglish": "Lysosomes",
+    "answerHindi": "लाइसोसोम"
   },
   {
     "questionEnglish": "Which of the following is an example of a thallophyte?",
     "questionHindi": "निम्नलिखित में से कौन एक थैलोफाइट का उदाहरण है?",
-    "options": ["Moss / काई", "Fern / फर्न", "Pine / चीड़", "Algae / शैवाल"],
-    "correctAnswer": "Algae / शैवाल"
+    "optionsEnglish": "Moss, Fern, Pine, Algae",
+    "optionsHindi": "काई, फर्न, चीड़, शैवाल",
+    "answerEnglish": "Algae",
+    "answerHindi": "शैवाल"
   },
   {
     "questionEnglish": "Which disease is caused by a prion?",
     "questionHindi": "प्रियन से कौन सा रोग होता है?",
-    "options": ["Tuberculosis / तपेदिक", "Malaria / मलेरिया", "Creutzfeldt-Jakob disease / क्रुट्ज़फेल्ट-जैकोब रोग", "Typhoid / टाइफाइड"],
-    "correctAnswer": "Creutzfeldt-Jakob disease / क्रुट्ज़फेल्ट-जैकोब रोग"
+    "optionsEnglish": "Tuberculosis, Malaria, Creutzfeldt-Jakob disease, Typhoid",
+    "optionsHindi": "तपेदिक, मलेरिया, क्रुट्ज़फेल्ट-जैकोब रोग, टाइफाइड",
+    "answerEnglish": "Creutzfeldt-Jakob disease",
+    "answerHindi": "क्रुट्ज़फेल्ट-जैकोब रोग"
   },
   {
     "questionEnglish": "Which gas is used in balloons?",
     "questionHindi": "गुब्बारों में किस गैस का उपयोग किया जाता है?",
-    "options": ["Nitrogen / नाइट्रोजन", "Oxygen / ऑक्सीजन", "Helium / हीलियम", "Carbon dioxide / कार्बन डाइऑक्साइड"],
-    "correctAnswer": "Helium / हीलियम"
+    "optionsEnglish": "Nitrogen, Oxygen, Helium, Carbon dioxide",
+    "optionsHindi": "नाइट्रोजन, ऑक्सीजन, हीलियम, कार्बन डाइऑक्साइड",
+    "answerEnglish": "Helium",
+    "answerHindi": "हीलियम"
   },
   {
     "questionEnglish": "The thread-like structures that carry genetic information are called:",
     "questionHindi": "धागे जैसी संरचनाएँ जो आनुवंशिक जानकारी ले जाती हैं, कहलाती हैं:",
-    "options": ["Ribosomes / राइबोसोम", "Mitochondria / माइटोकॉन्ड्रिया", "Chromosomes / गुणसूत्र", "Lysosomes / लाइसोसोम"],
-    "correctAnswer": "Chromosomes / गुणसूत्र"
+    "optionsEnglish": "Ribosomes, Mitochondria, Chromosomes, Lysosomes",
+    "optionsHindi": "राइबोसोम, माइटोकॉन्ड्रिया, गुणसूत्र, लाइसोसोम",
+    "answerEnglish": "Chromosomes",
+    "answerHindi": "गुणसूत्र"
   },
   {
     "questionEnglish": "The SI unit of density is:",
     "questionHindi": "घनत्व का SI मात्रक है:",
-    "options": ["kg/m / किलोग्राम/मीटर", "kg/m² / किलोग्राम/मीटर²", "kg/m³ / किलोग्राम/मीटर³", "N/m² / न्यूटन/मीटर²"],
-    "correctAnswer": "kg/m³ / किलोग्राम/मीटर³"
+    "optionsEnglish": "kg/m, kg/m², kg/m³, N/m²",
+    "optionsHindi": "किलोग्राम/मीटर, किलोग्राम/मीटर², किलोग्राम/मीटर³, न्यूटन/मीटर²",
+    "answerEnglish": "kg/m³",
+    "answerHindi": "किलोग्राम/मीटर³"
   },
   {
     "questionEnglish": "The horizontal rows in the periodic table are called:",
     "questionHindi": "आवर्त सारणी में क्षैतिज पंक्तियों को क्या कहा जाता है?",
-    "options": ["Groups / समूह", "Periods / आवर्त", "Families / परिवार", "Columns / स्तंभ"],
-    "correctAnswer": "Periods / आवर्त"
+    "optionsEnglish": "Groups, Periods, Families, Columns",
+    "optionsHindi": "समूह, आवर्त, परिवार, स्तंभ",
+    "answerEnglish": "Periods",
+    "answerHindi": "आवर्त"
   },
   {
     "questionEnglish": "The process of changing liquid to solid is called:",
     "questionHindi": "तरल को ठोस में बदलने की प्रक्रिया को कहा जाता है:",
-    "options": ["Melting / पिघलना", "Evaporation / वाष्पीकरण", "Freezing / जमना", "Sublimation / उर्ध्वपातन"],
-    "correctAnswer": "Freezing / जमना"
+    "optionsEnglish": "Melting, Evaporation, Freezing, Sublimation",
+    "optionsHindi": "पिघलना, वाष्पीकरण, जमना, उर्ध्वपातन",
+    "answerEnglish": "Freezing",
+    "answerHindi": "जमना"
   },
   {
     "questionEnglish": "The cell organelle that modifies and packages proteins for transport is:",
     "questionHindi": "कोशिका अंगक जो परिवहन के लिए प्रोटीन को संशोधित और पैक करता है, है:",
-    "options": ["Chloroplasts / क्लोरोप्लास्ट", "Chromoplasts / क्रोमोप्लास्ट", "Golgi apparatus / गॉल्जी उपकरण", "Mitochondria / माइटोकॉन्ड्रिया"],
-    "correctAnswer": "Golgi apparatus / गॉल्जी उपकरण"
+    "optionsEnglish": "Chloroplasts, Chromoplasts, Golgi apparatus, Mitochondria",
+    "optionsHindi": "क्लोरोप्लास्ट, क्रोमोप्लास्ट, गॉल्जी उपकरण, माइटोकॉन्ड्रिया",
+    "answerEnglish": "Golgi apparatus",
+    "answerHindi": "गॉल्जी उपकरण"
   },
   {
     "questionEnglish": "Which plant group has seeds enclosed within fruits?",
     "questionHindi": "किस पौधे समूह में फल के अंदर बीज होते हैं?",
-    "options": ["Bryophytes / ब्रायोफाइट", "Pteridophytes / टेरिडोफाइट", "Gymnosperms / जिम्नोस्पर्म", "Angiosperms / एंजियोस्पर्म"],
-    "correctAnswer": "Angiosperms / एंजियोस्पर्म"
+    "optionsEnglish": "Bryophytes, Pteridophytes, Gymnosperms, Angiosperms",
+    "optionsHindi": "ब्रायोफाइट, टेरिडोफाइट, जिम्नोस्पर्म, एंजियोस्पर्म",
+    "answerEnglish": "Angiosperms",
+    "answerHindi": "एंजियोस्पर्म"
   },
   {
     "questionEnglish": "Which disease is caused by a deficiency of protein?",
     "questionHindi": "प्रोटीन की कमी से कौन सा रोग होता है?",
-    "options": ["Tuberculosis / तपेदिक", "Malaria / मलेरिया", "Kwashiorkor / क्वाशिओरकोर", "Typhoid / टाइफाइड"],
-    "correctAnswer": "Kwashiorkor / क्वाशिओरकोर"
+    "optionsEnglish": "Tuberculosis, Malaria, Kwashiorkor, Typhoid",
+    "optionsHindi": "तपेदिक, मलेरिया, क्वाशिओरकोर, टाइफाइड",
+    "answerEnglish": "Kwashiorkor",
+    "answerHindi": "क्वाशिओरकोर"
   },
   {
     "questionEnglish": "Which gas is used in fire extinguishers?",
     "questionHindi": "अग्निशामक यंत्रों में किस गैस का उपयोग किया जाता है?",
-    "options": ["Nitrogen / नाइट्रोजन", "Carbon dioxide / कार्बन डाइऑक्साइड", "Oxygen / ऑक्सीजन", "Helium / हीलियम"],
-    "correctAnswer": "Carbon dioxide / कार्बन डाइऑक्साइड"
+    "optionsEnglish": "Nitrogen, Carbon dioxide, Oxygen, Helium",
+    "optionsHindi": "नाइट्रोजन, कार्बन डाइऑक्साइड, ऑक्सीजन, हीलियम",
+    "answerEnglish": "Carbon dioxide",
+    "answerHindi": "कार्बन डाइऑक्साइड"
   }
 ]

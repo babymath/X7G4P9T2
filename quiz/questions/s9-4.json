@@ -2,181 +2,241 @@
   {
     "questionEnglish": "The slope of a velocity-time graph represents:",
     "questionHindi": "वेग-समय ग्राफ का ढलान क्या दर्शाता है?",
-    "options": ["Distance / दूरी", "Displacement / विस्थापन", "Acceleration / त्वरण", "Speed / गति"],
-    "correctAnswer": "Acceleration / त्वरण"
+    "optionsEnglish": "Distance, Displacement, Acceleration, Speed",
+    "optionsHindi": "दूरी, विस्थापन, त्वरण, गति",
+    "answerEnglish": "Acceleration",
+    "answerHindi": "त्वरण"
   },
   {
     "questionEnglish": "The force of attraction between molecules of different substances is called:",
     "questionHindi": "विभिन्न पदार्थों के अणुओं के बीच आकर्षण बल को क्या कहते हैं?",
-    "options": ["Cohesive force / संसंजक बल", "Adhesive force / आसंजक बल", "Gravitational force / गुरुत्वाकर्षण बल", "Magnetic force / चुंबकीय बल"],
-    "correctAnswer": "Adhesive force / आसंजक बल"
+    "optionsEnglish": "Cohesive force, Adhesive force, Gravitational force, Magnetic force",
+    "optionsHindi": "संसंजक बल, आसंजक बल, गुरुत्वाकर्षण बल, चुंबकीय बल",
+    "answerEnglish": "Adhesive force",
+    "answerHindi": "आसंजक बल"
   },
   {
     "questionEnglish": "The energy possessed by a body due to its motion is called:",
     "questionHindi": "किसी पिंड द्वारा उसकी गति के कारण धारित ऊर्जा को क्या कहा जाता है?",
-    "options": ["Potential energy / स्थितिज ऊर्जा", "Kinetic energy / गतिज ऊर्जा", "Chemical energy / रासायनिक ऊर्जा", "Thermal energy / तापीय ऊर्जा"],
-    "correctAnswer": "Kinetic energy / गतिज ऊर्जा"
+    "optionsEnglish": "Potential energy, Kinetic energy, Chemical energy, Thermal energy",
+    "optionsHindi": "स्थितिज ऊर्जा, गतिज ऊर्जा, रासायनिक ऊर्जा, तापीय ऊर्जा",
+    "answerEnglish": "Kinetic energy",
+    "answerHindi": "गतिज ऊर्जा"
   },
   {
     "questionEnglish": "The range of audible frequency for human beings is:",
     "questionHindi": "मनुष्यों के लिए श्रव्य आवृत्ति की सीमा है:",
-    "options": ["20 Hz to 200 Hz / 20 हर्ट्ज से 200 हर्ट्ज", "20 Hz to 2000 Hz / 20 हर्ट्ज से 2000 हर्ट्ज", "20 Hz to 20000 Hz / 20 हर्ट्ज से 20000 हर्ट्ज", "200 Hz to 20000 Hz / 200 हर्ट्ज से 20000 हर्ट्ज"],
-    "correctAnswer": "20 Hz to 20000 Hz / 20 हर्ट्ज से 20000 हर्ट्ज"
+    "optionsEnglish": "20 Hz to 200 Hz, 20 Hz to 2000 Hz, 20 Hz to 20000 Hz, 200 Hz to 20000 Hz",
+    "optionsHindi": "20 हर्ट्ज से 200 हर्ट्ज, 20 हर्ट्ज से 2000 हर्ट्ज, 20 हर्ट्ज से 20000 हर्ट्ज, 200 हर्ट्ज से 20000 हर्ट्ज",
+    "answerEnglish": "20 Hz to 20000 Hz",
+    "answerHindi": "20 हर्ट्ज से 20000 हर्ट्ज"
   },
   {
     "questionEnglish": "The process of a solid changing directly to a gas without passing through the liquid state is called:",
     "questionHindi": "तरल अवस्था से गुजरे बिना ठोस के सीधे गैस में बदलने की प्रक्रिया को क्या कहते हैं?",
-    "options": ["Melting / पिघलना", "Boiling / उबालना", "Sublimation / उर्ध्वपातन", "Condensation / संघनन"],
-    "correctAnswer": "Sublimation / उर्ध्वपातन"
+    "optionsEnglish": "Melting, Boiling, Sublimation, Condensation",
+    "optionsHindi": "पिघलना, उबालना, उर्ध्वपातन, संघनन",
+    "answerEnglish": "Sublimation",
+    "answerHindi": "उर्ध्वपातन"
   },
   {
     "questionEnglish": "A heterogeneous mixture in which the solute particles do not dissolve but remain suspended throughout the bulk of the medium is called:",
     "questionHindi": "एक विषमांगी मिश्रण जिसमें विलेय कण घुलते नहीं हैं बल्कि माध्यम के पूरे भाग में निलंबित रहते हैं, कहलाता है:",
-    "options": ["Solution / विलयन", "Colloid / कोलाइड", "Suspension / निलंबन", "Emulsion / इमल्शन"],
-    "correctAnswer": "Suspension / निलंबन"
+    "optionsEnglish": "Solution, Colloid, Suspension, Emulsion",
+    "optionsHindi": "विलयन, कोलाइड, निलंबन, इमल्शन",
+    "answerEnglish": "Suspension",
+    "answerHindi": "निलंबन"
   },
   {
     "questionEnglish": "The number of electrons in the outermost shell of an atom is called:",
     "questionHindi": "एक परमाणु के सबसे बाहरी कोश में इलेक्ट्रॉनों की संख्या को क्या कहते हैं?",
-    "options": ["Atomic number / परमाणु संख्या", "Mass number / द्रव्यमान संख्या", "Valence electrons / संयोजी इलेक्ट्रॉन", "Neutrons / न्यूट्रॉन"],
-    "correctAnswer": "Valence electrons / संयोजी इलेक्ट्रॉन"
+    "optionsEnglish": "Atomic number, Mass number, Valence electrons, Neutrons",
+    "optionsHindi": "परमाणु संख्या, द्रव्यमान संख्या, संयोजी इलेक्ट्रॉन, न्यूट्रॉन",
+    "answerEnglish": "Valence electrons",
+    "answerHindi": "संयोजी इलेक्ट्रॉन"
   },
   {
     "questionEnglish": "The force that holds the nucleons together in the nucleus is called:",
     "questionHindi": "वह बल जो नाभिक में न्यूक्लियॉन को एक साथ रखता है, कहलाता है:",
-    "options": ["Gravitational force / गुरुत्वाकर्षण बल", "Electromagnetic force / विद्युत चुम्बकीय बल", "Nuclear force / नाभिकीय बल", "Weak force / दुर्बल बल"],
-    "correctAnswer": "Nuclear force / नाभिकीय बल"
+    "optionsEnglish": "Gravitational force, Electromagnetic force, Nuclear force, Weak force",
+    "optionsHindi": "गुरुत्वाकर्षण बल, विद्युत चुम्बकीय बल, नाभिकीय बल, दुर्बल बल",
+    "answerEnglish": "Nuclear force",
+    "answerHindi": "नाभिकीय बल"
   },
   {
     "questionEnglish": "The chemical formula of ammonia is:",
     "questionHindi": "अमोनिया का रासायनिक सूत्र है:",
-    "options": ["H2O / H2O", "CO2 / CO2", "NH3 / NH3", "O2 / O2"],
-    "correctAnswer": "NH3 / NH3"
+    "optionsEnglish": "H2O, CO2, NH3, O2",
+    "optionsHindi": "H2O, CO2, NH3, O2",
+    "answerEnglish": "NH3",
+    "answerHindi": "NH3"
   },
   {
     "questionEnglish": "The fluid mosaic model of cell membrane was proposed by:",
     "questionHindi": "कोशिका झिल्ली का तरल मोज़ेक मॉडल किसके द्वारा प्रस्तावित किया गया था?",
-    "options": ["Robert Hooke / रॉबर्ट हुक", "Schleiden and Schwann / श्लीडेन और श्वान", "Singer and Nicolson / सिंगर और निकोलसन", "Rudolf Virchow / रुडोल्फ विरचो"],
-    "correctAnswer": "Singer and Nicolson / सिंगर और निकोलसन"
+    "optionsEnglish": "Robert Hooke, Schleiden and Schwann, Singer and Nicolson, Rudolf Virchow",
+    "optionsHindi": "रॉबर्ट हुक, श्लीडेन और श्वान, सिंगर और निकोलसन, रुडोल्फ विरचो",
+    "answerEnglish": "Singer and Nicolson",
+    "answerHindi": "सिंगर और निकोलसन"
   },
   {
     "questionEnglish": "Which tissue helps in providing mechanical support to plants?",
     "questionHindi": "कौन सा ऊतक पौधों को यांत्रिक सहायता प्रदान करने में मदद करता है?",
-    "options": ["Xylem / जाइलम", "Phloem / फ्लोएम", "Parenchyma / पैरेन्काइमा", "Sclerenchyma / स्क्लेरेन्काइमा"],
-    "correctAnswer": "Sclerenchyma / स्क्लेरेन्काइमा"
+    "optionsEnglish": "Xylem, Phloem, Parenchyma, Sclerenchyma",
+    "optionsHindi": "जाइलम, फ्लोएम, पैरेन्काइमा, स्क्लेरेन्काइमा",
+    "answerEnglish": "Sclerenchyma",
+    "answerHindi": "स्क्लेरेन्काइमा"
   },
   {
     "questionEnglish": "Which of the following is an example of an annelid?",
     "questionHindi": "निम्नलिखित में से कौन एक ऐनेलिड का उदाहरण है?",
-    "options": ["Snail / घोंघा", "Earthworm / केंचुआ", "Starfish / स्टारफिश", "Jellyfish / जेलीफ़िश"],
-    "correctAnswer": "Earthworm / केंचुआ"
+    "optionsEnglish": "Snail, Earthworm, Starfish, Jellyfish",
+    "optionsHindi": "घोंघा, केंचुआ, स्टारफिश, जेलीफ़िश",
+    "answerEnglish": "Earthworm",
+    "answerHindi": "केंचुआ"
   },
   {
     "questionEnglish": "Which disease is caused by the deficiency of Vitamin A?",
     "questionHindi": "विटामिन ए की कमी से कौन सा रोग होता है?",
-    "options": ["Rickets / रिकेट्स", "Scurvy / स्कर्वी", "Night blindness / रतौंधी", "Beri-beri / बेरी-बेरी"],
-    "correctAnswer": "Night blindness / रतौंधी"
+    "optionsEnglish": "Rickets, Scurvy, Night blindness, Beri-beri",
+    "optionsHindi": "रिकेट्स, स्कर्वी, रतौंधी, बेरी-बेरी",
+    "answerEnglish": "Night blindness",
+    "answerHindi": "रतौंधी"
   },
   {
     "questionEnglish": "Which gas is used in fire extinguishers?",
     "questionHindi": "अग्निशामक यंत्रों में किस गैस का उपयोग किया जाता है?",
-    "options": ["Nitrogen / नाइट्रोजन", "Carbon dioxide / कार्बन डाइऑक्साइड", "Oxygen / ऑक्सीजन", "Hydrogen / हाइड्रोजन"],
-    "correctAnswer": "Carbon dioxide / कार्बन डाइऑक्साइड"
+    "optionsEnglish": "Nitrogen, Carbon dioxide, Oxygen, Hydrogen",
+    "optionsHindi": "नाइट्रोजन, कार्बन डाइऑक्साइड, ऑक्सीजन, हाइड्रोजन",
+    "answerEnglish": "Carbon dioxide",
+    "answerHindi": "कार्बन डाइऑक्साइड"
   },
   {
     "questionEnglish": "The process of water movement across a semipermeable membrane from a region of higher water concentration to a region of lower water concentration is called:",
     "questionHindi": "उच्च जल सांद्रता वाले क्षेत्र से निम्न जल सांद्रता वाले क्षेत्र में अर्धपारगम्य झिल्ली के पार जल की गति की प्रक्रिया को क्या कहते हैं?",
-    "options": ["Diffusion / विसरण", "Osmosis / परासरण", "Active transport / सक्रिय परिवहन", "Endocytosis / एंडोसाइटोसिस"],
-    "correctAnswer": "Osmosis / परासरण"
+    "optionsEnglish": "Diffusion, Osmosis, Active transport, Endocytosis",
+    "optionsHindi": "विसरण, परासरण, सक्रिय परिवहन, एंडोसाइटोसिस",
+    "answerEnglish": "Osmosis",
+    "answerHindi": "परासरण"
   },
   {
     "questionEnglish": "The product of force and displacement is called:",
     "questionHindi": "बल और विस्थापन के गुणनफल को क्या कहते हैं?",
-    "options": ["Power / शक्ति", "Energy / ऊर्जा", "Momentum / संवेग", "Work / कार्य"],
-    "correctAnswer": "Work / कार्य"
+    "optionsEnglish": "Power, Energy, Momentum, Work",
+    "optionsHindi": "शक्ति, ऊर्जा, संवेग, कार्य",
+    "answerEnglish": "Work",
+    "answerHindi": "कार्य"
   },
   {
     "questionEnglish": "The law which states that equal volumes of gases at the same temperature and pressure contain equal numbers of molecules is:",
     "questionHindi": "वह नियम जो बताता है कि समान तापमान और दबाव पर गैसों के समान आयतन में अणुओं की संख्या समान होती है, वह है:",
-    "options": ["Boyle's law / बॉयल का नियम", "Charles's law / चार्ल्स का नियम", "Avogadro's law / अवोगाद्रो का नियम", "Gay-Lussac's law / गे-लुसाक का नियम"],
-    "correctAnswer": "Avogadro's law / अवोगाद्रो का नियम"
+    "optionsEnglish": "Boyle's law, Charles's law, Avogadro's law, Gay-Lussac's law",
+    "optionsHindi": "बॉयल का नियम, चार्ल्स का नियम, अवोगाद्रो का नियम, गे-लुसाक का नियम",
+    "answerEnglish": "Avogadro's law",
+    "answerHindi": "अवोगाद्रो का नियम"
   },
   {
     "questionEnglish": "The change of state from gas to solid is called:",
     "questionHindi": "गैस से ठोस में अवस्था परिवर्तन को कहा जाता है:",
-    "options": ["Condensation / संघनन", "Freezing / जमना", "Deposition / जमाव", "Evaporation / वाष्पीकरण"],
-    "correctAnswer": "Deposition / जमाव"
+    "optionsEnglish": "Condensation, Freezing, Deposition, Evaporation",
+    "optionsHindi": "संघनन, जमना, जमाव, वाष्पीकरण",
+    "answerEnglish": "Deposition",
+    "answerHindi": "जमाव"
   },
   {
     "questionEnglish": "The cell organelle responsible for detoxification is:",
     "questionHindi": "विषहरण के लिए जिम्मेदार कोशिका अंगक है:",
-    "options": ["Golgi apparatus / गॉल्जी उपकरण", "Lysosomes / लाइसोसोम", "Smooth endoplasmic reticulum / चिकना एंडोप्लाज्मिक रेटिकुलम", "Ribosomes / राइबोसोम"],
-    "correctAnswer": "Smooth endoplasmic reticulum / चिकना एंडोप्लाज्मिक रेटिकुलम"
+    "optionsEnglish": "Golgi apparatus, Lysosomes, Smooth endoplasmic reticulum, Ribosomes",
+    "optionsHindi": "गॉल्जी उपकरण, लाइसोसोम, चिकना एंडोप्लाज्मिक रेटिकुलम, राइबोसोम",
+    "answerEnglish": "Smooth endoplasmic reticulum",
+    "answerHindi": "चिकना एंडोप्लाज्मिक रेटिकुलम"
   },
   {
     "questionEnglish": "Which of the following is an example of a pteridophyte?",
     "questionHindi": "निम्नलिखित में से कौन टेरिडोफाइट का उदाहरण है?",
-    "options": ["Moss / काई", "Fern / फर्न", "Pine / चीड़", "Mushroom / मशरूम"],
-    "correctAnswer": "Fern / फर्न"
+    "optionsEnglish": "Moss, Fern, Pine, Mushroom",
+    "optionsHindi": "काई, फर्न, चीड़, मशरूम",
+    "answerEnglish": "Fern",
+    "answerHindi": "फर्न"
   },
   {
     "questionEnglish": "Which disease is caused by a fungus?",
     "questionHindi": "कवक से कौन सा रोग होता है?",
-    "options": ["Malaria / मलेरिया", "Ringworm / दाद", "Tuberculosis / तपेदिक", "Typhoid / टाइफाइड"],
-    "correctAnswer": "Ringworm / दाद"
+    "optionsEnglish": "Malaria, Ringworm, Tuberculosis, Typhoid",
+    "optionsHindi": "मलेरिया, दाद, तपेदिक, टाइफाइड",
+    "answerEnglish": "Ringworm",
+    "answerHindi": "दाद"
   },
   {
     "questionEnglish": "Which gas is responsible for the greenhouse effect?",
     "questionHindi": "ग्रीनहाउस प्रभाव के लिए कौन सी गैस जिम्मेदार है?",
-    "options": ["Nitrogen / नाइट्रोजन", "Oxygen / ऑक्सीजन", "Carbon dioxide / कार्बन डाइऑक्साइड", "Argon / आर्गन"],
-    "correctAnswer": "Carbon dioxide / कार्बन डाइऑक्साइड"
+    "optionsEnglish": "Nitrogen, Oxygen, Carbon dioxide, Argon",
+    "optionsHindi": "नाइट्रोजन, ऑक्सीजन, कार्बन डाइऑक्साइड, आर्गन",
+    "answerEnglish": "Carbon dioxide",
+    "answerHindi": "कार्बन डाइऑक्साइड"
   },
   {
     "questionEnglish": "Chromosomes are made up of:",
     "questionHindi": "गुणसूत्र किससे बने होते हैं?",
-    "options": ["Proteins / प्रोटीन", "DNA / डीएनए", "Both proteins and DNA / प्रोटीन और डीएनए दोनों", "RNA / आरएनए"],
-    "correctAnswer": "Both proteins and DNA / प्रोटीन और डीएनए दोनों"
+    "optionsEnglish": "Proteins, DNA, Both proteins and DNA, RNA",
+    "optionsHindi": "प्रोटीन, डीएनए, प्रोटीन और डीएनए दोनों, आरएनए",
+    "answerEnglish": "Both proteins and DNA",
+    "answerHindi": "प्रोटीन और डीएनए दोनों"
   },
   {
     "questionEnglish": "The SI unit of momentum is:",
     "questionHindi": "संवेग का SI मात्रक है:",
-    "options": ["N / न्यूटन", "J / जूल", "kg m/s / किलोग्राम मीटर/सेकंड", "m/s² / मीटर/सेकंड²"],
-    "correctAnswer": "kg m/s / किलोग्राम मीटर/सेकंड"
+    "optionsEnglish": "N, J, kg m/s, m/s²",
+    "optionsHindi": "न्यूटन, जूल, किलोग्राम मीटर/सेकंड, मीटर/सेकंड²",
+    "answerEnglish": "kg m/s",
+    "answerHindi": "किलोग्राम मीटर/सेकंड"
   },
   {
     "questionEnglish": "The number of periods in the modern periodic table is:",
     "questionHindi": "आधुनिक आवर्त सारणी में आवर्तों की संख्या है:",
-    "options": ["7 / 7", "8 / 8", "9 / 9", "18 / 18"],
-    "correctAnswer": "7 / 7"
+    "optionsEnglish": "7, 8, 9, 18",
+    "optionsHindi": "7, 8, 9, 18",
+    "answerEnglish": "7",
+    "answerHindi": "7"
   },
   {
     "questionEnglish": "The process of changing solid to gas is called:",
     "questionHindi": "ठोस को गैस में बदलने की प्रक्रिया को कहा जाता है:",
-    "options": ["Melting / पिघलना", "Evaporation / वाष्पीकरण", "Sublimation / उर्ध्वपातन", "Condensation / संघनन"],
-    "correctAnswer": "Sublimation / उर्ध्वपातन"
+    "optionsEnglish": "Melting, Evaporation, Sublimation, Condensation",
+    "optionsHindi": "पिघलना, वाष्पीकरण, उर्ध्वपातन, संघनन",
+    "answerEnglish": "Sublimation",
+    "answerHindi": "उर्ध्वपातन"
   },
   {
     "questionEnglish": "The plastids responsible for storing starch are called:",
     "questionHindi": "स्टार्च के भंडारण के लिए जिम्मेदार प्लास्टिड कहलाते हैं:",
-    "options": ["Chloroplasts / क्लोरोप्लास्ट", "Chromoplasts / क्रोमोप्लास्ट", "Leucoplasts / ल्यूकोप्लास्ट", "Mitochondria / माइटोकॉन्ड्रिया"],
-    "correctAnswer": "Leucoplasts / ल्यूकोप्लास्ट"
+    "optionsEnglish": "Chloroplasts, Chromoplasts, Leucoplasts, Mitochondria",
+    "optionsHindi": "क्लोरोप्लास्ट, क्रोमोप्लास्ट, ल्यूकोप्लास्ट, माइटोकॉन्ड्रिया",
+    "answerEnglish": "Leucoplasts",
+    "answerHindi": "ल्यूकोप्लास्ट"
   },
   {
     "questionEnglish": "Which plant group has naked seeds?",
     "questionHindi": "किस पौधे समूह में नग्न बीज होते हैं?",
-    "options": ["Bryophytes / ब्रायोफाइट", "Pteridophytes / टेरिडोफाइट", "Gymnosperms / जिम्नोस्पर्म", "Angiosperms / एंजियोस्पर्म"],
-    "correctAnswer": "Gymnosperms / जिम्नोस्पर्म"
+    "optionsEnglish": "Bryophytes, Pteridophytes, Gymnosperms, Angiosperms",
+    "optionsHindi": "ब्रायोफाइट, टेरिडोफाइट, जिम्नोस्पर्म, एंजियोस्पर्म",
+    "answerEnglish": "Gymnosperms",
+    "answerHindi": "जिम्नोस्पर्म"
   },
   {
     "questionEnglish": "Which disease is caused by a protozoan?",
     "questionHindi": "प्रोटोजोआ से कौन सा रोग होता है?",
-    "options": ["Tuberculosis / तपेदिक", "Malaria / मलेरिया", "Typhoid / टाइफाइड", "Common cold / सामान्य सर्दी"],
-    "correctAnswer": "Malaria / मलेरिया"
+    "optionsEnglish": "Tuberculosis, Malaria, Typhoid, Common cold",
+    "optionsHindi": "तपेदिक, मलेरिया, टाइफाइड, सामान्य सर्दी",
+    "answerEnglish": "Malaria",
+    "answerHindi": "मलेरिया"
   },
   {
     "questionEnglish": "The process of converting a gas into a liquid is called:",
     "questionHindi": "गैस को तरल में बदलने की प्रक्रिया को क्या कहते हैं?",
-    "options": ["Condensation / संघनन", "Evaporation / वाष्पीकरण", "Sublimation / उर्ध्वपातन", "Freezing / जमना"],
-    "correctAnswer": "Condensation / संघनन"
+    "optionsEnglish": "Condensation, Evaporation, Sublimation, Freezing",
+    "optionsHindi": "संघनन, वाष्पीकरण, उर्ध्वपातन, जमना",
+    "answerEnglish": "Condensation",
+    "answerHindi": "संघनन"
   }
 ]

@@ -1,182 +1,242 @@
 [
-  {
-    "questionEnglish": "Which of the following numbers is divisible by 2?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 2 से विभाज्य है?",
-    "options": ["347", "582", "679", "135"],
-    "correctAnswer": "582"
-  },
-  {
-    "questionEnglish": "Which number is divisible by 3?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 3 से विभाज्य है?",
-    "options": ["124", "265", "273", "481"],
-    "correctAnswer": "273"
-  },
-  {
-    "questionEnglish": "Which of the following numbers is NOT divisible by 5?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 5 से विभाज्य नहीं है?",
-    "options": ["1250", "2460", "3715", "4821"],
-    "correctAnswer": "4821"
-  },
-  {
-    "questionEnglish": "Which of these numbers is divisible by 6?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 6 से विभाज्य है?",
-    "options": ["252", "481", "365", "730"],
-    "correctAnswer": "252"
-  },
-  {
-    "questionEnglish": "Which number is divisible by 11?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 11 से विभाज्य है?",
-    "options": ["3742", "42186", "5831", "6293"],
-    "correctAnswer": "42186"
-  },
-  {
-    "questionEnglish": "Which of the following numbers is divisible by 7?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 7 से विभाज्य है?",
-    "options": ["343", "482", "365", "730"],
-    "correctAnswer": "343"
-  },
-  {
-    "questionEnglish": "Which number is divisible by 8?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 8 से विभाज्य है?",
-    "options": ["256", "481", "365", "730"],
-    "correctAnswer": "256"
-  },
-  {
-    "questionEnglish": "Which of these numbers is NOT divisible by 9?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 9 से विभाज्य नहीं है?",
-    "options": ["729", "243", "567", "482"],
-    "correctAnswer": "482"
-  },
-  {
-    "questionEnglish": "Which number is divisible by 10?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 10 से विभाज्य है?",
-    "options": ["100", "481", "365", "730"],
-    "correctAnswer": "100"
-  },
-  {
-    "questionEnglish": "Which of the following numbers is divisible by 12?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 12 से विभाज्य है?",
-    "options": ["144", "481", "365", "730"],
-    "correctAnswer": "144"
-  },
-  {
-    "questionEnglish": "Which number is divisible by 13?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 13 से विभाज्य है?",
-    "options": ["169", "481", "365", "730"],
-    "correctAnswer": "169"
-  },
-  {
-    "questionEnglish": "Which of these numbers is divisible by 14?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 14 से विभाज्य है?",
-    "options": ["196", "481", "365", "730"],
-    "correctAnswer": "196"
-  },
-  {
-    "questionEnglish": "Which number is divisible by 15?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 15 से विभाज्य है?",
-    "options": ["225", "481", "365", "730"],
-    "correctAnswer": "225"
-  },
-  {
-    "questionEnglish": "Which of the following numbers is divisible by 16?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 16 से विभाज्य है?",
-    "options": ["256", "481", "365", "730"],
-    "correctAnswer": "256"
-  },
-  {
-    "questionEnglish": "Which number is divisible by 17?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 17 से विभाज्य है?",
-    "options": ["289", "481", "365", "730"],
-    "correctAnswer": "289"
-  },
-  {
-    "questionEnglish": "Which of these numbers is divisible by 18?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 18 से विभाज्य है?",
-    "options": ["324", "481", "365", "730"],
-    "correctAnswer": "324"
-  },
-  {
-    "questionEnglish": "Which number is divisible by 19?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 19 से विभाज्य है?",
-    "options": ["361", "481", "365", "730"],
-    "correctAnswer": "361"
-  },
-  {
-    "questionEnglish": "Which of the following numbers is divisible by 20?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 20 से विभाज्य है?",
-    "options": ["400", "481", "365", "730"],
-    "correctAnswer": "400"
-  },
-  {
-    "questionEnglish": "Which number is divisible by 21?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 21 से विभाज्य है?",
-    "options": ["441", "481", "365", "730"],
-    "correctAnswer": "441"
-  },
-  {
-    "questionEnglish": "Which of these numbers is divisible by 22?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 22 से विभाज्य है?",
-    "options": ["484", "481", "365", "730"],
-    "correctAnswer": "484"
-  },
-  {
-    "questionEnglish": "Which number is divisible by 23?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 23 से विभाज्य है?",
-    "options": ["529", "481", "365", "730"],
-    "correctAnswer": "529"
-  },
-  {
-    "questionEnglish": "Which of the following numbers is divisible by 24?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 24 से विभाज्य है?",
-    "options": ["576", "481", "365", "730"],
-    "correctAnswer": "576"
-  },
-  {
-    "questionEnglish": "Which number is divisible by 25?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 25 से विभाज्य है?",
-    "options": ["625", "481", "365", "730"],
-    "correctAnswer": "625"
-  },
-  {
-    "questionEnglish": "Which of these numbers is divisible by 26?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 26 से विभाज्य है?",
-    "options": ["676", "481", "365", "730"],
-    "correctAnswer": "676"
-  },
-  {
-    "questionEnglish": "Which number is divisible by 27?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 27 से विभाज्य है?",
-    "options": ["729", "481", "365", "730"],
-    "correctAnswer": "729"
-  },
-  {
-    "questionEnglish": "Which of the following numbers is divisible by 28?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 28 से विभाज्य है?",
-    "options": ["784", "481", "365", "730"],
-    "correctAnswer": "784"
-  },
-  {
-    "questionEnglish": "Which number is divisible by 29?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 29 से विभाज्य है?",
-    "options": ["841", "481", "365", "730"],
-    "correctAnswer": "841"
-  },
-  {
-    "questionEnglish": "Which of these numbers is divisible by 30?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 30 से विभाज्य है?",
-    "options": ["900", "481", "365", "730"],
-    "correctAnswer": "900"
-  },
-  {
-    "questionEnglish": "Which number is divisible by 31?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 31 से विभाज्य है?",
-    "options": ["961", "481", "365", "730"],
-    "correctAnswer": "961"
-  },
-  {
-    "questionEnglish": "Which of these numbers is divisible by 32?",
-    "questionHindi": "निम्नलिखित में से कौन सा संख्या 32 से विभाज्य है?",
-    "options": ["1024", "481", "365", "730"],
-    "correctAnswer": "1024"
-  }
+    {
+        "questionEnglish": "Which of the following numbers is divisible by 2?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 2 से विभाज्य है?",
+        "optionsEnglish": "347, 582, 679, 135",
+        "optionsHindi": "347, 582, 679, 135",
+        "answerEnglish": "582",
+        "answerHindi": "582"
+    },
+    {
+        "questionEnglish": "Which number is divisible by 3?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 3 से विभाज्य है?",
+        "optionsEnglish": "124, 265, 273, 481",
+        "optionsHindi": "124, 265, 273, 481",
+        "answerEnglish": "273",
+        "answerHindi": "273"
+    },
+    {
+        "questionEnglish": "Which of the following numbers is NOT divisible by 5?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 5 से विभाज्य नहीं है?",
+        "optionsEnglish": "1250, 2460, 3715, 4821",
+        "optionsHindi": "1250, 2460, 3715, 4821",
+        "answerEnglish": "4821",
+        "answerHindi": "4821"
+    },
+    {
+        "questionEnglish": "Which of these numbers is divisible by 6?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 6 से विभाज्य है?",
+        "optionsEnglish": "252, 481, 365, 730",
+        "optionsHindi": "252, 481, 365, 730",
+        "answerEnglish": "252",
+        "answerHindi": "252"
+    },
+    {
+        "questionEnglish": "Which number is divisible by 11?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 11 से विभाज्य है?",
+        "optionsEnglish": "3742, 42186, 5831, 6293",
+        "optionsHindi": "3742, 42186, 5831, 6293",
+        "answerEnglish": "42186",
+        "answerHindi": "42186"
+    },
+    {
+        "questionEnglish": "Which of the following numbers is divisible by 7?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 7 से विभाज्य है?",
+        "optionsEnglish": "343, 482, 365, 730",
+        "optionsHindi": "343, 482, 365, 730",
+        "answerEnglish": "343",
+        "answerHindi": "343"
+    },
+    {
+        "questionEnglish": "Which number is divisible by 8?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 8 से विभाज्य है?",
+        "optionsEnglish": "256, 481, 365, 730",
+        "optionsHindi": "256, 481, 365, 730",
+        "answerEnglish": "256",
+        "answerHindi": "256"
+    },
+    {
+        "questionEnglish": "Which of these numbers is NOT divisible by 9?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 9 से विभाज्य नहीं है?",
+        "optionsEnglish": "729, 243, 567, 482",
+        "optionsHindi": "729, 243, 567, 482",
+        "answerEnglish": "482",
+        "answerHindi": "482"
+    },
+    {
+        "questionEnglish": "Which number is divisible by 10?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 10 से विभाज्य है?",
+        "optionsEnglish": "100, 481, 365, 730",
+        "optionsHindi": "100, 481, 365, 730",
+        "answerEnglish": "100",
+        "answerHindi": "100"
+    },
+    {
+        "questionEnglish": "Which of the following numbers is divisible by 12?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 12 से विभाज्य है?",
+        "optionsEnglish": "144, 481, 365, 730",
+        "optionsHindi": "144, 481, 365, 730",
+        "answerEnglish": "144",
+        "answerHindi": "144"
+    },
+    {
+        "questionEnglish": "Which number is divisible by 13?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 13 से विभाज्य है?",
+        "optionsEnglish": "169, 481, 365, 730",
+        "optionsHindi": "169, 481, 365, 730",
+        "answerEnglish": "169",
+        "answerHindi": "169"
+    },
+    {
+        "questionEnglish": "Which of these numbers is divisible by 14?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 14 से विभाज्य है?",
+        "optionsEnglish": "196, 481, 365, 730",
+        "optionsHindi": "196, 481, 365, 730",
+        "answerEnglish": "196",
+        "answerHindi": "196"
+    },
+    {
+        "questionEnglish": "Which number is divisible by 15?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 15 से विभाज्य है?",
+        "optionsEnglish": "225, 481, 365, 730",
+        "optionsHindi": "225, 481, 365, 730",
+        "answerEnglish": "225",
+        "answerHindi": "225"
+    },
+    {
+        "questionEnglish": "Which of the following numbers is divisible by 16?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 16 से विभाज्य है?",
+        "optionsEnglish": "256, 481, 365, 730",
+        "optionsHindi": "256, 481, 365, 730",
+        "answerEnglish": "256",
+        "answerHindi": "256"
+    },
+    {
+        "questionEnglish": "Which number is divisible by 17?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 17 से विभाज्य है?",
+        "optionsEnglish": "289, 481, 365, 730",
+        "optionsHindi": "289, 481, 365, 730",
+        "answerEnglish": "289",
+        "answerHindi": "289"
+    },
+    {
+        "questionEnglish": "Which of these numbers is divisible by 18?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 18 से विभाज्य है?",
+        "optionsEnglish": "324, 481, 365, 730",
+        "optionsHindi": "324, 481, 365, 730",
+        "answerEnglish": "324",
+        "answerHindi": "324"
+    },
+    {
+        "questionEnglish": "Which number is divisible by 19?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 19 से विभाज्य है?",
+        "optionsEnglish": "361, 481, 365, 730",
+        "optionsHindi": "361, 481, 365, 730",
+        "answerEnglish": "361",
+        "answerHindi": "361"
+    },
+    {
+        "questionEnglish": "Which of the following numbers is divisible by 20?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 20 से विभाज्य है?",
+        "optionsEnglish": "400, 481, 365, 730",
+        "optionsHindi": "400, 481, 365, 730",
+        "answerEnglish": "400",
+        "answerHindi": "400"
+    },
+    {
+        "questionEnglish": "Which number is divisible by 21?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 21 से विभाज्य है?",
+        "optionsEnglish": "441, 481, 365, 730",
+        "optionsHindi": "441, 481, 365, 730",
+        "answerEnglish": "441",
+        "answerHindi": "441"
+    },
+    {
+        "questionEnglish": "Which of these numbers is divisible by 22?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 22 से विभाज्य है?",
+        "optionsEnglish": "484, 481, 365, 730",
+        "optionsHindi": "484, 481, 365, 730",
+        "answerEnglish": "484",
+        "answerHindi": "484"
+    },
+    {
+        "questionEnglish": "Which number is divisible by 23?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 23 से विभाज्य है?",
+        "optionsEnglish": "529, 481, 365, 730",
+        "optionsHindi": "529, 481, 365, 730",
+        "answerEnglish": "529",
+        "answerHindi": "529"
+    },
+    {
+        "questionEnglish": "Which of the following numbers is divisible by 24?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 24 से विभाज्य है?",
+        "optionsEnglish": "576, 481, 365, 730",
+        "optionsHindi": "576, 481, 365, 730",
+        "answerEnglish": "576",
+        "answerHindi": "576"
+    },
+    {
+        "questionEnglish": "Which number is divisible by 25?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 25 से विभाज्य है?",
+        "optionsEnglish": "625, 481, 365, 730",
+        "optionsHindi": "625, 481, 365, 730",
+        "answerEnglish": "625",
+        "answerHindi": "625"
+    },
+    {
+        "questionEnglish": "Which of these numbers is divisible by 26?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 26 से विभाज्य है?",
+        "optionsEnglish": "676, 481, 365, 730",
+        "optionsHindi": "676, 481, 365, 730",
+        "answerEnglish": "676",
+        "answerHindi": "676"
+    },
+    {
+        "questionEnglish": "Which number is divisible by 27?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 27 से विभाज्य है?",
+        "optionsEnglish": "729, 481, 365, 730",
+        "optionsHindi": "729, 481, 365, 730",
+        "answerEnglish": "729",
+        "answerHindi": "729"
+    },
+    {
+        "questionEnglish": "Which of the following numbers is divisible by 28?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 28 से विभाज्य है?",
+        "optionsEnglish": "784, 481, 365, 730",
+        "optionsHindi": "784, 481, 365, 730",
+        "answerEnglish": "784",
+        "answerHindi": "784"
+    },
+    {
+        "questionEnglish": "Which number is divisible by 29?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 29 से विभाज्य है?",
+        "optionsEnglish": "841, 481, 365, 730",
+        "optionsHindi": "841, 481, 365, 730",
+        "answerEnglish": "841",
+        "answerHindi": "841"
+    },
+    {
+        "questionEnglish": "Which of these numbers is divisible by 30?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 30 से विभाज्य है?",
+        "optionsEnglish": "900, 481, 365, 730",
+        "optionsHindi": "900, 481, 365, 730",
+        "answerEnglish": "900",
+        "answerHindi": "900"
+    },
+    {
+        "questionEnglish": "Which number is divisible by 31?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 31 से विभाज्य है?",
+        "optionsEnglish": "961, 481, 365, 730",
+        "optionsHindi": "961, 481, 365, 730",
+        "answerEnglish": "961",
+        "answerHindi": "961"
+    },
+    {
+        "questionEnglish": "Which of these numbers is divisible by 32?",
+        "questionHindi": "निम्नलिखित में से कौन सा संख्या 32 से विभाज्य है?",
+        "optionsEnglish": "1024, 481, 365, 730",
+        "optionsHindi": "1024, 481, 365, 730",
+        "answerEnglish": "1024",
+        "answerHindi": "1024"
+    }
 ]

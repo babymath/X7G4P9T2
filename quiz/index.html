@@ -1,193 +1,248 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Quiz</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        #quizSelection {
-            padding:0 10px;
-            font-family: sans-serif;
-            
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select Quiz</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+  --bg: #f4f4f4;
+  --fg: #222;
+  --card-bg: #fff;
+  --accent: #3b82f6;
+  --button-bg: linear-gradient(135deg, #333, #666);
+  --button-text: #fff;
+}
 
-        #filterSection {
-            position: sticky;
-            top: 0;
-            background-color: #f9f9f9;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            z-index: 100;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+[data-theme='dark'] {
+  --bg: #121212;
+  --fg: #e0e0e0;
+  --card-bg: #1e1e1e;
+  --accent: #60a5fa;
+  --button-bg: linear-gradient(135deg, #555, #222);
+  --button-text: #fff;
+}
+html {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
 
-        #quizListContainer {
-            margin-top: 20px;
-        }
-        #quizList {
-            display: grid;
-            grid-template-columns: auto auto auto;
-            margin-top: 20px;
-        }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--fg);
+  transition: background 0.3s, color 0.3s;
+}
 
-        #quizList button {
-            margin: 5px;
-            background: linear-gradient(135deg, rgb(39, 40, 41), rgb(216, 195, 195));
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            padding: 3px;
-            box-sizing: border-box;
-            cursor: pointer;
-        }
+body, select, button {
+  transition: background-color 0.4s ease, color 0.4s ease, transform 0.2s ease;
+}
 
-        label {
-            display: block;
-            margin-top: 10px;
-        }
+#quizSelection {
+  padding: 10px;
+}
 
-        select {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
+#filterSection {
+  position: sticky;
+  top: 0;
+  background-color: var(--card-bg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  border-radius: 8px;
+  z-index: 100;
+}
 
-        #quizList {
-            margin-top: 20px;
-        }
-    </style>
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h2 {
+  margin: 0;
+}
+
+#themeToggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--accent);
+}
+
+label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: var(--card-bg);
+  color: var(--fg);
+}
+
+#quizList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#quizList button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+
+#quizList button:hover {
+  transform: scale(1.05);
+}
+
+  </style>
 </head>
 <body>
-    <div id="quizSelection">
-        <div id="filterSection">
-            <h2 style="text-align: center;margin: 0;">Select a Quiz</h2>
+  <div id="quizSelection">
+    <div id="filterSection">
+      <div class="header-row">
+        <h2>Select a Quiz</h2>
+        <button id="themeToggle" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+      </div>
 
-            <label for="subjectFilter">Filter by Subject:</label>
-            <select id="subjectFilter" aria-label="Filter by Subject">
-                <option value="">Select Subject</option>
-<option value="computer">Computer</option>
-                <option value="math">Math</option>
-                <option value="english">English</option>
-                <option value="hindi">Hindi</option>
-                <option value="science">Science</option>
-                <option value="reasoning">Reasoning</option>
-                <option value="history">History</option>
-            </select>
+      <label for="subjectFilter"><i class="fas fa-book"></i> Subject:</label>
+      <select id="subjectFilter">
+        <option value="">Select Subject</option>
+        <option value="computer">Computer</option>
+        <option value="math">Math</option>
+        <option value="english">English</option>
+        <option value="hindi">Hindi</option>
+        <option value="science">Science</option>
+        <option value="reasoning">Reasoning</option>
+        <option value="history">History</option>
+      </select>
 
-            <label for="topicFilter">Filter by Topic:</label>
-            <select id="topicFilter" aria-label="Filter by Topic">
-                <option value="All">All</option>
-            </select>
-        </div>
-
-        <div id="quizListContainer">
-            <div id="quizList">
-                <p>Please select a subject.</p>
-            </div>
-        </div>
+      <label for="topicFilter"><i class="fas fa-layer-group"></i> Topic:</label>
+      <select id="topicFilter">
+        <option value="All">All</option>
+      </select>
     </div>
 
-    <script>
-        const subjectFolder = "subject/"; // Define the folder where subject JSONs are stored
-        const subjectQuizMap = {
-"computer":"computer.json",
-            "math": "math.json",
-            "english": "english.json",
-            "hindi": "hindi.json",
-            "science": "science.json",
-            "reasoning": "reasoning.json",
-            "history": "history.json",
-            "science": "science.json"
-        };
+    <div id="quizListContainer">
+      <div id="quizList">
+        <p>Please select a subject.</p>
+      </div>
+    </div>
+  </div>
 
-        let currentQuizzes = [];
-        let selectedSubjectGlobal = ""; // To store the currently selected subject
+  <script>
+    const subjectFolder = "subject/";
+const subjectQuizMap = {
+  computer: "computer.json",
+  math: "math.json",
+  english: "english.json",
+  hindi: "hindi.json",
+  science: "science.json",
+  reasoning: "reasoning.json",
+  history: "history.json"
+};
 
-        document.getElementById("subjectFilter").onchange = function() {
-            const selectedSubject = this.value;
-            selectedSubjectGlobal = selectedSubject; // Update the global variable
-            const topicFilter = document.getElementById("topicFilter");
-            topicFilter.innerHTML = '<option value="All">All</option>'; // Removed "Show All" here
-            document.getElementById("quizList").innerHTML = "<p>Loading quizzes...</p>";
-            currentQuizzes = []; // Reset current quizzes
+let currentQuizzes = [];
+let selectedSubjectGlobal = "";
 
-            if (selectedSubject) {
-                const jsonFilePath = subjectFolder + subjectQuizMap[selectedSubject]; // Construct the correct path
-                fetch(jsonFilePath)
-                    .then(response => response.json())
-                    .then(data => {
-                        currentQuizzes = data;
-                        populateTopicFilter(data);
-                        showQuizSelection(); // Call showQuizSelection after loading (initially shows all)
-                    })
-                    .catch(error => {
-                        console.error(`Error loading ${selectedSubject} quizzes:`, error);
-                        document.getElementById("quizList").innerHTML = `<p style='color: red;'>⚠️ Unable to load ${selectedSubject} quizzes from ${jsonFilePath}.</p>`;
-                    });
-            } else {
-                document.getElementById("quizList").innerHTML = "<p>Please select a subject.</p>";
-            }
-        };
+document.getElementById("subjectFilter").onchange = function () {
+  const selectedSubject = this.value;
+  selectedSubjectGlobal = selectedSubject;
+  const topicFilter = document.getElementById("topicFilter");
+  topicFilter.innerHTML = '<option value="All">All</option>';
+  document.getElementById("quizList").innerHTML = "<p>Loading quizzes...</p>";
+  currentQuizzes = [];
 
-        function populateTopicFilter(quizzes) {
-            const topicFilter = document.getElementById("topicFilter");
-            topicFilter.innerHTML = '<option value="All">All</option>'; // Reset and keep "All"
-            const topics = [...new Set(quizzes.map(quiz => quiz.topic))];
-            topics.forEach(topic => {
-                const option = document.createElement("option");
-                option.value = topic;
-                option.textContent = topic;
-                topicFilter.appendChild(option);
-            });
-        }
+  if (selectedSubject) {
+    const jsonFilePath = subjectFolder + subjectQuizMap[selectedSubject];
+    fetch(jsonFilePath)
+      .then((response) => response.json())
+      .then((data) => {
+        currentQuizzes = data;
+        populateTopicFilter(data);
+        showQuizSelection();
+      })
+      .catch((error) => {
+        console.error(`Error loading ${selectedSubject} quizzes:`, error);
+        document.getElementById("quizList").innerHTML = `<p style='color: red;'>⚠️ Unable to load quizzes.</p>`;
+      });
+  } else {
+    document.getElementById("quizList").innerHTML = "<p>Please select a subject.</p>";
+  }
+};
 
-        document.getElementById("topicFilter").onchange = showQuizSelection; // Re-enable the onchange listener
+function populateTopicFilter(quizzes) {
+  const topicFilter = document.getElementById("topicFilter");
+  topicFilter.innerHTML = '<option value="All">All</option>';
+  const topics = [...new Set(quizzes.map((quiz) => quiz.topic))];
+  topics.forEach((topic) => {
+    const option = document.createElement("option");
+    option.value = topic;
+    option.textContent = topic;
+    topicFilter.appendChild(option);
+  });
+}
 
-        function showQuizSelection() {
-            const quizList = document.getElementById("quizList");
-            quizList.innerHTML = "";
+document.getElementById("topicFilter").onchange = showQuizSelection;
 
-            const topicFilterValue = document.getElementById("topicFilter").value;
+function showQuizSelection() {
+  const quizList = document.getElementById("quizList");
+  quizList.innerHTML = "";
 
-            let filteredQuizzes = [];
-            if (topicFilterValue === "All") {
-                filteredQuizzes = currentQuizzes; // Show all if "All" is selected
-            } else {
-                filteredQuizzes = currentQuizzes.filter((quiz) => {
-                    return quiz.topic === topicFilterValue;
-                });
-            }
+  const topicFilterValue = document.getElementById("topicFilter").value;
 
-            if (filteredQuizzes.length === 0) {
-                quizList.innerHTML = "<p>No quizzes found for the selected topic.</p>";
-            } else {
-                filteredQuizzes.forEach((quiz, index) => {
-                    const btn = document.createElement("button");
-                    btn.textContent = quiz.title;
-                    btn.onclick = () => loadQuiz(quiz.file, quiz.title, selectedSubjectGlobal); // Pass the subject
-                    btn.setAttribute("aria-label", `Select ${quiz.title}`);
-                    quizList.appendChild(btn);
-                });
-            }
-        }
+  let filteredQuizzes =
+    topicFilterValue === "All"
+      ? currentQuizzes
+      : currentQuizzes.filter((quiz) => quiz.topic === topicFilterValue);
 
-        function loadQuiz(fileName, quizTitle, subject) {
-            localStorage.setItem("quizTitle", quizTitle);
-            localStorage.setItem("quizFile", fileName);
-            localStorage.setItem("quizSubject", subject);
-            window.location.href = "quiz.html";
-        }
-    </script>
+  if (filteredQuizzes.length === 0) {
+    quizList.innerHTML = "<p>No quizzes found for the selected topic.</p>";
+  } else {
+    filteredQuizzes.forEach((quiz) => {
+      const btn = document.createElement("button");
+      btn.innerHTML = `<i class="fas fa-clipboard-question"></i> ${quiz.title}`;
+      btn.onclick = () => loadQuiz(quiz.file, quiz.title, selectedSubjectGlobal);
+      btn.setAttribute("aria-label", `Select ${quiz.title}`);
+      quizList.appendChild(btn);
+    });
+  }
+}
+
+function loadQuiz(fileName, quizTitle, subject) {
+  localStorage.setItem("quizTitle", quizTitle);
+  localStorage.setItem("quizFile", fileName);
+  localStorage.setItem("quizSubject", subject);
+
+  // Reset filter selections
+  document.getElementById("subjectFilter").value = "";
+  document.getElementById("topicFilter").innerHTML = '<option value="All">All</option>';
+  document.getElementById("quizList").innerHTML = "<p>Please select a subject.</p>";
+
+  window.location.href = "quiz.html";
+}
+
+document.getElementById("themeToggle").onclick = () => {
+  const root = document.documentElement;
+  const currentTheme = root.getAttribute("data-theme");
+  const newTheme = currentTheme === "light" ? "dark" : "light";
+  root.setAttribute("data-theme", newTheme);
+
+  const icon = document.querySelector("#themeToggle i");
+  icon.className = newTheme === "dark" ? "fas fa-sun" : "fas fa-moon";
+};
+
+</script>
 </body>
 </html>
