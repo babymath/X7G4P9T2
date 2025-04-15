@@ -2,240 +2,240 @@
     {
       "questionEnglish": "A and B together can complete a task in 10 days. After working together for 4 days, A leaves, and B completes the remaining work in 10 more days. How many days will A alone take to complete the entire task? ",
       "questionHindi": "A और B मिलकर एक कार्य को 10 दिन में पूरा कर सकते हैं। 4 दिन तक एक साथ काम करने के बाद, A छोड़ देता है, और B शेष कार्य को 10 और दिनों में पूरा करता है। A अकेले पूरे कार्य को पूरा करने में कितने दिन लेगा?",
-      "optionsEnglish": ["15 days", "20 days", "25 days", "30 days"],
-      "optionsHindi": ["15 दिन", "20 दिन", "25 दिन", "30 दिन"],
+      "optionsEnglish": "15 days, 20 days, 25 days, 30 days",
+      "optionsHindi": "15 दिन, 20 दिन, 25 दिन, 30 दिन",
       "answerEnglish": "25 days",
       "answerHindi": "25 दिन"
     },
     {
       "questionEnglish": "Three pipes A, B, and C can fill a tank in 12, 15, and 20 hours respectively. If all three are opened together, how long will it take to fill the tank?",
       "questionHindi": "तीन पाइप A, B और C क्रमशः 12, 15 और 20 घंटे में एक टैंक भर सकते हैं। यदि तीनों को एक साथ खोला जाए, तो टैंक भरने में कितना समय लगेगा?",
-      "optionsEnglish": ["4 hours", "5 hours", "6 hours", "7 hours"],
-      "optionsHindi": ["4 घंटे", "5 घंटे", "6 घंटे", "7 घंटे"],
+      "optionsEnglish": "4 hours, 5 hours, 6 hours, 7 hours",
+      "optionsHindi": "4 घंटे, 5 घंटे, 6 घंटे, 7 घंटे",
       "answerEnglish": "5 hours",
       "answerHindi": "5 घंटे"
     },
     {
       "questionEnglish": "A and B can do a piece of work in 16 days. B and C can complete it in 24 days, and A and C can do it in 32 days. In how many days can all three complete the work together?",
       "questionHindi": "A और B मिलकर 16 दिनों में एक काम कर सकते हैं। B और C इसे 24 दिनों में पूरा कर सकते हैं, और A और C इसे 32 दिनों में कर सकते हैं। तीनों मिलकर इसे कितने दिनों में पूरा करेंगे?",
-      "optionsEnglish": ["14.7 days", "15 days", "18 days", "24 days"],
-      "optionsHindi": ["14.7 दिन", "15 दिन", "18 दिन", "24 दिन"],
+      "optionsEnglish": "14.7 days, 15 days, 18 days, 24 days",
+      "optionsHindi": "14.7 दिन, 15 दिन, 18 दिन, 24 दिन",
       "answerEnglish": "14.7 days",
       "answerHindi": "14.7 दिन"
     },
     {
       "questionEnglish": "A certain number of workers can complete a job in 60 days. If there were 5 more workers, the job could be finished in 40 days. How many workers were originally assigned to the task?",
       "questionHindi": "किसी निश्चित संख्या में श्रमिक 60 दिनों में एक काम पूरा कर सकते हैं। यदि 5 और श्रमिक होते, तो काम 40 दिनों में पूरा हो सकता था। मूल रूप से कितने श्रमिक कार्य पर लगाए गए थे?",
-      "optionsEnglish": ["10", "15", "20", "25"],
-      "optionsHindi": ["10", "15", "20", "25"],
+      "optionsEnglish": "10, 15, 20, 25",
+      "optionsHindi": "10, 15, 20, 25",
       "answerEnglish": "10",
       "answerHindi": "10"
     },
     {
       "questionEnglish": "A tap fills a tank in 10 hours, but due to a leak, it actually fills in 12 hours. How long will the leak take to empty the full tank?",
       "questionHindi": "एक नल 10 घंटे में एक टैंक भरता है, लेकिन एक रिसाव के कारण यह वास्तव में 12 घंटे में भरता है। रिसाव को पूरा टैंक खाली करने में कितना समय लगेगा?",
-      "optionsEnglish": ["30 hours", "40 hours", "50 hours", "60 hours"],
-      "optionsHindi": ["30 घंटे", "40 घंटे", "50 घंटे", "60 घंटे"],
+      "optionsEnglish": "30 hours, 40 hours, 50 hours, 60 hours",
+      "optionsHindi": "30 घंटे, 40 घंटे, 50 घंटे, 60 घंटे",
       "answerEnglish": "60 hours",
       "answerHindi": "60 घंटे"
     },
     {
       "questionEnglish": "A can complete a task in 40 days, and B can complete it in 60 days. They work together, but after 10 days, A leaves. How many more days will B take to finish the remaining work?",
       "questionHindi": "A 40 दिनों में और B 60 दिनों में एक काम पूरा कर सकते हैं। वे एक साथ काम करते हैं, लेकिन 10 दिनों के बाद A छोड़ देता है। शेष काम पूरा करने में B को और कितने दिन लगेंगे?",
-      "optionsEnglish": ["25 days", "30 days", "35 days", "40 days"],
-      "optionsHindi": ["25 दिन", "30 दिन", "35 दिन", "40 दिन"],
+      "optionsEnglish": "25 days, 30 days, 35 days, 40 days",
+      "optionsHindi": "25 दिन, 30 दिन, 35 दिन, 40 दिन",
       "answerEnglish": "35 days",
       "answerHindi": "35 दिन"
     },
     {
       "questionEnglish": "A train is moving at 80 km/hr and reaches its destination in 6 hours. If the speed is increased by 25%, how much time will it take now?",
       "questionHindi": "एक ट्रेन 80 किमी/घंटा की गति से चल रही है और 6 घंटे में अपने गंतव्य पर पहुंचती है। यदि गति में 25% की वृद्धि की जाए, तो अब इसे कितना समय लगेगा?",
-      "optionsEnglish": ["4.8 hours", "5 hours", "5.2 hours", "5.5 hours"],
-      "optionsHindi": ["4.8 घंटे", "5 घंटे", "5.2 घंटे", "5.5 घंटे"],
+      "optionsEnglish": "4.8 hours, 5 hours, 5.2 hours, 5.5 hours",
+      "optionsHindi": "4.8 घंटे, 5 घंटे, 5.2 घंटे, 5.5 घंटे",
       "answerEnglish": "4.8 hours",
       "answerHindi": "4.8 घंटे"
     },
     {
       "questionEnglish": "A contractor hires 40 workers to complete a project in 50 days. After 10 days, he fires 10 workers. How many days will the remaining workers take to complete the work?",
       "questionHindi": "एक ठेकेदार 40 श्रमिकों को 50 दिनों में एक परियोजना पूरी करने के लिए नियुक्त करता है। 10 दिनों के बाद, वह 10 श्रमिकों को हटा देता है। शेष श्रमिकों को काम पूरा करने में कितने दिन लगेंगे?",
-      "optionsEnglish": ["53 days", "48 days", "52 days", "54 days"],
-      "optionsHindi": ["53 दिन", "48 दिन", "52 दिन", "54 दिन"],
+      "optionsEnglish": "53 days, 48 days, 52 days, 54 days",
+      "optionsHindi": "53 दिन, 48 दिन, 52 दिन, 54 दिन",
       "answerEnglish": "53 days",
       "answerHindi": "53 दिन"
     },
     {
       "questionEnglish": "A cistern has two inlet pipes that can fill it in 8 and 12 hours respectively and an outlet pipe that can empty it in 6 hours. If all three are opened, how long will it take to fill the cistern?",
       "questionHindi": "एक टंकी में दो इनलेट पाइप हैं जो क्रमशः 8 और 12 घंटे में भर सकते हैं और एक आउटलेट पाइप है जो इसे 6 घंटे में खाली कर सकता है। यदि तीनों को खोला जाए, तो टंकी भरने में कितना समय लगेगा?",
-      "optionsEnglish": ["12 hours", "15 hours", "18 hours", "24 hours"],
-      "optionsHindi": ["12 घंटे", "15 घंटे", "18 घंटे", "24 घंटे"],
+      "optionsEnglish": "12 hours, 15 hours, 18 hours, 24 hours",
+      "optionsHindi": "12 घंटे, 15 घंटे, 18 घंटे, 24 घंटे",
       "answerEnglish": "24 hours",
       "answerHindi": "24 घंटे"
     },
     {
       "questionEnglish": "A and B work together and can complete a task in 10 days. A alone takes 15 days, while B and C together take 12 days. How many days will C alone take?",
       "questionHindi": "A और B मिलकर 10 दिनों में एक काम पूरा कर सकते हैं। A अकेले 15 दिन लेता है, जबकि B और C मिलकर 12 दिन लेते हैं। C अकेले कितने दिनों में काम पूरा करेगा?",
-      "optionsEnglish": ["30 days", "40 days", "50 days", "20 days"],
-      "optionsHindi": ["30 दिन", "40 दिन", "50 दिन", "20 दिन"],
+      "optionsEnglish": "30 days, 40 days, 50 days, 20 days",
+      "optionsHindi": "30 दिन, 40 दिन, 50 दिन, 20 दिन",
       "answerEnglish": "20 days",
       "answerHindi": "20 दिन"
     },
     {
       "questionEnglish": "A machine can complete a production cycle in 15 hours. Another machine, which is 40% more efficient, works alongside it. How long will it take for both machines working together to complete the cycle?",
       "questionHindi": "एक मशीन 15 घंटे में एक उत्पादन चक्र पूरा कर सकती है। दूसरी मशीन, जो 40% अधिक कुशल है, उसके साथ काम करती है। दोनों मशीनों को मिलकर चक्र पूरा करने में कितना समय लगेगा?",
-      "optionsEnglish": ["6.25 hours", "7 hours", "8.5 hours", "9 hours"],
-      "optionsHindi": ["6.25 घंटे", "7 घंटे", "8.5 घंटे", "9 घंटे"],
+      "optionsEnglish": "6.25 hours, 7 hours, 8.5 hours, 9 hours",
+      "optionsHindi": "6.25 घंटे, 7 घंटे, 8.5 घंटे, 9 घंटे",
       "answerEnglish": "6.25 hours",
       "answerHindi": "6.25 घंटे"
     },
     {
       "questionEnglish": "A group of workers is assigned to build a wall in 36 days. After 12 days, only 25% of the work is completed. If 6 more workers are added, the job is finished on time. How many workers were in the original group?",
       "questionHindi": "एक समूह को 36 दिनों में एक दीवार बनाने का काम सौंपा गया है। 12 दिनों के बाद केवल 25% काम पूरा हुआ है। यदि 6 और श्रमिक जोड़े जाते हैं, तो काम समय पर पूरा हो जाता है। मूल समूह में कितने श्रमिक थे?",
-      "optionsEnglish": ["12", "18", "24", "30"],
-      "optionsHindi": ["12", "18", "24", "30"],
+      "optionsEnglish": "12, 18, 24, 30",
+      "optionsHindi": "12, 18, 24, 30",
       "answerEnglish": "18",
       "answerHindi": "18"
     },
     {
       "questionEnglish": "A contractor needs to dig a 300-meter trench in 10 days. If his team completes only 120 meters in the first 5 days, how much should they increase their daily work rate to meet the deadline?",
       "questionHindi": "एक ठेकेदार को 10 दिनों में 300 मीटर की खाई खोदनी है। यदि उसकी टीम पहले 5 दिनों में केवल 120 मीटर पूरा करती है, तो समय सीमा को पूरा करने के लिए उन्हें अपनी दैनिक कार्य दर कितनी बढ़ानी चाहिए?",
-      "optionsEnglish": ["24 meters/day", "30 meters/day", "36 meters/day", "40 meters/day"],
-      "optionsHindi": ["24 मीटर/दिन", "30 मीटर/दिन", "36 मीटर/दिन", "40 मीटर/दिन"],
+      "optionsEnglish": "24 meters/day, 30 meters/day, 36 meters/day, 40 meters/day",
+      "optionsHindi": "24 मीटर/दिन, 30 मीटर/दिन, 36 मीटर/दिन, 40 मीटर/दिन",
       "answerEnglish": "36 meters/day",
       "answerHindi": "36 मीटर/दिन"
     },
     {
       "questionEnglish": "A can do a piece of work in 18 days. B, who is 50% more efficient than A, joins after 6 days. How many more days will they take to complete the remaining work?",
       "questionHindi": "A 18 दिनों में एक काम कर सकता है। B, जो A से 50% अधिक कुशल है, 6 दिनों के बाद शामिल होता है। शेष काम पूरा करने में उन्हें और कितने दिन लगेंगे?",
-      "optionsEnglish": ["4 days", "5 days", "6 days", "7 days"],
-      "optionsHindi": ["4 दिन", "5 दिन", "6 दिन", "7 दिन"],
+      "optionsEnglish": "4 days, 5 days, 6 days, 7 days",
+      "optionsHindi": "4 दिन, 5 दिन, 6 दिन, 7 दिन",
       "answerEnglish": "4 days",
       "answerHindi": "4 दिन"
     },
     {
       "questionEnglish": "A reservoir has two inlet pipes. Pipe A fills it in 12 hours, and Pipe B in 16 hours. There is also an outlet pipe that can empty the full reservoir in 24 hours. If all three are opened together, how long will it take to fill the reservoir?",
       "questionHindi": "एक जलाशय में दो इनलेट पाइप हैं। पाइप A इसे 12 घंटे में भरता है, और पाइप B इसे 16 घंटे में भरता है। एक आउटलेट पाइप भी है जो पूरी टंकी को 24 घंटे में खाली कर सकता है। यदि तीनों को एक साथ खोला जाए, तो जलाशय भरने में कितना समय लगेगा?",
-      "optionsEnglish": ["6.4 hours", "7.2 hours", "8.8 hours", "9.6 hours"],
-      "optionsHindi": ["6.4 घंटे", "7.2 घंटे", "8.8 घंटे", "9.6 घंटे"],
+      "optionsEnglish": "6.4 hours, 7.2 hours, 8.8 hours, 9.6 hours",
+      "optionsHindi": "6.4 घंटे, 7.2 घंटे, 8.8 घंटे, 9.6 घंटे",
       "answerEnglish": "9.6 hours",
       "answerHindi": "9.6 घंटे"
     },
     {
       "questionEnglish": "A ship can complete a round trip across a river in 4 hours when moving with and against the current. If the river current increases by 25%, the trip takes an additional 30 minutes. How long would the ship take for a one-way trip in still water?",
       "questionHindi": "एक जहाज नदी के पार एक राउंड ट्रिप 4 घंटे में पूरा करता है जब वह धारा के साथ और उसके खिलाफ चलता है। यदि नदी की धारा में 25% की वृद्धि होती है, तो यात्रा में 30 मिनट अतिरिक्त लगते हैं। स्थिर पानी में एकतरफा यात्रा में जहाज को कितना समय लगेगा?",
-      "optionsEnglish": ["1.5 hours", "1.75 hours", "2 hours", "2.25 hours"],
-      "optionsHindi": ["1.5 घंटे", "1.75 घंटे", "2 घंटे", "2.25 घंटे"],
+      "optionsEnglish": "1.5 hours, 1.75 hours, 2 hours, 2.25 hours",
+      "optionsHindi": "1.5 घंटे, 1.75 घंटे, 2 घंटे, 2.25 घंटे",
       "answerEnglish": "1.75 hours",
       "answerHindi": "1.75 घंटे"
     },
     {
       "questionEnglish": "A certain job is completed by 6 workers in 15 days. If 2 more workers join after 6 days, how many total days will the job take?",
       "questionHindi": "एक निश्चित काम 6 श्रमिकों द्वारा 15 दिनों में पूरा किया जाता है। यदि 6 दिनों के बाद 2 और श्रमिक शामिल होते हैं, तो काम को कुल कितने दिन लगेंगे?",
-      "optionsEnglish": ["10 days", "12 days", "13 days", "14 days"],
-      "optionsHindi": ["10 दिन", "12 दिन", "13 दिन", "14 दिन"],
+      "optionsEnglish": "10 days, 12 days, 13 days, 14 days",
+      "optionsHindi": "10 दिन, 12 दिन, 13 दिन, 14 दिन",
       "answerEnglish": "13 days",
       "answerHindi": "13 दिन"
     },
     {
       "questionEnglish": "A water tank has two taps: one fills it in 8 hours, while the other empties it in 12 hours. If both are opened alternately for one hour each, how long will it take to fill the tank?",
       "questionHindi": "एक जलाशय में दो नल हैं: एक इसे 8 घंटे में भरता है, जबकि दूसरा इसे 12 घंटे में खाली करता है। यदि दोनों को बारी-बारी से एक-एक घंटे के लिए खोला जाए, तो टैंक भरने में कितना समय लगेगा?",
-      "optionsEnglish": ["30 hours", "32 hours", "36 hours", "40 hours"],
-      "optionsHindi": ["30 घंटे", "32 घंटे", "36 घंटे", "40 घंटे"],
+      "optionsEnglish": "30 hours, 32 hours, 36 hours, 40 hours",
+      "optionsHindi": "30 घंटे, 32 घंटे, 36 घंटे, 40 घंटे",
       "answerEnglish": "32 hours",
       "answerHindi": "32 घंटे"
     },
     {
       "questionEnglish": "A group of 10 people takes 5 days to complete a work. If, after 2 days, 2 workers leave, how many additional days will the remaining workers take to complete the work?",
       "questionHindi": "10 लोगों का एक समूह एक काम पूरा करने में 5 दिन लेता है। यदि, 2 दिनों के बाद, 2 श्रमिक छोड़ देते हैं, तो शेष श्रमिकों को काम पूरा करने में कितने अतिरिक्त दिन लगेंगे?",
-      "optionsEnglish": ["3.5 days", "4 days", "4.5 days", "5 days"],
-      "optionsHindi": ["3.5 दिन", "4 दिन", "4.5 दिन", "5 दिन"],
+      "optionsEnglish": "3.5 days, 4 days, 4.5 days, 5 days",
+      "optionsHindi": "3.5 दिन, 4 दिन, 4.5 दिन, 5 दिन",
       "answerEnglish": "4 days",
       "answerHindi": "4 दिन"
     },
     {
       "questionEnglish": "A contractor hires 12 workers to build a bridge in 50 days. After 20 days, only 30% of the work is done. How many additional workers must be hired to complete the project on time?",
       "questionHindi": "एक ठेकेदार 50 दिनों में एक पुल बनाने के लिए 12 श्रमिकों को नियुक्त करता है। 20 दिनों के बाद, केवल 30% काम पूरा हुआ है। समय पर परियोजना को पूरा करने के लिए कितने अतिरिक्त श्रमिकों की आवश्यकता होगी?",
-      "optionsEnglish": ["6", "8", "10", "12"],
-      "optionsHindi": ["6", "8", "10", "12"],
+      "optionsEnglish": "6, 8, 10, 12",
+      "optionsHindi": "6, 8, 10, 12",
       "answerEnglish": "8",
       "answerHindi": "8"
     },
     {
       "questionEnglish": "A pipe can fill a tank in 10 hours, and another can fill it in 15 hours. A third pipe can empty the full tank in 20 hours. If all three are opened together, how long will it take to fill the tank?",
       "questionHindi": "एक पाइप 10 घंटे में एक टैंक भर सकती है, और दूसरी 15 घंटे में। एक तीसरी पाइप पूरी टंकी को 20 घंटे में खाली कर सकती है। यदि तीनों को एक साथ खोला जाए, तो टैंक भरने में कितना समय लगेगा?",
-      "optionsEnglish": ["6 hours", "8 hours", "10 hours", "12 hours"],
-      "optionsHindi": ["6 घंटे", "8 घंटे", "10 घंटे", "12 घंटे"],
+      "optionsEnglish": "6 hours, 8 hours, 10 hours, 12 hours",
+      "optionsHindi": "6 घंटे, 8 घंटे, 10 घंटे, 12 घंटे",
       "answerEnglish": "8 hours",
       "answerHindi": "8 घंटे"
     },
     {
       "questionEnglish": "A train moving at 80 km/h takes 6 hours to cover a distance. If its speed is reduced by 25%, how much more time will it take to cover the same distance?",
       "questionHindi": "एक ट्रेन 80 किमी/घंटा की गति से चलती है और एक दूरी को कवर करने में 6 घंटे लगते हैं। यदि इसकी गति 25% कम कर दी जाए, तो उसी दूरी को कवर करने में इसे कितना अधिक समय लगेगा?",
-      "optionsEnglish": ["1 hour", "1.5 hours", "2 hours", "2.5 hours"],
-      "optionsHindi": ["1 घंटा", "1.5 घंटे", "2 घंटे", "2.5 घंटे"],
+      "optionsEnglish": "1 hour, 1.5 hours, 2 hours, 2.5 hours",
+      "optionsHindi": "1 घंटा, 1.5 घंटे, 2 घंटे, 2.5 घंटे",
       "answerEnglish": "2 hours",
       "answerHindi": "2 घंटे"
     },
     {
       "questionEnglish": "A factory has two machines: Machine A and Machine B. Machine A is 60% as efficient as Machine B. If both working together complete a task in 12 days, how long would Machine A alone take?",
       "questionHindi": "एक फैक्ट्री में दो मशीनें हैं: मशीन A और मशीन B। मशीन A मशीन B के रूप में 60% कुशल है। यदि दोनों मिलकर एक कार्य को 12 दिनों में पूरा करते हैं, तो मशीन A अकेले इसे पूरा करने में कितना समय लेगी?",
-      "optionsEnglish": ["18 days", "20 days", "30 days", "32 days"],
-      "optionsHindi": ["18 दिन", "20 दिन", "30 दिन", "32 दिन"],
+      "optionsEnglish": "18 days, 20 days, 30 days, 32 days",
+      "optionsHindi": "18 दिन, 20 दिन, 30 दिन, 32 दिन",
       "answerEnglish": "30 days",
       "answerHindi": "30 दिन"
     },
     {
       "questionEnglish": "A car manufacturing plant can produce 50 cars in 10 days with 20 workers. If the number of workers is increased to 30, how many cars can be produced in the same period, assuming efficiency remains constant?",
       "questionHindi": "एक कार निर्माण संयंत्र 20 श्रमिकों के साथ 10 दिनों में 50 कारें बना सकता है। यदि श्रमिकों की संख्या 30 कर दी जाए, तो समान अवधि में कितनी कारें बनाई जा सकती हैं, यह मानते हुए कि दक्षता स्थिर रहती है?",
-      "optionsEnglish": ["65", "70", "75", "80"],
-      "optionsHindi": ["65", "70", "75", "80"],
+      "optionsEnglish": "65, 70, 75, 80",
+      "optionsHindi": "65, 70, 75, 80",
       "answerEnglish": "75",
       "answerHindi": "75"
     },
     {
       "questionEnglish": "Two workers, P and Q, are assigned a task. P can complete it in 25 days, and Q in 30 days. However, P works for only 10 days before leaving. How many more days will Q take to finish the task alone?",
       "questionHindi": "दो श्रमिक, P और Q, को एक कार्य सौंपा गया है। P इसे 25 दिनों में पूरा कर सकता है, और Q इसे 30 दिनों में। हालाँकि, P केवल 10 दिन काम करता है और फिर छोड़ देता है। Q को अकेले कार्य पूरा करने में और कितने दिन लगेंगे?",
-      "optionsEnglish": ["12 days", "14 days", "16 days", "18 days"],
-      "optionsHindi": ["12 दिन", "14 दिन", "16 दिन", "18 दिन"],
+      "optionsEnglish": "12 days, 14 days, 16 days, 18 days",
+      "optionsHindi": "12 दिन, 14 दिन, 16 दिन, 18 दिन",
       "answerEnglish": "16 days",
       "answerHindi": "16 दिन"
     },
     {
       "questionEnglish": "A reservoir is being filled by two pipes. Pipe A alone can fill it in 12 hours, while Pipe B alone takes 18 hours. However, a third pipe is draining the water at a rate of 6 hours per full tank. If all three are opened together, how long will it take to fill the reservoir?",
       "questionHindi": "एक जलाशय को दो पाइपों द्वारा भरा जा रहा है। पाइप A अकेले इसे 12 घंटे में भर सकता है, जबकि पाइप B अकेले इसे 18 घंटे में भरता है। हालाँकि, एक तीसरी पाइप पूरी टंकी को 6 घंटे में पानी निकाल रही है। यदि तीनों को एक साथ खोला जाए, तो जलाशय भरने में कितना समय लगेगा?",
-      "optionsEnglish": ["8 hours", "9 hours", "10 hours", "12 hours"],
-      "optionsHindi": ["8 घंटे", "9 घंटे", "10 घंटे", "12 घंटे"],
+      "optionsEnglish": "8 hours, 9 hours, 10 hours, 12 hours",
+      "optionsHindi": "8 घंटे, 9 घंटे, 10 घंटे, 12 घंटे",
       "answerEnglish": "9 hours",
       "answerHindi": "9 घंटे"
     },
     {
       "questionEnglish": "A train takes 3 hours to travel 240 km. If it increases its speed by 20%, how much less time will it take to travel the same distance?",
       "questionHindi": "एक ट्रेन 240 किमी की यात्रा करने में 3 घंटे लेती है। यदि यह अपनी गति को 20% बढ़ा देती है, तो उसी दूरी को तय करने में इसे कितना कम समय लगेगा?",
-      "optionsEnglish": ["20 minutes", "30 minutes", "40 minutes", "50 minutes"],
-      "optionsHindi": ["20 मिनट", "30 मिनट", "40 मिनट", "50 मिनट"],
+      "optionsEnglish": "20 minutes, 30 minutes, 40 minutes, 50 minutes",
+      "optionsHindi": "20 मिनट, 30 मिनट, 40 मिनट, 50 मिनट",
       "answerEnglish": "30 minutes",
       "answerHindi": "30 मिनट"
     },
     {
       "questionEnglish": "A group of 18 workers completes a project in 36 days. After 12 days, 6 workers leave. How many additional days will it take for the remaining workers to complete the project?",
       "questionHindi": "18 श्रमिकों का एक समूह 36 दिनों में एक परियोजना पूरी करता है। 12 दिनों के बाद, 6 श्रमिक छोड़ देते हैं। शेष श्रमिकों को परियोजना को पूरा करने में कितने अतिरिक्त दिन लगेंगे?",
-      "optionsEnglish": ["10 days", "12 days", "14 days", "16 days"],
-      "optionsHindi": ["10 दिन", "12 दिन", "14 दिन", "16 दिन"],
+      "optionsEnglish": "10 days, 12 days, 14 days, 16 days",
+      "optionsHindi": "10 दिन, 12 दिन, 14 दिन, 16 दिन",
       "answerEnglish": "12 days",
       "answerHindi": "12 दिन"
     },
     {
       "questionEnglish": "A and B can complete a task in 20 days. B and C can do it in 30 days, and A and C can do it in 40 days. How long will A, B, and C take to complete the task together?",
       "questionHindi": "A और B मिलकर एक कार्य को 20 दिनों में पूरा कर सकते हैं। B और C इसे 30 दिनों में कर सकते हैं, और A और C इसे 40 दिनों में कर सकते हैं। A, B और C मिलकर कार्य पूरा करने में कितना समय लेंगे?",
-      "optionsEnglish": ["10 days", "12 days", "15 days", "18 days"],
-      "optionsHindi": ["10 दिन", "12 दिन", "15 दिन", "18 दिन"],
+      "optionsEnglish": "10 days, 12 days, 15 days, 18 days",
+      "optionsHindi": "10 दिन, 12 दिन, 15 दिन, 18 दिन",
       "answerEnglish": "15 days",
       "answerHindi": "15 दिन"
     },
     {
       "questionEnglish": "A tank can be filled by two pipes in 15 and 20 minutes respectively. If both pipes are opened together, how long will it take to fill the tank?",
       "questionHindi": "एक टैंक को दो पाइप क्रमशः 15 और 20 मिनट में भरा जा सकता है। यदि दोनों पाइप एक साथ खोले जाएं, तो टैंक भरने में कितना समय लगेगा?",
-      "optionsEnglish": ["8 minutes", "10 minutes", "12 minutes", "15 minutes"],
-      "optionsHindi": ["8 मिनट", "10 मिनट", "12 मिनट", "15 मिनट"],
+      "optionsEnglish": "8 minutes, 10 minutes, 12 minutes, 15 minutes",
+      "optionsHindi": "8 मिनट, 10 मिनट, 12 मिनट, 15 मिनट",
       "answerEnglish": "8 minutes",
       "answerHindi": "8 मिनट"
     }

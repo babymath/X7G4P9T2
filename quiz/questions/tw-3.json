@@ -1,4 +1,5 @@
-{
+[
+    {
     "questionEnglish": "If A can complete a task in 10 days, how much work does A complete in 1 day?",
     "questionHindi": "यदि A एक कार्य को 10 दिनों में पूरा कर सकता है, तो A एक दिन में कितना कार्य करता है?",
     "optionsEnglish": "1/10, 1/5, 1/2, 1",
@@ -238,3 +239,4 @@
     "answerEnglish": "33.33",
     "answerHindi": "33.33"
 }
+]
