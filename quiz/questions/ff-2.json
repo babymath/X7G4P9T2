@@ -1,0 +1,242 @@
+[
+  {
+    "questionEnglish": "What is the full form of SMS?",
+    "questionHindi": "SMS का पूरा रूप क्या है?",
+    "optionsEnglish": "Simple Messaging System, Short Message Service, Secure Messaging Service, Signal Message System",
+    "optionsHindi": "सरल संदेश प्रणाली, शॉर्ट मैसेज सर्विस, सुरक्षित संदेश सेवा, सिग्नल संदेश प्रणाली",
+    "answerEnglish": "Short Message Service",
+    "answerHindi": "शॉर्ट मैसेज सर्विस"
+  },
+  {
+    "questionEnglish": "What is the full form of DNS?",
+    "questionHindi": "DNS का पूरा रूप क्या है?",
+    "optionsEnglish": "Data Network System, Digital Name System, Domain Name System, Direct Network Service",
+    "optionsHindi": "डेटा नेटवर्क सिस्टम, डिजिटल नाम प्रणाली, डोमेन नाम प्रणाली, डायरेक्ट नेटवर्क सेवा",
+    "answerEnglish": "Domain Name System",
+    "answerHindi": "डोमेन नाम प्रणाली"
+  },
+  {
+    "questionEnglish": "What is the full form of API?",
+    "questionHindi": "API का पूरा रूप क्या है?",
+    "optionsEnglish": "Application Program Interface, Automated Process Interface, Advanced Programming Interface, Application Programming Interface",
+    "optionsHindi": "एप्लिकेशन प्रोग्राम इंटरफेस, ऑटोमेटेड प्रोसेस इंटरफेस, एडवांस्ड प्रोग्रामिंग इंटरफेस, एप्लिकेशन प्रोग्रामिंग इंटरफेस",
+    "answerEnglish": "Application Programming Interface",
+    "answerHindi": "एप्लिकेशन प्रोग्रामिंग इंटरफेस"
+  },
+  {
+    "questionEnglish": "What is the full form of SQL?",
+    "questionHindi": "SQL का पूरा रूप क्या है?",
+    "optionsEnglish": "Simple Query Language, Structured Question Language, Standard Query Language, Structured Query Language",
+    "optionsHindi": "सिंपल क्वेरी लैंग्वेज, स्ट्रक्चर्ड क्वेश्चन लैंग्वेज, स्टैंडर्ड क्वेरी लैंग्वेज, स्ट्रक्चर्ड क्वेरी लैंग्वेज",
+    "answerEnglish": "Structured Query Language",
+    "answerHindi": "स्ट्रक्चर्ड क्वेरी लैंग्वेज"
+  },
+  {
+    "questionEnglish": "What is the full form of IPO?",
+    "questionHindi": "IPO का पूरा रूप क्या है?",
+    "optionsEnglish": "Initial Purchase Offer, Initial Public Offering, International Public Offer, Internal Purchase Order",
+    "optionsHindi": "प्रारंभिक खरीद प्रस्ताव, प्रारंभिक सार्वजनिक पेशकश, अंतर्राष्ट्रीय सार्वजनिक प्रस्ताव, आंतरिक खरीद आदेश",
+    "answerEnglish": "Initial Public Offering",
+    "answerHindi": "प्रारंभिक सार्वजनिक पेशकश"
+  },
+  {
+    "questionEnglish": "What is the full form of GIF?",
+    "questionHindi": "GIF का पूरा रूप क्या है?",
+    "optionsEnglish": "Graphics Interchange Format, Graphical Image File, General Image Format, Global Image Format",
+    "optionsHindi": "ग्राफिक्स इंटरचेंज फॉर्मेट, ग्राफिकल इमेज फाइल, जनरल इमेज फॉर्मेट, ग्लोबल इमेज फॉर्मेट",
+    "answerEnglish": "Graphics Interchange Format",
+    "answerHindi": "ग्राफिक्स इंटरचेंज फॉर्मेट"
+  },
+  {
+    "questionEnglish": "What is the full form of CAD?",
+    "questionHindi": "CAD का पूरा रूप क्या है?",
+    "optionsEnglish": "Computer Aided Design, Centralized Application Design, Computer Automated Drafting, Core Architecture Design",
+    "optionsHindi": "कंप्यूटर एडेड डिज़ाइन, केंद्रीकृत एप्लिकेशन डिज़ाइन, कंप्यूटर ऑटोमेटेड ड्राफ्टिंग, कोर आर्किटेक्चर डिज़ाइन",
+    "answerEnglish": "Computer Aided Design",
+    "answerHindi": "कंप्यूटर एडेड डिज़ाइन"
+  },
+  {
+    "questionEnglish": "What is the full form of ERP?",
+    "questionHindi": "ERP का पूरा रूप क्या है?",
+    "optionsEnglish": "Enterprise Resource Planning, Electronic Resource Planning, Enhanced Resource Processing, Enterprise Record Protocol",
+    "optionsHindi": "एंटरप्राइज रिसोर्स प्लानिंग, इलेक्ट्रॉनिक रिसोर्स प्लानिंग, एन्हांस्ड रिसोर्स प्रोसेसिंग, एंटरप्राइज रिकॉर्ड प्रोटोकॉल",
+    "answerEnglish": "Enterprise Resource Planning",
+    "answerHindi": "एंटरप्राइज रिसोर्स प्लानिंग"
+  },
+  {
+    "questionEnglish": "What is the full form of IMEI?",
+    "questionHindi": "IMEI का पूरा रूप क्या है?",
+    "optionsEnglish": "International Mobile Equipment Identifier, International Mobile Equipment Identity, Integrated Mobile Equipment Identity, International Messaging Equipment Identity",
+    "optionsHindi": "अंतर्राष्ट्रीय मोबाइल उपकरण पहचानकर्ता, अंतर्राष्ट्रीय मोबाइल उपकरण पहचान, एकीकृत मोबाइल उपकरण पहचान, अंतर्राष्ट्रीय संदेश उपकरण पहचान",
+    "answerEnglish": "International Mobile Equipment Identity",
+    "answerHindi": "अंतर्राष्ट्रीय मोबाइल उपकरण पहचान"
+  },
+  {
+    "questionEnglish": "What is the full form of QR Code?",
+    "questionHindi": "QR कोड का पूरा रूप क्या है?",
+    "optionsEnglish": "Quick Response Code, Quick Reference Code, Qualified Reader Code, Query Response Code",
+    "optionsHindi": "क्विक रिस्पांस कोड, क्विक रेफरेंस कोड, क्वालिफाइड रीडर कोड, क्वेरी रिस्पांस कोड",
+    "answerEnglish": "Quick Response Code",
+    "answerHindi": "क्विक रिस्पांस कोड"
+  },
+  {
+    "questionEnglish": "What is the full form of BCC (in email)?",
+    "questionHindi": "BCC (ईमेल में) का पूरा रूप क्या है?",
+    "optionsEnglish": "Blind Carbon Copy, Back Carbon Copy, Blocked Contact Copy, Broadcast Carbon Copy",
+    "optionsHindi": "ब्लाइंड कार्बन कॉपी, बैक कार्बन कॉपी, ब्लॉक्ड संपर्क कॉपी, ब्रॉडकास्ट कार्बन कॉपी",
+    "answerEnglish": "Blind Carbon Copy",
+    "answerHindi": "ब्लाइंड कार्बन कॉपी"
+  },
+  {
+    "questionEnglish": "What is the full form of DSLR?",
+    "questionHindi": "DSLR का पूरा रूप क्या है?",
+    "optionsEnglish": "Digital Single Lens Reflex, Dual System Lens Recorder, Digital Standard Lens Recorder, Digital Smart Lens Reflex",
+    "optionsHindi": "डिजिटल सिंगल लेंस रिफ्लेक्स, ड्यूल सिस्टम लेंस रिकॉर्डर, डिजिटल स्टैंडर्ड लेंस रिकॉर्डर, डिजिटल स्मार्ट लेंस रिफ्लेक्स",
+    "answerEnglish": "Digital Single Lens Reflex",
+    "answerHindi": "डिजिटल सिंगल लेंस रिफ्लेक्स"
+  },
+  {
+    "questionEnglish": "What is the full form of IoT?",
+    "questionHindi": "IoT का पूरा रूप क्या है?",
+    "optionsEnglish": "Internet of Things, Integration of Technology, Interface of Technology, Interconnected Operating Terminals",
+    "optionsHindi": "इंटरनेट ऑफ थिंग्स, प्रौद्योगिकी का एकीकरण, प्रौद्योगिकी का इंटरफेस, इंटरकनेक्टेड ऑपरेटिंग टर्मिनल्स",
+    "answerEnglish": "Internet of Things",
+    "answerHindi": "इंटरनेट ऑफ थिंग्स"
+  },
+  {
+    "questionEnglish": "What is the full form of AICTE?",
+    "questionHindi": "AICTE का पूरा रूप क्या है?",
+    "optionsEnglish": "All India Council for Technical Education, Association of Indian Colleges for Technical Education, Advanced Indian Committee for Technical Education, All India Commission for Training and Education",
+    "optionsHindi": "अखिल भारतीय तकनीकी शिक्षा परिषद, भारतीय कॉलेजों का संघ, तकनीकी शिक्षा के लिए उन्नत भारतीय समिति, तकनीकी शिक्षा के लिए अखिल भारतीय प्रशिक्षण और शिक्षा आयोग",
+    "answerEnglish": "All India Council for Technical Education",
+    "answerHindi": "अखिल भारतीय तकनीकी शिक्षा परिषद"
+  },
+  {
+    "questionEnglish": "What is the full form of GSM?",
+    "questionHindi": "GSM का पूरा रूप क्या है?",
+    "optionsEnglish": "Global System for Mobile Communications, General Satellite Module, Global Subscriber Module, General System for Messaging",
+    "optionsHindi": "मोबाइल संचार के लिए वैश्विक प्रणाली, सामान्य उपग्रह मॉड्यूल, वैश्विक ग्राहक मॉड्यूल, संदेश के लिए सामान्य प्रणाली",
+    "answerEnglish": "Global System for Mobile Communications",
+    "answerHindi": "मोबाइल संचार के लिए वैश्विक प्रणाली"
+  },
+  {
+    "questionEnglish": "What is the full form of IRCTC?",
+    "questionHindi": "IRCTC का पूरा रूप क्या है?",
+    "optionsEnglish": "Indian Railway Catering and Tourism Corporation, Indian Railway Cargo and Transport Corporation, International Railway Catering and Tourism Council, Indian Regional Cargo and Travel Corporation",
+    "optionsHindi": "भारतीय रेलवे खानपान और पर्यटन निगम, भारतीय रेलवे माल और परिवहन निगम, अंतर्राष्ट्रीय रेलवे खानपान और पर्यटन परिषद, भारतीय क्षेत्रीय माल और यात्रा निगम",
+    "answerEnglish": "Indian Railway Catering and Tourism Corporation",
+    "answerHindi": "भारतीय रेलवे खानपान और पर्यटन निगम"
+  },
+  {
+    "questionEnglish": "What is the full form of LED TV?",
+    "questionHindi": "LED TV का पूरा रूप क्या है?",
+    "optionsEnglish": "Light Emitting Diode Television, Low Energy Display Television, Light Enhanced Display Television, Liquid Emission Display Television",
+    "optionsHindi": "लाइट एमिटिंग डायोड टेलीविजन, लो एनर्जी डिस्प्ले टेलीविजन, लाइट एन्हांस्ड डिस्प्ले टेलीविजन, लिक्विड एमिशन डिस्प्ले टेलीविजन",
+    "answerEnglish": "Light Emitting Diode Television",
+    "answerHindi": "लाइट एमिटिंग डायोड टेलीविजन"
+  },
+  {
+    "questionEnglish": "What is the full form of NIC?",
+    "questionHindi": "NIC का पूरा रूप क्या है?",
+    "optionsEnglish": "National Informatics Centre, Network Interface Card, National Information Council, National Integration Centre",
+    "optionsHindi": "राष्ट्रीय सूचना विज्ञान केंद्र, नेटवर्क इंटरफेस कार्ड, राष्ट्रीय सूचना परिषद, राष्ट्रीय एकीकरण केंद्र",
+    "answerEnglish": "National Informatics Centre",
+    "answerHindi": "राष्ट्रीय सूचना विज्ञान केंद्र"
+  },
+  {
+    "questionEnglish": "What is the full form of PDF/A?",
+    "questionHindi": "PDF/A का पूरा रूप क्या है?",
+    "optionsEnglish": "Portable Document Format for Archiving, Personal Document Format/Advanced, Protected Data File/Archival, Portable Document Filing for Archives",
+    "optionsHindi": "संग्रहण के लिए पोर्टेबल दस्तावेज़ प्रारूप, व्यक्तिगत दस्तावेज़ प्रारूप/उन्नत, संरक्षित डेटा फ़ाइल/संग्रह, अभिलेखागार के लिए पोर्टेबल दस्तावेज़ फाइलिंग",
+    "answerEnglish": "Portable Document Format for Archiving",
+    "answerHindi": "संग्रहण के लिए पोर्टेबल दस्तावेज़ प्रारूप"
+  },
+  {
+    "questionEnglish": "What is the full form of CDN?",
+    "questionHindi": "CDN का पूरा रूप क्या है?",
+    "optionsEnglish": "Content Delivery Network, Central Data Node, Cloud Distribution Network, Core Data Network",
+    "optionsHindi": "सामग्री वितरण नेटवर्क, केंद्रीय डेटा नोड, क्लाउड वितरण नेटवर्क, कोर डेटा नेटवर्क",
+    "answerEnglish": "Content Delivery Network",
+    "answerHindi": "सामग्री वितरण नेटवर्क"
+  },
+  {
+    "questionEnglish": "What is the full form of ZIP (file format)?",
+    "questionHindi": "ZIP (फ़ाइल प्रारूप) का पूरा रूप क्या है?",
+    "optionsEnglish": "Zone Information Protocol, Zipped Information Package, Zone Integrated Package, Zipped File Format",
+    "optionsHindi": "ज़ोन सूचना प्रोटोकॉल, ज़िप्ड सूचना पैकेज, ज़ोन एकीकृत पैकेज, ज़िप्ड फ़ाइल प्रारूप",
+    "answerEnglish": "Zipped File Format",
+    "answerHindi": "ज़िप्ड फ़ाइल प्रारूप"
+  },
+  {
+    "questionEnglish": "What is the full form of VGA?",
+    "questionHindi": "VGA का पूरा रूप क्या है?",
+    "optionsEnglish": "Video Graphics Array, Virtual Graphics Adapter, Visual Graphic Adapter, Video Gain Amplifier",
+    "optionsHindi": "वीडियो ग्राफिक्स एरे, वर्चुअल ग्राफिक्स एडाप्टर, विजुअल ग्राफिक एडाप्टर, वीडियो गेन एम्पलीफायर",
+    "answerEnglish": "Video Graphics Array",
+    "answerHindi": "वीडियो ग्राफिक्स एरे"
+  },
+  {
+    "questionEnglish": "What is the full form of WAN?",
+    "questionHindi": "WAN का पूरा रूप क्या है?",
+    "optionsEnglish": "Wide Area Network, Wireless Access Node, Web Access Network, Wide Application Network",
+    "optionsHindi": "वाइड एरिया नेटवर्क, वायरलेस एक्सेस नोड, वेब एक्सेस नेटवर्क, वाइड एप्लिकेशन नेटवर्क",
+    "answerEnglish": "Wide Area Network",
+    "answerHindi": "वाइड एरिया नेटवर्क"
+  },
+  {
+    "questionEnglish": "What is the full form of TDS (tax)?",
+    "questionHindi": "TDS (कर) का पूरा रूप क्या है?",
+    "optionsEnglish": "Tax Deducted at Source, Total Direct Subsidy, Tax Direct Scheme, Tax Distribution System",
+    "optionsHindi": "स्रोत पर कर कटौती, कुल प्रत्यक्ष सब्सिडी, कर प्रत्यक्ष योजना, कर वितरण प्रणाली",
+    "answerEnglish": "Tax Deducted at Source",
+    "answerHindi": "स्रोत पर कर कटौती"
+  },
+  {
+    "questionEnglish": "What is the full form of MICR?",
+    "questionHindi": "MICR का पूरा रूप क्या है?",
+    "optionsEnglish": "Magnetic Ink Character Recognition, Manual Input Code Reader, Machine Input Code Reader, Magnetic Input Character Recognition",
+    "optionsHindi": "चुंबकीय स्याही वर्ण पहचान, मैनुअल इनपुट कोड रीडर, मशीन इनपुट कोड रीडर, चुंबकीय इनपुट वर्ण पहचान",
+    "answerEnglish": "Magnetic Ink Character Recognition",
+    "answerHindi": "चुंबकीय स्याही वर्ण पहचान"
+  },
+  {
+    "questionEnglish": "What is the full form of CCTV DVR?",
+    "questionHindi": "CCTV DVR का पूरा रूप क्या है?",
+    "optionsEnglish": "Digital Video Recorder, Data Visual Recorder, Direct Video Recording, Digital Visual Receiver",
+    "optionsHindi": "डिजिटल वीडियो रिकॉर्डर, डेटा विजुअल रिकॉर्डर, डायरेक्ट वीडियो रिकॉर्डिंग, डिजिटल विजुअल रिसीवर",
+    "answerEnglish": "Digital Video Recorder",
+    "answerHindi": "डिजिटल वीडियो रिकॉर्डर"
+  },
+  {
+    "questionEnglish": "What is the full form of RFID?",
+    "questionHindi": "RFID का पूरा रूप क्या है?",
+    "optionsEnglish": "Radio Frequency Identification, Remote Frequency Identification, Radio Fiber Identification, Rapid File Identification",
+    "optionsHindi": "रेडियो फ्रीक्वेंसी पहचान, रिमोट फ्रीक्वेंसी पहचान, रेडियो फाइबर पहचान, रैपिड फाइल पहचान",
+    "answerEnglish": "Radio Frequency Identification",
+    "answerHindi": "रेडियो फ्रीक्वेंसी पहचान"
+  },
+  {
+    "questionEnglish": "What is the full form of PCB (electronics)?",
+    "questionHindi": "PCB (इलेक्ट्रॉनिक्स) का पूरा रूप क्या है?",
+    "optionsEnglish": "Printed Circuit Board, Personal Computer Board, Processed Chip Board, Power Connector Board",
+    "optionsHindi": "प्रिंटेड सर्किट बोर्ड, पर्सनल कंप्यूटर बोर्ड, प्रोसेस्ड चिप बोर्ड, पावर कनेक्टर बोर्ड",
+    "answerEnglish": "Printed Circuit Board",
+    "answerHindi": "प्रिंटेड सर्किट बोर्ड"
+  },
+  {
+    "questionEnglish": "What is the full form of SMSC?",
+    "questionHindi": "SMSC का पूरा रूप क्या है?",
+    "optionsEnglish": "Short Message Service Center, Simple Message Service Code, Secure Messaging Server Center, Short Mail Security Control",
+    "optionsHindi": "शॉर्ट मैसेज सर्विस सेंटर, सिंपल मैसेज सर्विस कोड, सिक्योर मैसेजिंग सर्वर सेंटर, शॉर्ट मेल सिक्योरिटी कंट्रोल",
+    "answerEnglish": "Short Message Service Center",
+    "answerHindi": "शॉर्ट मैसेज सर्विस सेंटर"
+  },
+  {
+    "questionEnglish": "What is the full form of MPEG?",
+    "questionHindi": "MPEG का पूरा रूप क्या है?",
+    "optionsEnglish": "Moving Picture Experts Group, Motion Picture Encoding Group, Multimedia Protocol Encoding Grid, Moving Pixel Encoding Graph",
+    "optionsHindi": "मूविंग पिक्चर एक्सपर्ट्स ग्रुप, मोशन पिक्चर एनकोडिंग ग्रुप, मल्टीमीडिया प्रोटोकॉल एनकोडिंग ग्रिड, मूविंग पिक्सल एनकोडिंग ग्राफ",
+    "answerEnglish": "Moving Picture Experts Group",
+    "answerHindi": "मूविंग पिक्चर एक्सपर्ट्स ग्रुप"
+  }
+]
