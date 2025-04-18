@@ -147,7 +147,18 @@ h1 {
 
     </div>
   </div>
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+const version = urlParams.get('v');
 
+const latestVersion = 1; // Set this to your current versionCode
+
+if (!version || parseInt(version) < latestVersion) {
+  // Redirect to update page
+  window.location.href = "https://babymath.pages.dev/update.html";
+}
+
+</script>
 
 </body>
 </html>
