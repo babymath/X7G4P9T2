@@ -5,18 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="aadhaar/img/favicon.ico">
     <title>Game - BabyMath</title>
-    <link rel="stylesheet" href="css-js/game.css">
-    <style>
-        /* ...existing code... */
-        #line2 {
-            position: sticky;
-            top: 0;
-            background-color: white; /* Ensure visibility */
-            z-index: 10; /* Keep it above other elements */
-            padding: 10px; /* Optional: Adjust padding for better appearance */
-        }
-        /* ...existing code... */
-    </style>
+    <link rel="stylesheet" href="game.css">
 </head>
 <body>
 
@@ -79,6 +68,14 @@
                 </div>
             </section>
 
+            <!-- Auto Submit Popup -->
+            <div id="autoSubmitPopup" style="display: none;">
+                <h2>Choose Your Play Mode</h2>
+                <p>Do you want to play with Auto Submit Answer or Manually?</p>
+                <button id="autoSubmitYes">Auto Submit</button>
+                <button id="autoSubmitNo">Manual Submit</button>
+            </div>
+
             <!-- Game Result Section -->
             <section id="game-result" style="display: none;">
                 <div id="endMessage">Game Over</div>
@@ -99,9 +96,7 @@
     <!-- Scripts -->
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
-    <script src="css-js/game0.js"></script>
-    <script src="css-js/game1.js"></script>
-    <script src="css-js/game2.js"></script>
+    <script src="game.js"></script>
     <script src="../profile/profile.js"></script>
 </body>
 </html>
