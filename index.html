@@ -153,10 +153,13 @@ const version = urlParams.get('v');
 
 const latestVersion = 1; // Set this to your current versionCode
 
-if (!version || parseInt(version) < latestVersion) {
-  // Redirect to update page
+if (parseInt(version) < latestVersion) {
   window.location.href = "https://babymath.pages.dev/update.html";
 }
+  if(!version){
+  window.location.href = "https://babymath.pages.dev/update-old.html";
+}
+    
 
 </script>
 
