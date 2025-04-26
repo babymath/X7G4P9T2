@@ -6,45 +6,16 @@ let viewedQuestions = new Set();
 let timerInterval;
 let selectedTime = null;
 
-let questionKey, optionsKey, answerKey, notAnsweredText, correctText, incorrectText, noOptionsText, timeUpText, timeUpInfoText, quizResultsHeading;
+let questionKey, optionsKey, answerKey;
 
 function setLanguageDependentVariables() {
-    const isEnglish = userLanguage === 'english';
-
-    questionKey = isEnglish ? 'questionEnglish' : 'questionHindi';
-    optionsKey = isEnglish ? 'optionsEnglish' : 'optionsHindi';
-    answerKey = isEnglish ? 'answerEnglish' : 'answerHindi';
-
-    const textMap = {
-        notAnsweredText: ['Not Answered', 'उत्तर नहीं दिया'],
-        correctText: ['Correct', 'सही'],
-        incorrectText: ['Incorrect', 'गलत'],
-        noOptionsText: ['No options available', 'कोई विकल्प उपलब्ध नहीं है'],
-        timeUpText: ['Time is up!', 'समय समाप्त!'],
-        timeUpInfoText: ['Your answers will be submitted automatically.', 'आपके उत्तर स्वतः जमा हो जाएंगे।'],
-        quizResultsHeading: ['Quiz Results', 'प्रश्नोत्तरी परिणाम']
-    };
-
-    Object.keys(textMap).forEach(key => {
-        this[key] = isEnglish ? textMap[key][0] : textMap[key][1];
-    });
-
-    const elementTextMap = [
-        ['setup-heading', 'Quiz Setup', 'प्रश्नोत्तरी सेटअप'],
-        ['error-lang', 'Please select a language.', 'कृपया एक भाषा चुनें।'],
-        ['error-time', 'Please enter a valid time or select an option.', 'कृपया मान्य समय दर्ज करें या कोई विकल्प चुनें।'],
-        ['time-up-heading', timeUpText],
-        ['time-up-info', timeUpInfoText]
-    ];
-
-    elementTextMap.forEach(([id, enText, hiText]) => {
-        const element = document.getElementById(id);
-        if (element) element.textContent = isEnglish ? enText : hiText;
-    });
+    questionKey = userLanguage === 'hindi' ? 'questionHindi' : 'questionEnglish';
+    optionsKey = userLanguage === 'hindi' ? 'optionsHindi' : 'optionsEnglish';
+    answerKey = userLanguage === 'hindi' ? 'answerHindi' : 'answerEnglish';
 
     if (document.getElementById('quiz-content').style.display === 'block') updateQuizContentLanguage();
     if (document.getElementById('result-section').style.display === 'block') {
-        document.getElementById('result-heading').textContent = quizResultsHeading;
+        document.getElementById('result-heading').textContent = 'Quiz Results';
     }
 }
 
@@ -90,43 +61,61 @@ const submitQuizButton = document.getElementById('submit-quiz');
 const previewCloseButton = document.querySelector('.preview-popup .close-button');
 const timeUpOkButton = document.getElementById('time-up-ok');
 
-document.querySelectorAll('.language-button').forEach(button => {
-    button.addEventListener('click', function () {
-        document.querySelectorAll('.language-button').forEach(btn => btn.classList.remove('selected'));
-        this.classList.add('selected');
-        userLanguage = this.getAttribute('data-lang');
-        errorLangP.style.display = 'none';
-        setLanguageDependentVariables();
+function initializeLanguageSelection() {
+    document.querySelectorAll('.language-button').forEach(button => {
+        button.addEventListener('click', function () {
+            document.querySelectorAll('.language-button').forEach(btn => btn.classList.remove('selected'));
+            this.classList.add('selected');
+            userLanguage = this.getAttribute('data-lang');
+            errorLangP.style.display = 'none';
+            setLanguageDependentVariables();
+        });
     });
-});
+}
 
-document.querySelectorAll('.time-button').forEach(button => {
-    button.addEventListener('click', function () {
+function initializeTimeSelection() {
+    document.querySelectorAll('.time-button').forEach(button => {
+        button.addEventListener('click', function () {
+            document.querySelectorAll('.time-button').forEach(btn => btn.classList.remove('selected'));
+            this.classList.add('selected');
+            selectedTime = parseInt(this.dataset.time);
+            timeInput.value = selectedTime > 0 ? selectedTime : '';
+            timeInput.classList.remove('selected');
+            errorTimeP.style.display = 'none';
+        });
+    });
+
+    timeInput.addEventListener('input', function () {
         document.querySelectorAll('.time-button').forEach(btn => btn.classList.remove('selected'));
-        this.classList.add('selected');
-        selectedTime = parseInt(this.dataset.time);
-        timeInput.value = selectedTime > 0 ? selectedTime : '';
-        timeInput.classList.remove('selected');
-        errorTimeP.style.display = 'none';
+        const value = this.value.trim();
+        if (value && parseInt(value) > 0) {
+            selectedTime = parseInt(value);
+            errorTimeP.style.display = 'none';
+        } else if (value === '') {
+            selectedTime = null;
+            errorTimeP.style.display = 'none';
+        } else {
+            selectedTime = null;
+            errorTimeP.style.display = 'block';
+        }
     });
-});
+}
 
-timeInput.addEventListener('input', function () {
-    document.querySelectorAll('.time-button').forEach(btn => btn.classList.remove('selected'));
-    const value = this.value.trim();
-    if (value && parseInt(value) > 0) {
-        selectedTime = parseInt(value);
-        errorTimeP.style.display = 'none';
-    } else if (value === '') {
-        selectedTime = null;
-        errorTimeP.style.display = 'none';
-    } else {
-        selectedTime = null;
-        errorTimeP.style.display = 'block';
-    }
-});
+function initializeStartQuizButton() {
+    startQuizButton.addEventListener('click', function () {
+        const { timeIsValid, finalTimeInMinutes } = validateTimeSelection();
+        const languageIsValid = !!userLanguage;
 
-startQuizButton.addEventListener('click', function () {
+        errorLangP.style.display = languageIsValid ? 'none' : 'block';
+        errorTimeP.style.display = timeIsValid ? 'none' : 'block';
+
+        if (languageIsValid && timeIsValid) {
+            startQuiz(finalTimeInMinutes);
+        }
+    });
+}
+
+function validateTimeSelection() {
     let timeIsValid = false;
     let finalTimeInMinutes = null;
 
@@ -140,109 +129,78 @@ startQuizButton.addEventListener('click', function () {
         timeIsValid = true;
         finalTimeInMinutes = parsedCustomTime;
         selectedTime = finalTimeInMinutes;
-    } else if (customTimeValue === '' && selectedTime === null) {
-        timeIsValid = false;
+    }
+
+    return { timeIsValid, finalTimeInMinutes };
+}
+
+function startQuiz(finalTimeInMinutes) {
+    languageSelectionDiv.style.display = 'none';
+    quizContentDiv.style.display = 'block';
+
+    updateQuizContentLanguage();
+
+    if (finalTimeInMinutes !== null && finalTimeInMinutes > 0) {
+        startTimer(finalTimeInMinutes * 60);
     } else {
-        timeIsValid = false;
+        timerElement.style.display = 'none';
     }
 
-    const languageIsValid = !!userLanguage;
-
-    errorLangP.style.display = languageIsValid ? 'none' : 'block';
-    errorTimeP.style.display = timeIsValid ? 'none' : 'block';
-
-    if (languageIsValid && timeIsValid) {
-        languageSelectionDiv.style.display = 'none';
-        quizContentDiv.style.display = 'block';
-
-        updateQuizContentLanguage();
-
-        if (finalTimeInMinutes !== null && finalTimeInMinutes > 0) {
-            startTimer(finalTimeInMinutes * 60);
-        } else {
-            timerElement.style.display = 'none';
-        }
-        const urlParams = new URLSearchParams(window.location.search);
-        const quizFile = urlParams.get('quizFile');
-        const quizTitle = urlParams.get('quizTitle'); // Get quizTitle from URL parameters
-        loadQuizData(quizFile, quizTitle); // Pass quizTitle instead of quizSubject
-    }
-});
-
-nextQuestionButton.addEventListener('click', () => {
-    if (currentQuestionIndex < questions.length - 1) {
-        loadQuestion(currentQuestionIndex + 1);
-
-        // Scroll to the last option of the next question
-        const options = optionsDiv.querySelectorAll('label');
-        if (options.length > 0) {
-            options[options.length - 1].scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-    }
-});
-
-previewAnswersButton.addEventListener('click', () => {
-    const previewContent = questions.map((q, i) => {
-        const questionText = q[questionKey] || `Question ${i + 1} text missing`;
-        const userAnswerText = userAnswers[i] || notAnsweredText;
-        const statusClass = userAnswers[i] ? 'answered' : 'not-answered';
-
-        return `
-            <p class="${statusClass}">
-                <strong>${i + 1}. ${questionText}</strong><br>
-                <span style="color: #555;">Attempted: ${userAnswerText}</span>
-            </p>`;
-    }).join('');
-    previewContentDiv.innerHTML = previewContent || `<p>No questions to preview.</p>`;
-    previewPopupDiv.style.display = 'block';
-});
-
-submitQuizButton.addEventListener('click', showResults);
-
-restartButton.addEventListener('click', () => {
-    window.location.href = "index.html"; // Redirect to index.html
-});
-
-clearResponseButton.addEventListener('click', () => {
-    const options = document.querySelectorAll(`#options input[name="answer_${currentQuestionIndex}"]`);
-    options.forEach(option => option.checked = false);
-
-    if (userAnswers[currentQuestionIndex] !== null) {
-        userAnswers[currentQuestionIndex] = null;
-        const navButton = document.getElementById(`nav-button-${currentQuestionIndex}`);
-        if (navButton) {
-            navButton.classList.remove('answered');
-            if (!viewedQuestions.has(currentQuestionIndex)) {
-                viewedQuestions.add(currentQuestionIndex);
-                navButton.classList.add('viewed');
-            } else {
-                navButton.classList.add('viewed');
-            }
-        }
-        updateNavSummary();
-    }
-});
-
-previewCloseButton.addEventListener('click', () => {
-    previewPopupDiv.style.display = 'none';
-});
-
-timeUpOkButton.addEventListener('click', () => {
-    timeUpPopupDiv.style.display = 'none';
-    showResults();
-});
-
-window.addEventListener('load', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const quizFile = urlParams.get('quizFile');
-    const quizTitle = urlParams.get('quizTitle'); // Get quizTitle from URL parameters
+    const quizTitle = urlParams.get('quizTitle');
+    loadQuizData(quizFile, quizTitle);
+}
 
-    if (!quizFile || !quizTitle) {
-        window.location.href = 'index.html'; // Redirect to index.html if parameters are missing
-    } else {
-        loadQuizData(quizFile, quizTitle); // Pass quizTitle instead of quizSubject
+function initializeNavigationButtons() {
+    nextQuestionButton.addEventListener('click', () => {
+        if (currentQuestionIndex < questions.length - 1) {
+            loadQuestion(currentQuestionIndex + 1);
+            scrollToLastOption();
+        }
+    });
+
+    previewAnswersButton.addEventListener('click', showPreview);
+    submitQuizButton.addEventListener('click', showResults);
+    restartButton.addEventListener('click', () => window.location.href = "index.html");
+    clearResponseButton.addEventListener('click', clearCurrentResponse);
+    previewCloseButton.addEventListener('click', () => previewPopupDiv.style.display = 'none');
+    timeUpOkButton.addEventListener('click', () => {
+        timeUpPopupDiv.style.display = 'none';
+        showResults();
+    });
+}
+
+function scrollToLastOption() {
+    const options = optionsDiv.querySelectorAll('label');
+    if (options.length > 0) {
+        options[options.length - 1].scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-});
+}
+
+function initializePageLoad() {
+    window.addEventListener('load', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const quizFile = urlParams.get('quizFile');
+        const quizTitle = urlParams.get('quizTitle');
+
+        if (!quizFile || !quizTitle) {
+            window.location.href = 'index.html';
+        } else {
+            loadQuizData(quizFile, quizTitle);
+        }
+    });
+}
+
+function initializeApp() {
+    initializeLanguageSelection();
+    initializeTimeSelection();
+    initializeStartQuizButton();
+    initializeNavigationButtons();
+    initializePageLoad();
+}
+
+initializeApp();
 
 function startTimer(durationInSeconds) {
     timerElement.style.display = 'block';
@@ -264,14 +222,13 @@ function startTimer(durationInSeconds) {
 }
 
 function loadQuizData(quizFile, quizTitle) {
-    const [quizId, topic] = quizTitle.split(',').map(part => part.trim()); // Split quizTitle into id and topic
+    const [quizId, topic] = quizTitle.split(',').map(part => part.trim());
 
-    quizTitleH2.textContent = `${quizId} (${topic})`; // Display quiz ID and topic
+    quizTitleH2.textContent = `${quizId} (${topic})`;
 
     const fileId = quizFile;
     const callbackName = 'quizDataCallback';
 
-    // Define the callback function
     window[callbackName] = function (data) {
         if (!Array.isArray(data) || data.length === 0) {
             alert("Quiz data is empty or not in the expected array format.");
@@ -289,7 +246,6 @@ function loadQuizData(quizFile, quizTitle) {
         updateNavSummary();
     };
 
-    // Create and append the script element
     const script = document.createElement('script');
     script.src = `https://script.google.com/macros/s/AKfycbxYhXVQ9pcqQrhraqUGJtq_o-qFNT2WcInOwMHlqTip8wSGtkq_284lqHdSmU-Te9YA/exec?id=${fileId}&callback=${callbackName}`;
     script.onerror = function () {
@@ -317,7 +273,7 @@ function loadQuestion(index) {
                 ${option}
             </label>
         `).join('')
-        : `<p>${noOptionsText}</p>`;
+        : `<p>No options available</p>`;
 
     optionsDiv.querySelectorAll('input').forEach(input => {
         input.addEventListener('change', () => saveAnswer(index, input.value));
@@ -403,7 +359,7 @@ function showResults() {
     let attemptedCount = 0;
 
     const urlParams = new URLSearchParams(window.location.search);
-    const quizTitle = urlParams.get('quizTitle'); // Get quizTitle from URL parameters
+    const quizTitle = urlParams.get('quizTitle');
 
     const resultsHTML = questions.map((q, i) => {
         const userAnswer = userAnswers[i];
@@ -413,24 +369,24 @@ function showResults() {
 
         const questionText = q[questionKey] || `Question ${i + 1} text missing`;
         const correctAnswerText = correctAnswer || 'Correct answer data missing';
-        const userAnswerText = userAnswer || notAnsweredText;
+        const userAnswerText = userAnswer || 'Not Answered';
 
         if (userAnswer !== null) {
             attemptedCount++;
             isCorrect = userAnswer === correctAnswer;
             if (isCorrect) {
                 correctCount++;
-                resultStatusHTML = `<span class="checkmark">✔️</span> <span style="color: green; font-weight: bold;">${correctText}</span>`;
+                resultStatusHTML = `<span class="checkmark">✔️</span> <span style="color: green; font-weight: bold;">Correct</span>`;
             } else {
-                resultStatusHTML = `<span class="cross">❌</span> <span style="color: red; font-weight: bold;">${incorrectText}</span>`;
+                resultStatusHTML = `<span class="cross">❌</span> <span style="color: red; font-weight: bold;">Incorrect</span>`;
             }
         } else {
-            resultStatusHTML = `<span style="color: grey;">${notAnsweredText}</span>`;
+            resultStatusHTML = `<span style="color: grey;">Not Answered</span>`;
         }
 
         const encodedQuestion = encodeURIComponent(questionText);
         const encodedAnswer = encodeURIComponent(correctAnswerText);
-        const searchButtonHTML = `<button onclick="searchGoogle('${encodedQuestion}', '${encodedAnswer}')" style="margin-top: 10px; padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Search on Google</button>`;
+        const searchButtonHTML = `<button onclick="showExplanation('${encodedQuestion}', '${encodedAnswer}')" style="margin-top: 10px; padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Explanation</button>`;
 
         return `
             <p>
@@ -452,12 +408,11 @@ function showResults() {
     const notAttemptedCount = totalQuestions - attemptedCount;
 
     resultSummaryDiv.innerHTML = `
-        <strong>${quizResultsHeading} Summary</strong><br>
+        <strong>Quiz Results Summary</strong><br>
         Score: ${correctCount} / ${totalQuestions}<br>
-        (${correctText}: ${correctCount}, ${incorrectText}: ${incorrectCount}, ${notAnsweredText}: ${notAttemptedCount})
+        (Correct: ${correctCount}, Incorrect: ${incorrectCount}, Not Answered: ${notAttemptedCount})
     `;
 
-    // Display quiz title below the results heading
     const resultHeading = document.getElementById('result-heading');
     const quizTitleElement = document.createElement('p');
     quizTitleElement.style.fontSize = '0.9em';
@@ -468,7 +423,43 @@ function showResults() {
     window.scrollTo(0, 0);
 }
 
-function searchGoogle(question, answer) {
-    const url = `https://www.google.com/search?q=${question}+${answer}`;
+function showExplanation(question, answer) {
+    const url = `https://www.you.com/search?q=${question}+${answer}`;
     window.open(url, '_blank');
+}
+
+function showPreview() {
+    const previewContent = questions.map((q, i) => {
+        const questionText = q[questionKey] || `Question ${i + 1} text missing`;
+        const userAnswerText = userAnswers[i] || 'Not Answered';
+        const statusClass = userAnswers[i] ? 'answered' : 'not-answered';
+
+        return `
+            <p class="${statusClass}">
+                <strong>${i + 1}. ${questionText}</strong><br>
+                <span style="color: #555;">Attempted: ${userAnswerText}</span>
+            </p>`;
+    }).join('');
+    previewContentDiv.innerHTML = previewContent || `<p>No questions to preview.</p>`;
+    previewPopupDiv.style.display = 'block';
+}
+
+function clearCurrentResponse() {
+    const options = document.querySelectorAll(`#options input[name="answer_${currentQuestionIndex}"]`);
+    options.forEach(option => option.checked = false);
+
+    if (userAnswers[currentQuestionIndex] !== null) {
+        userAnswers[currentQuestionIndex] = null;
+        const navButton = document.getElementById(`nav-button-${currentQuestionIndex}`);
+        if (navButton) {
+            navButton.classList.remove('answered');
+            if (!viewedQuestions.has(currentQuestionIndex)) {
+                viewedQuestions.add(currentQuestionIndex);
+                navButton.classList.add('viewed');
+            } else {
+                navButton.classList.add('viewed');
+            }
+        }
+        updateNavSummary();
+    }
 }
