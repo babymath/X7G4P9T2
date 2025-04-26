@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Launcher</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #1a1b1b, #1969da);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+            color: #f0eeee;
+        }
+
+        .grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .list-item {
+            background: linear-gradient(to right, #08dada, #1969da);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: 500;
+            color: #333;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .list-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            background-color: #f8fbff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Select a Game</h1>
+        <div class="grid">
+            <div class="list-item" data-type="111">Addition Practice</div>
+            <div class="list-item" data-type="222">Subtraction Practice</div>
+            <div class="list-item" data-type="333">Multiplication Practice</div>
+            <div class="list-item" data-type="444">Lightning Sum</div>
+            <div class="list-item" data-type="555">Table Practice</div>
+            <div class="list-item" data-type="666">Roman to Number</div>
+            <div class="list-item" data-type="777">Word to Number</div>
+        </div>
+    </div>
+
+    <script>
+        const listItems = document.querySelectorAll('.list-item');
+        listItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const gameKey = item.getAttribute('data-type');
+                window.location.href = `game.html?gameKey=${gameKey}`;
+            });
+        });
+    </script>
+</body>
+</html>

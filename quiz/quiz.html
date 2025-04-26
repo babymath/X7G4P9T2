@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive quiz application with language and time selection.">
+    <title>Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari&display=swap" rel="stylesheet">
+    <link href="quiz.css" rel="stylesheet">
+</head>
+<body>
+    <div id="quiz-container">
+
+        <!-- Setup Section -->
+        <div id="language-selection" class="setup-card">
+            <h2 id="setup-heading">Quiz Setup</h2>
+
+            <div class="setup-step">
+                <label class="setup-label" for="lang-group">1. Select Language</label>
+                <div class="button-group language-buttons" id="lang-group">
+                    <button class="language-button setup-button" data-lang="hindi" aria-label="Select Hindi language">Hindi</button>
+                    <button class="language-button setup-button" data-lang="english" aria-label="Select English language">English</button>
+                </div>
+                <p id="error-lang" class="error-message" aria-live="polite">Please select a language to proceed.</p>
+            </div>
+
+            <div class="setup-step">
+                <label class="setup-label" for="time-input">2. Set Time Limit (minutes)</label>
+                <div class="time-selection-group">
+                    <input type="number" id="time-input" min="1" placeholder="Enter custom time or select below">
+                    <div class="button-group time-buttons">
+                        <button class="time-button setup-button" data-time="20" aria-label="Set time limit to 20 minutes">20 min</button>
+                        <button class="time-button setup-button" data-time="40" aria-label="Set time limit to 40 minutes">40 min</button>
+                        <button class="time-button setup-button" data-time="60" aria-label="Set time limit to 60 minutes">60 min</button>
+                        <button class="time-button setup-button" data-time="0" aria-label="Set no time limit">None</button>
+                    </div>
+                </div>
+                 <p id="error-time" class="error-message" aria-live="polite">Please enter a valid time or select an option.</p>
+            </div>
+
+            <button id="start-quiz-button" class="start-button">Start Quiz</button>
+        </div>
+
+        <!-- Quiz Content Section -->
+        <div id="quiz-content">
+            <div id="scroll-part">
+                <div id="timer">Time Left: 0:00</div>
+                <h2 id="quiz-title">Quiz</h2>
+
+                <div id="nav-summary">
+                </div>
+
+                <div id="navigation-numbers">
+                </div>
+
+                <div class="question-section">
+                    <h3 id="question-text"></h3>
+                    <div id="options" class="options-section" style="margin-bottom: 100px;">
+                        <p>Loading question...</p>
+                    </div>
+                </div>
+</div>
+            <div id="ctrl-btns" style="position: fixed; bottom: 0; left: 0; right: 0; text-align: center;">
+                <div class="navigation-section">
+                    <button id="clear-response" class="navigation-button">Clear Response</button>
+                    <button id="next-question" class="navigation-button">Next</button>
+                </div>
+    
+                <button id="preview-answers" class="preview-button">Preview Answers</button>
+                <button id="submit-quiz" class="submit-button">Submit Quiz</button>
+            </div>
+        </div>
+
+
+        <!-- Preview Popup -->
+        <div class="preview-popup" id="preview-popup">
+             <div class="preview-controls">
+                 <button class="close-button">Close</button>
+             </div>
+            <div id="preview-content"></div>
+        </div>
+
+        <!-- Time Up Popup -->
+        <div id="time-up-popup" class="preview-popup">
+            <h3 id="time-up-heading">Time is up!</h3>
+            <p id="time-up-info">Your answers will be submitted automatically.</p>
+            <button id="time-up-ok">OK</button>
+        </div>
+
+        <!-- Result Section -->
+        <div id="result-section">
+             <h2 id="result-heading">Quiz Results</h2>
+             <div id="result-summary"></div>
+             <div id="results"></div>
+             <div id="restart-button-container">
+                <button id="restart-button">Restart Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="quiz.js"></script>
+</body>
+</html>
