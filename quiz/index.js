@@ -4,6 +4,11 @@ let quizDataCache = null;
 let currentQuizzes = [];
 let selectedSubjectGlobal = "";
 
+// Cache DOM elements
+const subjectFilter = document.getElementById("subjectFilter");
+const topicFilter = document.getElementById("topicFilter");
+const quizList = document.getElementById("quizList");
+
 // Fetch quiz data once and initialize
 fetch(quizDataFile)
   .then((res) => {
@@ -16,28 +21,26 @@ fetch(quizDataFile)
   })
   .catch((err) => {
     console.error("Error loading data:", err);
-    showError("subjectFilter", "quizList", "Unable to load subjects. Please check your network or the data source URL.");
+    showError("Unable to load subjects. Please check your network or the data source URL.");
   });
 
 function populateSubjects(subjects) {
-  const subjectFilter = document.getElementById("subjectFilter");
-  subjectFilter.innerHTML = '<option value="">Select Subject</option>';
-
-  const uniqueSubjects = new Set();
+  const uniqueSubjects = new Map();
   subjects.forEach((subject) => {
     const name = subject.Name.trim();
     const key = name.toLowerCase();
     if (subject.Total > 0 && !uniqueSubjects.has(key)) {
-      uniqueSubjects.add(key);
-      const option = document.createElement("option");
-      option.value = key;
-      option.textContent = `${name}${" ".repeat(20 - name.length)}(${subject.Total})`;
-      subjectFilter.appendChild(option);
+      uniqueSubjects.set(key, `${name}${" ".repeat(20 - name.length)}(${subject.Total})`);
     }
   });
+
+  subjectFilter.innerHTML = '<option value="">Select Subject</option>' +
+    Array.from(uniqueSubjects.entries())
+      .map(([key, text]) => `<option value="${key}">${text}</option>`)
+      .join("");
 }
 
-document.getElementById("subjectFilter").onchange = function () {
+subjectFilter.onchange = function () {
   const selectedSubject = this.value;
   selectedSubjectGlobal = selectedSubject;
 
@@ -45,14 +48,12 @@ document.getElementById("subjectFilter").onchange = function () {
     key => key.toLowerCase() === selectedSubject.toLowerCase()
   );
 
-  const topicFilter = document.getElementById("topicFilter");
   topicFilter.innerHTML = '<option value="All">All</option>';
-  document.getElementById("quizList").innerHTML = "<p>Loading quizzes...</p>";
+  quizList.innerHTML = "<p>Loading quizzes...</p>";
   currentQuizzes = [];
 
   if (matchedKey && quizDataCache[matchedKey]) {
-    const subjectQuizzes = quizDataCache[matchedKey];
-    currentQuizzes = subjectQuizzes.map((quiz) => ({
+    currentQuizzes = quizDataCache[matchedKey].map((quiz) => ({
       file: quiz.File,
       topic: quiz.Topic,
       id: quiz.Id
@@ -60,29 +61,20 @@ document.getElementById("subjectFilter").onchange = function () {
     populateTopicFilter(currentQuizzes);
     showQuizSelection();
   } else {
-    document.getElementById("quizList").innerHTML = "<p>No quizzes found for this subject.</p>";
+    quizList.innerHTML = "<p>No quizzes found for this subject.</p>";
   }
 };
 
 function populateTopicFilter(quizzes) {
-  const topicFilter = document.getElementById("topicFilter");
-  topicFilter.innerHTML = '<option value="All">All</option>';
   const uniqueTopics = [...new Set(quizzes.map(q => q.topic))];
-  uniqueTopics.forEach((topic) => {
-    const option = document.createElement("option");
-    option.value = topic;
-    option.textContent = topic;
-    topicFilter.appendChild(option);
-  });
+  topicFilter.innerHTML = '<option value="All">All</option>' +
+    uniqueTopics.map(topic => `<option value="${topic}">${topic}</option>`).join("");
 }
 
-document.getElementById("topicFilter").onchange = showQuizSelection;
+topicFilter.onchange = showQuizSelection;
 
 function showQuizSelection() {
-  const quizList = document.getElementById("quizList");
-  quizList.innerHTML = "";
-
-  const topicFilterValue = document.getElementById("topicFilter").value;
+  const topicFilterValue = topicFilter.value;
   const filteredQuizzes = topicFilterValue === "All"
     ? currentQuizzes
     : currentQuizzes.filter(q => q.topic === topicFilterValue);
@@ -92,18 +84,14 @@ function showQuizSelection() {
     return;
   }
 
-  filteredQuizzes.forEach((quiz) => {
-    const btn = document.createElement("button");
-    btn.innerHTML = `
-  <div style="text-align: left;">
-    <strong>${quiz.id}</strong><br>
-    <small>${quiz.topic}</small>
-  </div>
-`;
-    btn.onclick = () => loadQuiz(quiz.file, `${quiz.id}, ${quiz.topic}`);
-    btn.setAttribute("aria-label", `Select ${quiz.id} ${quiz.topic}`);
-    quizList.appendChild(btn);
-  });
+  quizList.innerHTML = filteredQuizzes.map(quiz => `
+    <button aria-label="Select ${quiz.id} ${quiz.topic}" onclick="loadQuiz('${quiz.file}', '${quiz.id}, ${quiz.topic}')">
+      <div style="text-align: left;">
+        <strong>${quiz.id}</strong><br>
+        <small>${quiz.topic}</small>
+      </div>
+    </button>
+  `).join("");
 }
 
 function loadQuiz(fileName, quizTitle) {
@@ -113,14 +101,14 @@ function loadQuiz(fileName, quizTitle) {
   }).toString();
 
   // Reset filters and message
-  document.getElementById("subjectFilter").value = "";
-  document.getElementById("topicFilter").innerHTML = '<option value="All">All</option>';
-  document.getElementById("quizList").innerHTML = "<p>Please select a subject.</p>";
+  subjectFilter.value = "";
+  topicFilter.innerHTML = '<option value="All">All</option>';
+  quizList.innerHTML = "<p>Please select a subject.</p>";
 
   window.location.href = `quiz.html?${queryParams}`;
 }
 
-function showError(subjectElementId, quizElementId, message) {
-  document.getElementById(subjectElementId).innerHTML = '<option value="">Error</option>';
-  document.getElementById(quizElementId).innerHTML = `<p style='color: red;'>⚠️ ${message}</p>`;
+function showError(message) {
+  subjectFilter.innerHTML = '<option value="">Error</option>';
+  quizList.innerHTML = `<p style='color: red;'>⚠️ ${message}</p>`;
 }
