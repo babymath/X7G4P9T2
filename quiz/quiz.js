@@ -424,7 +424,7 @@ function showResults() {
 }
 
 function showExplanation(question, answer) {
-    const url = `https://www.you.com/search?q=${question}+${answer}`;
+    const url = `https://www.google.com/search?q=${question}+${answer}`;
     window.open(url, '_blank');
 }
 
