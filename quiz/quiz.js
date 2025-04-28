@@ -384,17 +384,16 @@ function showResults() {
             resultStatusHTML = `<span style="color: grey;">Not Answered</span>`;
         }
 
-        const encodedQuestion = encodeURIComponent(questionText);
-        const encodedAnswer = encodeURIComponent(correctAnswerText);
-        const searchButtonHTML = `<button onclick="showExplanation('${encodedQuestion}', '${encodedAnswer}')" style="margin-top: 10px; padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Explanation</button>`;
+        const googleButtonHTML = `<button onclick="window.open('https://www.google.com/search?q=${encodeURIComponent(questionText)}', '_blank')" style="margin-top: 10px; padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Google</button>`;
+        const youButtonHTML = `<button onclick="window.open('https://you.com/search?q=${encodeURIComponent(questionText)}', '_blank')" style="margin-top: 10px; padding: 5px 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">You</button>`;
 
         return `
             <p>
                 <strong>${i + 1}. ${questionText}</strong><br>
                 <span style="color: #007bff;">Your Answer: ${userAnswerText}</span><br>
                 <span style="color: #28a745;">Correct Answer: ${correctAnswerText}</span><br>
-                ${resultStatusHTML}
-                ${searchButtonHTML}
+                ${resultStatusHTML}<br>
+                ${googleButtonHTML} ${youButtonHTML}
             </p>`;
     }).join('');
 
