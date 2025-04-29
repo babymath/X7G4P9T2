@@ -462,3 +462,21 @@ function clearCurrentResponse() {
         updateNavSummary();
     }
 }
+
+function showQuestionsAndAnswers() {
+    const questionsAndAnswersHTML = questions.map((q, i) => {
+        const questionText = q[questionKey] || `Question ${i + 1} text missing`;
+        const correctAnswer = q[answerKey] || 'Correct answer data missing';
+
+        return `
+            <p>
+                <strong>${i + 1}. ${questionText}</strong><br>
+                <span style="color: #28a745;">Answer: ${correctAnswer}</span>
+            </p>`;
+    }).join('');
+
+    resultsDiv.innerHTML = questionsAndAnswersHTML || `<p>No questions to display.</p>`;
+}
+
+// Attach event listener to the new button
+document.getElementById('show-questions-answers').addEventListener('click', showQuestionsAndAnswers);
