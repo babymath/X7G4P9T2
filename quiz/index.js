@@ -1,4 +1,6 @@
 const quizDataFile = "https://raw.githubusercontent.com/babymath/imp-file/refs/heads/main/quizzes.json";
+const DEFAULT_TOPIC = "All";
+const ERROR_OPTION = "Error";
 
 let quizDataCache = null;
 let currentQuizzes = [];
@@ -17,65 +19,51 @@ fetch(quizDataFile)
   })
   .then((data) => {
     quizDataCache = data;
-    populateSubjects(data.Subject);
+    populateSubjects(data);
   })
   .catch((err) => {
     console.error("Error loading data:", err);
     showError("Unable to load subjects. Please check your network or the data source URL.");
   });
 
-function populateSubjects(subjects) {
-  const uniqueSubjects = new Map();
-  subjects.forEach((subject) => {
-    const name = subject.Name.trim();
-    const key = name.toLowerCase();
-    if (subject.Total > 0 && !uniqueSubjects.has(key)) {
-      uniqueSubjects.set(key, `${name}${" ".repeat(20 - name.length)}(${subject.Total})`);
-    }
-  });
-
-  subjectFilter.innerHTML = '<option value="">Select Subject</option>' +
-    Array.from(uniqueSubjects.entries())
-      .map(([key, text]) => `<option value="${key}">${text}</option>`)
-      .join("");
+function populateSubjects(data) {
+  const uniqueSubjects = [...new Set(data.map((quiz) => quiz.subject))];
+  const options = uniqueSubjects.map(subject => `<option value="${subject}">${subject}</option>`).join("");
+  subjectFilter.innerHTML = `<option value="">Select Subject</option>${options}`;
 }
 
-subjectFilter.onchange = function () {
+subjectFilter.onchange = debounce(function () {
   const selectedSubject = this.value;
   selectedSubjectGlobal = selectedSubject;
 
-  const matchedKey = Object.keys(quizDataCache).find(
-    key => key.toLowerCase() === selectedSubject.toLowerCase()
-  );
+  const filteredQuizzes = quizDataCache.filter(quiz => quiz.subject === selectedSubject);
 
-  topicFilter.innerHTML = '<option value="All">All</option>';
-  quizList.innerHTML = "<p>Loading quizzes...</p>";
-  currentQuizzes = [];
-
-  if (matchedKey && quizDataCache[matchedKey]) {
-    currentQuizzes = quizDataCache[matchedKey].map((quiz) => ({
-      file: quiz.File,
-      topic: quiz.Topic,
-      id: quiz.Id
+  if (filteredQuizzes.length > 0) {
+    currentQuizzes = filteredQuizzes.map((quiz) => ({
+      file: quiz.file,
+      topic: quiz.topic,
+      id: quiz.id
     }));
     populateTopicFilter(currentQuizzes);
     showQuizSelection();
   } else {
+    topicFilter.innerHTML = `<option value="${DEFAULT_TOPIC}">${DEFAULT_TOPIC}</option>`;
     quizList.innerHTML = "<p>No quizzes found for this subject.</p>";
+    currentQuizzes = [];
   }
-};
+}, 300);
 
 function populateTopicFilter(quizzes) {
   const uniqueTopics = [...new Set(quizzes.map(q => q.topic))];
-  topicFilter.innerHTML = '<option value="All">All</option>' +
-    uniqueTopics.map(topic => `<option value="${topic}">${topic}</option>`).join("");
+  const options = uniqueTopics.map(topic => `<option value="${topic}">${topic}</option>`).join("");
+  topicFilter.innerHTML = `<option value="${DEFAULT_TOPIC}">${DEFAULT_TOPIC}</option>${options}`;
 }
 
-topicFilter.onchange = showQuizSelection;
+topicFilter.onchange = debounce(showQuizSelection, 300);
 
 function showQuizSelection() {
   const topicFilterValue = topicFilter.value;
-  const filteredQuizzes = topicFilterValue === "All"
+  const filteredQuizzes = topicFilterValue === DEFAULT_TOPIC
     ? currentQuizzes
     : currentQuizzes.filter(q => q.topic === topicFilterValue);
 
@@ -84,31 +72,40 @@ function showQuizSelection() {
     return;
   }
 
-  quizList.innerHTML = filteredQuizzes.map(quiz => `
-    <button aria-label="Select ${quiz.id} ${quiz.topic}" onclick="loadQuiz('${quiz.file}', '${quiz.id}, ${quiz.topic}')">
+  const quizButtons = filteredQuizzes.map(quiz => `
+    <button aria-label="Select ${quiz.id} ${quiz.topic}" onclick="loadQuiz('${quiz.id}')">
       <div style="text-align: left;">
         <strong>${quiz.id}</strong><br>
         <small>${quiz.topic}</small>
       </div>
     </button>
   `).join("");
+
+  quizList.innerHTML = quizButtons;
 }
 
-function loadQuiz(fileName, quizTitle) {
-  const queryParams = new URLSearchParams({
-    quizFile: fileName,
-    quizTitle: quizTitle
-  }).toString();
+function loadQuiz(quizId) {
+  const queryParams = new URLSearchParams({ id: quizId }).toString();
 
   // Reset filters and message
   subjectFilter.value = "";
-  topicFilter.innerHTML = '<option value="All">All</option>';
+  topicFilter.innerHTML = `<option value="${DEFAULT_TOPIC}">${DEFAULT_TOPIC}</option>`;
   quizList.innerHTML = "<p>Please select a subject.</p>";
 
   window.location.href = `quiz.html?${queryParams}`;
 }
 
 function showError(message) {
-  subjectFilter.innerHTML = '<option value="">Error</option>';
+  subjectFilter.innerHTML = `<option value="">${ERROR_OPTION}</option>`;
   quizList.innerHTML = `<p style='color: red;'>⚠️ ${message}</p>`;
 }
+
+function debounce(func, delay) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), delay);
+  };
+}
+
+document.getElementById("quizList").setAttribute("aria-live", "polite");

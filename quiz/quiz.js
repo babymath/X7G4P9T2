@@ -1,3 +1,5 @@
+const quizDataFile = "https://raw.githubusercontent.com/babymath/imp-file/refs/heads/main/quizzes.json";
+
 let userLanguage = null;
 let questions = [];
 let userAnswers = [];
@@ -147,9 +149,72 @@ function startQuiz(finalTimeInMinutes) {
     }
 
     const urlParams = new URLSearchParams(window.location.search);
-    const quizFile = urlParams.get('quizFile');
-    const quizTitle = urlParams.get('quizTitle');
-    loadQuizData(quizFile, quizTitle);
+    const quizId = urlParams.get('id'); // Ensure this matches the parameter sent from index.js
+
+    if (!quizId) {
+        console.error("Quiz ID is missing in the URL. Redirecting to index.html.");
+        alert("Quiz ID is missing. Redirecting to the selection page.");
+        window.location.href = 'index.html';
+        return;
+    }
+
+    fetch(quizDataFile)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to fetch quiz data. Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            const quizData = data.find(item => item.id === quizId); // Compare as a string
+            if (!quizData) {
+                console.error(`Quiz with ID ${quizId} not found in data.json.`);
+                alert("Quiz not found. Redirecting to the selection page.");
+                window.location.href = 'index.html';
+                return;
+            }
+
+            const fileId = quizData.file;
+            const topic = quizData.topic;
+
+            quizTitleH2.textContent = `${quizId} (${topic})`;
+
+            const callbackName = 'quizDataCallback';
+
+            window[callbackName] = function (data) {
+                if (!Array.isArray(data) || data.length === 0) {
+                    console.error("Quiz data is empty or not in the expected format.");
+                    alert("Failed to load quiz questions. Please ensure the file exists and is valid JSON.");
+                    quizContentDiv.innerHTML = `<p style="color: red; text-align: center;">Failed to load quiz questions. <a href="index.html">Go back to selection</a></p>`;
+                    quizContentDiv.style.display = 'block';
+                    languageSelectionDiv.style.display = 'none';
+                    return;
+                }
+                questions = data;
+                userAnswers = new Array(questions.length).fill(null);
+                viewedQuestions.clear();
+                currentQuestionIndex = 0;
+                generateNavigation();
+                loadQuestion(0);
+                updateNavSummary();
+            };
+
+            const script = document.createElement('script');
+            script.src = `https://script.google.com/macros/s/AKfycbxYhXVQ9pcqQrhraqUGJtq_o-qFNT2WcInOwMHlqTip8wSGtkq_284lqHdSmU-Te9YA/exec?id=${fileId}&callback=${callbackName}`;
+            script.onerror = function () {
+                console.error("Error loading quiz data from the external script.");
+                alert("Error loading quiz data. Please check the file ID and try again.");
+                quizContentDiv.innerHTML = `<p style="color: red; text-align: center;">Failed to load quiz questions. <a href="index.html">Go back to selection</a></p>`;
+                quizContentDiv.style.display = 'block';
+                languageSelectionDiv.style.display = 'none';
+            };
+            document.body.appendChild(script);
+        })
+        .catch(error => {
+            console.error("Error fetching quiz metadata:", error);
+            alert("Error loading quiz metadata. Redirecting to the selection page.");
+            window.location.href = 'index.html';
+        });
 }
 
 function initializeNavigationButtons() {
@@ -181,13 +246,13 @@ function scrollToLastOption() {
 function initializePageLoad() {
     window.addEventListener('load', () => {
         const urlParams = new URLSearchParams(window.location.search);
-        const quizFile = urlParams.get('quizFile');
-        const quizTitle = urlParams.get('quizTitle');
+        const quizId = urlParams.get('id'); // Use 'id' to match the query parameter sent from index.js
 
-        if (!quizFile || !quizTitle) {
+        if (!quizId) {
+            console.error("Quiz ID is missing in the URL. Redirecting to index.html.");
             window.location.href = 'index.html';
         } else {
-            loadQuizData(quizFile, quizTitle);
+            loadQuizData(quizId);
         }
     });
 }
@@ -221,40 +286,56 @@ function startTimer(durationInSeconds) {
     }, 1000);
 }
 
-function loadQuizData(quizFile, quizTitle) {
-    const [quizId, topic] = quizTitle.split(',').map(part => part.trim());
+function loadQuizData(quizId) {
+    fetch(quizDataFile) // Use the constant instead of hardcoding "data.json"
+        .then(response => response.json())
+        .then(data => {
+            const quizData = data.find(item => item.id === quizId); // Compare as a string
+            if (!quizData) {
+                alert("Quiz not found. Please check the quiz ID.");
+                window.location.href = 'index.html';
+                return;
+            }
 
-    quizTitleH2.textContent = `${quizId} (${topic})`;
+            const fileId = quizData.file;
+            const topic = quizData.topic;
 
-    const fileId = quizFile;
-    const callbackName = 'quizDataCallback';
+            quizTitleH2.textContent = `${quizId} (${topic})`;
 
-    window[callbackName] = function (data) {
-        if (!Array.isArray(data) || data.length === 0) {
-            alert("Quiz data is empty or not in the expected array format.");
-            quizContentDiv.innerHTML = `<p style="color: red; text-align: center;">Failed to load quiz questions. Please ensure the file exists and is valid JSON. <a href="index.html">Go back to selection</a></p>`;
-            quizContentDiv.style.display = 'block';
-            languageSelectionDiv.style.display = 'none';
-            return;
-        }
-        questions = data;
-        userAnswers = new Array(questions.length).fill(null);
-        viewedQuestions.clear();
-        currentQuestionIndex = 0;
-        generateNavigation();
-        loadQuestion(0);
-        updateNavSummary();
-    };
+            const callbackName = 'quizDataCallback';
 
-    const script = document.createElement('script');
-    script.src = `https://script.google.com/macros/s/AKfycbxYhXVQ9pcqQrhraqUGJtq_o-qFNT2WcInOwMHlqTip8wSGtkq_284lqHdSmU-Te9YA/exec?id=${fileId}&callback=${callbackName}`;
-    script.onerror = function () {
-        alert("Error loading quiz data. Please check the file ID and try again.");
-        quizContentDiv.innerHTML = `<p style="color: red; text-align: center;">Failed to load quiz questions. Please ensure the file ID is correct. <a href="index.html">Go back to selection</a></p>`;
-        quizContentDiv.style.display = 'block';
-        languageSelectionDiv.style.display = 'none';
-    };
-    document.body.appendChild(script);
+            window[callbackName] = function (data) {
+                if (!Array.isArray(data) || data.length === 0) {
+                    alert("Quiz data is empty or not in the expected array format.");
+                    quizContentDiv.innerHTML = `<p style="color: red; text-align: center;">Failed to load quiz questions. Please ensure the file exists and is valid JSON. <a href="index.html">Go back to selection</a></p>`;
+                    quizContentDiv.style.display = 'block';
+                    languageSelectionDiv.style.display = 'none';
+                    return;
+                }
+                questions = data;
+                userAnswers = new Array(questions.length).fill(null);
+                viewedQuestions.clear();
+                currentQuestionIndex = 0;
+                generateNavigation();
+                loadQuestion(0);
+                updateNavSummary();
+            };
+
+            const script = document.createElement('script');
+            script.src = `https://script.google.com/macros/s/AKfycbxYhXVQ9pcqQrhraqUGJtq_o-qFNT2WcInOwMHlqTip8wSGtkq_284lqHdSmU-Te9YA/exec?id=${fileId}&callback=${callbackName}`;
+            script.onerror = function () {
+                alert("Error loading quiz data. Please check the file ID and try again.");
+                quizContentDiv.innerHTML = `<p style="color: red; text-align: center;">Failed to load quiz questions. Please ensure the file ID is correct. <a href="index.html">Go back to selection</a></p>`;
+                quizContentDiv.style.display = 'block';
+                languageSelectionDiv.style.display = 'none';
+            };
+            document.body.appendChild(script);
+        })
+        .catch(error => {
+            alert("Error loading quiz metadata. Please try again.");
+            console.error(error);
+            window.location.href = 'index.html';
+        });
 }
 
 function loadQuestion(index) {
@@ -359,7 +440,7 @@ function showResults() {
     let attemptedCount = 0;
 
     const urlParams = new URLSearchParams(window.location.search);
-    const quizTitle = urlParams.get('quizTitle');
+    const quizId = urlParams.get('quizId');
 
     const resultsHTML = questions.map((q, i) => {
         const userAnswer = userAnswers[i];
@@ -416,7 +497,7 @@ function showResults() {
     const quizTitleElement = document.createElement('p');
     quizTitleElement.style.fontSize = '0.9em';
     quizTitleElement.style.color = '#555';
-    quizTitleElement.textContent = `Quiz Title: ${quizTitle || 'N/A'}`;
+    quizTitleElement.textContent = `Quiz ID: ${quizId || 'N/A'}`;
     resultHeading.insertAdjacentElement('afterend', quizTitleElement);
 
     window.scrollTo(0, 0);
