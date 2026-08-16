@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OSI Model – Complete Guide + Related Concepts</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ----- RESET & BASE ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7fc;
+            color: #1e2a3a;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* ----- HEADER ----- */
+        .header {
+            text-align: center;
+            padding: 2.5rem 1rem 1.5rem;
+            background: linear-gradient(145deg, #0b1a2e, #1a2f44);
+            border-radius: 28px;
+            color: #fff;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 i {
+            color: #6fc3ff;
+            margin-right: 12px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.85;
+            max-width: 680px;
+            margin: 0.5rem auto 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(4px);
+            padding: 0.45rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            letter-spacing: 0.3px;
+        }
+
+        .badge i {
+            margin-right: 6px;
+            color: #6fc3ff;
+        }
+
+        /* ----- INTRO CARDS ----- */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .intro-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 2rem 2rem 1.8rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .intro-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 20, 40, 0.08);
+        }
+
+        .intro-card h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .intro-card h2 i {
+            color: #1f6390;
+            font-size: 1.8rem;
+        }
+
+        .intro-card p {
+            color: #2c3e50;
+            font-size: 1.05rem;
+        }
+
+        .intro-card ul {
+            margin-top: 0.8rem;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .intro-card ul li {
+            padding: 0.3rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.98rem;
+        }
+
+        .intro-card ul li i {
+            color: #1f6390;
+            width: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* ----- OSI DIAGRAM (vertical) ----- */
+        .osi-diagram-wrapper {
+            background: #fff;
+            border-radius: 28px;
+            padding: 2rem 1.5rem 2rem 2rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .osi-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .osi-layer {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1.2rem;
+            border-radius: 14px;
+            background: #f0f5fb;
+            transition: all 0.2s ease;
+            cursor: default;
+            border-left: 5px solid transparent;
+        }
+
+        .osi-layer.active {
+            background: #e1edf9;
+            border-left-color: #1f6390;
+            box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        .osi-layer .layer-num {
+            font-weight: 700;
+            font-size: 1.1rem;
+            min-width: 32px;
+            color: #1f6390;
+        }
+
+        .osi-layer .layer-name {
+            font-weight: 600;
+            font-size: 1.05rem;
+            flex: 1;
+        }
+
+        .osi-layer .layer-icon {
+            font-size: 1.3rem;
+            color: #1f6390;
+            width: 30px;
+            text-align: center;
+        }
+
+        .osi-layer .layer-pdu {
+            font-size: 0.8rem;
+            background: #d5e3ef;
+            padding: 0.2rem 0.9rem;
+            border-radius: 40px;
+            color: #1a3b50;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .osi-layer.l1 {
+            border-left-color: #7fb3d5;
+        }
+        .osi-layer.l2 {
+            border-left-color: #5f9bc0;
+        }
+        .osi-layer.l3 {
+            border-left-color: #3f83ab;
+        }
+        .osi-layer.l4 {
+            border-left-color: #2a6f96;
+        }
+        .osi-layer.l5 {
+            border-left-color: #1f5f82;
+        }
+        .osi-layer.l6 {
+            border-left-color: #154f6e;
+        }
+        .osi-layer.l7 {
+            border-left-color: #0b3f5a;
+        }
+
+        /* right side – layer details */
+        .layer-detail-panel {
+            background: #f8faff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            min-height: 400px;
+            border: 1px solid #eaf0f6;
+            transition: all 0.2s ease;
+        }
+
+        .layer-detail-panel .detail-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            min-height: 300px;
+            text-align: center;
+            color: #6c869e;
+        }
+
+        .layer-detail-panel .detail-placeholder i {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #b6cfdf;
+        }
+
+        .layer-detail-panel .detail-placeholder h3 {
+            font-size: 1.4rem;
+            color: #1e3b4f;
+            margin-bottom: 0.3rem;
+        }
+
+        .layer-detail-panel .detail-content {
+            display: none;
+        }
+
+        .layer-detail-panel .detail-content.active {
+            display: block;
+            animation: fadeSlide 0.25s ease;
+        }
+
+        @keyframes fadeSlide {
+            0% {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .layer-detail-panel .detail-content h3 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #0b2a3f;
+            margin-bottom: 0.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .layer-detail-panel .detail-content h3 i {
+            color: #1f6390;
+            font-size: 1.8rem;
+        }
+
+        .layer-detail-panel .detail-content .subtitle {
+            font-weight: 500;
+            color: #3c6a87;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            border-bottom: 2px solid #dce8f2;
+            padding-bottom: 0.5rem;
+        }
+
+        .layer-detail-panel .detail-content p {
+            color: #1f3345;
+            margin-bottom: 1rem;
+        }
+
+        .layer-detail-panel .detail-content ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1rem;
+        }
+
+        .layer-detail-panel .detail-content ul li {
+            padding: 0.3rem 0 0.3rem 1.8rem;
+            position: relative;
+            font-size: 0.98rem;
+        }
+
+        .layer-detail-panel .detail-content ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #1f6390;
+            font-weight: 700;
+        }
+
+        .layer-detail-panel .detail-content .example-box {
+            background: #e6f0f8;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            border-left: 4px solid #1f6390;
+            margin-top: 0.5rem;
+        }
+
+        .layer-detail-panel .detail-content .example-box i {
+            margin-right: 8px;
+            color: #1f6390;
+        }
+
+        /* ----- SENDER vs RECEIVER (data flow) ----- */
+        .flow-section {
+            background: #fff;
+            border-radius: 28px;
+            padding: 2rem 2rem 2.2rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .flow-section h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .flow-section h2 i {
+            color: #1f6390;
+        }
+
+        .flow-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .flow-col {
+            background: #f8faff;
+            border-radius: 20px;
+            padding: 1.5rem 1.8rem;
+            border: 1px solid #eaf0f6;
+        }
+
+        .flow-col h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .flow-col h3 i {
+            font-size: 1.4rem;
+        }
+
+        .flow-col h3 .sender-icon {
+            color: #1f8b4c;
+        }
+        .flow-col h3 .receiver-icon {
+            color: #b13e3e;
+        }
+
+        .flow-col ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .flow-col ul li {
+            padding: 0.6rem 0 0.6rem 2rem;
+            position: relative;
+            border-bottom: 1px solid #ecf3f9;
+            font-size: 0.98rem;
+        }
+
+        .flow-col ul li:last-child {
+            border-bottom: 0;
+        }
+
+        .flow-col ul li::before {
+            position: absolute;
+            left: 0;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .flow-col.sender ul li::before {
+            content: '⬇';
+            color: #1f8b4c;
+        }
+
+        .flow-col.receiver ul li::before {
+            content: '⬆';
+            color: #b13e3e;
+        }
+
+        .flow-col .step-highlight {
+            background: #e3eef9;
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            margin-left: 6px;
+            color: #0b3f5a;
+        }
+
+        /* ===== NEW: RELATED CONCEPTS SECTION ===== */
+        .related-section {
+            background: #fff;
+            border-radius: 28px;
+            padding: 2rem 2rem 2.2rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .related-section h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .related-section h2 i {
+            color: #1f6390;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .related-card {
+            background: #f8faff;
+            border-radius: 20px;
+            padding: 1.5rem 1.8rem;
+            border: 1px solid #eaf0f6;
+        }
+
+        .related-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .related-card h3 i {
+            color: #1f6390;
+            font-size: 1.3rem;
+        }
+
+        .related-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        .related-card table th {
+            text-align: left;
+            padding: 0.5rem 0.3rem;
+            border-bottom: 2px solid #dce8f2;
+            color: #1a3b50;
+        }
+        .related-card table td {
+            padding: 0.5rem 0.3rem;
+            border-bottom: 1px solid #eaf0f6;
+        }
+        .related-card table tr:last-child td {
+            border-bottom: 0;
+        }
+        .related-card .tag {
+            background: #d5e3ef;
+            padding: 0.15rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #0b3f5a;
+            display: inline-block;
+        }
+        .related-card .highlight-blue {
+            background: #e3eef9;
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        .mnemonic-box {
+            background: #e6f0f8;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            margin-top: 0.8rem;
+            font-size: 0.98rem;
+            border-left: 4px solid #1f6390;
+        }
+        .mnemonic-box strong {
+            color: #0b3f5a;
+        }
+        .peer-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 0.8rem 0;
+            gap: 0.5rem;
+            font-weight: 500;
+            color: #1a3b50;
+        }
+        .peer-flow .arrow-symbol {
+            font-size: 1.8rem;
+            color: #1f6390;
+        }
+        .peer-flow .peer-item {
+            background: #dce8f2;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+        }
+
+        /* ----- RESPONSIVE ----- */
+        @media (max-width: 1024px) {
+            .osi-diagram-wrapper {
+                grid-template-columns: 1fr;
+                gap: 1.8rem;
+                padding: 1.5rem;
+            }
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+            .flow-grid {
+                grid-template-columns: 1fr;
+            }
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .badge-row {
+                gap: 0.5rem;
+            }
+            .badge {
+                font-size: 0.75rem;
+                padding: 0.3rem 1rem;
+            }
+            .osi-layer {
+                padding: 0.5rem 0.8rem;
+                flex-wrap: wrap;
+                gap: 0.3rem;
+            }
+            .osi-layer .layer-pdu {
+                font-size: 0.7rem;
+                padding: 0.1rem 0.6rem;
+            }
+            .layer-detail-panel {
+                padding: 1.2rem;
+            }
+            .flow-col {
+                padding: 1.2rem;
+            }
+            .related-card {
+                padding: 1.2rem;
+            }
+            .peer-flow {
+                font-size: 0.85rem;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #eaf0f6;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b0c9dd;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8aadc9;
+        }
+
+        .text-muted {
+            color: #5d7a94;
+            font-size: 0.92rem;
+        }
+        .mt-1 {
+            margin-top: 0.8rem;
+        }
+        .flex {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== HEADER ===== -->
+        <header class="header">
+            <h1><i class="fas fa-network-wired"></i> OSI Model</h1>
+            <p>Open Systems Interconnection — a conceptual framework that standardises the functions of a networking system into seven distinct layers.</p>
+            <div class="badge-row">
+                <span class="badge"><i class="fas fa-layer-group"></i> 7 Layers</span>
+                <span class="badge"><i class="fas fa-arrow-up"></i> Sender → Receiver</span>
+                <span class="badge"><i class="fas fa-code"></i> PDU: Protocol Data Unit</span>
+                <span class="badge"><i class="fas fa-book"></i> ISO / IEC 7498</span>
+            </div>
+        </header>
+
+        <!-- ===== INTRO ===== -->
+        <div class="intro-grid">
+            <div class="intro-card">
+                <h2><i class="fas fa-question-circle"></i> What is the OSI Model?</h2>
+                <p>The <strong>OSI (Open Systems Interconnection) model</strong> is a reference model that describes how data travels from an application on one device to an application on another device over a network.</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Developed by ISO in 1984</li>
+                    <li><i class="fas fa-check-circle"></i> Divides network communication into 7 layers</li>
+                    <li><i class="fas fa-check-circle"></i> Each layer has a specific function</li>
+                    <li><i class="fas fa-check-circle"></i> Helps troubleshoot and design networks</li>
+                </ul>
+            </div>
+            <div class="intro-card">
+                <h2><i class="fas fa-cogs"></i> How It Works</h2>
+                <p>Data is passed <strong>down</strong> the layers at the <strong>sender</strong> side (encapsulation) and <strong>up</strong> the layers at the <strong>receiver</strong> side (de-encapsulation).</p>
+                <ul>
+                    <li><i class="fas fa-arrow-down"></i> <strong>Sender:</strong> Application → Physical</li>
+                    <li><i class="fas fa-arrow-up"></i> <strong>Receiver:</strong> Physical → Application</li>
+                    <li><i class="fas fa-cube"></i> Each layer adds its own header (PDU)</li>
+                    <li><i class="fas fa-exchange-alt"></i> Peer layers communicate logically</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ===== OSI DIAGRAM + DETAILS ===== -->
+        <div class="osi-diagram-wrapper" id="osiWrapper">
+            <!-- left: stack -->
+            <div class="osi-stack" id="osiStack">
+                <!-- Layer 7 -->
+                <div class="osi-layer l7" data-layer="7">
+                    <span class="layer-num">7</span>
+                    <span class="layer-icon"><i class="fas fa-window-maximize"></i></span>
+                    <span class="layer-name">Application</span>
+                    <span class="layer-pdu">Data</span>
+                </div>
+                <!-- Layer 6 -->
+                <div class="osi-layer l6" data-layer="6">
+                    <span class="layer-num">6</span>
+                    <span class="layer-icon"><i class="fas fa-lock"></i></span>
+                    <span class="layer-name">Presentation</span>
+                    <span class="layer-pdu">Data</span>
+                </div>
+                <!-- Layer 5 -->
+                <div class="osi-layer l5" data-layer="5">
+                    <span class="layer-num">5</span>
+                    <span class="layer-icon"><i class="fas fa-handshake"></i></span>
+                    <span class="layer-name">Session</span>
+                    <span class="layer-pdu">Data</span>
+                </div>
+                <!-- Layer 4 -->
+                <div class="osi-layer l4" data-layer="4">
+                    <span class="layer-num">4</span>
+                    <span class="layer-icon"><i class="fas fa-exchange-alt"></i></span>
+                    <span class="layer-name">Transport</span>
+                    <span class="layer-pdu">Segment</span>
+                </div>
+                <!-- Layer 3 -->
+                <div class="osi-layer l3" data-layer="3">
+                    <span class="layer-num">3</span>
+                    <span class="layer-icon"><i class="fas fa-globe"></i></span>
+                    <span class="layer-name">Network</span>
+                    <span class="layer-pdu">Packet</span>
+                </div>
+                <!-- Layer 2 -->
+                <div class="osi-layer l2" data-layer="2">
+                    <span class="layer-num">2</span>
+                    <span class="layer-icon"><i class="fas fa-ethernet"></i></span>
+                    <span class="layer-name">Data Link</span>
+                    <span class="layer-pdu">Frame</span>
+                </div>
+                <!-- Layer 1 -->
+                <div class="osi-layer l1" data-layer="1">
+                    <span class="layer-num">1</span>
+                    <span class="layer-icon"><i class="fas fa-plug"></i></span>
+                    <span class="layer-name">Physical</span>
+                    <span class="layer-pdu">Bits</span>
+                </div>
+            </div>
+
+            <!-- right: detail panel -->
+            <div class="layer-detail-panel" id="detailPanel">
+                <!-- placeholder (shown when no layer selected) -->
+                <div class="detail-placeholder" id="placeholder">
+                    <i class="fas fa-mouse-pointer"></i>
+                    <h3>Click a layer</h3>
+                    <p>Select any layer from the stack to see its role, functions, and examples.</p>
+                </div>
+
+                <!-- detail content for each layer (hidden by default) -->
+                <div class="detail-content" data-layer="7">
+                    <h3><i class="fas fa-window-maximize"></i> Application Layer</h3>
+                    <div class="subtitle">Layer 7 · User interaction</div>
+                    <p>The <strong>Application layer</strong> is the closest to the end-user. It provides network services directly to applications, enabling user communication and data exchange.</p>
+                    <ul>
+                        <li>Provides interfaces for applications</li>
+                        <li>Protocols: HTTP, FTP, SMTP, DNS, Telnet</li>
+                        <li>Handles resource sharing &amp; remote access</li>
+                    </ul>
+                    <div class="example-box">
+                        <i class="fas fa-lightbulb"></i> <strong>Example:</strong> A web browser (Chrome) using HTTP to request a webpage from a server.
+                    </div>
+                </div>
+
+                <div class="detail-content" data-layer="6">
+                    <h3><i class="fas fa-lock"></i> Presentation Layer</h3>
+                    <div class="subtitle">Layer 6 · Data formatting &amp; encryption</div>
+                    <p>The <strong>Presentation layer</strong> translates data between the application and the network. It ensures that data is readable by the receiving system.</p>
+                    <ul>
+                        <li>Data encryption &amp; decryption</li>
+                        <li>Compression &amp; decompression</li>
+                        <li>Character encoding (ASCII, Unicode, EBCDIC)</li>
+                    </ul>
+                    <div class="example-box">
+                        <i class="fas fa-lightbulb"></i> <strong>Example:</strong> SSL/TLS encryption for secure data transmission, or JPEG/MPEG compression.
+                    </div>
+                </div>
+
+                <div class="detail-content" data-layer="5">
+                    <h3><i class="fas fa-handshake"></i> Session Layer</h3>
+                    <div class="subtitle">Layer 5 · Connection management</div>
+                    <p>The <strong>Session layer</strong> establishes, manages, and terminates communication sessions between two devices.</p>
+                    <ul>
+                        <li>Session setup, maintenance &amp; teardown</li>
+                        <li>Dialog control (half-duplex / full-duplex)</li>
+                        <li>Checkpointing / recovery</li>
+                    </ul>
+                    <div class="example-box">
+                        <i class="fas fa-lightbulb"></i> <strong>Example:</strong> An RPC (Remote Procedure Call) session or a NetBIOS name service.
+                    </div>
+                </div>
+
+                <div class="detail-content" data-layer="4">
+                    <h3><i class="fas fa-exchange-alt"></i> Transport Layer</h3>
+                    <div class="subtitle">Layer 4 · End-to-end delivery</div>
+                    <p>The <strong>Transport layer</strong> ensures complete data transfer with error recovery and flow control. It segments data and reassembles it at the destination.</p>
+                    <ul>
+                        <li>Segmentation &amp; reassembly</li>
+                        <li>Error detection &amp; recovery</li>
+                        <li>Flow control &amp; congestion control</li>
+                        <li>Protocols: TCP (reliable), UDP (unreliable)</li>
+                    </ul>
+                    <div class="example-box">
+                        <i class="fas fa-lightbulb"></i> <strong>Example:</strong> TCP establishes a connection (3-way handshake) and ensures all segments arrive correctly.
+                    </div>
+                </div>
+
+                <div class="detail-content" data-layer="3">
+                    <h3><i class="fas fa-globe"></i> Network Layer</h3>
+                    <div class="subtitle">Layer 3 · Routing &amp; addressing</div>
+                    <p>The <strong>Network layer</strong> is responsible for logical addressing and routing data across multiple networks.</p>
+                    <ul>
+                        <li>Logical addressing (IP addresses)</li>
+                        <li>Routing (path determination)</li>
+                        <li>Packet forwarding</li>
+                        <li>Protocols: IP, ICMP, OSPF, BGP</li>
+                    </ul>
+                    <div class="example-box">
+                        <i class="fas fa-lightbulb"></i> <strong>Example:</strong> A router uses IP addresses to forward packets from source to destination network.
+                    </div>
+                </div>
+
+                <div class="detail-content" data-layer="2">
+                    <h3><i class="fas fa-ethernet"></i> Data Link Layer</h3>
+                    <div class="subtitle">Layer 2 · Node-to-node delivery</div>
+                    <p>The <strong>Data Link layer</strong> handles the transmission of data between adjacent network nodes. It frames packets and manages error detection.</p>
+                    <ul>
+                        <li>Framing &amp; media access control (MAC)</li>
+                        <li>Physical addressing (MAC addresses)</li>
+                        <li>Error detection (CRC) &amp; flow control</li>
+                        <li>Sub-layers: LLC &amp; MAC</li>
+                        <li><strong>Trailer added:</strong> Frame Check Sequence (FCS) for error detection</li>
+                    </ul>
+                    <div class="example-box">
+                        <i class="fas fa-lightbulb"></i> <strong>Example:</strong> Ethernet switches use MAC addresses to forward frames within a local network.
+                    </div>
+                </div>
+
+                <div class="detail-content" data-layer="1">
+                    <h3><i class="fas fa-plug"></i> Physical Layer</h3>
+                    <div class="subtitle">Layer 1 · Raw bit transmission</div>
+                    <p>The <strong>Physical layer</strong> is the lowest layer. It transmits raw bits over a physical medium — cables, radio waves, or optical fibres.</p>
+                    <ul>
+                        <li>Bit representation (voltage, light, frequency)</li>
+                        <li>Data rate &amp; synchronization</li>
+                        <li>Transmission mode (simplex, half-duplex, full-duplex)</li>
+                        <li>Hardware: hubs, repeaters, cables, NICs</li>
+                    </ul>
+                    <div class="example-box">
+                        <i class="fas fa-lightbulb"></i> <strong>Example:</strong> An Ethernet cable transmitting electrical signals that represent 1s and 0s.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SENDER vs RECEIVER ===== -->
+        <div class="flow-section">
+            <h2><i class="fas fa-arrows-alt-h"></i> Sender vs Receiver — Data Flow</h2>
+            <div class="flow-grid">
+                <!-- Sender -->
+                <div class="flow-col sender">
+                    <h3><i class="fas fa-arrow-down sender-icon"></i> Sender (Encapsulation)</h3>
+                    <ul>
+                        <li><strong>Application</strong> — User data generated (e.g., email, file)</li>
+                        <li><strong>Presentation</strong> — Data formatted &amp; encrypted</li>
+                        <li><strong>Session</strong> — Session established with receiver</li>
+                        <li><strong>Transport</strong> — Data segmented into <span class="step-highlight">Segments</span></li>
+                        <li><strong>Network</strong> — Segments packed into <span class="step-highlight">Packets</span> (IP)</li>
+                        <li><strong>Data Link</strong> — Packets framed into <span class="step-highlight">Frames</span> (MAC) + <strong>Trailer</strong> (FCS)</li>
+                        <li><strong>Physical</strong> — Frames converted to <span class="step-highlight">Bits</span> &amp; transmitted</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-size:0.95rem; color:#1f4b6b;"><i class="fas fa-info-circle"></i> Each layer adds a header (Layer 2 also adds a trailer) — this is <strong>encapsulation</strong>.</p>
+                </div>
+
+                <!-- Receiver -->
+                <div class="flow-col receiver">
+                    <h3><i class="fas fa-arrow-up receiver-icon"></i> Receiver (Decapsulation)</h3>
+                    <ul>
+                        <li><strong>Physical</strong> — Bits received &amp; converted to frames</li>
+                        <li><strong>Data Link</strong> — Frame header + trailer removed → <span class="step-highlight">Packets</span></li>
+                        <li><strong>Network</strong> — Packet headers removed → <span class="step-highlight">Segments</span></li>
+                        <li><strong>Transport</strong> — Segments reassembled into data</li>
+                        <li><strong>Session</strong> — Session management &amp; sync</li>
+                        <li><strong>Presentation</strong> — Decryption &amp; formatting</li>
+                        <li><strong>Application</strong> — Data delivered to the user application</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-size:0.95rem; color:#1f4b6b;"><i class="fas fa-info-circle"></i> Each layer removes its corresponding header (and trailer) — this is <strong>decapsulation</strong>.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- ===== NEW: RELATED CONCEPTS (OSI vs TCP/IP, Devices, etc.) ===== -->
+        <!-- ============================================================ -->
+        <div class="related-section">
+            <h2><i class="fas fa-link"></i> Beyond the Layers – Related Concepts</h2>
+            <div class="related-grid">
+
+                <!-- Card 1: OSI vs TCP/IP -->
+                <div class="related-card">
+                    <h3><i class="fas fa-code-branch"></i> OSI vs TCP/IP Model</h3>
+                    <p style="font-size:0.95rem; margin-bottom:0.8rem;">The OSI model is theoretical; the <strong>TCP/IP model</strong> is the practical implementation used on the internet.</p>
+                    <table>
+                        <thead>
+                            <tr><th>OSI Layer</th><th>TCP/IP Layer</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>7, 6, 5 (Application, Presentation, Session)</td><td><span class="tag">Application</span></td></tr>
+                            <tr><td>4 (Transport)</td><td><span class="tag">Transport</span></td></tr>
+                            <tr><td>3 (Network)</td><td><span class="tag">Internet</span></td></tr>
+                            <tr><td>2, 1 (Data Link, Physical)</td><td><span class="tag">Network Access</span></td></tr>
+                        </tbody>
+                    </table>
+                    <div style="margin-top:0.8rem; font-size:0.9rem; background:#eef5fa; padding:0.6rem 1rem; border-radius:8px;">
+                        <i class="fas fa-info-circle" style="color:#1f6390;"></i> TCP/IP combines OSI L5–L7 into a single "Application" layer.
+                    </div>
+                </div>
+
+                <!-- Card 2: Network Devices & Layers -->
+                <div class="related-card">
+                    <h3><i class="fas fa-server"></i> Devices &amp; Their Layers</h3>
+                    <p style="font-size:0.95rem; margin-bottom:0.8rem;">Each networking device operates primarily at a specific layer of the OSI model.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Device</th><th>Layer</th><th>Function</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Hub / Repeater</td><td><span class="tag">L1 (Physical)</span></td><td>Signal regeneration / broadcasting</td></tr>
+                            <tr><td>Switch / Bridge</td><td><span class="tag">L2 (Data Link)</span></td><td>Forwarding frames via MAC addresses</td></tr>
+                            <tr><td>Router</td><td><span class="tag">L3 (Network)</span></td><td>Routing packets via IP addresses</td></tr>
+                            <tr><td>Firewall (L4)</td><td><span class="tag">L4 (Transport)</span></td><td>Filtering based on ports (TCP/UDP)</td></tr>
+                            <tr><td>Proxy / Load Balancer</td><td><span class="tag">L7 (Application)</span></td><td>Content-based routing / caching</td></tr>
+                        </tbody>
+                    </table>
+                    <div style="margin-top:0.8rem; font-size:0.9rem; background:#eef5fa; padding:0.6rem 1rem; border-radius:8px;">
+                        <i class="fas fa-lightbulb" style="color:#1f6390;"></i> A <strong>Layer 3 switch</strong> can route (L3) in addition to switching (L2).
+                    </div>
+                </div>
+
+                <!-- Card 3: Mnemonics -->
+                <div class="related-card">
+                    <h3><i class="fas fa-brain"></i> Mnemonics to Remember</h3>
+                    <p style="font-size:0.95rem; margin-bottom:0.5rem;">Easily recall the layer order with these common phrases:</p>
+                    <div class="mnemonic-box">
+                        <strong>Top → Bottom (L7 to L1):</strong><br />
+                        <span style="font-size:1.05rem;">“<strong>A</strong>ll <strong>P</strong>eople <strong>S</strong>eem <strong>T</strong>o <strong>N</strong>eed <strong>D</strong>ata <strong>P</strong>rocessing”</span>
+                        <div style="margin-top:0.3rem; opacity:0.8; font-size:0.9rem;">
+                            Application · Presentation · Session · Transport · Network · Data Link · Physical
+                        </div>
+                    </div>
+                    <div class="mnemonic-box" style="border-left-color:#b13e3e;">
+                        <strong>Bottom → Top (L1 to L7):</strong><br />
+                        <span style="font-size:1.05rem;">“<strong>P</strong>lease <strong>D</strong>o <strong>N</strong>ot <strong>T</strong>hrow <strong>S</strong>ausage <strong>P</strong>izza <strong>A</strong>way”</span>
+                        <div style="margin-top:0.3rem; opacity:0.8; font-size:0.9rem;">
+                            Physical · Data Link · Network · Transport · Session · Presentation · Application
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Peer-to-Peer (Logical Communication) -->
+                <div class="related-card">
+                    <h3><i class="fas fa-comments"></i> Peer-to-Peer (Logical) Communication</h3>
+                    <p style="font-size:0.95rem; margin-bottom:0.5rem;">Each layer on the <strong>sender</strong> communicates <em>logically</em> with its counterpart layer on the <strong>receiver</strong> via headers.</p>
+                    <div class="peer-flow">
+                        <span class="peer-item">L7 App</span>
+                        <span class="arrow-symbol">↔</span>
+                        <span class="peer-item">L7 App</span>
+                    </div>
+                    <div class="peer-flow">
+                        <span class="peer-item">L4 Transport</span>
+                        <span class="arrow-symbol">↔</span>
+                        <span class="peer-item">L4 Transport</span>
+                    </div>
+                    <div class="peer-flow">
+                        <span class="peer-item">L3 Network</span>
+                        <span class="arrow-symbol">↔</span>
+                        <span class="peer-item">L3 Network</span>
+                    </div>
+                    <div style="margin-top:0.5rem; font-size:0.9rem; background:#eef5fa; padding:0.6rem 1rem; border-radius:8px;">
+                        <i class="fas fa-arrow-right" style="color:#1f6390;"></i> Physically, data travels down and up through all layers, but <strong>logically</strong>, each layer only talks to its peer.
+                    </div>
+                    <div style="margin-top:0.5rem; font-size:0.9rem; background:#eef5fa; padding:0.6rem 1rem; border-radius:8px;">
+                        <i class="fas fa-wrench" style="color:#1f6390;"></i> <strong>Troubleshooting:</strong> Use <code>ping</code> (L3), <code>telnet</code> (L4), or browser dev tools (L7) to isolate issues.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <div style="text-align: center; padding: 1.5rem 0 0.5rem; color: #5d7a94; font-size: 0.95rem; border-top: 1px solid #dce8f2;">
+            <i class="fas fa-code"></i> OSI Model Reference · Click any layer to explore · Includes TCP/IP mapping, devices, mnemonics &amp; peer logic
+        </div>
+
+    </div>
+
+    <script>
+        (function() {
+            const layers = document.querySelectorAll('.osi-layer');
+            const detailContents = document.querySelectorAll('.detail-content');
+            const placeholder = document.getElementById('placeholder');
+
+            function resetDetails() {
+                detailContents.forEach(d => d.classList.remove('active'));
+                if (placeholder) placeholder.style.display = 'flex';
+                layers.forEach(l => l.classList.remove('active'));
+            }
+
+            function showLayer(layerNum) {
+                if (placeholder) placeholder.style.display = 'none';
+                detailContents.forEach(d => d.classList.remove('active'));
+                const target = document.querySelector(`.detail-content[data-layer="${layerNum}"]`);
+                if (target) target.classList.add('active');
+                layers.forEach(l => {
+                    l.classList.remove('active');
+                    if (l.dataset.layer === layerNum) {
+                        l.classList.add('active');
+                    }
+                });
+            }
+
+            layers.forEach(layer => {
+                layer.addEventListener('click', function(e) {
+                    const layerNum = this.dataset.layer;
+                    showLayer(layerNum);
+                });
+            });
+
+            // default: show Layer 4 (Transport) on load
+            window.addEventListener('DOMContentLoaded', function() {
+                showLayer('4');
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
