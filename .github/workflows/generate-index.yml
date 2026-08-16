@@ -1,0 +1,66 @@
+name: Generate Directory Index
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate index.html
+        run: |
+          cat << 'EOF' > generate.py
+          import os
+          from pathlib import Path
+
+          output_file = "index.html"
+          valid_exts = {".html", ".htm", ".pdf", ".md"}
+
+          links = []
+          for root, dirs, files in os.walk("."):
+              # Skip hidden dirs and git folders
+              dirs[:] = [d for d in dirs if not d.startswith(".")]
+              for file in sorted(files):
+                  if file.startswith(".") or file == output_file:
+                      continue
+                  p = Path(root) / file
+                  if p.suffix.lower() in valid_exts:
+                      rel_path = p.as_posix().lstrip("./")
+                      title = p.stem.replace("-", " ").replace("_", " ").title()
+                      links.append(f'      <li><a href="{rel_path}">{rel_path}</a></li>')
+
+          html = f"""<!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Repository Index</title>
+          </head>
+          <body>
+            <h1>File Index</h1>
+            <ul>
+          {"\n".join(links)}
+            </ul>
+          </body>
+          </html>"""
+
+          with open(output_file, "w", encoding="utf-8") as f:
+              f.write(html)
+          EOF
+          python3 generate.py
+          rm generate.py
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update index.html" && git push)
