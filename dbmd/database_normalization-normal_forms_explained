@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Database Normalization — Normal Forms Explained</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <style>
+        /* ───── Reset & Base ───── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* ───── Scrollbar ───── */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e9edf2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 12px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+
+        /* ───── Container ───── */
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ───── Navigation ───── */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.80);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+            padding: 14px 0;
+            transition: box-shadow 0.2s;
+        }
+        .navbar.scrolled {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .nav-brand {
+            font-weight: 800;
+            font-size: 1.3rem;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-brand i {
+            color: #3b82f6;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #334155;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #1d4ed8;
+            border-bottom-color: #3b82f6;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #0f172a;
+            cursor: pointer;
+        }
+
+        /* ───── Hero ───── */
+        .hero {
+            padding: 64px 0 48px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: #475569;
+            max-width: 720px;
+            margin: 0 auto 28px;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #eef2ff;
+            color: #1d4ed8;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 8px 20px;
+            border-radius: 40px;
+            border: 1px solid #c7d2fe;
+        }
+        .hero-badge i {
+            font-size: 1rem;
+        }
+
+        /* ───── Section common ───── */
+        section {
+            padding: 48px 0 56px;
+            border-bottom: 1px solid #e9edf2;
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title .badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 2px 14px;
+            border-radius: 30px;
+            letter-spacing: 0.01em;
+        }
+        .section-sub {
+            color: #475569;
+            font-size: 1.05rem;
+            margin-bottom: 28px;
+            max-width: 700px;
+        }
+
+        /* ───── Cards ───── */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 16px;
+        }
+        @media (max-width: 820px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 24px 28px 28px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eef2f6;
+            transition: transform 0.15s, box-shadow 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .card-header i {
+            font-size: 1.2rem;
+        }
+        .card-header .before-tag {
+            color: #b91c1c;
+        }
+        .card-header .after-tag {
+            color: #15803d;
+        }
+
+        .card p {
+            color: #334155;
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+        }
+
+        .card ul {
+            padding-left: 20px;
+            color: #334155;
+            font-size: 0.92rem;
+            margin-bottom: 14px;
+        }
+        .card ul li {
+            margin-bottom: 4px;
+        }
+
+        /* ───── Tables ───── */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 8px 0 4px;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            background: #fafbfc;
+        }
+        .table-wrap table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            min-width: 360px;
+        }
+        .table-wrap th {
+            background: #f1f5f9;
+            font-weight: 600;
+            color: #1e293b;
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 2px solid #d1d9e6;
+        }
+        .table-wrap td {
+            padding: 9px 14px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #1e293b;
+        }
+        .table-wrap tr:last-child td {
+            border-bottom: none;
+        }
+        .table-wrap .highlight-violation {
+            background: #fef2f2;
+        }
+        .table-wrap .highlight-violation td {
+            color: #991b1b;
+            font-weight: 500;
+        }
+        .table-wrap .highlight-fixed {
+            background: #f0fdf4;
+        }
+        .table-wrap .highlight-fixed td {
+            color: #166534;
+        }
+
+        .table-caption {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .table-caption i {
+            font-size: 0.75rem;
+        }
+
+        .violation-icon {
+            color: #dc2626;
+            margin-right: 6px;
+        }
+        .fixed-icon {
+            color: #16a34a;
+            margin-right: 6px;
+        }
+
+        /* ───── BCNF + 4NF / 5NF ───── */
+        .bcnf-note {
+            background: #f1f5f9;
+            border-radius: 14px;
+            padding: 18px 24px;
+            margin-top: 16px;
+            border-left: 5px solid #3b82f6;
+            font-size: 0.95rem;
+            color: #1e293b;
+        }
+
+        .nf-compact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin-top: 12px;
+        }
+        @media (max-width: 700px) {
+            .nf-compact {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .nf-compact .card {
+            padding: 20px 22px;
+        }
+
+        /* ───── Summary / Footer ───── */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+            margin: 24px 0 8px;
+        }
+        .summary-item {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 18px 20px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        .summary-item .num {
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: #1d4ed8;
+            display: block;
+        }
+        .summary-item .label {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: #475569;
+            margin-top: 2px;
+        }
+
+        .footer {
+            background: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            padding: 28px 0;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        .footer a {
+            color: #1d4ed8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* ───── Responsive ───── */
+        @media (max-width: 760px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding: 12px 0 6px;
+                gap: 8px;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+            .card {
+                padding: 18px 16px 20px;
+            }
+            .card-grid {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .table-wrap table {
+                font-size: 0.78rem;
+                min-width: 280px;
+            }
+            .table-wrap th,
+            .table-wrap td {
+                padding: 6px 10px;
+            }
+        }
+
+        /* ───── Utilities ───── */
+        .mt-8 {
+            margin-top: 8px;
+        }
+        .mb-8 {
+            margin-bottom: 8px;
+        }
+        .text-sm {
+            font-size: 0.9rem;
+        }
+        .gap-4 {
+            gap: 4px;
+        }
+        .flex {
+            display: flex;
+        }
+        .items-center {
+            align-items: center;
+        }
+        .fw-600 {
+            font-weight: 600;
+        }
+        .text-muted {
+            color: #64748b;
+        }
+        .icon-blue {
+            color: #3b82f6;
+        }
+        .icon-red {
+            color: #dc2626;
+        }
+        .icon-green {
+            color: #16a34a;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════ NAVBAR ═══════════════ -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <div class="nav-brand">
+                <i class="fas fa-database"></i>
+                <span>Normal<span style="color:#2563eb;">Forms</span></span>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#intro">Intro</a></li>
+                <li><a href="#1nf">1NF</a></li>
+                <li><a href="#2nf">2NF</a></li>
+                <li><a href="#3nf">3NF</a></li>
+                <li><a href="#bcnf">BCNF</a></li>
+                <li><a href="#higher">4NF &amp; 5NF</a></li>
+                <li><a href="#summary">Summary</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <i class="fas fa-code-branch"></i>
+                Database Design Essentials
+            </div>
+            <h1>Normal Forms <span>Explained</span></h1>
+            <p>
+                A visual guide to database normalization — from 1NF to 5NF.
+                See real table examples <strong>before</strong> and <strong>after</strong>
+                each normal form.
+            </p>
+        </div>
+    </header>
+
+    <!-- ═══════════════ INTRO ═══════════════ -->
+    <section id="intro">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-info-circle icon-blue"></i>
+                What is Normalization?
+            </h2>
+            <p class="section-sub">
+                Normalization is the process of organizing data in a database to reduce redundancy
+                and improve integrity. It involves decomposing tables into smaller, well-structured
+                relations that satisfy progressive <strong>normal forms</strong>.
+            </p>
+            <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:12px;">
+                <div style="background:#eef2ff;border-radius:40px;padding:8px 20px;font-weight:500;font-size:0.9rem;color:#1d4ed8;">
+                    <i class="fas fa-check-circle" style="margin-right:6px;"></i> Eliminate redundancy
+                </div>
+                <div style="background:#eef2ff;border-radius:40px;padding:8px 20px;font-weight:500;font-size:0.9rem;color:#1d4ed8;">
+                    <i class="fas fa-check-circle" style="margin-right:6px;"></i> Avoid anomalies
+                </div>
+                <div style="background:#eef2ff;border-radius:40px;padding:8px 20px;font-weight:500;font-size:0.9rem;color:#1d4ed8;">
+                    <i class="fas fa-check-circle" style="margin-right:6px;"></i> Enforce data integrity
+                </div>
+                <div style="background:#eef2ff;border-radius:40px;padding:8px 20px;font-weight:500;font-size:0.9rem;color:#1d4ed8;">
+                    <i class="fas fa-check-circle" style="margin-right:6px;"></i> Simplify queries
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ 1NF ═══════════════ -->
+    <section id="1nf">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="badge">1NF</span>
+                First Normal Form
+            </h2>
+            <p class="section-sub">
+                <strong>Rule:</strong> Each column must contain atomic (indivisible) values,
+                and each row must be uniquely identifiable. No repeating groups or arrays.
+            </p>
+
+            <div class="card-grid">
+                <!-- BEFORE -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-times-circle icon-red"></i>
+                        <span class="before-tag">❌ Before 1NF</span>
+                    </div>
+                    <p><strong>Problem:</strong> The <code>Courses</code> column stores multiple values (non‑atomic).</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>StudentID</th><th>Name</th><th>Courses</th></tr></thead>
+                            <tbody>
+                                <tr class="highlight-violation"><td>101</td><td>Alice</td><td>Math, Physics</td></tr>
+                                <tr class="highlight-violation"><td>102</td><td>Bob</td><td>Chemistry</td></tr>
+                                <tr class="highlight-violation"><td>103</td><td>Carol</td><td>Math, Biology, CS</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-caption"><i class="fas fa-exclamation-triangle icon-red"></i> Repeating / multi‑value column violates 1NF.</div>
+                </div>
+
+                <!-- AFTER -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-check-circle icon-green"></i>
+                        <span class="after-tag">✅ After 1NF</span>
+                    </div>
+                    <p><strong>Solution:</strong> Each course in its own row — atomic values.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>StudentID</th><th>Name</th><th>Course</th></tr></thead>
+                            <tbody>
+                                <tr class="highlight-fixed"><td>101</td><td>Alice</td><td>Math</td></tr>
+                                <tr class="highlight-fixed"><td>101</td><td>Alice</td><td>Physics</td></tr>
+                                <tr class="highlight-fixed"><td>102</td><td>Bob</td><td>Chemistry</td></tr>
+                                <tr class="highlight-fixed"><td>103</td><td>Carol</td><td>Math</td></tr>
+                                <tr class="highlight-fixed"><td>103</td><td>Carol</td><td>Biology</td></tr>
+                                <tr class="highlight-fixed"><td>103</td><td>Carol</td><td>CS</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-caption"><i class="fas fa-check-circle icon-green"></i> All values are atomic; each row is unique.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ 2NF ═══════════════ -->
+    <section id="2nf">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="badge">2NF</span>
+                Second Normal Form
+            </h2>
+            <p class="section-sub">
+                <strong>Rule:</strong> Must be in 1NF, and all non‑key attributes must be fully
+                functionally dependent on the <em>entire</em> primary key (no partial dependency).
+            </p>
+
+            <div class="card-grid">
+                <!-- BEFORE -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-times-circle icon-red"></i>
+                        <span class="before-tag">❌ Before 2NF</span>
+                    </div>
+                    <p><strong>Problem:</strong> <code>OrderID</code> + <code>ProductID</code> is the PK, but
+                    <code>ProductName</code> depends only on <code>ProductID</code> (partial dependency).</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>OrderID</th><th>ProductID</th><th>ProductName</th><th>Qty</th></tr></thead>
+                            <tbody>
+                                <tr class="highlight-violation"><td>1001</td><td>P01</td><td>Laptop</td><td>2</td></tr>
+                                <tr class="highlight-violation"><td>1001</td><td>P02</td><td>Mouse</td><td>5</td></tr>
+                                <tr class="highlight-violation"><td>1002</td><td>P01</td><td>Laptop</td><td>1</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-caption"><i class="fas fa-exclamation-triangle icon-red"></i> <code>ProductName</code> repeats for same <code>ProductID</code>.</div>
+                </div>
+
+                <!-- AFTER -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-check-circle icon-green"></i>
+                        <span class="after-tag">✅ After 2NF</span>
+                    </div>
+                    <p><strong>Solution:</strong> Split into two tables — <strong>OrderDetails</strong> and <strong>Products</strong>.</p>
+                    <div style="display:flex;flex-direction:column;gap:12px;">
+                        <div>
+                            <div style="font-weight:600;font-size:0.9rem;color:#1e293b;margin-bottom:4px;">📦 OrderDetails</div>
+                            <div class="table-wrap">
+                                <table>
+                                    <thead><tr><th>OrderID</th><th>ProductID</th><th>Qty</th></tr></thead>
+                                    <tbody>
+                                        <tr class="highlight-fixed"><td>1001</td><td>P01</td><td>2</td></tr>
+                                        <tr class="highlight-fixed"><td>1001</td><td>P02</td><td>5</td></tr>
+                                        <tr class="highlight-fixed"><td>1002</td><td>P01</td><td>1</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="font-weight:600;font-size:0.9rem;color:#1e293b;margin-bottom:4px;">🏷️ Products</div>
+                            <div class="table-wrap">
+                                <table>
+                                    <thead><tr><th>ProductID</th><th>ProductName</th></tr></thead>
+                                    <tbody>
+                                        <tr class="highlight-fixed"><td>P01</td><td>Laptop</td></tr>
+                                        <tr class="highlight-fixed"><td>P02</td><td>Mouse</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-caption"><i class="fas fa-check-circle icon-green"></i> No partial dependencies; each fact stored once.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ 3NF ═══════════════ -->
+    <section id="3nf">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="badge">3NF</span>
+                Third Normal Form
+            </h2>
+            <p class="section-sub">
+                <strong>Rule:</strong> Must be in 2NF, and no transitive dependency —
+                non‑key attributes must not depend on other non‑key attributes.
+            </p>
+
+            <div class="card-grid">
+                <!-- BEFORE -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-times-circle icon-red"></i>
+                        <span class="before-tag">❌ Before 3NF</span>
+                    </div>
+                    <p><strong>Problem:</strong> <code>DeptName</code> depends on <code>DeptID</code>,
+                    which is not the PK (<code>EmpID</code>). Transitive dependency: EmpID → DeptID → DeptName.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>EmpID</th><th>EmpName</th><th>DeptID</th><th>DeptName</th></tr></thead>
+                            <tbody>
+                                <tr class="highlight-violation"><td>E01</td><td>John</td><td>D10</td><td>Sales</td></tr>
+                                <tr class="highlight-violation"><td>E02</td><td>Sarah</td><td>D20</td><td>Engineering</td></tr>
+                                <tr class="highlight-violation"><td>E03</td><td>Mike</td><td>D10</td><td>Sales</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-caption"><i class="fas fa-exclamation-triangle icon-red"></i> <code>DeptName</code> repeats for same <code>DeptID</code>.</div>
+                </div>
+
+                <!-- AFTER -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-check-circle icon-green"></i>
+                        <span class="after-tag">✅ After 3NF</span>
+                    </div>
+                    <p><strong>Solution:</strong> Separate <strong>Employees</strong> and <strong>Departments</strong>.</p>
+                    <div style="display:flex;flex-direction:column;gap:12px;">
+                        <div>
+                            <div style="font-weight:600;font-size:0.9rem;color:#1e293b;margin-bottom:4px;">👤 Employees</div>
+                            <div class="table-wrap">
+                                <table>
+                                    <thead><tr><th>EmpID</th><th>EmpName</th><th>DeptID</th></tr></thead>
+                                    <tbody>
+                                        <tr class="highlight-fixed"><td>E01</td><td>John</td><td>D10</td></tr>
+                                        <tr class="highlight-fixed"><td>E02</td><td>Sarah</td><td>D20</td></tr>
+                                        <tr class="highlight-fixed"><td>E03</td><td>Mike</td><td>D10</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="font-weight:600;font-size:0.9rem;color:#1e293b;margin-bottom:4px;">🏢 Departments</div>
+                            <div class="table-wrap">
+                                <table>
+                                    <thead><tr><th>DeptID</th><th>DeptName</th></tr></thead>
+                                    <tbody>
+                                        <tr class="highlight-fixed"><td>D10</td><td>Sales</td></tr>
+                                        <tr class="highlight-fixed"><td>D20</td><td>Engineering</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-caption"><i class="fas fa-check-circle icon-green"></i> Transitive dependency removed.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ BCNF ═══════════════ -->
+    <section id="bcnf">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="badge">BCNF</span>
+                Boyce‑Codd Normal Form
+            </h2>
+            <p class="section-sub">
+                <strong>Rule:</strong> A stricter version of 3NF. For every functional dependency
+                X → Y, X must be a <em>superkey</em>. Eliminates anomalies caused by overlapping candidate keys.
+            </p>
+
+            <div class="card-grid">
+                <!-- BEFORE -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-times-circle icon-red"></i>
+                        <span class="before-tag">❌ Before BCNF</span>
+                    </div>
+                    <p><strong>Problem:</strong> <code>Professor</code> determines <code>Course</code>, but <code>Professor</code>
+                    is not a superkey. Also, <code>Student</code> + <code>Course</code> is a candidate key, but <code>Professor</code>
+                    depends on <code>Course</code>.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Student</th><th>Course</th><th>Professor</th></tr></thead>
+                            <tbody>
+                                <tr class="highlight-violation"><td>S001</td><td>Math 101</td><td>Dr. Smith</td></tr>
+                                <tr class="highlight-violation"><td>S002</td><td>Math 101</td><td>Dr. Smith</td></tr>
+                                <tr class="highlight-violation"><td>S001</td><td>CS 200</td><td>Dr. Jones</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-caption"><i class="fas fa-exclamation-triangle icon-red"></i> Professor depends on Course, but Course is not a superkey.</div>
+                </div>
+
+                <!-- AFTER -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-check-circle icon-green"></i>
+                        <span class="after-tag">✅ After BCNF</span>
+                    </div>
+                    <p><strong>Solution:</strong> Split into <strong>Enrollments</strong> and <strong>CourseProfessors</strong>.</p>
+                    <div style="display:flex;flex-direction:column;gap:12px;">
+                        <div>
+                            <div style="font-weight:600;font-size:0.9rem;color:#1e293b;margin-bottom:4px;">📚 Enrollments</div>
+                            <div class="table-wrap">
+                                <table>
+                                    <thead><tr><th>Student</th><th>Course</th></tr></thead>
+                                    <tbody>
+                                        <tr class="highlight-fixed"><td>S001</td><td>Math 101</td></tr>
+                                        <tr class="highlight-fixed"><td>S002</td><td>Math 101</td></tr>
+                                        <tr class="highlight-fixed"><td>S001</td><td>CS 200</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="font-weight:600;font-size:0.9rem;color:#1e293b;margin-bottom:4px;">👨‍🏫 CourseProfessors</div>
+                            <div class="table-wrap">
+                                <table>
+                                    <thead><tr><th>Course</th><th>Professor</th></tr></thead>
+                                    <tbody>
+                                        <tr class="highlight-fixed"><td>Math 101</td><td>Dr. Smith</td></tr>
+                                        <tr class="highlight-fixed"><td>CS 200</td><td>Dr. Jones</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-caption"><i class="fas fa-check-circle icon-green"></i> Every determinant is now a superkey.</div>
+                </div>
+            </div>
+
+            <div class="bcnf-note">
+                <i class="fas fa-lightbulb" style="color:#2563eb;margin-right:10px;"></i>
+                <strong>BCNF vs 3NF:</strong> Every BCNF relation is in 3NF, but not every 3NF relation is in BCNF.
+                BCNF handles overlapping candidate keys more strictly.
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ 4NF & 5NF ═══════════════ -->
+    <section id="higher">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="badge">4NF &amp; 5NF</span>
+                Higher Normal Forms
+            </h2>
+            <p class="section-sub">
+                These forms address multi‑valued and join dependencies. They are less common in
+                practice but important for complex, highly normalized designs.
+            </p>
+
+            <div class="nf-compact">
+                <div class="card">
+                    <div class="card-header"><i class="fas fa-layer-group icon-blue"></i> 4NF — Fourth Normal Form</div>
+                    <p><strong>Rule:</strong> Must be in BCNF and have no multi‑valued dependencies.
+                    A multi‑valued dependency exists when two independent attributes depend on a third.</p>
+                    <div style="background:#f8fafc;border-radius:12px;padding:12px 16px;border:1px solid #e2e8f0;font-size:0.9rem;">
+                        <span class="fw-600">Before:</span> Student → {Hobbies}, {Languages} (independent)<br>
+                        <span class="fw-600">After:</span> Split into <em>StudentHobbies</em> and <em>StudentLanguages</em>.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header"><i class="fas fa-code-branch icon-blue"></i> 5NF — Fifth Normal Form</div>
+                    <p><strong>Rule:</strong> Must be in 4NF and have no join dependencies.
+                    Also known as <em>Project‑Join Normal Form (PJNF)</em>.</p>
+                    <div style="background:#f8fafc;border-radius:12px;padding:12px 16px;border:1px solid #e2e8f0;font-size:0.9rem;">
+                        <span class="fw-600">Idea:</span> A table is in 5NF if it cannot be decomposed into
+                        smaller tables without losing information — all join dependencies are implied by
+                        candidate keys.
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:18px;background:#f1f5f9;border-radius:16px;padding:16px 22px;border-left:5px solid #7c3aed;">
+                <i class="fas fa-gem" style="color:#7c3aed;margin-right:10px;"></i>
+                <strong>When to use 4NF / 5NF?</strong>
+                <span style="color:#334155;">Usually for data warehousing or when dealing with complex many‑to‑many relationships.
+                Most applications stop at 3NF or BCNF for practical performance reasons.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ SUMMARY ═══════════════ -->
+    <section id="summary">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-list-check icon-blue"></i>
+                Summary
+            </h2>
+            <p class="section-sub">
+                A quick recap of the normal forms and their key requirements.
+            </p>
+
+            <div class="summary-grid">
+                <div class="summary-item"><span class="num">1NF</span><span class="label">Atomic values, no repeating groups</span></div>
+                <div class="summary-item"><span class="num">2NF</span><span class="label">No partial dependencies</span></div>
+                <div class="summary-item"><span class="num">3NF</span><span class="label">No transitive dependencies</span></div>
+                <div class="summary-item"><span class="num">BCNF</span><span class="label">Every determinant is a superkey</span></div>
+                <div class="summary-item"><span class="num">4NF</span><span class="label">No multi‑valued dependencies</span></div>
+                <div class="summary-item"><span class="num">5NF</span><span class="label">No join dependencies</span></div>
+            </div>
+
+            <div style="margin-top:28px;padding:20px 24px;background:#ffffff;border-radius:18px;border:1px solid #e2e8f0;">
+                <p style="font-weight:600;font-size:1rem;display:flex;align-items:center;gap:8px;">
+                    <i class="fas fa-arrow-right" style="color:#3b82f6;"></i>
+                    Key Takeaway
+                </p>
+                <p style="color:#334155;font-size:0.95rem;">
+                    Normalization reduces redundancy and prevents update, insert, and delete anomalies.
+                    Start with 1NF, then progress to 3NF / BCNF for most real‑world applications.
+                    Higher forms (4NF, 5NF) are used when dealing with complex multi‑valued or join dependencies.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer class="footer">
+        <div class="container">
+            <p>
+                <i class="fas fa-database" style="color:#3b82f6;margin-right:6px;"></i>
+                Normal Forms Explained &middot; Built with <i class="fas fa-heart" style="color:#dc2626;"></i>
+                &middot; <a href="#">GitHub</a>
+            </p>
+            <p style="font-size:0.8rem;margin-top:4px;color:#94a3b8;">
+                All examples are for educational purposes.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ═══════════════ JAVASCRIPT ═══════════════ -->
+    <script>
+        // ─── Mobile nav toggle ───
+        const toggleBtn = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        toggleBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            toggleBtn.innerHTML = navLinks.classList.contains('open') ?
+                '<i class="fas fa-times"></i>' :
+                '<i class="fas fa-bars"></i>';
+        });
+
+        // Close nav on link click (mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                toggleBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // ─── Navbar shadow on scroll ───
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 16);
+        });
+
+        // ─── Active nav link highlighting ───
+        const sections = document.querySelectorAll('section[id]');
+        const navAnchors = document.querySelectorAll('.nav-links a');
+
+        function updateActiveNav() {
+            let current = '';
+            sections.forEach(sec => {
+                const top = sec.offsetTop - 120;
+                if (window.scrollY >= top) {
+                    current = sec.getAttribute('id');
+                }
+            });
+            navAnchors.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === '#' + current) {
+                    a.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        window.addEventListener('load', updateActiveNav);
+
+        // ─── Smooth anchor scroll (optional enhancement) ───
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
