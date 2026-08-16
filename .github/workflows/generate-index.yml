@@ -22,38 +22,73 @@ jobs:
           from pathlib import Path
 
           output_file = "index.html"
-          valid_exts = {".html", ".htm", ".pdf", ".md"}
+          valid_exts = {".html", ".htm", ".pdf", ".md", ".txt", ".png", ".jpg"}
 
-          links = []
-          for root, dirs, files in os.walk("."):
-              # Skip hidden dirs and git folders
-              dirs[:] = [d for d in dirs if not d.startswith(".")]
-              for file in sorted(files):
-                  if file.startswith(".") or file == output_file:
-                      continue
-                  p = Path(root) / file
-                  if p.suffix.lower() in valid_exts:
-                      rel_path = p.as_posix().lstrip("./")
-                      title = p.stem.replace("-", " ").replace("_", " ").title()
-                      links.append(f'      <li><a href="{rel_path}">{rel_path}</a></li>')
+          # Build tree hierarchy
+          def build_tree():
+              tree = {}
+              for root, dirs, files in os.walk("."):
+                  # Exclude hidden directories and git metadata
+                  dirs[:] = [d for d in dirs if not d.startswith(".")]
+                  for file in sorted(files):
+                      if file.startswith(".") or file == output_file or file == "generate.py":
+                          continue
+                      p = Path(root) / file
+                      if p.suffix.lower() in valid_exts:
+                          parts = p.parts
+                          curr = tree
+                          for part in parts[:-1]:
+                              curr = curr.setdefault(part, {})
+                          curr.setdefault("__files__", []).append((file, p.as_posix()))
+              return tree
 
-          html = f"""<!DOCTYPE html>
+          # Convert tree to nested HTML with fold/unfold toggles
+          def render_html_tree(node):
+              html = ["<ul>"]
+              for key, value in sorted(node.items()):
+                  if key == "__files__":
+                      for filename, filepath in value:
+                          clean_path = filepath.lstrip("./")
+                          html.append(f'<li><a href="{clean_path}">📄 {filename}</a></li>')
+                  else:
+                      html.append(f'<li><details open><summary>📁 <strong>{key}</strong></summary>')
+                      html.append(render_html_tree(value))
+                      html.append('</details></li>')
+              html.append("</ul>")
+              return "\n".join(html)
+
+          tree_data = build_tree()
+          tree_html = render_html_tree(tree_data)
+
+          final_html = f"""<!DOCTYPE html>
           <html lang="en">
           <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Repository Index</title>
+            <title>Repository File Index</title>
+            <style>
+              body {{
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                margin: 2rem auto;
+                max-width: 800px;
+                padding: 0 1rem;
+                line-height: 1.6;
+              }}
+              ul {{ list-style-type: none; padding-left: 1.5rem; }}
+              li {{ margin: 0.3rem 0; }}
+              summary {{ cursor: pointer; color: #0366d6; font-weight: 600; }}
+              a {{ color: #24292e; text-decoration: none; }}
+              a:hover {{ text-decoration: underline; color: #0366d6; }}
+            </style>
           </head>
           <body>
-            <h1>File Index</h1>
-            <ul>
-          {"\n".join(links)}
-            </ul>
+            <h1>Repository Directory</h1>
+            {tree_html}
           </body>
           </html>"""
 
           with open(output_file, "w", encoding="utf-8") as f:
-              f.write(html)
+              f.write(final_html)
           EOF
           python3 generate.py
           rm generate.py
@@ -63,4 +98,4 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update index.html" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update nested index.html" && git push)
