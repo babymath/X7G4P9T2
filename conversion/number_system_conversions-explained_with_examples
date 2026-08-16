@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number System Conversions – Explained with Examples</title>
+    <style>
+        /* ───────── reset & base ───────── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f7fc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1a202c;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 2rem;
+            padding: 2.5rem 2.5rem 3rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(145deg, #1a365d, #2b6cb0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.3rem;
+        }
+
+        .subhead {
+            font-size: 1.15rem;
+            color: #4a5568;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.8rem;
+        }
+
+        /* ───────── section style ───────── */
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section h2 .badge {
+            font-size: 0.75rem;
+            background: #2b6cb0;
+            color: white;
+            padding: 0.1rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .section .desc {
+            color: #4a5568;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .rule-box {
+            background: #f7fafc;
+            border-left: 4px solid #2b6cb0;
+            padding: 0.8rem 1.2rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+            margin: 0.5rem 0 1rem 0;
+            font-weight: 500;
+            color: #2d3748;
+        }
+
+        .rule-box code {
+            background: #edf2f7;
+            padding: 0.1rem 0.5rem;
+            border-radius: 0.3rem;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        /* ───────── example cards ───────── */
+        .example-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 0.8rem;
+        }
+
+        @media (max-width: 700px) {
+            .example-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .example-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            padding: 1.2rem 1.5rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: border 0.2s, box-shadow 0.2s;
+        }
+
+        .example-card:hover {
+            border-color: #bee3f8;
+            box-shadow: 0 6px 16px rgba(43, 108, 176, 0.08);
+        }
+
+        .example-card .ex-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #2d3748;
+            margin-bottom: 0.4rem;
+        }
+
+        .example-card .ex-title .from {
+            color: #2b6cb0;
+        }
+        .example-card .ex-title .to {
+            color: #2f855a;
+        }
+
+        .example-card .ex-steps {
+            list-style: none;
+            margin: 0.5rem 0 0 0;
+            padding: 0;
+        }
+
+        .example-card .ex-steps li {
+            padding: 0.3rem 0 0.3rem 1.8rem;
+            position: relative;
+            font-size: 0.95rem;
+            border-bottom: 1px dashed #edf2f7;
+        }
+
+        .example-card .ex-steps li:last-child {
+            border-bottom: none;
+        }
+
+        .example-card .ex-steps li::before {
+            content: "▸";
+            position: absolute;
+            left: 0.2rem;
+            color: #2b6cb0;
+            font-weight: 700;
+        }
+
+        .example-card .ex-steps .highlight {
+            font-weight: 600;
+            color: #2b6cb0;
+        }
+
+        .example-card .ex-steps .result {
+            font-weight: 700;
+            color: #2f855a;
+            font-size: 1.05rem;
+        }
+
+        .example-card .ex-steps .math {
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            background: #f0f4ff;
+            padding: 0.05rem 0.4rem;
+            border-radius: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .example-card .ex-steps .sub {
+            vertical-align: sub;
+            font-size: 0.7rem;
+        }
+
+        /* ───────── details (expandable) ───────── */
+        .example-card details {
+            margin-top: 0.8rem;
+        }
+
+        .example-card summary {
+            cursor: pointer;
+            font-weight: 500;
+            color: #2b6cb0;
+            font-size: 0.9rem;
+            background: #f0f4ff;
+            padding: 0.2rem 0.8rem;
+            border-radius: 1rem;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+
+        .example-card summary:hover {
+            background: #dbeafe;
+        }
+
+        .example-card details .extra-steps {
+            margin-top: 0.6rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid #bee3f8;
+            padding-left: 1rem;
+        }
+
+        .example-card details .extra-steps p {
+            font-size: 0.92rem;
+            color: #4a5568;
+        }
+
+        /* ───────── special grouping ───────── */
+        .section-divider {
+            margin: 2.5rem 0 1.5rem;
+            border-top: 2px solid #e2e8f0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: #2b6cb0;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ───────── responsive ───────── */
+        @media (max-width: 500px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .section h2 {
+                font-size: 1.4rem;
+            }
+            .example-card {
+                padding: 1rem;
+            }
+        }
+
+        /* extra utility */
+        .text-muted {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        .mt-1 { margin-top: 0.5rem; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .fw-bold { font-weight: 700; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ─── HEADER ─── -->
+    <h1>↔ Number System Conversions</h1>
+    <div class="subhead">
+        Binary · Octal · Decimal · Hexadecimal — explained with clear, step‑by‑step examples.
+    </div>
+
+    <!-- ─── INTRODUCTION ─── -->
+    <div class="section">
+        <h2>📘 Introduction</h2>
+        <p class="desc">
+            A <strong>number system</strong> defines a set of symbols (digits) and rules for representing numbers.
+            The four most common systems are:
+        </p>
+        <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 0.5rem 0 1rem;">
+            <li><strong>Binary</strong> (base 2) — digits <code>0, 1</code></li>
+            <li><strong>Octal</strong> (base 8) — digits <code>0–7</code></li>
+            <li><strong>Decimal</strong> (base 10) — digits <code>0–9</code></li>
+            <li><strong>Hexadecimal</strong> (base 16) — digits <code>0–9</code> and letters <code>A–F</code></li>
+        </ul>
+        <p class="desc">
+            Converting between these systems is essential in computing and digital electronics.
+            Below you will find every possible inter‑conversion, each with a <strong>worked example</strong>.
+        </p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!--              1. BINARY ↔ DECIMAL                              -->
+    <!-- ============================================================ -->
+
+    <div class="section-divider"></div>
+
+    <div class="section">
+        <h2>① Binary ↔ Decimal</h2>
+
+        <!-- Binary to Decimal -->
+        <div class="example-grid">
+            <div class="example-card">
+                <div class="ex-title"><span class="from">Binary</span> → <span class="to">Decimal</span></div>
+                <div class="rule-box">
+                    <strong>Rule:</strong> Multiply each bit by 2<sup>position</sup> (starting from 0 at the rightmost) and sum.
+                </div>
+                <ul class="ex-steps">
+                    <li><strong>Example:</strong> Convert <span class="math">1011<sub>2</sub></span> to decimal.</li>
+                    <li>Step 1: Write powers of 2: <span class="math">2³, 2², 2¹, 2⁰</span> → <span class="math">8, 4, 2, 1</span></li>
+                    <li>Step 2: Multiply each bit: <span class="math">1×8 + 0×4 + 1×2 + 1×1</span></li>
+                    <li>Step 3: Sum = <span class="highlight">8 + 0 + 2 + 1 = 11</span></li>
+                    <li><span class="result">Result: 1011₂ = 11₁₀</span></li>
+                </ul>
+                <details>
+                    <summary>Show more examples</summary>
+                    <div class="extra-steps">
+                        <p><strong>Example 2:</strong> <span class="math">11010₂</span> → <span class="math">1×16 + 1×8 + 0×4 + 1×2 + 0×1 = 26₁₀</span></p>
+                        <p><strong>Example 3:</strong> <span class="math">1111₂</span> → <span class="math">8+4+2+1 = 15₁₀</span></p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Decimal to Binary -->
+            <div class="example-card">
+                <div class="ex-title"><span class="from">Decimal</span> → <span class="to">Binary</span></div>
+                <div class="rule-box">
+                    <strong>Rule:</strong> Repeatedly divide by 2, recording remainders from bottom to top.
+                </div>
+                <ul class="ex-steps">
+                    <li><strong>Example:</strong> Convert <span class="math">13₁₀</span> to binary.</li>
+                    <li>Step 1: 13 ÷ 2 = 6 <span class="highlight">remainder 1</span> (LSB)</li>
+                    <li>Step 2: 6 ÷ 2 = 3 <span class="highlight">remainder 0</span></li>
+                    <li>Step 3: 3 ÷ 2 = 1 <span class="highlight">remainder 1</span></li>
+                    <li>Step 4: 1 ÷ 2 = 0 <span class="highlight">remainder 1</span> (MSB)</li>
+                    <li>Read remainders <strong>bottom→top</strong>: <span class="math">1101</span></li>
+                    <li><span class="result">Result: 13₁₀ = 1101₂</span></li>
+                </ul>
+                <details>
+                    <summary>Show more examples</summary>
+                    <div class="extra-steps">
+                        <p><strong>Example 2:</strong> 25₁₀ → 25÷2=12 r1, 12÷2=6 r0, 6÷2=3 r0, 3÷2=1 r1, 1÷2=0 r1 → <span class="math">11001₂</span></p>
+                        <p><strong>Example 3:</strong> 8₁₀ → 1000₂</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!--              2. BINARY ↔ OCTAL                                -->
+    <!-- ============================================================ -->
+
+    <div class="section-divider"></div>
+
+    <div class="section">
+        <h2>② Binary ↔ Octal</h2>
+        <div class="example-grid">
+            <!-- Binary to Octal -->
+            <div class="example-card">
+                <div class="ex-title"><span class="from">Binary</span> → <span class="to">Octal</span></div>
+                <div class="rule-box">
+                    <strong>Rule:</strong> Group binary digits in <strong>sets of 3</strong> from the right, pad left with zeros if needed.
+                    Convert each group to its octal digit (0–7).
+                </div>
+                <ul class="ex-steps">
+                    <li><strong>Example:</strong> Convert <span class="math">1011011₂</span> to octal.</li>
+                    <li>Step 1: Group from right: <span class="math">1 011 011</span> (add leading zero → <span class="math">001 011 011</span>)</li>
+                    <li>Step 2: Convert each group: <span class="math">001→1, 011→3, 011→3</span></li>
+                    <li><span class="result">Result: 1011011₂ = 133₈</span></li>
+                </ul>
+                <details>
+                    <summary>Show more examples</summary>
+                    <div class="extra-steps">
+                        <p><strong>Example 2:</strong> 11010₂ → group 011 010 → 3,2 → <span class="math">32₈</span></p>
+                        <p><strong>Example 3:</strong> 1111000₂ → 001 111 000 → 1,7,0 → <span class="math">170₈</span></p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Octal to Binary -->
+            <div class="example-card">
+                <div class="ex-title"><span class="from">Octal</span> → <span class="to">Binary</span></div>
+                <div class="rule-box">
+                    <strong>Rule:</strong> Replace each octal digit with its 3‑bit binary equivalent.
+                </div>
+                <ul class="ex-steps">
+                    <li><strong>Example:</strong> Convert <span class="math">56₈</span> to binary.</li>
+                    <li>Step 1: 5 → <span class="math">101</span> (since 5₁₀ = 101₂)</li>
+                    <li>Step 2: 6 → <span class="math">110</span></li>
+                    <li>Step 3: Concatenate: <span class="math">101 110</span></li>
+                    <li><span class="result">Result: 56₈ = 101110₂</span></li>
+                </ul>
+                <details>
+                    <summary>Show more examples</summary>
+                    <div class="extra-steps">
+                        <p><strong>Example 2:</strong> 72₈ → 7=111, 2=010 → <span class="math">111010₂</span></p>
+                        <p><strong>Example 3:</strong> 10₈ → 1=001, 0=000 → <span class="math">001000₂</span> (or 1000₂)</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!--              3. BINARY ↔ HEXADECIMAL                          -->
+    <!-- ============================================================ -->
+
+    <div class="section-divider"></div>
+
+    <div class="section">
+        <h2>③ Binary ↔ Hexadecimal</h2>
+        <div class="example-grid">
+            <!-- Binary to Hex -->
+            <div class="example-card">
+                <div class="ex-title"><span class="from">Binary</span> → <span class="to">Hexadecimal</span></div>
+                <div class="rule-box">
+                    <strong>Rule:</strong> Group binary digits in <strong>sets of 4</strong> from the right, pad left if needed.
+                    Convert each group to hex (0–9, A–F).
+                </div>
+                <ul class="ex-steps">
+                    <li><strong>Example:</strong> Convert <span class="math">11010110₂</span> to hex.</li>
+                    <li>Step 1: Group from right: <span class="math">1101 0110</span></li>
+                    <li>Step 2: Convert: <span class="math">1101 → D</span> (13), <span class="math">0110 → 6</span></li>
+                    <li><span class="result">Result: 11010110₂ = D6₁₆</span></li>
+                </ul>
+                <details>
+                    <summary>Show more examples</summary>
+                    <div class="extra-steps">
+                        <p><strong>Example 2:</strong> 1010₂ → 1010 = A → <span class="math">A₁₆</span></p>
+                        <p><strong>Example 3:</strong> 11111111₂ → 1111 1111 → FF₁₆</p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Hex to Binary -->
+            <div class="example-card">
+                <div class="ex-title"><span class="from">Hexadecimal</span> → <span class="to">Binary</span></div>
+                <div class="rule-box">
+                    <strong>Rule:</strong> Replace each hex digit with its 4‑bit binary equivalent.
+                </div>
+                <ul class="ex-steps">
+                    <li><strong>Example:</strong> Convert <span class="math">3A₁₆</span> to binary.</li>
+                    <li>Step 1: 3 → <span class="math">0011</span></li>
+                    <li>Step 2: A (10) → <span class="math">1010</span></li>
+                    <li>Step 3: Concatenate: <span class="math">0011 1010</span></li>
+                    <li><span class="result">Result: 3A₁₆ = 111010₂</span> (leading zeros omitted)</li>
+                </ul>
+                <details>
+                    <summary>Show more examples</summary>
+                    <div class="extra-steps">
+                        <p><strong>Example 2:</strong> F1₁₆ → F=1111, 1=0001 → <span class="math">11110001₂</span></p>
+                        <p><strong>Example 3:</strong> 7₂? Actually hex 7 → 0111₂</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!--              4. DECIMAL ↔ OCTAL                               -->
+    <!-- ============================================================ -->
+
+    <div class="section-divider"></div>
+
+    <div class="section">
+        <h2>④ Decimal ↔ Octal</h2>
+        <div class="example-grid">
+            <!-- Decimal to Octal -->
+            <div class="example-card">
+                <div class="ex-title"><span class="from">Decimal</span> → <span class="to">Octal</span></div>
+                <div class="rule-box">
+                    <strong>Rule:</strong> Repeatedly divide by 8, record remainders from bottom to top.
+                </div>
+                <ul class="ex-steps">
+                    <li><strong>Example:</strong> Convert <span class="math">95₁₀</span> to octal.</li>
+                    <li>Step 1: 95 ÷ 8 = 11 <span class="highlight">remainder 7</span> (LSB)</li>
+                    <li>Step 2: 11 ÷ 8 = 1 <span class="highlight">remainder 3</span></li>
+                    <li>Step 3: 1 ÷ 8 = 0 <span class="highlight">remainder 1</span> (MSB)</li>
+                    <li>Read bottom→top: <span class="math">137</span></li>
+                    <li><span class="result">Result: 95₁₀ = 137₈</span></li>
+                </ul>
+                <details>
+                    <summary>Show more examples</summary>
+                    <div class="extra-steps">
+                        <p><strong>Example 2:</strong> 64₁₀ → 64÷8=8 r0, 8÷8=1 r0, 1÷8=0 r1 → <span class="math">100₈</span></p>
+                        <p><strong>Example 3:</strong> 20₁₀ → 24₈</p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Octal to Decimal -->
+            <div class="example-card">
+                <div class="ex-title"><span class="from">Octal</span> → <span class="to">Decimal</span></div>
+                <div class="rule-box">
+                    <strong>Rule:</strong> Multiply each digit by 8<sup>position</sup> and sum.
+                </div>
+                <ul class="ex-steps">
+                    <li><strong>Example:</strong> Convert <span class="math">237₈</span> to decimal.</li>
+                    <li>Step 1: Write powers: <span class="math">8²=64, 8¹=8, 8⁰=1</span></li>
+                    <li>Step 2: Multiply: <span class="math">2×64 + 3×8 + 7×1</span></li>
+                    <li>Step 3: Sum = <span class="highlight">128 + 24 + 7 = 159</span></li>
+                    <li><span class="result">Result: 237₈ = 159₁₀</span></li>
+                </ul>
+                <details>
+                    <summary>Show more examples</summary>
+                    <div class="extra-steps">
+                        <p><strong>Example 2:</strong> 52₈ → 5×8 + 2×1 = 42₁₀</p>
+                        <p><strong>Example 3:</strong> 100₈ = 64₁₀</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!--              5. DECIMAL ↔ HEXADECIMAL                         -->
+    <!-- ============================================================ -->
+
+    <div class="section-divider"></div>
+
+    <div class="section">
+        <h2>⑤ Decimal ↔ Hexadecimal</h2>
+        <div class="example-grid">
+            <!-- Decimal to Hex -->
+            <div class="example-card">
+                <div class="ex-title"><span class="from">Decimal</span> → <span class="to">Hexadecimal</span></div>
+                <div class="rule-box">
+                    <strong>Rule:</strong> Repeatedly divide by 16, record remainders (10–15 as A–F), bottom to top.
+                </div>
+                <ul class="ex-steps">
+                    <li><strong>Example:</strong> Convert <span class="math">254₁₀</span> to hexadecimal.</li>
+                    <li>Step 1: 254 ÷ 16 = 15 <span class="highlight">remainder 14</span> → <span class="math">E</span> (LSB)</li>
+                    <li>Step 2: 15 ÷ 16 = 0 <span class="highlight">remainder 15</span> → <span class="math">F</span> (MSB)</li>
+                    <li>Read bottom→top: <span class="math">FE</span></li>
+                    <li><span class="result">Result: 254₁₀ = FE₁₆</span></li>
+                </ul>
+                <details>
+                    <summary>Show more examples</summary>
+                    <div class="extra-steps">
+                        <p><strong>Example 2:</strong> 100₁₀ → 100÷16=6 r4, 6÷16=0 r6 → <span class="math">64₁₆</span></p>
+                        <p><strong>Example 3:</strong> 255₁₀ → FF₁₆</p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Hex to Decimal -->
+            <div class="example-card">
+                <div class="ex-title"><span class="from">Hexadecimal</span> → <span class="to">Decimal</span></div>
+                <div class="rule-box">
+                    <strong>Rule:</strong> Multiply each digit by 16<sup>position</sup> (A=10, B=11, … F=15) and sum.
+                </div>
+                <ul class="ex-steps">
+                    <li><strong>Example:</strong> Convert <span class="math">1A₃₁₆</span> to decimal.</li>
+                    <li>Step 1: Write powers: <span class="math">16²=256, 16¹=16, 16⁰=1</span></li>
+                    <li>Step 2: A = 10, so <span class="math">1×256 + 10×16 + 3×1</span></li>
+                    <li>Step 3: Sum = <span class="highlight">256 + 160 + 3 = 419</span></li>
+                    <li><span class="result">Result: 1A3₁₆ = 419₁₀</span></li>
+                </ul>
+                <details>
+                    <summary>Show more examples</summary>
+                    <div class="extra-steps">
+                        <p><strong>Example 2:</strong> FF₁₆ → 15×16 + 15×1 = 255₁₀</p>
+                        <p><strong>Example 3:</strong> 10₁₆ = 16₁₀</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!--              6. OCTAL ↔ HEXADECIMAL (via binary)              -->
+    <!-- ============================================================ -->
+
+    <div class="section-divider"></div>
+
+    <div class="section">
+        <h2>⑥ Octal ↔ Hexadecimal</h2>
+        <p class="desc">
+            There is no direct rule; the easiest way is to convert via <strong>binary</strong> as an intermediate step.
+        </p>
+        <div class="example-grid">
+            <div class="example-card">
+                <div class="ex-title"><span class="from">Octal</span> → <span class="to">Hexadecimal</span></div>
+                <ul class="ex-steps">
+                    <li><strong>Example:</strong> Convert <span class="math">45₈</span> to hex.</li>
+                    <li>Step 1: Octal → binary: <span class="math">4 → 100</span>, <span class="math">5 → 101</span> → <span class="math">100101₂</span></li>
+                    <li>Step 2: Group binary in 4s from right: <span class="math">10 0101</span> → pad left: <span class="math">0010 0101</span></li>
+                    <li>Step 3: Convert groups: <span class="math">0010 → 2</span>, <span class="math">0101 → 5</span></li>
+                    <li><span class="result">Result: 45₈ = 25₁₆</span></li>
+                </ul>
+            </div>
+            <div class="example-card">
+                <div class="ex-title"><span class="from">Hexadecimal</span> → <span class="to">Octal</span></div>
+                <ul class="ex-steps">
+                    <li><strong>Example:</strong> Convert <span class="math">2F₁₆</span> to octal.</li>
+                    <li>Step 1: Hex → binary: <span class="math">2 → 0010</span>, <span class="math">F → 1111</span> → <span class="math">00101111₂</span></li>
+                    <li>Step 2: Group binary in 3s from right: <span class="math">0 010 111 1</span> → pad left: <span class="math">000 010 111 100</span> (or 0 010 111 100)</li>
+                    <li>Step 3: Convert groups: <span class="math">000→0, 010→2, 111→7, 100→4</span></li>
+                    <li><span class="result">Result: 2F₁₆ = 274₈</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!--              7. QUICK REFERENCE TABLE                         -->
+    <!-- ============================================================ -->
+
+    <div class="section-divider"></div>
+
+    <div class="section">
+        <h2>📊 Quick Reference – Digit Equivalents</h2>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 0.5rem; background: #f7fafc; border-radius: 0.5rem; overflow: hidden;">
+            <thead>
+                <tr style="background: #2d3748; color: white;">
+                    <th style="padding: 0.5rem 1rem; text-align: left;">Decimal</th>
+                    <th style="padding: 0.5rem 1rem; text-align: left;">Binary (4‑bit)</th>
+                    <th style="padding: 0.5rem 1rem; text-align: left;">Octal</th>
+                    <th style="padding: 0.5rem 1rem; text-align: left;">Hexadecimal</th>
+                </tr>
+            </thead>
+            <tbody style="font-family: 'JetBrains Mono', monospace;">
+                <tr><td>0</td><td>0000</td><td>0</td><td>0</td></tr>
+                <tr><td>1</td><td>0001</td><td>1</td><td>1</td></tr>
+                <tr><td>2</td><td>0010</td><td>2</td><td>2</td></tr>
+                <tr><td>3</td><td>0011</td><td>3</td><td>3</td></tr>
+                <tr><td>4</td><td>0100</td><td>4</td><td>4</td></tr>
+                <tr><td>5</td><td>0101</td><td>5</td><td>5</td></tr>
+                <tr><td>6</td><td>0110</td><td>6</td><td>6</td></tr>
+                <tr><td>7</td><td>0111</td><td>7</td><td>7</td></tr>
+                <tr><td>8</td><td>1000</td><td>10</td><td>8</td></tr>
+                <tr><td>9</td><td>1001</td><td>11</td><td>9</td></tr>
+                <tr><td>10</td><td>1010</td><td>12</td><td>A</td></tr>
+                <tr><td>11</td><td>1011</td><td>13</td><td>B</td></tr>
+                <tr><td>12</td><td>1100</td><td>14</td><td>C</td></tr>
+                <tr><td>13</td><td>1101</td><td>15</td><td>D</td></tr>
+                <tr><td>14</td><td>1110</td><td>16</td><td>E</td></tr>
+                <tr><td>15</td><td>1111</td><td>17</td><td>F</td></tr>
+            </tbody>
+        </table>
+        <p class="text-muted mt-1" style="font-size: 0.9rem;">Use this table to quickly convert between 4‑bit binary, octal, and hex digits.</p>
+    </div>
+
+    <!-- ─── FOOTER ─── -->
+    <div style="margin-top: 2.5rem; border-top: 1px solid #e2e8f0; padding-top: 1.5rem; text-align: center; color: #718096; font-size: 0.9rem;">
+        &copy; 2026 — Number System Conversions · Explained with Examples
+    </div>
+
+</div>
+
+</body>
+</html>
