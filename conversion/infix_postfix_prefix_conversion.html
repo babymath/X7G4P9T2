@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>Infix · Postfix · Prefix – detailed conversion</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f5f9fe;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      padding: 1rem;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .card {
+      max-width: 1200px;
+      width: 100%;
+      background: white;
+      border-radius: 2.5rem;
+      padding: 2rem 2.2rem;
+      box-shadow: 0 20px 40px -12px rgba(0, 20, 40, 0.25);
+      transition: all 0.2s ease;
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0b2b4a;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      border-bottom: 3px solid #e3edf7;
+      padding-bottom: 0.8rem;
+      margin-bottom: 1.8rem;
+    }
+    h1 small {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #3d6b8f;
+      background: #e9f0f8;
+      padding: 0.25rem 0.9rem;
+      border-radius: 40px;
+      margin-left: 0.3rem;
+    }
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #133b5c;
+      margin: 1.8rem 0 0.8rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.6rem;
+      margin: 1.2rem 0 1.8rem 0;
+    }
+    .notation-card {
+      background: #f8fcff;
+      border-radius: 1.8rem;
+      padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e2edf8;
+      transition: 0.15s ease;
+    }
+    .notation-card:hover {
+      border-color: #b6d2e8;
+      background: #fafdff;
+    }
+    .notation-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #0a314a;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .notation-title span {
+      background: #d2e3f0;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.1rem 0.7rem;
+      border-radius: 30px;
+      color: #1c4a6b;
+    }
+    .example-box {
+      background: white;
+      border-radius: 1.2rem;
+      padding: 1rem 1rem;
+      margin: 0.9rem 0;
+      border-left: 5px solid #3078a8;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 1.1rem;
+      word-break: break-word;
+    }
+    .example-box .label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: #4b7a9e;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .example-box code {
+      background: #eef4fa;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      color: #00355c;
+    }
+    .example-box .eval {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      color: #1a4e72;
+      border-top: 1px dashed #c8ddec;
+      padding-top: 0.4rem;
+      font-family: 'Inter', sans-serif;
+    }
+    .use-section {
+      background: #ecf4fb;
+      border-radius: 2rem;
+      padding: 1.6rem 2rem;
+      margin: 2rem 0 0.5rem 0;
+    }
+    .use-section h3 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #103a57;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .use-section ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.8rem;
+    }
+    .use-section li {
+      background: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      border: 1px solid #cde0ef;
+      font-size: 0.98rem;
+      color: #0e3857;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .use-section li::before {
+      content: "▹";
+      color: #2b7bb0;
+      font-weight: 600;
+    }
+    .extra-note {
+      background: #f2f9ff;
+      border-radius: 1.5rem;
+      padding: 1rem 1.8rem;
+      margin-top: 2rem;
+      border: 1px solid #d5e5f5;
+      color: #103b5a;
+      font-size: 0.98rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.4rem 1rem;
+    }
+    .extra-note strong {
+      font-weight: 600;
+      color: #00325a;
+    }
+    .conversion-section {
+      background: #edf5fc;
+      border-radius: 2rem;
+      padding: 1.6rem 2rem;
+      margin: 2rem 0 0.5rem 0;
+      border: 1px solid #d0e2f0;
+    }
+    .conversion-section h3 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #103a57;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+    }
+    .conversion-step {
+      background: white;
+      border-radius: 1.2rem;
+      padding: 1rem 1.5rem;
+      margin: 0.8rem 0;
+      border-left: 4px solid #2b7bb0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .conversion-step .step-label {
+      font-weight: 600;
+      color: #00325a;
+      font-size: 1rem;
+    }
+    .conversion-step code {
+      background: #eaf1f9;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-family: monospace;
+      font-size: 0.95rem;
+    }
+    .conversion-step .arrow {
+      color: #2a6b94;
+      font-weight: 600;
+    }
+    /* Table with horizontal scroll on mobile */
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 0.6rem 0;
+      border-radius: 1rem;
+      background: #f9fcff;
+    }
+    .step-table {
+      width: 100%;
+      min-width: 460px; /* ensures readable on small screens */
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    .step-table th {
+      background: #dce8f2;
+      padding: 0.5rem 0.8rem;
+      text-align: left;
+      font-weight: 600;
+      color: #00325a;
+      white-space: nowrap;
+    }
+    .step-table td {
+      padding: 0.4rem 0.8rem;
+      border-bottom: 1px solid #e6edf5;
+      white-space: nowrap;
+    }
+    .step-table tr:last-child td {
+      border-bottom: none;
+    }
+    .step-table tr:hover {
+      background: #f2f8ff;
+    }
+    .footer-note {
+      margin-top: 2rem;
+      text-align: right;
+      color: #3d6e92;
+      font-size: 0.85rem;
+      border-top: 1px solid #dce8f2;
+      padding-top: 1rem;
+    }
+    /* ---------- RESPONSIVE BREAKPOINTS ---------- */
+    @media screen and (max-width: 850px) {
+      .card { padding: 1.5rem; }
+      .grid-3 { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+      h1 { font-size: 2rem; }
+    }
+    @media screen and (max-width: 650px) {
+      .card { padding: 1.2rem; border-radius: 1.8rem; }
+      h1 { font-size: 1.7rem; }
+      h1 small { font-size: 0.85rem; padding: 0.15rem 0.7rem; }
+      .grid-3 { grid-template-columns: 1fr; gap: 1rem; }
+      .notation-card { padding: 1.2rem 1rem; }
+      .conversion-section { padding: 1.2rem 1rem; }
+      .conversion-step { padding: 0.8rem 1rem; }
+      .use-section { padding: 1.2rem 1rem; }
+      .use-section ul { flex-direction: column; gap: 0.5rem; }
+      .extra-note { flex-direction: column; align-items: flex-start; padding: 1rem; }
+    }
+    @media screen and (max-width: 480px) {
+      body { padding: 0.5rem; }
+      .card { padding: 0.8rem; border-radius: 1.5rem; }
+      h1 { font-size: 1.4rem; flex-direction: column; align-items: flex-start; gap: 0.2rem; }
+      h1 small { margin-left: 0; }
+      .notation-title { font-size: 1.2rem; }
+      .example-box { font-size: 0.95rem; padding: 0.8rem; }
+      .step-table { font-size: 0.8rem; min-width: 340px; }
+      .step-table th, .step-table td { padding: 0.25rem 0.5rem; }
+      .conversion-step { padding: 0.6rem 0.8rem; }
+      .use-section h3 { font-size: 1.2rem; }
+      .use-section li { font-size: 0.85rem; padding: 0.4rem 0.8rem; }
+      .extra-note { font-size: 0.85rem; padding: 0.8rem; }
+      .footer-note { font-size: 0.75rem; }
+      .comparison-row { flex-direction: column; align-items: flex-start; gap: 0.4rem; padding: 0.6rem 1rem; }
+      .summary-box { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+    }
+    /* Extra small phones */
+    @media screen and (max-width: 380px) {
+      .card { padding: 0.5rem; }
+      h1 { font-size: 1.2rem; }
+      .step-table { font-size: 0.7rem; min-width: 280px; }
+      .step-table th, .step-table td { padding: 0.2rem 0.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="card">
+  <h1>
+    📐 Infix · Postfix · Prefix
+    <small>notation, conversion &amp; use</small>
+  </h1>
+
+  <!-- 3 cards -->
+  <div class="grid-3">
+
+    <!-- INFIX -->
+    <div class="notation-card">
+      <div class="notation-title">
+        <span>📍</span> Infix <span>inf</span>
+      </div>
+      <div class="example-box">
+        <div class="label">✧ standard form</div>
+        <div><code>A + B</code> &nbsp;·&nbsp; <code>(C - D) * E</code></div>
+        <div class="eval">
+          <span style="opacity:0.7;">⟹</span> operator between operands<br>
+          <span style="font-size:0.9rem; background:#eaf1f9; padding:0.1rem 0.7rem; border-radius:30px;">human-friendly</span>
+        </div>
+      </div>
+      <div style="font-size:0.95rem; color:#1f4f73; padding-top:0.2rem;">
+        <strong>Example:</strong> <code>(3 + 4) × 5</code> → 35<br>
+        <span style="font-size:0.85rem; color:#38658b;">needs parentheses &amp; precedence</span>
+      </div>
+    </div>
+
+    <!-- POSTFIX -->
+    <div class="notation-card">
+      <div class="notation-title">
+        <span>📎</span> Postfix <span>post</span>
+      </div>
+      <div class="example-box">
+        <div class="label">✧ reverse Polish (RPN)</div>
+        <div><code>A B +</code> &nbsp;·&nbsp; <code>C D - E *</code></div>
+        <div class="eval">
+          <span style="opacity:0.7;">⟹</span> operator <strong>after</strong> operands<br>
+          <span style="font-size:0.9rem; background:#eaf1f9; padding:0.1rem 0.7rem; border-radius:30px;">no parentheses needed</span>
+        </div>
+      </div>
+      <div style="font-size:0.95rem; color:#1f4f73; padding-top:0.2rem;">
+        <strong>Example:</strong> <code>3 4 + 5 ×</code> → 35<br>
+        <span style="font-size:0.85rem; color:#38658b;">evaluated left‑to‑right using stack</span>
+      </div>
+    </div>
+
+    <!-- PREFIX -->
+    <div class="notation-card">
+      <div class="notation-title">
+        <span>🔖</span> Prefix <span>pre</span>
+      </div>
+      <div class="example-box">
+        <div class="label">✧ Polish notation</div>
+        <div><code>+ A B</code> &nbsp;·&nbsp; <code>* - C D E</code></div>
+        <div class="eval">
+          <span style="opacity:0.7;">⟹</span> operator <strong>before</strong> operands<br>
+          <span style="font-size:0.9rem; background:#eaf1f9; padding:0.1rem 0.7rem; border-radius:30px;">no ambiguity</span>
+        </div>
+      </div>
+      <div style="font-size:0.95rem; color:#1f4f73; padding-top:0.2rem;">
+        <strong>Example:</strong> <code>× + 3 4 5</code> → 35<br>
+        <span style="font-size:0.85rem; color:#38658b;">operator precedes operands</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- comparison row (responsive) -->
+  <div class="comparison-row" style="display:flex; flex-wrap:wrap; gap:0.8rem 1.5rem; background:#f2f8fe; padding:0.8rem 1.4rem; border-radius:2rem; margin-top:0.5rem;">
+    <span style="font-weight:500; color:#0d3c5e;">Same expression (infix):</span>
+    <span style="background:white; padding:0.2rem 1rem; border-radius:30px; border:1px solid #c6dcee;"><code>(A + B) * C</code></span>
+    <span style="color:#2a5f81;">→</span>
+    <span style="background:white; padding:0.2rem 1rem; border-radius:30px; border:1px solid #c6dcee;"><code>A B + C *</code> <span style="color:#3a7297; font-size:0.85rem;">(postfix)</span></span>
+    <span style="color:#2a5f81;">→</span>
+    <span style="background:white; padding:0.2rem 1rem; border-radius:30px; border:1px solid #c6dcee;"><code>* + A B C</code> <span style="color:#3a7297; font-size:0.85rem;">(prefix)</span></span>
+  </div>
+
+  <!-- CONVERSION SECTION - DETAILED -->
+  <div class="conversion-section">
+    <h3>🔄 Detailed conversion: step‑by‑step</h3>
+    <p style="margin-bottom:1rem; color:#1a4e72;">We'll convert the infix expression: <strong><code>(A + B) * C - D / E</code></strong> (with precedence: <code>*</code> and <code>/</code> before <code>+</code> and <code>-</code>)</p>
+
+    <!-- Infix → Postfix -->
+    <div class="conversion-step">
+      <div class="step-label">📌 1. Infix → Postfix (Shunting‑yard algorithm)</div>
+      <div style="margin-top:0.3rem; font-size:0.95rem;">
+        <strong>Rules:</strong> Scan left‑to‑right. Operands → output. Operators → stack (higher precedence pops first). Parentheses: <code>(</code> push, <code>)</code> pop until <code>(</code>.
+      </div>
+      <div class="table-wrapper">
+        <table class="step-table">
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Symbol</th>
+              <th>Stack</th>
+              <th>Output</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td><code>(</code></td><td><code>(</code></td><td></td><td>push <code>(</code></td></tr>
+            <tr><td>2</td><td><code>A</code></td><td><code>(</code></td><td><code>A</code></td><td>output operand</td></tr>
+            <tr><td>3</td><td><code>+</code></td><td><code>( +</code></td><td><code>A</code></td><td>push <code>+</code></td></tr>
+            <tr><td>4</td><td><code>B</code></td><td><code>( +</code></td><td><code>A B</code></td><td>output operand</td></tr>
+            <tr><td>5</td><td><code>)</code></td><td></td><td><code>A B +</code></td><td>pop until <code>(</code> → output <code>+</code></td></tr>
+            <tr><td>6</td><td><code>*</code></td><td><code>*</code></td><td><code>A B +</code></td><td>push <code>*</code></td></tr>
+            <tr><td>7</td><td><code>C</code></td><td><code>*</code></td><td><code>A B + C</code></td><td>output operand</td></tr>
+            <tr><td>8</td><td><code>-</code></td><td><code>-</code></td><td><code>A B + C *</code></td><td><code>*</code> pops, push <code>-</code></td></tr>
+            <tr><td>9</td><td><code>D</code></td><td><code>-</code></td><td><code>A B + C * D</code></td><td>output operand</td></tr>
+            <tr><td>10</td><td><code>/</code></td><td><code>- /</code></td><td><code>A B + C * D</code></td><td>push <code>/</code></td></tr>
+            <tr><td>11</td><td><code>E</code></td><td><code>- /</code></td><td><code>A B + C * D E</code></td><td>output operand</td></tr>
+            <tr><td>12</td><td>end</td><td></td><td><code>A B + C * D E / -</code></td><td>pop all → <code>/</code> then <code>-</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:0.5rem; background:#eaf4fa; padding:0.4rem 1rem; border-radius:2rem;">
+        ✅ <strong>Postfix result:</strong> <code>A B + C * D E / -</code>
+      </div>
+    </div>
+
+    <!-- Infix → Prefix -->
+    <div class="conversion-step">
+      <div class="step-label">📌 2. Infix → Prefix (parse tree / pre‑order)</div>
+      <div style="margin-top:0.3rem; font-size:0.95rem;">
+        <strong>Method:</strong> Build expression tree, then <strong>pre‑order traversal</strong> (root → left → right).
+      </div>
+      <div style="margin-top:0.6rem; background:#f4faff; padding:0.6rem 1rem; border-radius:1rem; overflow-x:auto; white-space:nowrap;">
+        <strong>Tree:</strong> <code>-</code> (root) → left <code>*</code> → left <code>+</code> → <code>A</code> <code>B</code> → right <code>C</code> → right <code>/</code> → <code>D</code> <code>E</code>
+      </div>
+      <div class="table-wrapper">
+        <table class="step-table">
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Traverse</th>
+              <th>Prefix output</th>
+              <th>Explanation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>root <code>-</code></td><td><code>-</code></td><td>root operator</td></tr>
+            <tr><td>2</td><td>left <code>*</code></td><td><code>- *</code></td><td>left subtree</td></tr>
+            <tr><td>3</td><td>left of <code>*</code> → <code>+</code></td><td><code>- * +</code></td><td>left of *</td></tr>
+            <tr><td>4</td><td>left of <code>+</code> → <code>A</code></td><td><code>- * + A</code></td><td>operand</td></tr>
+            <tr><td>5</td><td>right of <code>+</code> → <code>B</code></td><td><code>- * + A B</code></td><td>operand</td></tr>
+            <tr><td>6</td><td>right of <code>*</code> → <code>C</code></td><td><code>- * + A B C</code></td><td>operand</td></tr>
+            <tr><td>7</td><td>right of <code>-</code> → <code>/</code></td><td><code>- * + A B C /</code></td><td>right subtree</td></tr>
+            <tr><td>8</td><td>left of <code>/</code> → <code>D</code></td><td><code>- * + A B C / D</code></td><td>operand</td></tr>
+            <tr><td>9</td><td>right of <code>/</code> → <code>E</code></td><td><code>- * + A B C / D E</code></td><td>operand</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:0.5rem; background:#eaf4fa; padding:0.4rem 1rem; border-radius:2rem;">
+        ✅ <strong>Prefix result:</strong> <code>- * + A B C / D E</code>
+      </div>
+    </div>
+
+    <!-- Postfix ↔ Prefix -->
+    <div class="conversion-step">
+      <div class="step-label">📌 3. Postfix ↔ Prefix (stack reversal)</div>
+      <div style="margin-top:0.3rem; font-size:0.95rem;">
+        <strong>Method:</strong> Reverse postfix, scan, and combine using a stack.
+      </div>
+      <div style="margin-top:0.6rem; background:#f4faff; padding:0.6rem 1rem; border-radius:1rem; overflow-x:auto; white-space:nowrap;">
+        <strong>Postfix:</strong> <code>A B + C * D E / -</code> &nbsp;→&nbsp; <strong>Reverse:</strong> <code>- / E D * C + B A</code>
+      </div>
+      <div class="table-wrapper">
+        <table class="step-table">
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Symbol</th>
+              <th>Stack (prefix)</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td><code>-</code></td><td><code>-</code></td><td>push operator</td></tr>
+            <tr><td>2</td><td><code>/</code></td><td><code>- /</code></td><td>push operator</td></tr>
+            <tr><td>3</td><td><code>E</code></td><td><code>- / E</code></td><td>push operand</td></tr>
+            <tr><td>4</td><td><code>D</code></td><td><code>- / E D</code></td><td>push operand</td></tr>
+            <tr><td>5</td><td><code>*</code></td><td>pop D,E → <code>/ D E</code>, push <code>*</code></td><td>combine</td></tr>
+            <tr><td>6</td><td><code>C</code></td><td>pop <code>/ D E</code> and <code>C</code> → <code>* / D E C</code></td><td>combine</td></tr>
+            <tr><td>7</td><td><code>+</code></td><td>pop <code>* / D E C</code> and <code>B</code> → <code>+ B * / D E C</code></td><td>combine</td></tr>
+            <tr><td>8</td><td><code>B</code></td><td>(already combined)</td><td>push operand</td></tr>
+            <tr><td>9</td><td><code>A</code></td><td>pop <code>+ B * / D E C</code> and <code>A</code> → <code>- A + B * / D E C</code></td><td>final combine</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:0.5rem; background:#eaf4fa; padding:0.4rem 1rem; border-radius:2rem;">
+        ✅ <strong>Prefix result:</strong> <code>- * + A B C / D E</code>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="summary-box" style="margin-top:1.2rem; background:#dceaf5; border-radius:2rem; padding:0.6rem 1.4rem; font-size:0.95rem; display:flex; flex-wrap:wrap; gap:0.4rem 1rem;">
+      <span style="font-weight:500;">🧩 Summary for <code>(A + B) * C - D / E</code>:</span>
+      <span><strong>Infix:</strong> <code>(A + B) * C - D / E</code></span>
+      <span><strong>Postfix:</strong> <code>A B + C * D E / -</code></span>
+      <span><strong>Prefix:</strong> <code>- * + A B C / D E</code></span>
+    </div>
+  </div>
+
+  <!-- USE CASES -->
+  <div class="use-section">
+    <h3>⚙️ What is it used for?</h3>
+    <ul>
+      <li><strong>Infix</strong> — everyday math, programming languages (C, Python, Java)</li>
+      <li><strong>Postfix</strong> — stack‑based evaluation, HP calculators, compilers (bytecode), expression trees</li>
+      <li><strong>Prefix</strong> — Lisp / Scheme, functional languages, compilers (S‑expression), minimal parentheses</li>
+    </ul>
+    <div style="margin-top:0.8rem; font-size:0.95rem; background:white; border-radius:2rem; padding:0.6rem 1.4rem; border:1px solid #cde0ef;">
+      <span style="font-weight:500;">🔄 conversion:</span> 
+      Infix → Postfix (Shunting‑yard) &amp; Infix → Prefix (parse tree).  
+      Postfix &amp; Prefix are <strong>operator‑precedence free</strong> — ideal for computer evaluation.
+    </div>
+  </div>
+
+  <!-- detailed use & extra -->
+  <div class="extra-note">
+    <strong>🧠 Why does it matter?</strong>
+    <span>Postfix &amp; Prefix eliminate the need for parentheses and precedence rules — they are <strong>directly evaluable</strong> with a stack. Compilers often convert infix expressions to postfix or prefix during code generation. Also used in <strong>expression trees</strong>, <strong>reverse‑Polish calculators</strong>, and <strong>functional programming</strong> (prefix).</span>
+  </div>
+
+  <div style="display:flex; flex-wrap:wrap; gap:0.5rem 1.2rem; margin-top:1.2rem; background:#eaf2f9; border-radius:2rem; padding:0.6rem 1.5rem;">
+    <span style="font-weight:500; color:#083453;">📌 quick comparison</span>
+    <span><span style="background:#d6e6f5; padding:0.1rem 0.6rem; border-radius:20px;">infix</span> (A+B)×C  →  needs precedence</span>
+    <span><span style="background:#d6e6f5; padding:0.1rem 0.6rem; border-radius:20px;">postfix</span> AB+C×  →  stack eval</span>
+    <span><span style="background:#d6e6f5; padding:0.1rem 0.6rem; border-radius:20px;">prefix</span> ×+ABC  →  recursive eval</span>
+  </div>
+
+  <div class="footer-note">
+    <span>📐 infix · postfix · prefix — foundation of expression parsing</span>
+  </div>
+</div>
+</body>
+</html>
