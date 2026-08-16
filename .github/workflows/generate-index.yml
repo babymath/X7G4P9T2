@@ -1,6 +1,7 @@
 name: Generate Directory Index
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -22,50 +23,61 @@ jobs:
           from pathlib import Path
 
           output_file = "index.html"
-          valid_exts = {".html", ".htm", ".pdf", ".md", ".txt", ".png", ".jpg"}
+          # Ignored directory names
+          ignored_dirs = {".git", ".github", ".vscode"}
+          # Set of allowed extensions (empty set means allow ALL files)
+          allowed_exts = {".html", ".htm", ".pdf", ".md", ".txt", ".png", ".jpg", ".jpeg", ".svg"}
 
-          # Build tree hierarchy
-          def build_tree():
-              tree = {}
-              for root, dirs, files in os.walk("."):
-                  # Exclude hidden directories and git metadata
-                  dirs[:] = [d for d in dirs if not d.startswith(".")]
-                  for file in sorted(files):
-                      if file.startswith(".") or file == output_file or file == "generate.py":
+          def build_nested_tree(base_path):
+              tree = {"__dirs__": {}, "__files__": []}
+              
+              for root, dirs, files in os.walk(base_path):
+                  # Remove ignored directories in-place so os.walk skips them
+                  dirs[:] = [d for d in dirs if d not in ignored_dirs and not d.startswith(".")]
+                  
+                  rel_root = os.path.relpath(root, base_path)
+                  parts = Path(rel_root).parts if rel_root != "." else ()
+                  
+                  # Traverse to current node
+                  curr = tree
+                  for p in parts:
+                      curr = curr["__dirs__"].setdefault(p, {"__dirs__": {}, "__files__": []})
+                  
+                  # Add valid files to current node
+                  for f in sorted(files):
+                      if f.startswith(".") or f == output_file or f == "generate.py":
                           continue
-                      p = Path(root) / file
-                      if p.suffix.lower() in valid_exts:
-                          parts = p.parts
-                          curr = tree
-                          for part in parts[:-1]:
-                              curr = curr.setdefault(part, {})
-                          curr.setdefault("__files__", []).append((file, p.as_posix()))
+                      ext = Path(f).suffix.lower()
+                      if not allowed_exts or ext in allowed_exts:
+                          full_rel_path = (Path(rel_root) / f).as_posix().lstrip("./")
+                          curr["__files__"].append((f, full_rel_path))
               return tree
 
-          # Convert tree to nested HTML with fold/unfold toggles
-          def render_html_tree(node):
-              html = ["<ul>"]
-              for key, value in sorted(node.items()):
-                  if key == "__files__":
-                      for filename, filepath in value:
-                          clean_path = filepath.lstrip("./")
-                          html.append(f'<li><a href="{clean_path}">📄 {filename}</a></li>')
-                  else:
-                      html.append(f'<li><details open><summary>📁 <strong>{key}</strong></summary>')
-                      html.append(render_html_tree(value))
-                      html.append('</details></li>')
-              html.append("</ul>")
-              return "\n".join(html)
+          def render_html(node):
+              items = []
+              # 1. Render Subdirectories
+              for dirname, subnode in sorted(node["__dirs__"].items()):
+                  has_content = subnode["__files__"] or subnode["__dirs__"]
+                  if has_content:
+                      items.append(f'<li><details open><summary>📁 <strong>{dirname}</strong></summary>')
+                      items.append(f'<ul>{render_html(subnode)}</ul>')
+                      items.append('</details></li>')
+              
+              # 2. Render Files in current directory
+              for fname, fpath in sorted(node["__files__"]):
+                  items.append(f'<li>📄 <a href="{fpath}">{fname}</a></li>')
+                  
+              return "\n".join(items)
 
-          tree_data = build_tree()
-          tree_html = render_html_tree(tree_data)
+          tree = build_nested_tree(".")
+          rendered_list = render_html(tree)
 
-          final_html = f"""<!DOCTYPE html>
+          html_template = f"""<!DOCTYPE html>
           <html lang="en">
           <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Repository File Index</title>
+            <title>Repository Index</title>
             <style>
               body {{
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -83,12 +95,14 @@ jobs:
           </head>
           <body>
             <h1>Repository Directory</h1>
-            {tree_html}
+            <ul>
+              {rendered_list}
+            </ul>
           </body>
           </html>"""
 
           with open(output_file, "w", encoding="utf-8") as f:
-              f.write(final_html)
+              f.write(html_template)
           EOF
           python3 generate.py
           rm generate.py
