@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 6 Science - Mega Quiz</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 25px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #1e3c72;
+            border-bottom: 3px solid #1e3c72;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .question-card {
+            background: #f9fafc;
+            padding: 18px 20px;
+            margin-bottom: 18px;
+            border-radius: 12px;
+            border-left: 6px solid #2a6f97;
+            transition: 0.2s;
+        }
+        .question-card.correct {
+            border-left-color: #28a745;
+            background: #e6f9ed;
+        }
+        .question-card.wrong {
+            border-left-color: #dc3545;
+            background: #fde8e8;
+        }
+        .question-text {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+            color: #0b2b44;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+        }
+        @media (max-width: 600px) {
+            .options {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 15px;
+            }
+        }
+        .option-label {
+            display: block;
+            padding: 6px 10px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #dce3ed;
+            cursor: default;
+            font-size: 0.95rem;
+        }
+        .option-label input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .option-label.correct-answer {
+            background: #b7e4c7;
+            border-color: #28a745;
+            font-weight: 500;
+        }
+        .option-label.wrong-answer {
+            background: #f5c6cb;
+            border-color: #dc3545;
+            font-weight: 500;
+        }
+        .option-label.reveal-correct {
+            background: #b7e4c7;
+            border-color: #28a745;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+            background: #1e3c72;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: 0.2s;
+            letter-spacing: 1px;
+        }
+        .btn:hover {
+            background: #0f2b4f;
+            transform: scale(1.01);
+        }
+        .btn:disabled {
+            background: #6c7a8a;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .score-board {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            padding: 18px;
+            background: #1e3c72;
+            color: white;
+            border-radius: 60px;
+            margin-top: 20px;
+        }
+        .footer-note {
+            text-align: center;
+            margin-top: 10px;
+            color: #4a627a;
+            font-style: italic;
+        }
+        .disabled-click {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        .note {
+            background: #fff3cd;
+            padding: 12px;
+            border-radius: 10px;
+            border-left: 5px solid #ffc107;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🌿 Class 6 Science · 50 MCQ</h1>
+    <div class="note">✅ Select your answers. Click <strong>"Submit & Show Answers"</strong> at the bottom to check your score.</div>
+
+    <form id="quizForm">
+        <div id="questionsContainer"></div>
+        <button type="button" id="submitBtn" class="btn">📊 Submit & Show Answers</button>
+    </form>
+
+    <div id="scoreDisplay" class="score-board" style="display:none;"></div>
+    <div class="footer-note">— Best of luck! —</div>
+</div>
+
+<script>
+    (function() {
+        // ---------- 50 Questions with 5 options (A, B, C, D, E) ----------
+        const questions = [
+            { q: "Which of the following is NOT a source of light?", options: ["Sun", "Stars", "Moon", "Electric bulb", "Firefly"], correct: 2 },
+            { q: "What is the process by which plants make their own food called?", options: ["Respiration", "Transpiration", "Photosynthesis", "Digestion", "Reproduction"], correct: 2 },
+            { q: "Which of these is a natural fibre?", options: ["Nylon", "Polyester", "Cotton", "Rayon", "Acrylic"], correct: 2 },
+            { q: "The organ that pumps blood throughout the human body is the:", options: ["Liver", "Brain", "Heart", "Kidney", "Lungs"], correct: 2 },
+            { q: "Which of the following is a conductor of electricity?", options: ["Rubber", "Wood", "Plastic", "Iron", "Glass"], correct: 3 },
+            { q: "The change of a solid into a liquid on heating is called:", options: ["Evaporation", "Condensation", "Freezing", "Melting", "Sublimation"], correct: 3 },
+            { q: "Which of the following is NOT a type of simple machine?", options: ["Lever", "Pulley", "Inclined plane", "Wheel and axle", "Battery"], correct: 4 },
+            { q: "The unit used to measure length is:", options: ["Kilogram", "Second", "Meter", "Litre", "Celsius"], correct: 2 },
+            { q: "Which part of a plant conducts water and minerals from the roots to the leaves?", options: ["Xylem", "Phloem", "Stomata", "Chlorophyll", "Petals"], correct: 0 },
+            { q: "The waste product released by plants during the process of photosynthesis is:", options: ["Carbon dioxide", "Oxygen", "Nitrogen", "Water vapour", "Glucose"], correct: 1 },
+            { q: "The main function of the stem in a plant is to:", options: ["Absorb water", "Make food", "Provide support and transport", "Attract insects", "Store food in all plants"], correct: 2 },
+            { q: "Which of these is a type of motion where an object moves along a straight path?", options: ["Circular motion", "Oscillatory motion", "Rectilinear motion", "Random motion", "Rotational motion"], correct: 2 },
+            { q: "The process of separating grains from the chaff by beating is called:", options: ["Winnowing", "Threshing", "Sieving", "Handpicking", "Filtration"], correct: 1 },
+            { q: "Which of the following is a good conductor of heat?", options: ["Air", "Water", "Copper", "Wood", "Plastic"], correct: 2 },
+            { q: "The Earth's only natural satellite is the:", options: ["Sun", "Moon", "Mars", "Venus", "Jupiter"], correct: 1 },
+            { q: "The movement of molecules from a region of high concentration to low concentration is called:", options: ["Osmosis", "Diffusion", "Active transport", "Translocation", "Transpiration"], correct: 1 },
+            { q: "Which of the following animals is an omnivore?", options: ["Lion", "Cow", "Bear", "Deer", "Goat"], correct: 2 },
+            { q: "The changes that occur in living organisms that help them survive in their habitat are called:", options: ["Reproduction", "Adaptation", "Digestion", "Respiration", "Growth"], correct: 1 },
+            { q: "A body that does not allow light to pass through it at all is called:", options: ["Transparent", "Translucent", "Opaque", "Luminous", "Non-luminous"], correct: 2 },
+            { q: "The SI unit of mass is:", options: ["Gram", "Milligram", "Kilogram", "Quintal", "Tonne"], correct: 2 },
+            { q: "Which of the following is a synthetic fibre?", options: ["Silk", "Wool", "Jute", "Nylon", "Cotton"], correct: 3 },
+            { q: "The process of a liquid changing into a gas is called:", options: ["Condensation", "Evaporation", "Freezing", "Melting", "Sublimation"], correct: 1 },
+            { q: "Which of these is NOT a part of the human digestive system?", options: ["Stomach", "Small intestine", "Large intestine", "Trachea", "Oesophagus"], correct: 3 },
+            { q: "The function of the kidney is to:", options: ["Pump blood", "Filter waste from blood", "Digest food", "Breathe air", "Store urine"], correct: 1 },
+            { q: "Which type of motion is shown by a pendulum?", options: ["Rectilinear", "Circular", "Oscillatory", "Random", "Rotational"], correct: 2 },
+            { q: "The process of separating components of a mixture using a magnet is called:", options: ["Filtration", "Sublimation", "Magnetic separation", "Evaporation", "Distillation"], correct: 2 },
+            { q: "Which of the following is a living thing?", options: ["Rock", "Water", "Tree", "Air", "Soil"], correct: 2 },
+            { q: "The gas we breathe out is:", options: ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen", "Argon"], correct: 2 },
+            { q: "The outer layer of the Earth is called the:", options: ["Mantle", "Core", "Crust", "Magma", "Lithosphere"], correct: 2 },
+            { q: "Which of the following is an insulator of electricity?", options: ["Copper", "Aluminium", "Silver", "Rubber", "Iron"], correct: 3 },
+            { q: "The process by which water vapour changes into liquid water is called:", options: ["Evaporation", "Condensation", "Precipitation", "Sublimation", "Boiling"], correct: 1 },
+            { q: "Which part of a flower becomes the fruit?", options: ["Stamen", "Pistil", "Ovary", "Petal", "Sepal"], correct: 2 },
+            { q: "A substance that dissolves in water is called:", options: ["Solute", "Solvent", "Solution", "Suspension", "Colloid"], correct: 0 },
+            { q: "Which of the following is a physical change?", options: ["Rusting of iron", "Burning of wood", "Melting of ice", "Cooking of food", "Digestion of food"], correct: 2 },
+            { q: "The device used to measure temperature is:", options: ["Barometer", "Thermometer", "Hygrometer", "Speedometer", "Voltmeter"], correct: 1 },
+            { q: "Which of these animals is a herbivore?", options: ["Tiger", "Eagle", "Giraffe", "Crocodile", "Snake"], correct: 2 },
+            { q: "The process of obtaining food by animals is called:", options: ["Photosynthesis", "Nutrition", "Digestion", "Excretion", "Respiration"], correct: 1 },
+            { q: "Which of the following is a non-living thing that grows?", options: ["Crystal", "Dog", "Plant", "Mushroom", "Bacteria"], correct: 0 },
+            { q: "The main function of the leaves is to:", options: ["Absorb water", "Make food", "Support the plant", "Store food", "Reproduce"], correct: 1 },
+            { q: "Which of the following is a mixture?", options: ["Salt", "Sugar", "Air", "Water", "Oxygen"], correct: 2 },
+            { q: "The process of settling down of heavy particles in a mixture is called:", options: ["Filtration", "Decantation", "Sedimentation", "Evaporation", "Condensation"], correct: 2 },
+            { q: "Which of these is a source of energy for the body?", options: ["Vitamin", "Mineral", "Carbohydrate", "Fibre", "Water"], correct: 2 },
+            { q: "The joint that allows movement in all directions is the:", options: ["Hinge joint", "Pivot joint", "Ball and socket joint", "Gliding joint", "Fixed joint"], correct: 2 },
+            { q: "Which of the following animals undergo metamorphosis?", options: ["Dog", "Cat", "Butterfly", "Cow", "Horse"], correct: 2 },
+            { q: "The movement of the Earth around the Sun is called:", options: ["Rotation", "Revolution", "Orbiting", "Spinning", "Tilting"], correct: 1 },
+            { q: "Which of the following is an example of a lever?", options: ["Staircase", "Screw", "Tongs", "Wheel", "Pulley"], correct: 2 },
+            { q: "The liquid part of the blood is called:", options: ["Plasma", "Platelets", "RBC", "WBC", "Haemoglobin"], correct: 0 },
+            { q: "Which of the following is a renewable resource?", options: ["Petroleum", "Natural gas", "Wind", "Coal", "Uranium"], correct: 2 },
+            { q: "The process of making yarn from fibres is called:", options: ["Weaving", "Knitting", "Spinning", "Ginning", "Retting"], correct: 2 },
+            { q: "The basic unit of life is the:", options: ["Cell", "Tissue", "Organ", "Organism", "Molecule"], correct: 0 }
+        ];
+
+        // ---------- Build the form dynamically ----------
+        const container = document.getElementById('questionsContainer');
+        const form = document.getElementById('quizForm');
+
+        questions.forEach((q, index) => {
+            const card = document.createElement('div');
+            card.className = 'question-card';
+            card.id = `card-${index}`;
+
+            const qText = document.createElement('div');
+            qText.className = 'question-text';
+            qText.textContent = `${index+1}. ${q.q}`;
+            card.appendChild(qText);
+
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'options';
+
+            const letters = ['A', 'B', 'C', 'D', 'E'];
+            q.options.forEach((opt, optIndex) => {
+                const label = document.createElement('label');
+                label.className = 'option-label';
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = `q${index}`;
+                radio.value = optIndex;
+                label.appendChild(radio);
+                label.appendChild(document.createTextNode(` ${letters[optIndex]}. ${opt}`));
+                optionsDiv.appendChild(label);
+            });
+
+            card.appendChild(optionsDiv);
+            container.appendChild(card);
+        });
+
+        // ---------- Submit & Show Answers ----------
+        const submitBtn = document.getElementById('submitBtn');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        let isSubmitted = false;
+
+        submitBtn.addEventListener('click', function() {
+            if (isSubmitted) return;
+            isSubmitted = true;
+            submitBtn.disabled = true;
+            submitBtn.textContent = '✅ Answers Revealed';
+
+            let correctCount = 0;
+            const total = questions.length;
+
+            // Loop through each question
+            for (let i = 0; i < total; i++) {
+                const card = document.getElementById(`card-${i}`);
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const userAnswer = selected ? parseInt(selected.value) : -1;
+                const correctAnswer = questions[i].correct;
+
+                // Get all option labels inside this card
+                const labels = card.querySelectorAll('.option-label');
+
+                // Remove any previous highlight classes
+                labels.forEach(lb => {
+                    lb.classList.remove('correct-answer', 'wrong-answer', 'reveal-correct');
+                });
+
+                // Mark correct and wrong
+                labels.forEach((lb, idx) => {
+                    const radio = lb.querySelector('input[type="radio"]');
+                    if (radio) {
+                        const val = parseInt(radio.value);
+                        if (val === correctAnswer) {
+                            lb.classList.add('reveal-correct'); // show correct answer
+                        }
+                        if (userAnswer !== -1 && val === userAnswer && userAnswer !== correctAnswer) {
+                            lb.classList.add('wrong-answer'); // user picked wrong
+                        }
+                        if (userAnswer !== -1 && val === userAnswer && userAnswer === correctAnswer) {
+                            lb.classList.add('correct-answer'); // user picked right
+                        }
+                    }
+                });
+
+                // Color the card border
+                card.classList.remove('correct', 'wrong');
+                if (userAnswer === -1) {
+                    // no answer: just reveal correct, but no card color change
+                } else if (userAnswer === correctAnswer) {
+                    card.classList.add('correct');
+                    correctCount++;
+                } else {
+                    card.classList.add('wrong');
+                }
+            }
+
+            // Show score
+            scoreDisplay.style.display = 'block';
+            scoreDisplay.textContent = `🎯 Your Score: ${correctCount} / ${total} (${Math.round((correctCount/total)*100)}%)`;
+
+            // Scroll to score
+            scoreDisplay.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+
+    })();
+</script>
+</body>
+</html>
